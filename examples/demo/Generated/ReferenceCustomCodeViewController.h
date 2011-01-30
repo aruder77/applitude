@@ -2,7 +2,7 @@
 #import "BoxTableViewController.h"
 #import "ContentProvider.h"
 
-@interface ReferenceCustomContentProvidersViewController : BoxTableViewController {
+@interface ReferenceCustomCodeViewController : BoxTableViewController {
 	BindingContext *fBindings;
 	ContentProvider *fDate;
 	ContentProvider *fStoredDate;

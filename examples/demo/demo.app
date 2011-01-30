@@ -97,8 +97,8 @@ tableview Reference {
 			action: ReferenceErrorHandling()
 		}
 		cell Default {
-			text: "Custom Content Providers"
-			action: ReferenceCustomContentProviders()
+			text: "Custom code hooks"
+			action: ReferenceCustomCode()
 		}
 		cell Default {
 			text: "Entity models"
@@ -177,20 +177,39 @@ tableview ReferenceErrorHandling {
 contentprovider Date returns String class DateContentProvider
 contentprovider StoredDate stores String class DateContentProvider
 
-tableview ReferenceCustomContentProviders {
+customview CustomView class "CustomViewController"
+
+tableview ReferenceCustomCode {
 	Inventor[] date = Date()
 	Inventor[] storedDate = StoredDate()
+	title: "Custom code hooks"
 	
 	section {
-		title: "Custom Content"
+		title: "ContentProvider"
 		cell Default { text: date }
 	}
 
 	section {
-		title: "Custom Content (stored)"
+		title: "ContentProvider (stored)"
 		cell Default { text: storedDate }
 	}
 	
+	section {
+		title: "Custom ViewControllers"
+		cell Default {
+			text: "Open CustomView"
+			action: CustomView()
+		}
+	}
+
+	section {
+		title: "Custom Actions"
+		cell Default {
+			text: "Open alert"
+			action: @selector(openAlertWithCell:)
+		}
+	}
+
 }
 
 

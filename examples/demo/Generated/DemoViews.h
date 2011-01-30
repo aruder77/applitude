@@ -1,10 +1,11 @@
 #import "ContentProvider.h"
+#import "CustomViewController.h"
 #import "InventionDetailViewController.h"
 #import "InventorDetailViewController.h"
 #import "InventorsViewController.h"
 #import "ReferenceCellForeachViewController.h"
 #import "ReferenceCellStylesViewController.h"
-#import "ReferenceCustomContentProvidersViewController.h"
+#import "ReferenceCustomCodeViewController.h"
 #import "ReferenceEntityModelsViewController.h"
 #import "ReferenceErrorHandlingViewController.h"
 #import "ReferenceSectionCellForeachViewController.h"
@@ -22,7 +23,8 @@
 + (ReferenceCellForeachViewController *) createReferenceCellForeach;
 + (ReferenceSectionCellForeachViewController *) createReferenceSectionCellForeach;
 + (ReferenceErrorHandlingViewController *) createReferenceErrorHandling;
-+ (ReferenceCustomContentProvidersViewController *) createReferenceCustomContentProviders;
++ (CustomViewController *) createCustomView;
++ (ReferenceCustomCodeViewController *) createReferenceCustomCode;
 + (ReferenceEntityModelsViewController *) createReferenceEntityModels;
 
 

@@ -117,7 +117,6 @@
 		BF87D95212F50EDB00FE6643 /* InventorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D93E12F50EDB00FE6643 /* InventorsViewController.m */; };
 		BF87D95312F50EDB00FE6643 /* ReferenceCellForeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94012F50EDB00FE6643 /* ReferenceCellForeachViewController.m */; };
 		BF87D95412F50EDB00FE6643 /* ReferenceCellStylesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94212F50EDB00FE6643 /* ReferenceCellStylesViewController.m */; };
-		BF87D95512F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94412F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.m */; };
 		BF87D95612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m */; };
 		BF87D95712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94812F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m */; };
 		BF87D95812F50EDB00FE6643 /* ReferenceSectionCellForeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94A12F50EDB00FE6643 /* ReferenceSectionCellForeachViewController.m */; };
@@ -145,6 +144,9 @@
 		BFAEE79512F061A80013047D /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE77912F061610013047D /* List.m */; };
 		BFAEE79612F061A80013047D /* MappedList.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE77B12F061610013047D /* MappedList.m */; };
 		BFAEE79712F061A80013047D /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE77D12F061610013047D /* Section.m */; };
+		BFE82E3812F62D4700D11B3F /* ReferenceCustomCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE82E3712F62D4700D11B3F /* ReferenceCustomCodeViewController.m */; };
+		BFE82E3F12F62D7C00D11B3F /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE82E3E12F62D7C00D11B3F /* CustomViewController.m */; };
+		BFE82EDC12F630B800D11B3F /* Controllers+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE82EDB12F630B800D11B3F /* Controllers+Actions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -284,8 +286,6 @@
 		BF87D94012F50EDB00FE6643 /* ReferenceCellForeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCellForeachViewController.m; sourceTree = "<group>"; };
 		BF87D94112F50EDB00FE6643 /* ReferenceCellStylesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceCellStylesViewController.h; sourceTree = "<group>"; };
 		BF87D94212F50EDB00FE6643 /* ReferenceCellStylesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCellStylesViewController.m; sourceTree = "<group>"; };
-		BF87D94312F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceCustomContentProvidersViewController.h; sourceTree = "<group>"; };
-		BF87D94412F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCustomContentProvidersViewController.m; sourceTree = "<group>"; };
 		BF87D94512F50EDB00FE6643 /* ReferenceEntityModelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceEntityModelsViewController.h; sourceTree = "<group>"; };
 		BF87D94612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceEntityModelsViewController.m; sourceTree = "<group>"; };
 		BF87D94712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceErrorHandlingViewController.h; sourceTree = "<group>"; };
@@ -318,6 +318,12 @@
 		BFAEE77D12F061610013047D /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
 		BFAEE77E12F061610013047D /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
 		BFAEE77F12F061610013047D /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
+		BFE82E3612F62D4700D11B3F /* ReferenceCustomCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceCustomCodeViewController.h; sourceTree = "<group>"; };
+		BFE82E3712F62D4700D11B3F /* ReferenceCustomCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCustomCodeViewController.m; sourceTree = "<group>"; };
+		BFE82E3D12F62D7C00D11B3F /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		BFE82E3E12F62D7C00D11B3F /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		BFE82EDA12F630B800D11B3F /* Controllers+Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Controllers+Actions.h"; sourceTree = "<group>"; };
+		BFE82EDB12F630B800D11B3F /* Controllers+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Controllers+Actions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				BF87D7BF12F4FC2B00FE6643 /* app */,
+				BFE82E3B12F62D6700D11B3F /* controller */,
 				BF87D90112F50CDA00FE6643 /* model */,
 				BF87D7C112F4FC2B00FE6643 /* provider */,
 			);
@@ -655,8 +662,8 @@
 				BF87D94012F50EDB00FE6643 /* ReferenceCellForeachViewController.m */,
 				BF87D94112F50EDB00FE6643 /* ReferenceCellStylesViewController.h */,
 				BF87D94212F50EDB00FE6643 /* ReferenceCellStylesViewController.m */,
-				BF87D94312F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.h */,
-				BF87D94412F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.m */,
+				BFE82E3612F62D4700D11B3F /* ReferenceCustomCodeViewController.h */,
+				BFE82E3712F62D4700D11B3F /* ReferenceCustomCodeViewController.m */,
 				BF87D94512F50EDB00FE6643 /* ReferenceEntityModelsViewController.h */,
 				BF87D94612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m */,
 				BF87D94712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.h */,
@@ -705,6 +712,17 @@
 				BFAEE77F12F061610013047D /* TextFieldCell.m */,
 			);
 			path = Tables;
+			sourceTree = "<group>";
+		};
+		BFE82E3B12F62D6700D11B3F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				BFE82E3D12F62D7C00D11B3F /* CustomViewController.h */,
+				BFE82E3E12F62D7C00D11B3F /* CustomViewController.m */,
+				BFE82EDA12F630B800D11B3F /* Controllers+Actions.h */,
+				BFE82EDB12F630B800D11B3F /* Controllers+Actions.m */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -859,11 +877,13 @@
 				BF87D95212F50EDB00FE6643 /* InventorsViewController.m in Sources */,
 				BF87D95312F50EDB00FE6643 /* ReferenceCellForeachViewController.m in Sources */,
 				BF87D95412F50EDB00FE6643 /* ReferenceCellStylesViewController.m in Sources */,
-				BF87D95512F50EDB00FE6643 /* ReferenceCustomContentProvidersViewController.m in Sources */,
 				BF87D95612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m in Sources */,
 				BF87D95712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m in Sources */,
 				BF87D95812F50EDB00FE6643 /* ReferenceSectionCellForeachViewController.m in Sources */,
 				BF87D95912F50EDB00FE6643 /* ReferenceViewController.m in Sources */,
+				BFE82E3812F62D4700D11B3F /* ReferenceCustomCodeViewController.m in Sources */,
+				BFE82E3F12F62D7C00D11B3F /* CustomViewController.m in Sources */,
+				BFE82EDC12F630B800D11B3F /* Controllers+Actions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

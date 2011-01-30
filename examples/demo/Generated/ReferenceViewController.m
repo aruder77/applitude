@@ -51,9 +51,9 @@
 
 	{
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-		cell.textLabel.text = @"Custom Content Providers";
+		cell.textLabel.text = @"Custom code hooks";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(customcontentprovidersCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(customcodehooksCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -86,8 +86,8 @@
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) customcontentprovidersCellSelected:(BoxCell *)cell {
-	UIViewController *controller = [DemoViews createReferenceCustomContentProviders];
+- (void) customcodehooksCellSelected:(BoxCell *)cell {
+	UIViewController *controller = [DemoViews createReferenceCustomCode];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 

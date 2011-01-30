@@ -51,8 +51,12 @@
 	return [[[ReferenceErrorHandlingViewController alloc] init] autorelease];
 }
 
-+ (ReferenceCustomContentProvidersViewController *) createReferenceCustomContentProviders {
-	return [[[ReferenceCustomContentProvidersViewController alloc] init] autorelease];
++ (CustomViewController *) createCustomView {
+	return [[[CustomViewController alloc] init] autorelease];
+}
+
++ (ReferenceCustomCodeViewController *) createReferenceCustomCode {
+	return [[[ReferenceCustomCodeViewController alloc] init] autorelease];
 }
 
 + (ReferenceEntityModelsViewController *) createReferenceEntityModels {
