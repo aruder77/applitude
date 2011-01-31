@@ -124,10 +124,9 @@ Next steps:
 
 ## Release Notes, What's new?
 
-0.2.1 (2010-01-31)
-
-* Changed file extension to `.applitude` (was `.app`)
-* Added an example for custom controllers / actions to the demo app reference
+* 0.2.1 (2010-01-31)
+	* Changed file extension to `.applitude` (was `.app`)
+	* Added an example for custom controllers / actions to the demo app reference
 
 ## Bugs / Support / Contributions
 
