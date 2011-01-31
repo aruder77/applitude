@@ -95,25 +95,30 @@ Last but not least, the runtime components utilized by the generated code are no
 
 ## Ok, where is the catch?
 
-The project is work in progress. Things will change without prior notice, you will encounter bugs and missing documentation and mostly you will need to help yourself. You will need to have good knowledge of iPhone development in Objective C and some knowledge of building DSLs with Eclipse Xtext to put this tool to use.
+* You will need good knowledge of iPhone development in Objective C and some knowledge of building DSLs with Eclipse Xtext to enjoy Applitude.
+* Currently, Applitude is intended as a tool for developers who like tinkering with own tools and languages. Please don't use Applitude if you don't feel comfortable with solving issues around such a tool yourself.
+* Applitude is currently work in progress. Syntax and API might change, please check the [Release notes](#whatsnew) after installing new versions.
 
 <a name="installation"> </a>
 
 ## Installation
 
 * Get Eclipse IDE 3.6.1 from the [Eclipse download page](http://www.eclipse.org/downloads/) (it doesn't matter which package you choose, Eclipse IDE for Java Developers is fine)
-* In Eclipse, click `Help > Install New Software` and enter this p2 repository site:
+* In Eclipse, click `Help > Eclipse Marketplace...`, choose the Eclipse Marketplace, search for "Applitude" and click `Install`:
 
-		http://applitude.org/p2/
+    ![Applitude Installation using Eclipse Marketplace](install_marketplace.png)
 
-* Install "`Applitude iPhone DSL`" and restart Eclipse.
+    It might take some time to 'calculate requirements and dependencies'. You will be prompted to install unsigned content and to restart Eclipse.
+
+    Alternatively, you can install Applitude from the p2 site `http://applitude.org/p2/` using `Help > Install New Software`.
+
 * It is recommended to install the [Uncrustify code formatter](http://uncrustify.sourceforge.net/) because Applitude uses it to format the generated code. You can install it using [MacPorts](http://www.macports.org/) or [homebrew](http://mxcl.github.com/homebrew/). Applitude should find the binary automatically, you can also configure it from `Eclipse Preferences > Applitude > Generator`.
 * Download the [applitude source zip](https://github.com/ralfebert/applitude/zipball/master) or clone the git repository:
 
 		$ git clone git://github.com/ralfebert/applitude
 
-* Import the demo project from `examples/demo/` using `File > Import > Existing Projects into workspace`.
-* Open `demo.applitude` from the project.
+* Import the demo project folder from `examples/demo/` using `File > Import > Existing Projects into workspace`.
+* Open `demo.applitude` from the project root.
 * Change something in demo.applitude and save it - the code under `Generated/` will be re-generated.
 * Open `demo.xcodeproj` in Xcode and run the application.
 
@@ -124,21 +129,7 @@ Next steps:
 * Create a new Eclipse Application launch configuration, using the default settings to launch an Eclipse IDE with your workspace plug-ins.
 * The best way to learn about applitude is to play with it, adopting the demo project to your needs, adding features to the DSL or the runtime libraries, etc.
 
-## Release Notes, What's new?
-
-v0.2.1 (2010-01-31)
-
-* Changed file extension to `.applitude` (was `.app`)
-* Added an example for custom controllers / actions to the demo app reference
-
-## Bugs / Support / Contributions
-
-* If something is not working or not documented, please check if there is already a ticket and if not, open a ticket in the [issue tracker](http://ralfebert.lighthouseapp.com/projects/67904).
-* Please understand that, while I use applitude in my own commercial projects, most of the work on it is done in my free time. This means, I can not provide any kind of free support for applitude; basically I will only fix/work on issues that I also care about myself.
-* I can provide commercial support and development services for the project, provided that the resulting work is licensed under open source licenses. If you're interested in such services, send me a message on GitHub.
-* Contributions to applitude under the Eclipse Public License (code) or the Creative Commons (documentation) are welcome. Just fork the project and send me a pull request on GitHub. I'll review every pull request within 3 business days.
-
-## Demo Example project
+## Examples
 
 [`examples/demo/`](https://github.com/ralfebert/applitude/tree/master/examples/demo) contains the Inventors example which fetches JSON content via HTTP and shows it using tables:
 
@@ -147,6 +138,32 @@ v0.2.1 (2010-01-31)
 It also contains a reference part (showing the language features) and a test suite (based on [GHUnit](https://github.com/gabriel/gh-unit/), see the Tests target):
 
 ![Screenshots demo application: reference and unit tests](demo_reference.png)
+
+<a name="whatsnew"> </a>
+
+## Release Notes, What's new?
+
+v0.2.1 (2010-01-31)
+
+* Changed file extension to `.applitude` (was `.app`)
+* Added an example for custom controllers / actions to the demo app reference
+
+## Reporting bugs
+
+* If something is not working or not documented, please check if there is already a [ticket in the issue tracker](http://ralfebert.lighthouseapp.com/projects/67904). If not, please create a new one.
+* Attaching a patch for the demo project or the tests that demonstrates the problem is very helpful.
+
+## Contributing to Applitude
+
+* Contributions to applitude under the Eclipse Public License (code) or the Creative Commons (documentation) are welcome.
+* Just fork the project and send me a pull request on GitHub or [create a ticket](http://ralfebert.lighthouseapp.com/projects/67904) and attach a patch.
+* I'll review every contribution within 3 business days.
+
+## Support
+
+* Please understand that, while I use applitude in my own commercial projects, most of the work on it is done in my free time. While I will answer questions by improving the documentation, I can not offer free support. Please don't use Applitude if you don't feel comfortable with solving issues around such a tool yourself.
+* I can provide commercial support and development services for the project, provided that the resulting work is licensed under open source licenses. If you're interested in such services, send me a message on GitHub.
+
 
 
 ## FAQ
