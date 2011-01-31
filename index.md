@@ -24,64 +24,66 @@ Written manually, you would have to care about many aspects like doing the HTTP 
 
 Instead, you could also write this [`demo.applitude`](https://github.com/ralfebert/applitude/blob/master/examples/demo/demo.applitude) document:
 
-	application Demo {
-		view:Tabs()
-	}
+{% highlight ruby %}
+application Demo {
+	view:Tabs()
+}
 
-	tabview Tabs {
-		tab {
-			title: "Inventors"
-			view: Inventors()
-		}
-	}
-
-	type String mapsTo "NSString"
-
-	entity Inventor {
-		String name
-		String imageUrl
-		Invention[] inventions
-	}
-
-	entity Invention {
-		String name
-	}
-
-	contentprovider AllInventors returns Inventor[] fetches JSON from
-		"http://applitude.org/demo/inventors.json" selects ""
-
-	tableview Inventors {
-		Inventor[] inventors = AllInventors()
-
+tabview Tabs {
+	tab {
 		title: "Inventors"
+		view: Inventors()
+	}
+}
 
-		section {
-			cell Default for inventor in inventors {
-				text: inventor.name
-				image: inventor.imageUrl
-				action: InventorDetail(inventor)
-			}
+type String mapsTo "NSString"
+
+entity Inventor {
+	String name
+	String imageUrl
+	Invention[] inventions
+}
+
+entity Invention {
+	String name
+}
+
+contentprovider AllInventors returns Inventor[] fetches JSON from
+	"http://applitude.org/demo/inventors.json" selects ""
+
+tableview Inventors {
+	Inventor[] inventors = AllInventors()
+
+	title: "Inventors"
+
+	section {
+		cell Default for inventor in inventors {
+			text: inventor.name
+			image: inventor.imageUrl
+			action: InventorDetail(inventor)
+		}
+	}
+}
+
+tableview InventorDetail(Inventor inventor) {
+	title: inventor.name
+	style: Grouped
+
+	section {
+		cell Value2 {
+			text: "Name"
+			details: inventor.name
 		}
 	}
 
-	tableview InventorDetail(Inventor inventor) {
-		title: inventor.name
-		style: Grouped
-
-		section {
-			cell Value2 {
-				text: "Name"
-				details: inventor.name
-			}
-		}
-
-		section {
-			title: "Inventions"
-			cell Default for invention in inventor.inventions {
-				text: invention.name
-			}
+	section {
+		title: "Inventions"
+		cell Default for invention in inventor.inventions {
+			text: invention.name
 		}
 	}
+}
+{% endhighlight %}
 
 You can edit this document in a convenient editor featuring code completion and instant error checking by installing the applitude plug-ins into the Eclipse IDE (these plug-ins are available because applitude's DSL is built using the marvelous [Xtext language development framework](http://www.eclipse.org/Xtext/)):
 
