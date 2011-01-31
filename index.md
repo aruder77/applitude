@@ -22,7 +22,7 @@ For example, this application displays [JSON data](http://applitude.org/demo/inv
 
 Written manually, you would have to care about many aspects like doing the HTTP requests, parsing the JSON data, showing activity indicators while the app is loading, feeding the data into tables when it gets available, responding to the `UITableViewDataSource` protocol, handling errors, caching the data, loading images in the background, navigating between the views and so on and on.
 
-Instead, you could also write this [`demo.app`](https://github.com/ralfebert/applitude/blob/master/examples/demo/demo.app) document:
+Instead, you could also write this [`demo.applitude`](https://github.com/ralfebert/applitude/blob/master/examples/demo/demo.applitude) document:
 
 	application Demo {
 		view:Tabs()
@@ -87,7 +87,7 @@ You can edit this document in a convenient editor featuring code completion and 
 
 ![applitude demo application editor](demo_ide.png)
 
-Then, as soon as you hit save, Objective C code is generated for `demo.app`. The generated code is small and tidied up by making use of runtime components wherever possible. Have a look at [InventorDetailViewController](https://github.com/ralfebert/applitude/blob/master/examples/demo/Generated/InventorDetailViewController.m) for an example of the kind of code generated for applitude apps.
+Then, as soon as you hit save, Objective C code is generated for `demo.applitude`. The generated code is small and tidied up by making use of runtime components wherever possible. Have a look at [InventorDetailViewController](https://github.com/ralfebert/applitude/blob/master/examples/demo/Generated/InventorDetailViewController.m) for an example of the kind of code generated for applitude apps.
 
 Last but not least, the runtime components utilized by the generated code are not tied to the DSL at all and you can utilize them in hand-written code as well; the DSL just adds a very convenient layer on top. But why write boring code by hand if you can express it using a more appropriate language?
 
@@ -111,8 +111,8 @@ The project is work in progress. Things will change without prior notice, you wi
 		$ git clone git://github.com/ralfebert/applitude
 
 * Import the demo project from `examples/demo/` using `File > Import > Existing Projects into workspace`.
-* Open `demo.app` from the project.
-* Change something in demo.app and save it - the code under `Generated/` will be re-generated.
+* Open `demo.applitude` from the project.
+* Change something in demo.applitude and save it - the code under `Generated/` will be re-generated.
 * Open `demo.xcodeproj` in Xcode and run the application.
 
 Next steps:
@@ -121,6 +121,13 @@ Next steps:
 * If you want to tinker with the DSL, clone the git repository and import the plug-in projects from the `tooling/` folder.
 * Create a new Eclipse Application launch configuration, using the default settings to launch an Eclipse IDE with your workspace plug-ins.
 * The best way to learn about applitude is to play with it, adopting the demo project to your needs, adding features to the DSL or the runtime libraries, etc.
+
+## Release Notes, What's new?
+
+0.2.1 (2010-01-31)
+
+* Changed file extension to `.applitude` (was `.app`)
+* Added an example for custom controllers / actions to the demo app reference
 
 ## Bugs / Support / Contributions
 

@@ -6,5 +6,8 @@
    <feature url="features/org.applitude.feature_0.2.0.201101301747.jar" id="org.applitude.feature" version="0.2.0.201101301747">
       <category name="org.applitude.category"/>
    </feature>
+   <feature url="features/org.applitude.feature_0.2.1.201101310130.jar" id="org.applitude.feature" version="0.2.1.201101310130">
+      <category name="org.applitude.category"/>
+   </feature>
    <category-def name="org.applitude.category" label="Applitude iPhone DSL"/>
 </site>
