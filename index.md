@@ -151,13 +151,13 @@ It also contains a reference part (showing the language features) and a test sui
 
 ## FAQ
 
-* Are apps containing generated code allowed on the app store?
+### Are apps containing generated code allowed on the app store?
 
-There were restrictions in place for submitting apps created using 3rd party developer tools, but they were lifted in September 2010:
+There were restrictions in place for submitting apps created using 3rd party development tools, but they were relaxed in September 2010:
 
-"In particular, we are relaxing all restrictions on the development tools used to create iOS apps, as long as the resulting apps do not download any code." [http://www.apple.com/pr/library/2010/09/09statement.html](http://www.apple.com/pr/library/2010/09/09statement.html)
+*"In particular, we are relaxing all restrictions on the development tools used to create iOS apps, as long as the resulting apps do not download any code."* [http://www.apple.com/pr/library/2010/09/09statement.html](http://www.apple.com/pr/library/2010/09/09statement.html)
 
-The generated code and all runtime libraries only use official, public API. The generated code is just regular Objective C code which might as well have been written manually. Of course nothing can be guaranteed, but there are no known issues with submitting applitude apps to the app store.
+The generated code and all runtime libraries only use official, public API. The generated code is just regular Objective C code which might as well have been written manually. Nothing can be guaranteed, but there are no issues known with submitting applitude apps to the app store.
 
 
 
