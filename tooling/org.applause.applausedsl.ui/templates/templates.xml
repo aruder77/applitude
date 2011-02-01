@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+	<template 
+		id="org.applause.applausedsl.templates.cell"
+		autoinsert="true"
+		context="org.applause.applausedsl.ApplauseDsl.Cell"
+		deleted="false"
+		description="Static cell"
+		enabled="true"
+		name="cell">cell ${Default:Enum('CellType')} {
+	text: "${Cell}"
+}</template>
+	<template
+		id="org.applause.applausedsl.templates.for"
+		autoinsert="true"
+		context="org.applause.applausedsl.ApplauseDsl.kw_for"
+		deleted="false"
+		description="iterate over collection"
+		enabled="true"
+		name="for">for ${name} in ${collection}</template>
+	<template
+		id="org.applause.applausedsl.templates.section"
+		autoinsert="true"
+		context="org.applause.applausedsl.ApplauseDsl.Section"
+		deleted="false"
+		description="Static section"
+		enabled="true"
+		name="section">section {
+	title: "${Section}"
+
+	cell ${Default:Enum('CellType')} {
+		text: "${Cell}"
+	}
+}</template>
+</templates>
