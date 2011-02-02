@@ -143,6 +143,12 @@ It also contains a reference part (showing the language features) and a test sui
 
 ## Release Notes, What's new?
 
+v0.3.0
+
+* Added template proposals for `for, cell, section, tableview` ([#31](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/31))
+
+    ![tableview template proposal](whatsnew/0.3.0_templates.png)
+
 v0.2.1 (2010-01-31)
 
 * Changed file extension to `.applitude` (was `.app`)
