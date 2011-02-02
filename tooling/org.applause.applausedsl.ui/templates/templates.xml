@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <templates>
-	<template 
-		id="org.applause.applausedsl.templates.cell"
-		autoinsert="true"
-		context="org.applause.applausedsl.ApplauseDsl.Cell"
-		deleted="false"
-		description="Static cell"
-		enabled="true"
-		name="cell">cell ${Default:Enum('CellType')} {
-	text: "${Cell}"
-}</template>
 	<template
 		id="org.applause.applausedsl.templates.for"
 		autoinsert="true"
@@ -18,10 +8,20 @@
 		description="iterate over collection"
 		enabled="true"
 		name="for">for ${name} in ${collection}</template>
+	<template 
+		id="org.applause.applausedsl.templates.cell"
+		autoinsert="true"
+		context="org.applause.applausedsl.ApplauseDsl.kw_cell"
+		deleted="false"
+		description="Static cell"
+		enabled="true"
+		name="cell">cell ${Default:Enum('CellType')} {
+	text: "${Cell}"
+}</template>
 	<template
 		id="org.applause.applausedsl.templates.section"
 		autoinsert="true"
-		context="org.applause.applausedsl.ApplauseDsl.Section"
+		context="org.applause.applausedsl.ApplauseDsl.kw_section"
 		deleted="false"
 		description="Static section"
 		enabled="true"
@@ -30,6 +30,24 @@
 
 	cell ${Default:Enum('CellType')} {
 		text: "${Cell}"
+	}
+}</template>
+<template
+		id="org.applause.applausedsl.templates.tableview"
+		autoinsert="true"
+		context="org.applause.applausedsl.ApplauseDsl.kw_tableview"
+		deleted="false"
+		description="tableview with section"
+		enabled="true"
+		name="tableview">tableview ${TableView} {
+	title: "${Table}"
+	
+	section {
+		title: "${Section}"
+
+		cell ${Default:Enum('CellType')} {
+			text: "${Cell}"
+		}
 	}
 }</template>
 </templates>
