@@ -184,6 +184,10 @@ v0.3.0
 
     ![tableview template proposal](whatsnew/0.3.0_templates.png)
 
+* `contentprovider ... selects [keyPath]`: `selects` is now optional and supported [#40](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/40)
+
+* `contentprovider ... fetches XML` is now fully supported by runtime component `ContentProvider+XML`, added inventors demo reference example for JSON and XML [#51](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/51)
+
 * Runtime classes were restructured ([#21](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/21), [#46](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/46)):
 	* `/Laces -> /Bindings`
 	* `/Laces/DateConverter.* -> /Utils/`
