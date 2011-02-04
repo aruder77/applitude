@@ -53,20 +53,20 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 		String pattern;
 	}
 
-	private Multimap<String, KeywordProposal> keywordProposals;
+	private Multimap<String, KeywordProposal> keywordSnippets;
 
-	public Multimap<String, KeywordProposal> getKeywordProposals() {
-		if (keywordProposals == null) {
-			keywordProposals = Multimaps.newHashMultimap();
-			registerKeywordProposal("cell", "static cell");
-			registerKeywordProposal("for", "iterate over collection");
-			registerKeywordProposal("section", "static section");
-			registerKeywordProposal("tableview", "tableview with section");
+	private Multimap<String, KeywordProposal> getKeywordSnippets() {
+		if (keywordSnippets == null) {
+			keywordSnippets = Multimaps.newHashMultimap();
+			registerKeywordSnippet("cell", "static cell");
+			registerKeywordSnippet("for", "iterate over collection");
+			registerKeywordSnippet("section", "static section");
+			registerKeywordSnippet("tableview", "tableview with section");
 		}
-		return keywordProposals;
+		return keywordSnippets;
 	}
 
-	private void registerKeywordProposal(String keyword, String description) {
+	private void registerKeywordSnippet(String keyword, String description) {
 		KeywordProposal proposal = new KeywordProposal();
 		proposal.keyword = keyword;
 		proposal.description = description;
@@ -82,7 +82,7 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 			IOUtils.closeQuietly(templateStream);
 		}
 
-		keywordProposals.put(keyword, proposal);
+		keywordSnippets.put(keyword, proposal);
 	}
 
 	/**
@@ -155,17 +155,17 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// replace single keyword proposals with complete template snippets
-		Collection<KeywordProposal> proposals = getKeywordProposals().get(keyword.getValue());
+		Collection<KeywordProposal> proposals = getKeywordSnippets().get(keyword.getValue());
 		if (!proposals.isEmpty()) {
 			for (KeywordProposal proposal : proposals) {
-				completeKeyword(proposal, context, acceptor);
+				completeSnippet(proposal, context, acceptor);
 			}
 		} else {
 			super.completeKeyword(keyword, context, acceptor);
 		}
 	}
 
-	private void completeKeyword(KeywordProposal proposal, ContentAssistContext context,
+	private void completeSnippet(KeywordProposal proposal, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		TemplateContextType contextType = new TemplateContextType();
 		XtextTemplateContext templateContext = new IndentXtextTemplateContext(contextType, context.getDocument(),
