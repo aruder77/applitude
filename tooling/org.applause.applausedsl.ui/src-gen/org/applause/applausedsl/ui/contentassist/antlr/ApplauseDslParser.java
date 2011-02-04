@@ -77,6 +77,7 @@ public class ApplauseDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getContentProviderAccess().getGroup(), "rule__ContentProvider__Group__0");
 					put(grammarAccess.getContentProviderAccess().getGroup_2(), "rule__ContentProvider__Group_2__0");
 					put(grammarAccess.getFetchingContentProviderImplementationAccess().getGroup(), "rule__FetchingContentProviderImplementation__Group__0");
+					put(grammarAccess.getFetchingContentProviderImplementationAccess().getGroup_4(), "rule__FetchingContentProviderImplementation__Group_4__0");
 					put(grammarAccess.getCustomContentProviderImplementationAccess().getGroup(), "rule__CustomContentProviderImplementation__Group__0");
 					put(grammarAccess.getProviderConstructionAccess().getGroup_0(), "rule__ProviderConstruction__Group_0__0");
 					put(grammarAccess.getProviderConstructionAccess().getGroup_1(), "rule__ProviderConstruction__Group_1__0");
@@ -149,7 +150,7 @@ public class ApplauseDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getContentProviderAccess().getImplementationAssignment_6(), "rule__ContentProvider__ImplementationAssignment_6");
 					put(grammarAccess.getFetchingContentProviderImplementationAccess().getFormatAssignment_1(), "rule__FetchingContentProviderImplementation__FormatAssignment_1");
 					put(grammarAccess.getFetchingContentProviderImplementationAccess().getUrlAssignment_3(), "rule__FetchingContentProviderImplementation__UrlAssignment_3");
-					put(grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionAssignment_5(), "rule__FetchingContentProviderImplementation__SelectionAssignment_5");
+					put(grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionAssignment_4_1(), "rule__FetchingContentProviderImplementation__SelectionAssignment_4_1");
 					put(grammarAccess.getCustomContentProviderImplementationAccess().getProviderClassAssignment_1(), "rule__CustomContentProviderImplementation__ProviderClassAssignment_1");
 					put(grammarAccess.getProviderConstructionAccess().getProviderAssignment_0_1(), "rule__ProviderConstruction__ProviderAssignment_0_1");
 					put(grammarAccess.getProviderConstructionAccess().getArgumentAssignment_0_3(), "rule__ProviderConstruction__ArgumentAssignment_0_3");

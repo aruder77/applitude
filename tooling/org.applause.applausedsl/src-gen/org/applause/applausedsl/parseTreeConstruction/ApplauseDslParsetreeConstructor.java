@@ -4543,11 +4543,11 @@ protected class ContentProviderImplementation_CustomContentProviderImplementatio
 /************ begin Rule FetchingContentProviderImplementation ****************
  *
  * FetchingContentProviderImplementation:
- * 	"fetches" format=SerializationFormat "from" url=ScalarExpression "selects" selection=ScalarExpression?;
+ * 	"fetches" format=SerializationFormat "from" url=ScalarExpression ("selects" selection=ScalarExpression)?;
  *
  **/
 
-// "fetches" format=SerializationFormat "from" url=ScalarExpression "selects" selection=ScalarExpression?
+// "fetches" format=SerializationFormat "from" url=ScalarExpression ("selects" selection=ScalarExpression)?
 protected class FetchingContentProviderImplementation_Group extends GroupToken {
 	
 	public FetchingContentProviderImplementation_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4562,8 +4562,8 @@ protected class FetchingContentProviderImplementation_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new FetchingContentProviderImplementation_SelectionAssignment_5(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new FetchingContentProviderImplementation_SelectsKeyword_4(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new FetchingContentProviderImplementation_Group_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new FetchingContentProviderImplementation_UrlAssignment_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -4700,16 +4700,38 @@ protected class FetchingContentProviderImplementation_UrlAssignment_3 extends As
 	}	
 }
 
-// "selects"
-protected class FetchingContentProviderImplementation_SelectsKeyword_4 extends KeywordToken  {
+// ("selects" selection=ScalarExpression)?
+protected class FetchingContentProviderImplementation_Group_4 extends GroupToken {
 	
-	public FetchingContentProviderImplementation_SelectsKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public FetchingContentProviderImplementation_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getFetchingContentProviderImplementationAccess().getGroup_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new FetchingContentProviderImplementation_SelectionAssignment_4_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "selects"
+protected class FetchingContentProviderImplementation_SelectsKeyword_4_0 extends KeywordToken  {
+	
+	public FetchingContentProviderImplementation_SelectsKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFetchingContentProviderImplementationAccess().getSelectsKeyword_4();
+		return grammarAccess.getFetchingContentProviderImplementationAccess().getSelectsKeyword_4_0();
 	}
 
     @Override
@@ -4722,16 +4744,16 @@ protected class FetchingContentProviderImplementation_SelectsKeyword_4 extends K
 
 }
 
-// selection=ScalarExpression?
-protected class FetchingContentProviderImplementation_SelectionAssignment_5 extends AssignmentToken  {
+// selection=ScalarExpression
+protected class FetchingContentProviderImplementation_SelectionAssignment_4_1 extends AssignmentToken  {
 	
-	public FetchingContentProviderImplementation_SelectionAssignment_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public FetchingContentProviderImplementation_SelectionAssignment_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionAssignment_5();
+		return grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionAssignment_4_1();
 	}
 
     @Override
@@ -4750,7 +4772,7 @@ protected class FetchingContentProviderImplementation_SelectionAssignment_5 exte
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getScalarExpressionRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionScalarExpressionParserRuleCall_5_0(); 
+				element = grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionScalarExpressionParserRuleCall_4_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -4762,11 +4784,12 @@ protected class FetchingContentProviderImplementation_SelectionAssignment_5 exte
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new FetchingContentProviderImplementation_SelectsKeyword_4(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new FetchingContentProviderImplementation_SelectsKeyword_4_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
+
 
 
 /************ end Rule FetchingContentProviderImplementation ****************/

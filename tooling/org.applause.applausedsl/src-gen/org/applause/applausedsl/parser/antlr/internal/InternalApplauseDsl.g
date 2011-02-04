@@ -1968,14 +1968,14 @@ ruleFetchingContentProviderImplementation returns [EObject current=null]
 	    }
 
 )
-)	'selects' 
+)(	'selects' 
     {
-        createLeafNode(grammarAccess.getFetchingContentProviderImplementationAccess().getSelectsKeyword_4(), null); 
+        createLeafNode(grammarAccess.getFetchingContentProviderImplementationAccess().getSelectsKeyword_4_0(), null); 
     }
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionScalarExpressionParserRuleCall_5_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getFetchingContentProviderImplementationAccess().getSelectionScalarExpressionParserRuleCall_4_1_0(), currentNode); 
 	    }
 		lv_selection_5_0=ruleScalarExpression		{
 	        if ($current==null) {
@@ -1996,7 +1996,7 @@ ruleFetchingContentProviderImplementation returns [EObject current=null]
 	    }
 
 )
-)?)
+))?)
 ;
 
 

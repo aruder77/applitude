@@ -934,15 +934,16 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFromKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cUrlAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cUrlScalarExpressionParserRuleCall_3_0 = (RuleCall)cUrlAssignment_3.eContents().get(0);
-		private final Keyword cSelectsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cSelectionAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cSelectionScalarExpressionParserRuleCall_5_0 = (RuleCall)cSelectionAssignment_5.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cSelectsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cSelectionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cSelectionScalarExpressionParserRuleCall_4_1_0 = (RuleCall)cSelectionAssignment_4_1.eContents().get(0);
 		
 		//FetchingContentProviderImplementation:
-		//	"fetches" format=SerializationFormat "from" url=ScalarExpression "selects" selection=ScalarExpression?;
+		//	"fetches" format=SerializationFormat "from" url=ScalarExpression ("selects" selection=ScalarExpression)?;
 		public ParserRule getRule() { return rule; }
 
-		//"fetches" format=SerializationFormat "from" url=ScalarExpression "selects" selection=ScalarExpression?
+		//"fetches" format=SerializationFormat "from" url=ScalarExpression ("selects" selection=ScalarExpression)?
 		public Group getGroup() { return cGroup; }
 
 		//"fetches"
@@ -963,14 +964,17 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ScalarExpression
 		public RuleCall getUrlScalarExpressionParserRuleCall_3_0() { return cUrlScalarExpressionParserRuleCall_3_0; }
 
-		//"selects"
-		public Keyword getSelectsKeyword_4() { return cSelectsKeyword_4; }
+		//("selects" selection=ScalarExpression)?
+		public Group getGroup_4() { return cGroup_4; }
 
-		//selection=ScalarExpression?
-		public Assignment getSelectionAssignment_5() { return cSelectionAssignment_5; }
+		//"selects"
+		public Keyword getSelectsKeyword_4_0() { return cSelectsKeyword_4_0; }
+
+		//selection=ScalarExpression
+		public Assignment getSelectionAssignment_4_1() { return cSelectionAssignment_4_1; }
 
 		//ScalarExpression
-		public RuleCall getSelectionScalarExpressionParserRuleCall_5_0() { return cSelectionScalarExpressionParserRuleCall_5_0; }
+		public RuleCall getSelectionScalarExpressionParserRuleCall_4_1_0() { return cSelectionScalarExpressionParserRuleCall_4_1_0; }
 	}
 
 	public class CustomContentProviderImplementationElements extends AbstractParserRuleElementFinder {
@@ -2274,7 +2278,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FetchingContentProviderImplementation:
-	//	"fetches" format=SerializationFormat "from" url=ScalarExpression "selects" selection=ScalarExpression?;
+	//	"fetches" format=SerializationFormat "from" url=ScalarExpression ("selects" selection=ScalarExpression)?;
 	public FetchingContentProviderImplementationElements getFetchingContentProviderImplementationAccess() {
 		return (pFetchingContentProviderImplementation != null) ? pFetchingContentProviderImplementation : (pFetchingContentProviderImplementation = new FetchingContentProviderImplementationElements());
 	}
