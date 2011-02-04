@@ -14,24 +14,17 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.text.BadLocationException;
-import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.templates.Template;
-import org.eclipse.jface.text.templates.TemplateBuffer;
-import org.eclipse.jface.text.templates.TemplateContextType;
-import org.eclipse.jface.text.templates.TemplateException;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
-import org.eclipse.xtext.ui.editor.templates.XtextTemplateProposal;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
@@ -89,53 +82,6 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 		keywordSnippets.put(keyword, proposal);
 	}
 
-	/**
-	 * Indentation code as in DefaultIndentLineAutoEditStrategy
-	 */
-	public class IndentXtextTemplateContext extends XtextTemplateContext {
-
-		public IndentXtextTemplateContext(TemplateContextType type, IDocument document, Position position,
-				ContentAssistContext contentAssistContext, IScopeProvider scopeProvider) {
-			super(type, document, position, contentAssistContext, scopeProvider);
-		}
-
-		/**
-		 * Returns the first offset greater than <code>offset</code> and smaller
-		 * than <code>end</code> whose character is not a space or tab
-		 * character. If no such offset is found, <code>end</code> is returned.
-		 */
-		protected int findEndOfWhiteSpace(IDocument document, int offset, int end) throws BadLocationException {
-			while (offset < end) {
-				char c = document.getChar(offset);
-				if (c != ' ' && c != '\t') {
-					return offset;
-				}
-				offset++;
-			}
-			return end;
-		}
-
-		@Override
-		public TemplateBuffer evaluate(Template template) throws BadLocationException, TemplateException {
-			String pattern = template.getPattern();
-
-			IDocument document = getDocument();
-			int offsetCompletion = getCompletionOffset();
-			int offsetStartOfLine = document.getLineInformationOfOffset(
-					offsetCompletion == document.getLength() ? offsetCompletion - 1 : offsetCompletion).getOffset();
-			int offsetEndOfWhitespace = findEndOfWhiteSpace(document, offsetStartOfLine, offsetCompletion);
-			String indentString = document.get(offsetStartOfLine, offsetEndOfWhitespace - offsetStartOfLine);
-
-			pattern = pattern.replace("\n", "\n" + indentString);
-
-			Template indentedTemplate = new Template(template.getName(), template.getDescription(),
-					template.getContextTypeId(), pattern, template.isAutoInsertable());
-
-			return super.evaluate(indentedTemplate);
-		}
-
-	}
-
 	@Override
 	public void complete_ImageExpression(EObject model, RuleCall ruleCall, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
@@ -171,12 +117,12 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 
 	private void completeSnippet(KeywordProposal proposal, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		XtextTemplateContext templateContext = new IndentXtextTemplateContext(templateContextType, context.getDocument(),
+		XtextTemplateContext templateContext = new IndentTemplateContext(templateContextType, context.getDocument(),
 				new Position(context.getReplaceRegion().getOffset(), context.getReplaceRegion().getLength()), context,
 				getScopeProvider());
 
 		Template template = new Template(proposal.keyword, proposal.description, "", proposal.pattern, true);
-		acceptor.accept(new XtextTemplateProposal(template, templateContext, context.getReplaceRegion(), proposal.image));
+		acceptor.accept(new IndentTemplateProposal(template, templateContext, context.getReplaceRegion(), proposal.image, 1000));
 	}
 
 }
