@@ -5,16 +5,25 @@
 
 @implementation XMLFilter
 
+@synthesize xpathQuery = fXpathQuery;
+
 - (id) filter:(id)content {
 	[fDocument release];
 	NSError *error = nil;
+
 	// the document is retained by the filter because somebody has to retain the full document
 	// the content provider itself might apply a filter, keeping only a sub-tree of the document
 	fDocument = [[CXMLDocument alloc] initWithData:content options:0 error:&error];
-	if (error == nil)
-		return fDocument;
-	else
-		return error;
+
+	if (error) return error;
+
+	if (fXpathQuery) {
+		NSArray *nodes = [fDocument nodesForXPath:fXpathQuery error:&error];
+		if (error) return error;
+		return nodes;
+	}
+
+	return fDocument;
 }
 
 + (id) filter {
@@ -23,6 +32,7 @@
 
 - (void) dealloc {
 	[fDocument release];
+	self.xpathQuery = nil;
 	[super dealloc];
 }
 

@@ -19,7 +19,21 @@
 	if (attribute) {
 		return [attribute stringValue];
 	}
-	return [self elementsForName:key];
+	NSArray *elements = [self elementsForName:key];
+	switch (elements.count) {
+		case 0:
+			return [super valueForKey:key];
+		case 1: {
+			CXMLElement *onlyElement = [elements objectAtIndex:0];
+			if([onlyElement childElements].count == 0)
+				return [onlyElement.stringValue stringByTrimmingCharactersInSet:
+						[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+			else
+				return onlyElement;
+		}
+		default:
+			return elements;
+	}
 }
 
 @end

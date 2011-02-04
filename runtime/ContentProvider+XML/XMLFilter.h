@@ -8,8 +8,11 @@
 
 @interface XMLFilter : NSObject<ContentFilter> {
 	CXMLDocument *fDocument;
+	NSString *fXpathQuery;
 }
 
 + (id) filter;
+
+@property (nonatomic, copy) NSString *xpathQuery;
 
 @end
