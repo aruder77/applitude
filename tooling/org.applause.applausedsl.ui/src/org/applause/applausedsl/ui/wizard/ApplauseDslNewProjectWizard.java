@@ -1,9 +1,12 @@
 package org.applause.applausedsl.ui.wizard;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+import org.eclipse.xtext.ui.IImageHelper;
+import org.eclipse.xtext.ui.wizard.IProjectCreator;
 import org.eclipse.xtext.ui.wizard.IProjectInfo;
 import org.eclipse.xtext.ui.wizard.XtextNewProjectWizard;
-import org.eclipse.xtext.ui.wizard.IProjectCreator;
+
 import com.google.inject.Inject;
 
 public class ApplauseDslNewProjectWizard extends XtextNewProjectWizard {
@@ -11,9 +14,12 @@ public class ApplauseDslNewProjectWizard extends XtextNewProjectWizard {
 	private WizardNewProjectCreationPage mainPage;
 
 	@Inject
+	private IImageHelper imageHelper;
+	
+	@Inject
 	public ApplauseDslNewProjectWizard(IProjectCreator projectCreator) {
 		super(projectCreator);
-		setWindowTitle("New ApplauseDsl Project");
+		setWindowTitle("New Applitude iPhone Project");
 	}
 
 	/**
@@ -22,8 +28,9 @@ public class ApplauseDslNewProjectWizard extends XtextNewProjectWizard {
 	 */
 	public void addPages() {
 		mainPage = new WizardNewProjectCreationPage("basicNewProjectPage");
-		mainPage.setTitle("ApplauseDsl Project");
-		mainPage.setDescription("Create a new ApplauseDsl project.");
+		mainPage.setTitle("New Applitude iPhone Project");
+		mainPage.setDescription(" ");
+		mainPage.setImageDescriptor(ImageDescriptor.createFromImage(imageHelper.getImage("applitude_new.png")));
 		addPage(mainPage);
 	}
 

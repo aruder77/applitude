@@ -196,8 +196,9 @@
       <wizard
             category="org.eclipse.xtext.projectwiz"
             class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.applause.applausedsl.ui.wizard.ApplauseDslNewProjectWizard"
+            icon="icons/iphone.png"
             id="org.applause.applausedsl.ui.wizard.ApplauseDslNewProjectWizard"
-            name="ApplauseDsl Project"
+            name="Applitude iPhone Project"
             project="true">
       </wizard>
    </extension>

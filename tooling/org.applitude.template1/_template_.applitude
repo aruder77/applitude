@@ -1,0 +1,13 @@
+application _Template_ {
+	view:_Template_()
+}
+
+tableview _Template_ {
+	title: "_Template_"
+
+	section {
+		cell Default {
+			text: "Cell"
+		}
+	}
+}
