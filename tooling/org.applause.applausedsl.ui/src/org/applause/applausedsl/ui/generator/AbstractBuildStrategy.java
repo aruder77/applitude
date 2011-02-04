@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.applause.applausedsl.applauseDsl.Application;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -31,6 +32,8 @@ import com.google.common.collect.Iterables;
 
 public abstract class AbstractBuildStrategy {
 	
+	private static Logger log = Logger.getLogger(AbstractBuildStrategy.class);
+
 	private final IBuildContext context;
 
 	public AbstractBuildStrategy(IBuildContext context) {
@@ -76,7 +79,13 @@ public abstract class AbstractBuildStrategy {
 			configureOutlet(outlet);
 			output.addOutlet(outlet);
 			
-			generate(app, output);
+			try {
+				monitor.subTask("Generating code...");
+				monitor.beginTask("Generating code...", 50);
+				generate(app, output);
+			} finally {
+				monitor.worked(50);
+			}
 			return;
 		}
 	}
@@ -88,6 +97,7 @@ public abstract class AbstractBuildStrategy {
 		try {
 			file.setDerived(true, new NullProgressMonitor());
 		} catch (CoreException e) {
+			log.error(e);
 		}
 		return new EclipseBasedFileHandle(file, outlet);
 	}
@@ -101,7 +111,7 @@ public abstract class AbstractBuildStrategy {
 		try {
 			XpandFacade.create(ctx).evaluate(getMainTemplateName(), app);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 	
