@@ -97,6 +97,7 @@
 		BF54113812FBDC78007F8A4A /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54111D12FBDC78007F8A4A /* CJSONDeserializer.m */; };
 		BF54113912FBDC78007F8A4A /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54111F12FBDC78007F8A4A /* CJSONScanner.m */; };
 		BF54113A12FBDC78007F8A4A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54112112FBDC78007F8A4A /* CJSONSerializer.m */; };
+		BF54118412FBECBA007F8A4A /* SerializationFilterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54118312FBECBA007F8A4A /* SerializationFilterTest.m */; };
 		BF87D7A912F4FBC200FE6643 /* ContentProviderGenerationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D7A512F4FAC500FE6643 /* ContentProviderGenerationTest.m */; };
 		BF87D7C212F4FC2B00FE6643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D7C012F4FC2B00FE6643 /* main.m */; };
 		BF87D7C712F4FC4000FE6643 /* DateContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D7C612F4FC4000FE6643 /* DateContentProvider.m */; };
@@ -264,6 +265,7 @@
 		BF54112012FBDC78007F8A4A /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
 		BF54112112FBDC78007F8A4A /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		BF54112212FBDC78007F8A4A /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
+		BF54118312FBECBA007F8A4A /* SerializationFilterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerializationFilterTest.m; sourceTree = "<group>"; };
 		BF87D7A512F4FAC500FE6643 /* ContentProviderGenerationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentProviderGenerationTest.m; sourceTree = "<group>"; };
 		BF87D7C012F4FC2B00FE6643 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF87D7C512F4FC4000FE6643 /* DateContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateContentProvider.h; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				BF4DCC0012EA6E870005E01C /* ContentProvider */,
 				BF4DCC0212EA6E870005E01C /* GHUnitIOSTestMain.m */,
 				BF4DCC0312EA6E870005E01C /* Utils */,
+				BF54118312FBECBA007F8A4A /* SerializationFilterTest.m */,
 				BF505FCE12EF29F6001171CA /* ListTests.m */,
 			);
 			path = Tests;
@@ -969,6 +972,7 @@
 				BF54113812FBDC78007F8A4A /* CJSONDeserializer.m in Sources */,
 				BF54113912FBDC78007F8A4A /* CJSONScanner.m in Sources */,
 				BF54113A12FBDC78007F8A4A /* CJSONSerializer.m in Sources */,
+				BF54118412FBECBA007F8A4A /* SerializationFilterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
