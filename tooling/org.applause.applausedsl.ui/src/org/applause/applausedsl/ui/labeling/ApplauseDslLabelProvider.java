@@ -3,6 +3,7 @@
 */
 package org.applause.applausedsl.ui.labeling;
 
+import org.applause.applausedsl.applauseDsl.TableView;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
@@ -27,8 +28,10 @@ public class ApplauseDslLabelProvider extends DefaultEObjectLabelProvider {
 	  return "my "+ele.getName();
 	}
 	 
-    String image(MyModel ele) {
-      return "MyModel.gif";
-    }
 */
+
+	String image(TableView e) {
+		return "tableview.png";
+	}
+
 }
