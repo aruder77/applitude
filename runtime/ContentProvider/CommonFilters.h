@@ -8,6 +8,7 @@
 @interface CommonFilters : NSObject
 
 + (id) filterForKeyPath:(NSString *)keyPath makeMutable:(BOOL)makeMutable;
++ (id) filterForKeyPath:(NSString *)keyPath;
 + (id) filterBuildDictionaryWithKeyPath:(NSString *)keyPath;
 + (id) filterForImage;
 + (id) filterForMutable;

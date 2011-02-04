@@ -163,6 +163,9 @@ id createMutableCopy(id obj) {
 	return [[[SelectorFilter alloc] initWithKeyPath:keyPath makeMutable:makeMutable] autorelease];
 }
 
++ (id) filterForKeyPath:(NSString *)keyPath {
+	return [[[SelectorFilter alloc] initWithKeyPath:keyPath makeMutable:NO] autorelease];
+}
 
 + (id) filterForImage {
 	return [[[ImageFilter alloc] init] autorelease];

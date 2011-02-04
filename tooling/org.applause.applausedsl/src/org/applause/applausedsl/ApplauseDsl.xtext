@@ -106,7 +106,7 @@ enum SerializationFormat:
 	XML | JSON;
 
 FetchingContentProviderImplementation:
-	'fetches' format=SerializationFormat 'from' url=ScalarExpression 'selects' selection=ScalarExpression?;
+	'fetches' format=SerializationFormat 'from' url=ScalarExpression ('selects' selection=ScalarExpression)?;
 
 CustomContentProviderImplementation:
 	'class' providerClass=ProjectClass;
