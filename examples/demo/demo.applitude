@@ -8,7 +8,7 @@ application Demo {
 tabview Tabs {
 	tab {
 		title: "Inventors"
-		view: Inventors()
+		view: Inventors(AllInventorsJSON())
 		icon: "lightbulb.png"
 	}
 	tab {
@@ -30,11 +30,10 @@ entity Invention {
 	String name
 }
 
-contentprovider AllInventors stores Inventor[] fetches JSON from "http://applitude.org/demo/inventors.json" selects ""
+contentprovider AllInventorsJSON stores Inventor[] fetches JSON from "http://applitude.org/demo/inventors.json"
+contentprovider AllInventorsXML stores Inventor[] fetches XML from "http://applitude.org/demo/inventors.xml" selects "inventors.inventor"
 
-tableview Inventors {
-	Inventor[] inventors = AllInventors()
-
+tableview Inventors(Inventor[] inventors) {
 	title: "Inventors"
 
 	section {
@@ -80,6 +79,19 @@ tableview Reference {
 	titleImage: "applitude.png"
 
 	section {
+		title: "Content Providers"
+		cell Default {
+			text: "JSON"
+			action: Inventors(AllInventorsJSON())
+		}
+		cell Default {
+			text: "XML"
+			action: Inventors(AllInventorsXML())
+		}
+	}
+
+	section {
+		title: "Tables"
 		cell Default {
 			text: "Cell styles"
 			action: ReferenceCellStyles()
@@ -121,7 +133,7 @@ tableview ReferenceCellStyles {
 }
 
 tableview ReferenceCellForeach {
-	Inventor[] inventors = AllInventors()
+	Inventor[] inventors = AllInventorsJSON()
 
 	title: "cell foreach"
 
@@ -136,7 +148,7 @@ tableview ReferenceCellForeach {
 }
 
 tableview ReferenceSectionCellForeach {
-	Inventor[] inventors = AllInventors()
+	Inventor[] inventors = AllInventorsJSON()
 
 	title: "section/cell foreach"
 
@@ -150,7 +162,7 @@ tableview ReferenceSectionCellForeach {
 
 }
 
-contentprovider Error returns Inventor[] fetches JSON from "http://localhost/none.json" selects ""
+contentprovider Error returns Inventor[] fetches JSON from "http://localhost/none.json"
 
 tableview ReferenceErrorHandling {
 	Inventor[] inventors = Error()

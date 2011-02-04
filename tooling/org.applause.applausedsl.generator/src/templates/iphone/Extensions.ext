@@ -299,13 +299,17 @@ ivar(ContentProvider provider):
 
 
 objcType(Type this):
-	throwError("objcType not supported for " + this);
+	throwError("<objcType not supported for " + this + ">");
 
 objcType(SimpleType type):
-	type.platformType;
+	type.platformType + " *";
 
 objcType(Entity type):
-	type.runtimeType ? type.name : "NSDictionary";
+	type.runtimeType ? type.name + " *" : "id";
+
+
+variable(Type this, String name):
+	this.objcType() + (this.objcType().endsWith("*") ? "" : " ") + name;
 
 
 

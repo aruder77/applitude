@@ -72,7 +72,7 @@
 
 «DEFINE providerMethod FOR ViewContentElement-»
 	«LET this.iterator AS it-»
-		- («this.targetType()» *) «it.name»«this.shortName().toFirstUpper()»:(«it.rootParameter().description.type.objcType()» *)«it.name» {
+		- («this.targetType()» *) «it.name»«this.shortName().toFirstUpper()»:(«it.rootParameter().description.type.objcType()»)«it.name» {
 			«this.constructionStatements(it.name)-»
 			return «this.shortName()»;
 		}
@@ -92,7 +92,7 @@
 	«LET cell.iterator AS it-»
 		- (void) «cell.idname()»CellSelected:(BoxCell *)cell {
 			«IF it!=null-»
-				«it.rootParameter().description.type.objcType()» *«cell.idname()» = cell.data;
+				«it.rootParameter().description.type.variable(cell.idname())» = cell.data;
 			«ENDIF-»
 			UIViewController *controller = «this.factoryCall(cell.idname(), '')»;
 			[self.navigationController pushViewController:controller animated:YES];
