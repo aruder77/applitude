@@ -1,0 +1,7 @@
+section {
+	title: "${Section}"
+
+	cell ${Default:Enum('CellType')} {
+		text: "${Cell}"
+	}
+}

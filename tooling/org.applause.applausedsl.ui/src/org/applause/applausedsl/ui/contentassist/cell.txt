@@ -1,0 +1,3 @@
+cell ${Default:Enum('CellType')} {
+	text: "${Cell}"
+}
