@@ -5,6 +5,6 @@
 	ContentProvider *fInventors;
 }
 
-- (id) init;
+- (id) initWithInventors:(ContentProvider *)inventors;
 
 @end

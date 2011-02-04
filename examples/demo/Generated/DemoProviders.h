@@ -1,13 +1,15 @@
 #import "ContentProvider.h"
 
 @interface DemoProviders : NSObject {
-	ContentProvider *fAllInventors;
+	ContentProvider *fAllInventorsJSON;
+	ContentProvider *fAllInventorsXML;
 	ContentProvider *fStoredDate;
 }
 
 + (DemoProviders *) sharedProviders;
 
-- (ContentProvider *) providerForAllInventors;
+- (ContentProvider *) providerForAllInventorsJSON;
+- (ContentProvider *) providerForAllInventorsXML;
 - (ContentProvider *) providerForError;
 - (ContentProvider *) providerForDate;
 - (ContentProvider *) providerForStoredDate;

@@ -1,5 +1,6 @@
 #import "ReferenceViewController.h"
 #import "BoxCell.h"
+#import "DemoProviders.h"
 #import "DemoViews.h"
 #import "SelectorAction.h"
 
@@ -16,7 +17,24 @@
 	self.title = @"Reference";
 	self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"applitude.png"]] autorelease];
 
-	[self section];
+	[self sectionWithTitle:@"Content Providers"];
+	{
+		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+		cell.textLabel.text = @"JSON";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(jsonCellSelected:)];
+		[self cell:cell];
+	}
+
+	{
+		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+		cell.textLabel.text = @"XML";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(xmlCellSelected:)];
+		[self cell:cell];
+	}
+
+	[self sectionWithTitle:@"Tables"];
 	{
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"Cell styles";
@@ -64,6 +82,16 @@
 		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(entitymodelsCellSelected:)];
 		[self cell:cell];
 	}
+}
+
+- (void) jsonCellSelected:(BoxCell *)cell {
+	UIViewController *controller = [DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsJSON]];
+	[self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void) xmlCellSelected:(BoxCell *)cell {
+	UIViewController *controller = [DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsXML]];
+	[self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void) cellstylesCellSelected:(BoxCell *)cell {

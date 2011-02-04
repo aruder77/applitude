@@ -1,5 +1,4 @@
 #import "InventorsViewController.h"
-#import "DemoProviders.h"
 #import "DemoViews.h"
 #import "ImageCell.h"
 #import "SelectorAction.h"
@@ -7,10 +6,10 @@
 
 @implementation InventorsViewController
 
-- (id) init {
+- (id) initWithInventors:(ContentProvider *)inventors {
 	self = [super initWithStyle:UITableViewStylePlain];
 	if (self != nil) {
-		fInventors = [[[DemoProviders sharedProviders] providerForAllInventors] retain];
+		fInventors = [inventors retain];
 	}
 	return self;
 }
@@ -25,7 +24,7 @@
 	}
 }
 
-- (UITableViewCell *) inventorCell:(NSDictionary *)inventor {
+- (UITableViewCell *) inventorCell:(id)inventor {
 	ImageCell *cell = [[[ImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	cell.textLabel.text = [inventor valueForKey:@"name"];
 	cell.imageUrl = [inventor valueForKey:@"imageUrl"];
@@ -36,7 +35,7 @@
 }
 
 - (void) inventorCellSelected:(BoxCell *)cell {
-	NSDictionary *inventor = cell.data;
+	id inventor = cell.data;
 	UIViewController *controller = [DemoViews createInventorDetailWithInventor:[SimpleContentProvider providerWithContent:inventor name:@""]];
 	[self.navigationController pushViewController:controller animated:YES];
 }

@@ -10,7 +10,7 @@
 - (id) init {
 	self = [super initWithStyle:UITableViewStylePlain];
 	if (self != nil) {
-		fInventors = [[[DemoProviders sharedProviders] providerForAllInventors] retain];
+		fInventors = [[[DemoProviders sharedProviders] providerForAllInventorsJSON] retain];
 	}
 	return self;
 }
@@ -25,7 +25,7 @@
 	}
 }
 
-- (UITableViewCell *) inventorCell:(NSDictionary *)inventor {
+- (UITableViewCell *) inventorCell:(id)inventor {
 	BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	cell.textLabel.text = [inventor valueForKey:@"name"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -35,7 +35,7 @@
 }
 
 - (void) inventorCellSelected:(BoxCell *)cell {
-	NSDictionary *inventor = cell.data;
+	id inventor = cell.data;
 	UIViewController *controller = [DemoViews createInventorDetailWithInventor:[SimpleContentProvider providerWithContent:inventor name:@""]];
 	[self.navigationController pushViewController:controller animated:YES];
 }

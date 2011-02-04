@@ -28,20 +28,20 @@
 	[self sections:@selector(invSection:) forContentProvider:fInventors];
 }
 
-- (Section *) invSection:(NSDictionary *)inv {
+- (Section *) invSection:(id)inv {
 	Section *section = [self sectionWithTitle:[inv valueForKey:@"name"]];
 	[self cells:@selector(inventionCell:) forList:[inv valueForKey:@"inventions"]];
 	return section;
 }
 
-- (UITableViewCell *) inventor2Cell:(NSDictionary *)inventor2 {
+- (UITableViewCell *) inventor2Cell:(id)inventor2 {
 	BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	cell.textLabel.text = [inventor2 valueForKey:@"name"];
 	cell.data = inventor2;
 	return cell;
 }
 
-- (UITableViewCell *) inventionCell:(NSDictionary *)invention {
+- (UITableViewCell *) inventionCell:(id)invention {
 	BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	cell.textLabel.text = [invention valueForKey:@"name"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -51,7 +51,7 @@
 }
 
 - (void) inventionCellSelected:(BoxCell *)cell {
-	NSDictionary *invention = cell.data;
+	id invention = cell.data;
 	UIViewController *controller = [DemoViews createInventionDetailWithInvention:[SimpleContentProvider providerWithContent:invention name:@""]];
 	[self.navigationController pushViewController:controller animated:YES];
 }

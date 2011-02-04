@@ -15,7 +15,7 @@
 }
 
 + (UITabBarController *) createTabs;
-+ (InventorsViewController *) createInventors;
++ (InventorsViewController *) createInventorsWithInventors:(ContentProvider *)inventors;
 + (InventorDetailViewController *) createInventorDetailWithInventor:(ContentProvider *)inventor;
 + (InventionDetailViewController *) createInventionDetailWithInvention:(ContentProvider *)invention;
 + (ReferenceViewController *) createReference;

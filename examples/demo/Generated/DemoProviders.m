@@ -1,9 +1,11 @@
 #import "DemoProviders.h"
+#import "CommonFilters.h"
 #import "DateContentProvider.h"
 #import "JSONFilter.h"
 #import "Login.h"
 #import "SimpleContentProvider.h"
 #import "UrlContentProvider.h"
+#import "XMLFilter.h"
 
 @implementation DemoProviders
 
@@ -17,13 +19,23 @@ static DemoProviders *sharedProviders = nil;
 	return sharedProviders;
 }
 
-- (ContentProvider *) providerForAllInventors {
-	if (!fAllInventors) {
+- (ContentProvider *) providerForAllInventorsJSON {
+	if (!fAllInventorsJSON) {
 		UrlContentProvider *provider = [[UrlContentProvider alloc] initWithURL:[NSURL URLWithString:@"http://applitude.org/demo/inventors.json"]];
 		[provider addFilter:[JSONFilter filter]];
-		fAllInventors = provider;
+		fAllInventorsJSON = provider;
 	}
-	return fAllInventors;
+	return fAllInventorsJSON;
+}
+
+- (ContentProvider *) providerForAllInventorsXML {
+	if (!fAllInventorsXML) {
+		UrlContentProvider *provider = [[UrlContentProvider alloc] initWithURL:[NSURL URLWithString:@"http://applitude.org/demo/inventors.xml"]];
+		[provider addFilter:[XMLFilter filter]];
+		[provider addFilter:[CommonFilters filterForKeyPath:@"inventors.inventor"]];
+		fAllInventorsXML = provider;
+	}
+	return fAllInventorsXML;
 }
 
 - (ContentProvider *) providerForError {

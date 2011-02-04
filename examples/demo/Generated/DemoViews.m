@@ -1,12 +1,13 @@
 #import "DemoViews.h"
 #import "BrandedUIFactory.h"
+#import "DemoProviders.h"
 
 @implementation DemoViews
 
 + (UITabBarController *) createTabs {
 	UITabBarController *tabController = [[[UITabBarController alloc] init] autorelease];
 
-	UINavigationController *tab1 = [BrandedUIFactory createUINavigationControllerWithRootViewController:[DemoViews createInventors]];
+	UINavigationController *tab1 = [BrandedUIFactory createUINavigationControllerWithRootViewController:[DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsJSON]]];
 	tab1.tabBarItem.title = @"Inventors";
 	tab1.tabBarItem.image = [UIImage imageNamed:@"lightbulb.png"];
 
@@ -19,8 +20,8 @@
 	return tabController;
 }
 
-+ (InventorsViewController *) createInventors {
-	return [[[InventorsViewController alloc] init] autorelease];
++ (InventorsViewController *) createInventorsWithInventors:(ContentProvider *)inventors {
+	return [[[InventorsViewController alloc] initWithInventors:inventors] autorelease];
 }
 
 + (InventorDetailViewController *) createInventorDetailWithInventor:(ContentProvider *)inventor {

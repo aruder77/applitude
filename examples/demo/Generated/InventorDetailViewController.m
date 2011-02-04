@@ -34,7 +34,7 @@
 	}
 }
 
-- (UITableViewCell *) inventionCell:(NSDictionary *)invention {
+- (UITableViewCell *) inventionCell:(id)invention {
 	BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	cell.textLabel.text = [invention valueForKey:@"name"];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -44,7 +44,7 @@
 }
 
 - (void) inventionCellSelected:(BoxCell *)cell {
-	NSDictionary *invention = cell.data;
+	id invention = cell.data;
 	UIViewController *controller = [DemoViews createInventionDetailWithInvention:[SimpleContentProvider providerWithContent:invention name:@""]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
