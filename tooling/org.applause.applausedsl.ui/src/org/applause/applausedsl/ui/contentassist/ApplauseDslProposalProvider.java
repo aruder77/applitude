@@ -2,6 +2,7 @@ package org.applause.applausedsl.ui.contentassist;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
@@ -21,6 +22,7 @@ import org.eclipse.jface.text.templates.Template;
 import org.eclipse.jface.text.templates.TemplateBuffer;
 import org.eclipse.jface.text.templates.TemplateContextType;
 import org.eclipse.jface.text.templates.TemplateException;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.scoping.IScopeProvider;
@@ -30,11 +32,12 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateProposal;
 
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Multimaps;
 import com.google.inject.Inject;
 
 /**
- * @see http
- *      ://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist
+ * @see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist
  */
 public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProvider {
 
@@ -42,6 +45,45 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 
 	@Inject
 	private IImageHelper imageHelper;
+
+	private static class KeywordProposal {
+		String keyword;
+		String description;
+		Image image;
+		String pattern;
+	}
+
+	private Multimap<String, KeywordProposal> keywordProposals;
+
+	public Multimap<String, KeywordProposal> getKeywordProposals() {
+		if (keywordProposals == null) {
+			keywordProposals = Multimaps.newHashMultimap();
+			registerKeywordProposal("cell", "static cell");
+			registerKeywordProposal("for", "iterate over collection");
+			registerKeywordProposal("section", "static section");
+			registerKeywordProposal("tableview", "tableview with section");
+		}
+		return keywordProposals;
+	}
+
+	private void registerKeywordProposal(String keyword, String description) {
+		KeywordProposal proposal = new KeywordProposal();
+		proposal.keyword = keyword;
+		proposal.description = description;
+		proposal.image = imageHelper.getImage(keyword + ".png");
+
+		InputStream templateStream = null;
+		try {
+			templateStream = this.getClass().getResourceAsStream(keyword + ".txt");
+			proposal.pattern = IOUtils.toString(templateStream);
+		} catch (IOException e) {
+			log.error(e);
+		} finally {
+			IOUtils.closeQuietly(templateStream);
+		}
+
+		keywordProposals.put(keyword, proposal);
+	}
 
 	/**
 	 * Indentation code as in DefaultIndentLineAutoEditStrategy
@@ -110,43 +152,28 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 		}
 	}
 
+	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// replace single keyword proposals with complete template snippets
-		if (keyword.getValue().equals("cell"))
-			completeKeyword("cell", "static cell", context, acceptor);
-		else if (keyword.getValue().equals("for"))
-			completeKeyword("for", "iterate over collection", context, acceptor);
-		else if (keyword.getValue().equals("section"))
-			completeKeyword("section", "static section", context, acceptor);
-		else if (keyword.getValue().equals("tableview"))
-			completeKeyword("tableview", "tableview with section", context, acceptor);
-		else
+		Collection<KeywordProposal> proposals = getKeywordProposals().get(keyword.getValue());
+		if (!proposals.isEmpty()) {
+			for (KeywordProposal proposal : proposals) {
+				completeKeyword(proposal, context, acceptor);
+			}
+		} else {
 			super.completeKeyword(keyword, context, acceptor);
+		}
 	}
 
-	private void completeKeyword(String keyword, String description, ContentAssistContext context,
+	private void completeKeyword(KeywordProposal proposal, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		TemplateContextType contextType = new TemplateContextType();
 		XtextTemplateContext templateContext = new IndentXtextTemplateContext(contextType, context.getDocument(),
 				new Position(context.getReplaceRegion().getOffset(), context.getReplaceRegion().getLength()), context,
 				getScopeProvider());
 
-		String templateText = null;
-		InputStream templateStream = null;
-		try {
-			templateStream = this.getClass().getResourceAsStream(keyword + ".txt");
-			templateText = IOUtils.toString(templateStream);
-		} catch (IOException e) {
-			log.error(e);
-		} finally {
-			IOUtils.closeQuietly(templateStream);
-		}
-
-		if (templateText != null) {
-			Template template = new Template(keyword, description, "", templateText, true);
-			acceptor.accept(new XtextTemplateProposal(template, templateContext, context.getReplaceRegion(),
-					imageHelper.getImage(keyword + ".png")));
-		}
+		Template template = new Template(proposal.keyword, proposal.description, "", proposal.pattern, true);
+		acceptor.accept(new XtextTemplateProposal(template, templateContext, context.getReplaceRegion(), proposal.image));
 	}
 
 }
