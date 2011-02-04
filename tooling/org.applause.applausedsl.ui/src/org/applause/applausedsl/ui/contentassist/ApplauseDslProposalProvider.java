@@ -30,6 +30,7 @@ import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
+import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateProposal;
 
 import com.google.common.collect.Multimap;
@@ -45,6 +46,9 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 
 	@Inject
 	private IImageHelper imageHelper;
+
+	@Inject
+	private XtextTemplateContextType templateContextType;
 
 	private static class KeywordProposal {
 		String keyword;
@@ -167,8 +171,7 @@ public class ApplauseDslProposalProvider extends AbstractApplauseDslProposalProv
 
 	private void completeSnippet(KeywordProposal proposal, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		TemplateContextType contextType = new TemplateContextType();
-		XtextTemplateContext templateContext = new IndentXtextTemplateContext(contextType, context.getDocument(),
+		XtextTemplateContext templateContext = new IndentXtextTemplateContext(templateContextType, context.getDocument(),
 				new Position(context.getReplaceRegion().getOffset(), context.getReplaceRegion().getLength()), context,
 				getScopeProvider());
 
