@@ -84,7 +84,7 @@ static «use(providerFactory())» *sharedProviders = nil;
 «DEFINE constructProvider(ContentProvider provider) FOR FetchingContentProviderImplementation-»
 «LET provider.parameter.name != null ? provider.parameter.name : '' AS kvcTarget-»
 	«use(this.class())» *provider = [[«use(this.class())» alloc] initWithURL:[NSURL URLWithString:«url.expression(kvcTarget, '')»]];
-	[provider addFilter:[«use('CommonFilters')» filterFor«this.format.name»]];
+	[provider addFilter:[«use(this.format.name + 'Filter')» filter]];
 «ENDLET-»
 «ENDDEFINE»
 

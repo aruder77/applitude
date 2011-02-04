@@ -3,7 +3,6 @@
 
 #import "CommonFilters.h"
 
-#import "CJSONDeserializer.h"
 #import "LogUtils.h"
 
 id createMutableCopy(id obj) {
@@ -141,23 +140,6 @@ id createMutableCopy(id obj) {
 
 
 #pragma mark -
-#pragma mark JSONFilter
-
-@interface JSONFilter : NSObject<ContentFilter>
-@end
-
-@implementation JSONFilter
-
-- (id) filter:(id)content {
-	NSError *error = nil;
-	id object = [[CJSONDeserializer deserializer] deserialize:content error:&error];
-	return (error == nil) ? object : error;
-}
-
-@end
-
-
-#pragma mark -
 #pragma mark ImageFilter
 
 @interface ImageFilter : NSObject<ContentFilter>
@@ -181,9 +163,6 @@ id createMutableCopy(id obj) {
 	return [[[SelectorFilter alloc] initWithKeyPath:keyPath makeMutable:makeMutable] autorelease];
 }
 
-+ (id) filterForJSON {
-	return [[[JSONFilter alloc] init] autorelease];
-}
 
 + (id) filterForImage {
 	return [[[ImageFilter alloc] init] autorelease];
