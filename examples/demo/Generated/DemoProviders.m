@@ -1,5 +1,4 @@
 #import "DemoProviders.h"
-#import "CommonFilters.h"
 #import "DateContentProvider.h"
 #import "JSONFilter.h"
 #import "Login.h"
@@ -22,7 +21,8 @@ static DemoProviders *sharedProviders = nil;
 - (ContentProvider *) providerForAllInventorsJSON {
 	if (!fAllInventorsJSON) {
 		UrlContentProvider *provider = [[UrlContentProvider alloc] initWithURL:[NSURL URLWithString:@"http://applitude.org/demo/inventors.json"]];
-		[provider addFilter:[JSONFilter filter]];
+		JSONFilter *filter = [JSONFilter filter];
+		[provider addFilter:filter];
 		fAllInventorsJSON = provider;
 	}
 	return fAllInventorsJSON;
@@ -31,8 +31,9 @@ static DemoProviders *sharedProviders = nil;
 - (ContentProvider *) providerForAllInventorsXML {
 	if (!fAllInventorsXML) {
 		UrlContentProvider *provider = [[UrlContentProvider alloc] initWithURL:[NSURL URLWithString:@"http://applitude.org/demo/inventors.xml"]];
-		[provider addFilter:[XMLFilter filter]];
-		[provider addFilter:[CommonFilters filterForKeyPath:@"inventors.inventor"]];
+		XMLFilter *filter = [XMLFilter filter];
+		filter.xpathQuery = @"/inventors/inventor";
+		[provider addFilter:filter];
 		fAllInventorsXML = provider;
 	}
 	return fAllInventorsXML;
@@ -40,7 +41,8 @@ static DemoProviders *sharedProviders = nil;
 
 - (ContentProvider *) providerForError {
 	UrlContentProvider *provider = [[UrlContentProvider alloc] initWithURL:[NSURL URLWithString:@"http://localhost/none.json"]];
-	[provider addFilter:[JSONFilter filter]];
+	JSONFilter *filter = [JSONFilter filter];
+	[provider addFilter:filter];
 	return [provider autorelease];
 }
 

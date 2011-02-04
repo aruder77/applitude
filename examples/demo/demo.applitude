@@ -31,7 +31,7 @@ entity Invention {
 }
 
 contentprovider AllInventorsJSON stores Inventor[] fetches JSON from "http://applitude.org/demo/inventors.json"
-contentprovider AllInventorsXML stores Inventor[] fetches XML from "http://applitude.org/demo/inventors.xml" selects "inventors.inventor"
+contentprovider AllInventorsXML stores Inventor[] fetches XML from "http://applitude.org/demo/inventors.xml" selects "/inventors/inventor"
 
 tableview Inventors(Inventor[] inventors) {
 	title: "Inventors"
