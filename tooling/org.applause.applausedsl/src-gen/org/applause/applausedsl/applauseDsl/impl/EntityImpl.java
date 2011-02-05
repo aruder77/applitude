@@ -9,7 +9,7 @@ import java.util.Collection;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Entity;
-import org.applause.applausedsl.applauseDsl.TypedName;
+import org.applause.applausedsl.applauseDsl.Property;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -79,7 +79,7 @@ public class EntityImpl extends TypeImpl implements Entity
    * @generated
    * @ordered
    */
-  protected EList<TypedName> properties;
+  protected EList<Property> properties;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,11 +173,11 @@ public class EntityImpl extends TypeImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypedName> getProperties()
+  public EList<Property> getProperties()
   {
     if (properties == null)
     {
-      properties = new EObjectContainmentEList<TypedName>(TypedName.class, this, ApplauseDslPackage.ENTITY__PROPERTIES);
+      properties = new EObjectContainmentEList<Property>(Property.class, this, ApplauseDslPackage.ENTITY__PROPERTIES);
     }
     return properties;
   }
@@ -238,7 +238,7 @@ public class EntityImpl extends TypeImpl implements Entity
         return;
       case ApplauseDslPackage.ENTITY__PROPERTIES:
         getProperties().clear();
-        getProperties().addAll((Collection<? extends TypedName>)newValue);
+        getProperties().addAll((Collection<? extends Property>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

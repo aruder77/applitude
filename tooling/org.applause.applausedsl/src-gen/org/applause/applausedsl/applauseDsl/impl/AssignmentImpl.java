@@ -6,8 +6,8 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.TypeReference;
-import org.applause.applausedsl.applauseDsl.TypedName;
+import org.applause.applausedsl.applauseDsl.Assignment;
+import org.applause.applausedsl.applauseDsl.ProviderConstruction;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -19,35 +19,35 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Typed Name</b></em>'.
+ * An implementation of the model object '<em><b>Assignment</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypedNameImpl#getTypeRef <em>Type Ref</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.AssignmentImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TypedNameImpl extends ScopeNameImpl implements TypedName
+public class AssignmentImpl extends TypedNameImpl implements Assignment
 {
   /**
-   * The cached value of the '{@link #getTypeRef() <em>Type Ref</em>}' containment reference.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypeRef()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected TypeReference typeRef;
+  protected ProviderConstruction value;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected TypedNameImpl()
+  protected AssignmentImpl()
   {
     super();
   }
@@ -60,7 +60,7 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.TYPED_NAME;
+    return ApplauseDslPackage.Literals.ASSIGNMENT;
   }
 
   /**
@@ -68,9 +68,9 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypeReference getTypeRef()
+  public ProviderConstruction getValue()
   {
-    return typeRef;
+    return value;
   }
 
   /**
@@ -78,13 +78,13 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTypeRef(TypeReference newTypeRef, NotificationChain msgs)
+  public NotificationChain basicSetValue(ProviderConstruction newValue, NotificationChain msgs)
   {
-    TypeReference oldTypeRef = typeRef;
-    typeRef = newTypeRef;
+    ProviderConstruction oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPED_NAME__TYPE_REF, oldTypeRef, newTypeRef);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.ASSIGNMENT__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeRef(TypeReference newTypeRef)
+  public void setValue(ProviderConstruction newValue)
   {
-    if (newTypeRef != typeRef)
+    if (newValue != value)
     {
       NotificationChain msgs = null;
-      if (typeRef != null)
-        msgs = ((InternalEObject)typeRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.TYPED_NAME__TYPE_REF, null, msgs);
-      if (newTypeRef != null)
-        msgs = ((InternalEObject)newTypeRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.TYPED_NAME__TYPE_REF, null, msgs);
-      msgs = basicSetTypeRef(newTypeRef, msgs);
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.ASSIGNMENT__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.ASSIGNMENT__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPED_NAME__TYPE_REF, newTypeRef, newTypeRef));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.ASSIGNMENT__VALUE, newValue, newValue));
   }
 
   /**
@@ -121,8 +121,8 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
-        return basicSetTypeRef(null, msgs);
+      case ApplauseDslPackage.ASSIGNMENT__VALUE:
+        return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
-        return getTypeRef();
+      case ApplauseDslPackage.ASSIGNMENT__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
-        setTypeRef((TypeReference)newValue);
+      case ApplauseDslPackage.ASSIGNMENT__VALUE:
+        setValue((ProviderConstruction)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
-        setTypeRef((TypeReference)null);
+      case ApplauseDslPackage.ASSIGNMENT__VALUE:
+        setValue((ProviderConstruction)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,10 +187,10 @@ public class TypedNameImpl extends ScopeNameImpl implements TypedName
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
-        return typeRef != null;
+      case ApplauseDslPackage.ASSIGNMENT__VALUE:
+        return value != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //TypedNameImpl
+} //AssignmentImpl

@@ -62,7 +62,11 @@
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//TypedName">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TypedName/typeRef"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TypedName/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//Parameter"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//Property"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//Assignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Assignment/value"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ObjectReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ObjectReference/object"/>

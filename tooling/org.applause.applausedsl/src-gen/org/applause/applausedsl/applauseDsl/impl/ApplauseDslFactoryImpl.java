@@ -78,6 +78,9 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.PROJECT_CLASS: return createProjectClass();
       case ApplauseDslPackage.SCOPE_NAME: return createScopeName();
       case ApplauseDslPackage.TYPED_NAME: return createTypedName();
+      case ApplauseDslPackage.PARAMETER: return createParameter();
+      case ApplauseDslPackage.PROPERTY: return createProperty();
+      case ApplauseDslPackage.ASSIGNMENT: return createAssignment();
       case ApplauseDslPackage.OBJECT_REFERENCE: return createObjectReference();
       case ApplauseDslPackage.EXPRESSION: return createExpression();
       case ApplauseDslPackage.SCALAR_EXPRESSION: return createScalarExpression();
@@ -269,6 +272,39 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
   {
     TypedNameImpl typedName = new TypedNameImpl();
     return typedName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Parameter createParameter()
+  {
+    ParameterImpl parameter = new ParameterImpl();
+    return parameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property createProperty()
+  {
+    PropertyImpl property = new PropertyImpl();
+    return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Assignment createAssignment()
+  {
+    AssignmentImpl assignment = new AssignmentImpl();
+    return assignment;
   }
 
   /**

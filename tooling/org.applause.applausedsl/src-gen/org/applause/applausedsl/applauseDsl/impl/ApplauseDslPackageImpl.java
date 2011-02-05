@@ -8,6 +8,7 @@ package org.applause.applausedsl.applauseDsl.impl;
 import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Application;
+import org.applause.applausedsl.applauseDsl.Assignment;
 import org.applause.applausedsl.applauseDsl.Cell;
 import org.applause.applausedsl.applauseDsl.CellAccessory;
 import org.applause.applausedsl.applauseDsl.CellType;
@@ -26,7 +27,9 @@ import org.applause.applausedsl.applauseDsl.ExternalOpen;
 import org.applause.applausedsl.applauseDsl.Model;
 import org.applause.applausedsl.applauseDsl.ModelElement;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
+import org.applause.applausedsl.applauseDsl.Parameter;
 import org.applause.applausedsl.applauseDsl.ProjectClass;
+import org.applause.applausedsl.applauseDsl.Property;
 import org.applause.applausedsl.applauseDsl.ProviderConstruction;
 import org.applause.applausedsl.applauseDsl.ScalarExpression;
 import org.applause.applausedsl.applauseDsl.ScopeName;
@@ -139,6 +142,27 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * @generated
    */
   private EClass typedNameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass propertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assignmentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -710,9 +734,39 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTypedName_Value()
+  public EClass getParameter()
   {
-    return (EReference)typedNameEClass.getEStructuralFeatures().get(1);
+    return parameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProperty()
+  {
+    return propertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAssignment()
+  {
+    return assignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssignment_Value()
+  {
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1619,7 +1673,13 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
 
     typedNameEClass = createEClass(TYPED_NAME);
     createEReference(typedNameEClass, TYPED_NAME__TYPE_REF);
-    createEReference(typedNameEClass, TYPED_NAME__VALUE);
+
+    parameterEClass = createEClass(PARAMETER);
+
+    propertyEClass = createEClass(PROPERTY);
+
+    assignmentEClass = createEClass(ASSIGNMENT);
+    createEReference(assignmentEClass, ASSIGNMENT__VALUE);
 
     objectReferenceEClass = createEClass(OBJECT_REFERENCE);
     createEReference(objectReferenceEClass, OBJECT_REFERENCE__OBJECT);
@@ -1773,6 +1833,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     simpleTypeEClass.getESuperTypes().add(this.getType());
     entityEClass.getESuperTypes().add(this.getType());
     typedNameEClass.getESuperTypes().add(this.getScopeName());
+    parameterEClass.getESuperTypes().add(this.getTypedName());
+    propertyEClass.getESuperTypes().add(this.getTypedName());
+    assignmentEClass.getESuperTypes().add(this.getTypedName());
     objectReferenceEClass.getESuperTypes().add(this.getExpression());
     objectReferenceEClass.getESuperTypes().add(this.getScalarExpression());
     objectReferenceEClass.getESuperTypes().add(this.getCollectionExpression());
@@ -1825,7 +1888,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntity_RuntimeType(), ecorePackage.getEBoolean(), "runtimeType", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Extends(), this.getEntity(), null, "extends", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntity_Properties(), this.getTypedName(), null, "properties", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_Properties(), this.getProperty(), null, "properties", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypeReference_Type(), this.getType(), null, "type", null, 0, 1, TypeReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1839,7 +1902,13 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
 
     initEClass(typedNameEClass, TypedName.class, "TypedName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypedName_TypeRef(), this.getTypeReference(), null, "typeRef", null, 0, 1, TypedName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTypedName_Value(), this.getProviderConstruction(), null, "value", null, 0, 1, TypedName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignment_Value(), this.getProviderConstruction(), null, "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectReferenceEClass, ObjectReference.class, "ObjectReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObjectReference_Object(), this.getScopeName(), null, "object", null, 0, 1, ObjectReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1865,7 +1934,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     initEReference(getCollectionIterator_Collection(), this.getCollectionExpression(), null, "collection", null, 0, 1, CollectionIterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(contentProviderEClass, ContentProvider.class, "ContentProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContentProvider_Parameter(), this.getTypedName(), null, "parameter", null, 0, 1, ContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContentProvider_Parameter(), this.getParameter(), null, "parameter", null, 0, 1, ContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContentProvider_Storing(), ecorePackage.getEBoolean(), "storing", null, 0, 1, ContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getContentProvider_Type(), this.getType(), null, "type", null, 0, 1, ContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getContentProvider_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, ContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1884,7 +1953,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     initEClass(providerConstructionEClass, ProviderConstruction.class, "ProviderConstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getView_Content(), this.getTypedName(), null, "content", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getView_Content(), this.getParameter(), null, "content", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tabViewEClass, TabView.class, "TabView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTabView_Tabs(), this.getTab(), null, "tabs", null, 0, -1, TabView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1895,7 +1964,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     initEReference(getTab_View(), this.getViewCall(), null, "view", null, 0, 1, Tab.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableViewEClass, TableView.class, "TableView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTableView_Variables(), this.getTypedName(), null, "variables", null, 0, -1, TableView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTableView_Variables(), this.getAssignment(), null, "variables", null, 0, -1, TableView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTableView_Title(), this.getScalarExpression(), null, "title", null, 0, 1, TableView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTableView_TitleImage(), this.getScalarExpression(), null, "titleImage", null, 0, 1, TableView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTableView_Style(), this.getTableViewStyle(), "style", null, 0, 1, TableView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -27,7 +27,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="runtimeType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//TypedName" containment="true"/>
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
@@ -42,6 +42,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="TypedName" eSuperTypes="#//ScopeName">
     <eStructuralFeatures xsi:type="ecore:EReference" name="typeRef" eType="#//TypeReference"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//TypedName"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//TypedName"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Assignment" eSuperTypes="#//TypedName">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ProviderConstruction"
         containment="true"/>
   </eClassifiers>
@@ -67,7 +71,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContentProvider" eSuperTypes="#//ModelElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//TypedName"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//Parameter"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="storing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
@@ -94,7 +98,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProviderConstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//ModelElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//TypedName"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//Parameter"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TabView" eSuperTypes="#//View">
@@ -111,7 +115,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableView" eSuperTypes="#//View">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-        eType="#//TypedName" containment="true"/>
+        eType="#//Assignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="title" eType="#//ScalarExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="titleImage" eType="#//ScalarExpression"

@@ -40,6 +40,7 @@ public class ApplauseDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelElementAccess().getAlternatives(), "rule__ModelElement__Alternatives");
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getScopeNameAccess().getAlternatives(), "rule__ScopeName__Alternatives");
+					put(grammarAccess.getTypedNameAccess().getAlternatives(), "rule__TypedName__Alternatives");
 					put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
 					put(grammarAccess.getScalarExpressionAccess().getAlternatives(), "rule__ScalarExpression__Alternatives");
 					put(grammarAccess.getStringFunctionAccess().getAlternatives(), "rule__StringFunction__Alternatives");
@@ -63,7 +64,8 @@ public class ApplauseDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityAccess().getGroup_3(), "rule__Entity__Group_3__0");
 					put(grammarAccess.getTypeReferenceAccess().getGroup(), "rule__TypeReference__Group__0");
 					put(grammarAccess.getProjectClassAccess().getGroup(), "rule__ProjectClass__Group__0");
-					put(grammarAccess.getTypedNameAccess().getGroup(), "rule__TypedName__Group__0");
+					put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
+					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
 					put(grammarAccess.getAssignmentAccess().getGroup(), "rule__Assignment__Group__0");
 					put(grammarAccess.getObjectReferenceAccess().getGroup(), "rule__ObjectReference__Group__0");
 					put(grammarAccess.getNestedObjectReferenceAccess().getGroup(), "rule__NestedObjectReference__Group__0");
@@ -119,8 +121,10 @@ public class ApplauseDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTypeReferenceAccess().getTypeAssignment_0(), "rule__TypeReference__TypeAssignment_0");
 					put(grammarAccess.getTypeReferenceAccess().getManyAssignment_1(), "rule__TypeReference__ManyAssignment_1");
 					put(grammarAccess.getProjectClassAccess().getNameAssignment_1(), "rule__ProjectClass__NameAssignment_1");
-					put(grammarAccess.getTypedNameAccess().getTypeRefAssignment_0(), "rule__TypedName__TypeRefAssignment_0");
-					put(grammarAccess.getTypedNameAccess().getNameAssignment_1(), "rule__TypedName__NameAssignment_1");
+					put(grammarAccess.getParameterAccess().getTypeRefAssignment_0(), "rule__Parameter__TypeRefAssignment_0");
+					put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
+					put(grammarAccess.getPropertyAccess().getTypeRefAssignment_0(), "rule__Property__TypeRefAssignment_0");
+					put(grammarAccess.getPropertyAccess().getNameAssignment_1(), "rule__Property__NameAssignment_1");
 					put(grammarAccess.getAssignmentAccess().getTypeRefAssignment_0(), "rule__Assignment__TypeRefAssignment_0");
 					put(grammarAccess.getAssignmentAccess().getNameAssignment_1(), "rule__Assignment__NameAssignment_1");
 					put(grammarAccess.getAssignmentAccess().getValueAssignment_3(), "rule__Assignment__ValueAssignment_3");

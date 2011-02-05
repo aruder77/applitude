@@ -116,6 +116,33 @@ public interface ApplauseDslFactory extends EFactory
   TypedName createTypedName();
 
   /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
+   * Returns a new object of class '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property</em>'.
+   * @generated
+   */
+  Property createProperty();
+
+  /**
+   * Returns a new object of class '<em>Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignment</em>'.
+   * @generated
+   */
+  Assignment createAssignment();
+
+  /**
    * Returns a new object of class '<em>Object Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

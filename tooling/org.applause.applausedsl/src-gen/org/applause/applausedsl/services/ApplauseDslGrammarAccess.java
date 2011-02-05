@@ -210,14 +210,14 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExtendsEntityIDTerminalRuleCall_3_1_0_1 = (RuleCall)cExtendsEntityCrossReference_3_1_0.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cPropertiesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cPropertiesTypedNameParserRuleCall_5_0 = (RuleCall)cPropertiesAssignment_5.eContents().get(0);
+		private final RuleCall cPropertiesPropertyParserRuleCall_5_0 = (RuleCall)cPropertiesAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Entity:
-		//	"entity" runtimeType?="class"? name=ID ("extends" extends=[Entity])? "{" properties+=TypedName* "}";
+		//	"entity" runtimeType?="class"? name=ID ("extends" extends=[Entity])? "{" properties+=Property* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"entity" runtimeType?="class"? name=ID ("extends" extends=[Entity])? "{" properties+=TypedName* "}"
+		//"entity" runtimeType?="class"? name=ID ("extends" extends=[Entity])? "{" properties+=Property* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"entity"
@@ -253,11 +253,11 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
-		//properties+=TypedName*
+		//properties+=Property*
 		public Assignment getPropertiesAssignment_5() { return cPropertiesAssignment_5; }
 
-		//TypedName
-		public RuleCall getPropertiesTypedNameParserRuleCall_5_0() { return cPropertiesTypedNameParserRuleCall_5_0; }
+		//Property
+		public RuleCall getPropertiesPropertyParserRuleCall_5_0() { return cPropertiesPropertyParserRuleCall_5_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
@@ -343,13 +343,65 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class TypedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TypedName");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cParameterParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cPropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//TypedName:
+		//	Parameter | Property | Assignment;
+		public ParserRule getRule() { return rule; }
+
+		//Parameter | Property | Assignment
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Parameter
+		public RuleCall getParameterParserRuleCall_0() { return cParameterParserRuleCall_0; }
+
+		//Property
+		public RuleCall getPropertyParserRuleCall_1() { return cPropertyParserRuleCall_1; }
+
+		//Assignment
+		public RuleCall getAssignmentParserRuleCall_2() { return cAssignmentParserRuleCall_2; }
+	}
+
+	public class ParameterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Parameter");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeRefAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTypeRefTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeRefAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//TypedName:
+		//Parameter:
+		//	typeRef=TypeReference name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//typeRef=TypeReference name=ID
+		public Group getGroup() { return cGroup; }
+
+		//typeRef=TypeReference
+		public Assignment getTypeRefAssignment_0() { return cTypeRefAssignment_0; }
+
+		//TypeReference
+		public RuleCall getTypeRefTypeReferenceParserRuleCall_0_0() { return cTypeRefTypeReferenceParserRuleCall_0_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+
+	public class PropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Property");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeRefAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeRefTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeRefAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//Property:
 		//	typeRef=TypeReference name=ID;
 		public ParserRule getRule() { return rule; }
 
@@ -380,8 +432,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueProviderConstructionParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
-		////TODO: this pushes down the value attribute to TypedName
-		//Assignment returns TypedName:
+		//Assignment:
 		//	typeRef=TypeReference name=ID "=" value=ProviderConstruction;
 		public ParserRule getRule() { return rule; }
 
@@ -835,7 +886,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cParameterAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cParameterTypedNameParserRuleCall_2_1_0 = (RuleCall)cParameterAssignment_2_1.eContents().get(0);
+		private final RuleCall cParameterParameterParserRuleCall_2_1_0 = (RuleCall)cParameterAssignment_2_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
 		private final Keyword cReturnsKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
@@ -852,11 +903,11 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//// -------------------------------------------
 		//// content provider
 		//ContentProvider:
-		//	"contentprovider" name=ID ("(" parameter=TypedName ")")? ("returns" | storing?="stores") type=[Type] many?="[]"?
+		//	"contentprovider" name=ID ("(" parameter=Parameter ")")? ("returns" | storing?="stores") type=[Type] many?="[]"?
 		//	implementation=ContentProviderImplementation?;
 		public ParserRule getRule() { return rule; }
 
-		//"contentprovider" name=ID ("(" parameter=TypedName ")")? ("returns" | storing?="stores") type=[Type] many?="[]"?
+		//"contentprovider" name=ID ("(" parameter=Parameter ")")? ("returns" | storing?="stores") type=[Type] many?="[]"?
 		//implementation=ContentProviderImplementation?
 		public Group getGroup() { return cGroup; }
 
@@ -869,17 +920,17 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("(" parameter=TypedName ")")?
+		//("(" parameter=Parameter ")")?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 
-		//parameter=TypedName
+		//parameter=Parameter
 		public Assignment getParameterAssignment_2_1() { return cParameterAssignment_2_1; }
 
-		//TypedName
-		public RuleCall getParameterTypedNameParserRuleCall_2_1_0() { return cParameterTypedNameParserRuleCall_2_1_0; }
+		//Parameter
+		public RuleCall getParameterParameterParserRuleCall_2_1_0() { return cParameterParameterParserRuleCall_2_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
@@ -1107,7 +1158,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cContentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cContentTypedNameParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
+		private final RuleCall cContentParameterParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cTabsAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -1115,10 +1166,10 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//TabView:
-		//	"tabview" name=ID ("(" content=TypedName ")")? "{" tabs+=Tab* "}";
+		//	"tabview" name=ID ("(" content=Parameter ")")? "{" tabs+=Tab* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"tabview" name=ID ("(" content=TypedName ")")? "{" tabs+=Tab* "}"
+		//"tabview" name=ID ("(" content=Parameter ")")? "{" tabs+=Tab* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"tabview"
@@ -1130,17 +1181,17 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("(" content=TypedName ")")?
+		//("(" content=Parameter ")")?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 
-		//content=TypedName
+		//content=Parameter
 		public Assignment getContentAssignment_2_1() { return cContentAssignment_2_1; }
 
-		//TypedName
-		public RuleCall getContentTypedNameParserRuleCall_2_1_0() { return cContentTypedNameParserRuleCall_2_1_0; }
+		//Parameter
+		public RuleCall getContentParameterParserRuleCall_2_1_0() { return cContentParameterParserRuleCall_2_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
@@ -1243,7 +1294,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cContentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cContentTypedNameParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
+		private final RuleCall cContentParameterParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cVariablesAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -1266,11 +1317,11 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//TableView:
-		//	"tableview" name=ID ("(" content=TypedName ")")? "{" variables+=Assignment* (("title:" title=ScalarExpression)? &
+		//	"tableview" name=ID ("(" content=Parameter ")")? "{" variables+=Assignment* (("title:" title=ScalarExpression)? &
 		//	("titleImage:" titleImage=ImageExpression)? & ("style:" style=TableViewStyle)?) sections+=Section* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"tableview" name=ID ("(" content=TypedName ")")? "{" variables+=Assignment* (("title:" title=ScalarExpression)? &
+		//"tableview" name=ID ("(" content=Parameter ")")? "{" variables+=Assignment* (("title:" title=ScalarExpression)? &
 		//("titleImage:" titleImage=ImageExpression)? & ("style:" style=TableViewStyle)?) sections+=Section* "}"
 		public Group getGroup() { return cGroup; }
 
@@ -1283,17 +1334,17 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("(" content=TypedName ")")?
+		//("(" content=Parameter ")")?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 
-		//content=TypedName
+		//content=Parameter
 		public Assignment getContentAssignment_2_1() { return cContentAssignment_2_1; }
 
-		//TypedName
-		public RuleCall getContentTypedNameParserRuleCall_2_1_0() { return cContentTypedNameParserRuleCall_2_1_0; }
+		//Parameter
+		public RuleCall getContentParameterParserRuleCall_2_1_0() { return cContentParameterParserRuleCall_2_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
@@ -1574,16 +1625,16 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cContentAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cContentTypedNameParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
+		private final RuleCall cContentParameterParserRuleCall_2_1_0 = (RuleCall)cContentAssignment_2_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Assignment cProjectClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cProjectClassProjectClassParserRuleCall_3_0 = (RuleCall)cProjectClassAssignment_3.eContents().get(0);
 		
 		//CustomView:
-		//	"customview" name=ID ("(" content=TypedName ")")? projectClass=ProjectClass;
+		//	"customview" name=ID ("(" content=Parameter ")")? projectClass=ProjectClass;
 		public ParserRule getRule() { return rule; }
 
-		//"customview" name=ID ("(" content=TypedName ")")? projectClass=ProjectClass
+		//"customview" name=ID ("(" content=Parameter ")")? projectClass=ProjectClass
 		public Group getGroup() { return cGroup; }
 
 		//"customview"
@@ -1595,17 +1646,17 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("(" content=TypedName ")")?
+		//("(" content=Parameter ")")?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 
-		//content=TypedName
+		//content=Parameter
 		public Assignment getContentAssignment_2_1() { return cContentAssignment_2_1; }
 
-		//TypedName
-		public RuleCall getContentTypedNameParserRuleCall_2_1_0() { return cContentTypedNameParserRuleCall_2_1_0; }
+		//Parameter
+		public RuleCall getContentParameterParserRuleCall_2_1_0() { return cContentParameterParserRuleCall_2_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
@@ -1918,6 +1969,8 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	private ProjectClassElements pProjectClass;
 	private ScopeNameElements pScopeName;
 	private TypedNameElements pTypedName;
+	private ParameterElements pParameter;
+	private PropertyElements pProperty;
 	private AssignmentElements pAssignment;
 	private ObjectReferenceElements pObjectReference;
 	private NestedObjectReferenceElements pNestedObjectReference;
@@ -2027,7 +2080,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Entity:
-	//	"entity" runtimeType?="class"? name=ID ("extends" extends=[Entity])? "{" properties+=TypedName* "}";
+	//	"entity" runtimeType?="class"? name=ID ("extends" extends=[Entity])? "{" properties+=Property* "}";
 	public EntityElements getEntityAccess() {
 		return (pEntity != null) ? pEntity : (pEntity = new EntityElements());
 	}
@@ -2069,7 +2122,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypedName:
-	//	typeRef=TypeReference name=ID;
+	//	Parameter | Property | Assignment;
 	public TypedNameElements getTypedNameAccess() {
 		return (pTypedName != null) ? pTypedName : (pTypedName = new TypedNameElements());
 	}
@@ -2078,8 +2131,27 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypedNameAccess().getRule();
 	}
 
-	////TODO: this pushes down the value attribute to TypedName
-	//Assignment returns TypedName:
+	//Parameter:
+	//	typeRef=TypeReference name=ID;
+	public ParameterElements getParameterAccess() {
+		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
+	}
+	
+	public ParserRule getParameterRule() {
+		return getParameterAccess().getRule();
+	}
+
+	//Property:
+	//	typeRef=TypeReference name=ID;
+	public PropertyElements getPropertyAccess() {
+		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
+	}
+	
+	public ParserRule getPropertyRule() {
+		return getPropertyAccess().getRule();
+	}
+
+	//Assignment:
 	//	typeRef=TypeReference name=ID "=" value=ProviderConstruction;
 	public AssignmentElements getAssignmentAccess() {
 		return (pAssignment != null) ? pAssignment : (pAssignment = new AssignmentElements());
@@ -2208,7 +2280,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	//// -------------------------------------------
 	//// content provider
 	//ContentProvider:
-	//	"contentprovider" name=ID ("(" parameter=TypedName ")")? ("returns" | storing?="stores") type=[Type] many?="[]"?
+	//	"contentprovider" name=ID ("(" parameter=Parameter ")")? ("returns" | storing?="stores") type=[Type] many?="[]"?
 	//	implementation=ContentProviderImplementation?;
 	public ContentProviderElements getContentProviderAccess() {
 		return (pContentProvider != null) ? pContentProvider : (pContentProvider = new ContentProviderElements());
@@ -2282,7 +2354,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TabView:
-	//	"tabview" name=ID ("(" content=TypedName ")")? "{" tabs+=Tab* "}";
+	//	"tabview" name=ID ("(" content=Parameter ")")? "{" tabs+=Tab* "}";
 	public TabViewElements getTabViewAccess() {
 		return (pTabView != null) ? pTabView : (pTabView = new TabViewElements());
 	}
@@ -2302,7 +2374,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TableView:
-	//	"tableview" name=ID ("(" content=TypedName ")")? "{" variables+=Assignment* (("title:" title=ScalarExpression)? &
+	//	"tableview" name=ID ("(" content=Parameter ")")? "{" variables+=Assignment* (("title:" title=ScalarExpression)? &
 	//	("titleImage:" titleImage=ImageExpression)? & ("style:" style=TableViewStyle)?) sections+=Section* "}";
 	public TableViewElements getTableViewAccess() {
 		return (pTableView != null) ? pTableView : (pTableView = new TableViewElements());
@@ -2375,7 +2447,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CustomView:
-	//	"customview" name=ID ("(" content=TypedName ")")? projectClass=ProjectClass;
+	//	"customview" name=ID ("(" content=Parameter ")")? projectClass=ProjectClass;
 	public CustomViewElements getCustomViewAccess() {
 		return (pCustomView != null) ? pCustomView : (pCustomView = new CustomViewElements());
 	}

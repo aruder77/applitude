@@ -171,6 +171,33 @@ public class ApplauseDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ApplauseDslPackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
+        if (result == null) result = caseTypedName(parameter);
+        if (result == null) result = caseScopeName(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ApplauseDslPackage.PROPERTY:
+      {
+        Property property = (Property)theEObject;
+        T result = caseProperty(property);
+        if (result == null) result = caseTypedName(property);
+        if (result == null) result = caseScopeName(property);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ApplauseDslPackage.ASSIGNMENT:
+      {
+        Assignment assignment = (Assignment)theEObject;
+        T result = caseAssignment(assignment);
+        if (result == null) result = caseTypedName(assignment);
+        if (result == null) result = caseScopeName(assignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ApplauseDslPackage.OBJECT_REFERENCE:
       {
         ObjectReference objectReference = (ObjectReference)theEObject;
@@ -596,6 +623,54 @@ public class ApplauseDslSwitch<T>
    * @generated
    */
   public T caseTypedName(TypedName object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProperty(Property object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assignment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssignment(Assignment object)
   {
     return null;
   }

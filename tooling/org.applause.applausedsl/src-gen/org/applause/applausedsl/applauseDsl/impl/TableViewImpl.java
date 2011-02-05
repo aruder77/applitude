@@ -8,11 +8,11 @@ package org.applause.applausedsl.applauseDsl.impl;
 import java.util.Collection;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
+import org.applause.applausedsl.applauseDsl.Assignment;
 import org.applause.applausedsl.applauseDsl.ScalarExpression;
 import org.applause.applausedsl.applauseDsl.Section;
 import org.applause.applausedsl.applauseDsl.TableView;
 import org.applause.applausedsl.applauseDsl.TableViewStyle;
-import org.applause.applausedsl.applauseDsl.TypedName;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -54,7 +54,7 @@ public class TableViewImpl extends ViewImpl implements TableView
    * @generated
    * @ordered
    */
-  protected EList<TypedName> variables;
+  protected EList<Assignment> variables;
 
   /**
    * The cached value of the '{@link #getTitle() <em>Title</em>}' containment reference.
@@ -132,11 +132,11 @@ public class TableViewImpl extends ViewImpl implements TableView
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypedName> getVariables()
+  public EList<Assignment> getVariables()
   {
     if (variables == null)
     {
-      variables = new EObjectContainmentEList<TypedName>(TypedName.class, this, ApplauseDslPackage.TABLE_VIEW__VARIABLES);
+      variables = new EObjectContainmentEList<Assignment>(Assignment.class, this, ApplauseDslPackage.TABLE_VIEW__VARIABLES);
     }
     return variables;
   }
@@ -333,7 +333,7 @@ public class TableViewImpl extends ViewImpl implements TableView
     {
       case ApplauseDslPackage.TABLE_VIEW__VARIABLES:
         getVariables().clear();
-        getVariables().addAll((Collection<? extends TypedName>)newValue);
+        getVariables().addAll((Collection<? extends Assignment>)newValue);
         return;
       case ApplauseDslPackage.TABLE_VIEW__TITLE:
         setTitle((ScalarExpression)newValue);

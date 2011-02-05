@@ -128,6 +128,21 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createTypedNameAdapter();
       }
       @Override
+      public Adapter caseParameter(Parameter object)
+      {
+        return createParameterAdapter();
+      }
+      @Override
+      public Adapter caseProperty(Property object)
+      {
+        return createPropertyAdapter();
+      }
+      @Override
+      public Adapter caseAssignment(Assignment object)
+      {
+        return createAssignmentAdapter();
+      }
+      @Override
       public Adapter caseObjectReference(ObjectReference object)
       {
         return createObjectReferenceAdapter();
@@ -455,6 +470,51 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypedNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.Parameter
+   * @generated
+   */
+  public Adapter createParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Property <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.Property
+   * @generated
+   */
+  public Adapter createPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Assignment <em>Assignment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.Assignment
+   * @generated
+   */
+  public Adapter createAssignmentAdapter()
   {
     return null;
   }
