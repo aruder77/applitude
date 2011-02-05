@@ -52,7 +52,8 @@ tableview InventorDetail(Inventor inventor) {
 	section {
 		cell Value2 {
 			text: "Name"
-			details: inventor.name
+			details: inventor.name //( inventor.name " (" inventor.name ")" )
+			//action: InventorDetail(inventor)
 		}
 	}
 
@@ -63,6 +64,13 @@ tableview InventorDetail(Inventor inventor) {
 			action: InventionDetail(invention)
 		}
 	}
+
+	/*section {
+		cell Value2 for n in split(inventor.name, " ") {
+			text: n
+		}
+	}*/
+
 }
 
 tableview InventionDetail(Invention invention) {
@@ -98,7 +106,7 @@ tableview Reference {
 		}
 		cell Default {
 			text: "cell foreach"
-			action: ReferenceCellForeach()
+			action: Inventors(AllInventorsJSON())
 		}
 		cell Default {
 			text: "section + cell foreach"
@@ -117,8 +125,18 @@ tableview Reference {
 			action: ReferenceEntityModels()
 		}
 	}
+	
+	section {
+		title: "Tests"
+	
+		cell Default {
+			text: "Expressions"
+			action: ReferenceExpressions()
+		}
+	}
 
 }
+
 
 tableview ReferenceCellStyles {
 	title: "Cell styles"
@@ -128,21 +146,6 @@ tableview ReferenceCellStyles {
 		cell Subtitle { text: "Style" details: "Subtitle" }
 		cell Value1 { text: "Style" details: "Value1" }
 		cell Value2 { text: "Style" details: "Value2" }
-	}
-
-}
-
-tableview ReferenceCellForeach {
-	Inventor[] inventors = AllInventorsJSON()
-
-	title: "cell foreach"
-
-	section {
-		cell Default for inventor in inventors {
-			text: inventor.name
-			accessory: Link
-			action: InventorDetail(inventor)
-		}
 	}
 
 }
@@ -241,4 +244,45 @@ tableview ReferenceEntityModels {
 		cell Value1 { text: "Username" details:login.username }
 		cell Value1 { text: "Password" details:login.password }
 	}
+
+	/*
+	section {
+		cell Value1 { text: "Spy" details: ( login.username ", " login.password ) }
+	}
+	*/
+
+}
+
+
+tableview ReferenceExpressions {
+	Inventor[] inventors = AllInventorsJSON()
+
+	style: Grouped
+	title: "Expressions"
+	
+	section {
+		title: ("String concat")
+	
+		cell Default for inventor in inventors {
+			text: ( inventor.name " (" inventor.name ")" )
+		}
+	}
+	
+	/*
+	section {
+		title: "Collection literals"
+
+		cell Default for text in [ "1", ( "2" "2" "2" ), "3" ] {
+			text: ( text "/" text )
+		}
+	}
+
+	section {
+		title: "String split"
+	
+		cell Default for i in split("1,2,3", ",") {
+			text: i
+		}
+	}
+	*/
 }

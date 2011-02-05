@@ -82,6 +82,15 @@
 		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(entitymodelsCellSelected:)];
 		[self cell:cell];
 	}
+
+	[self sectionWithTitle:@"Tests"];
+	{
+		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+		cell.textLabel.text = @"Expressions";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(expressionsCellSelected:)];
+		[self cell:cell];
+	}
 }
 
 - (void) jsonCellSelected:(BoxCell *)cell {
@@ -100,7 +109,7 @@
 }
 
 - (void) cellforeachCellSelected:(BoxCell *)cell {
-	UIViewController *controller = [DemoViews createReferenceCellForeach];
+	UIViewController *controller = [DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsJSON]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -121,6 +130,11 @@
 
 - (void) entitymodelsCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createReferenceEntityModels];
+	[self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void) expressionsCellSelected:(BoxCell *)cell {
+	UIViewController *controller = [DemoViews createReferenceExpressions];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 

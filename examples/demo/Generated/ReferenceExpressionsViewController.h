@@ -1,7 +1,7 @@
 #import "BoxTableViewController.h"
 #import "ContentProvider.h"
 
-@interface ReferenceCellForeachViewController : BoxTableViewController {
+@interface ReferenceExpressionsViewController : BoxTableViewController {
 	ContentProvider *fInventors;
 }
 

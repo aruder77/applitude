@@ -201,7 +201,7 @@ constructionStatements(List[ViewContentElement] elements, String kvcTarget):
 // providerExpression returns the obj c code to resolve an expression
 // to a content provider that contains the expression result. This is work
 // in progress, currently only straightforward cases are supported.
-// See http://ralfebert.github.com/iApplause/#model_expressions
+// See http://applitude.org/#model_expressions
 
 providerExpression(CollectionExpression this):
 	"<providerExpression is abstract for: " + this + ">";
@@ -228,10 +228,10 @@ providerExpression(Parameter parameter):
 // should be used instead
 
 Parameter rootParameter(CollectionExpression this):
-	throwError("rootParameter not supported for " + this);
+	"<ERROR rootParameter not supported for " + this + ">";
 
 Parameter rootParameter(ScalarExpression this):
-	throwError("rootParameter not supported for " + this);
+	"<ERROR rootParameter not supported for " + this + ">";
 
 Parameter rootParameter(StringLiteral expr):
 	null;
@@ -240,7 +240,7 @@ Parameter rootParameter(ObjectReference ref):
  	ref.object.rootParameter();
 
 Parameter rootParameter(PropertyPathPart this):
-	throwError("rootParameter not supported for " + this);
+	"<ERROR rootParameter not supported for " + this + ">";
 
 Parameter rootParameter(Parameter param):
  	param;
@@ -261,11 +261,8 @@ resolve(ScalarExpression expr):
 assignment(Void expr, String targetObject, String targetProperty, String kvcTarget):
 	'';
 
-assignment(ScalarExpression this, String targetObject, String targetProperty, String kvcTarget):
-	throwError("assignment not supported for " + this);
-
-assignment(StringLiteral expr, String targetObject, String targetProperty, String kvcTarget):
-	targetObject + "." + targetProperty + " = " + expr.expression(kvcTarget, '') + ";\n";
+assignment(ScalarExpression expr, String targetObject, String targetProperty, String kvcTarget):
+	targetObject + "." + targetProperty + " = " + expr.expression(kvcTarget, "") + ";\n";
 
 assignment(ObjectReference expr, String targetObject, String targetProperty, String kvcTarget):
 	kvcTarget == null ? '[fBindings bind:' + expr.rootParameter().ivar() + ' property:@"' + expr.keyPath('content').toString('.') + '" to:' + targetObject + ' property:@"' + targetProperty + '"];\n'

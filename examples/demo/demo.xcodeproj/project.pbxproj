@@ -125,6 +125,7 @@
 		BF54164F12FC1ADD007F8A4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164912FC1ADD007F8A4A /* Reachability.m */; };
 		BF54165012FC1ADD007F8A4A /* TTGlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164B12FC1ADD007F8A4A /* TTGlobalNetwork.m */; };
 		BF54165112FC1ADD007F8A4A /* URLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164D12FC1ADD007F8A4A /* URLUtils.m */; };
+		BF54177C12FC55C1007F8A4A /* ReferenceExpressionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54177B12FC55C1007F8A4A /* ReferenceExpressionsViewController.m */; };
 		BF87D7A912F4FBC200FE6643 /* ContentProviderGenerationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D7A512F4FAC500FE6643 /* ContentProviderGenerationTest.m */; };
 		BF87D7C212F4FC2B00FE6643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D7C012F4FC2B00FE6643 /* main.m */; };
 		BF87D7C712F4FC4000FE6643 /* DateContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D7C612F4FC4000FE6643 /* DateContentProvider.m */; };
@@ -141,7 +142,6 @@
 		BF87D95012F50EDB00FE6643 /* InventionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D93A12F50EDB00FE6643 /* InventionDetailViewController.m */; };
 		BF87D95112F50EDB00FE6643 /* InventorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D93C12F50EDB00FE6643 /* InventorDetailViewController.m */; };
 		BF87D95212F50EDB00FE6643 /* InventorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D93E12F50EDB00FE6643 /* InventorsViewController.m */; };
-		BF87D95312F50EDB00FE6643 /* ReferenceCellForeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94012F50EDB00FE6643 /* ReferenceCellForeachViewController.m */; };
 		BF87D95412F50EDB00FE6643 /* ReferenceCellStylesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94212F50EDB00FE6643 /* ReferenceCellStylesViewController.m */; };
 		BF87D95612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m */; };
 		BF87D95712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF87D94812F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m */; };
@@ -316,6 +316,8 @@
 		BF54164B12FC1ADD007F8A4A /* TTGlobalNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGlobalNetwork.m; sourceTree = "<group>"; };
 		BF54164C12FC1ADD007F8A4A /* URLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLUtils.h; sourceTree = "<group>"; };
 		BF54164D12FC1ADD007F8A4A /* URLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLUtils.m; sourceTree = "<group>"; };
+		BF54177A12FC55C1007F8A4A /* ReferenceExpressionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceExpressionsViewController.h; sourceTree = "<group>"; };
+		BF54177B12FC55C1007F8A4A /* ReferenceExpressionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceExpressionsViewController.m; sourceTree = "<group>"; };
 		BF87D7A512F4FAC500FE6643 /* ContentProviderGenerationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentProviderGenerationTest.m; sourceTree = "<group>"; };
 		BF87D7C012F4FC2B00FE6643 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF87D7C512F4FC4000FE6643 /* DateContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateContentProvider.h; sourceTree = "<group>"; };
@@ -336,8 +338,6 @@
 		BF87D93C12F50EDB00FE6643 /* InventorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventorDetailViewController.m; sourceTree = "<group>"; };
 		BF87D93D12F50EDB00FE6643 /* InventorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventorsViewController.h; sourceTree = "<group>"; };
 		BF87D93E12F50EDB00FE6643 /* InventorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventorsViewController.m; sourceTree = "<group>"; };
-		BF87D93F12F50EDB00FE6643 /* ReferenceCellForeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceCellForeachViewController.h; sourceTree = "<group>"; };
-		BF87D94012F50EDB00FE6643 /* ReferenceCellForeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCellForeachViewController.m; sourceTree = "<group>"; };
 		BF87D94112F50EDB00FE6643 /* ReferenceCellStylesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceCellStylesViewController.h; sourceTree = "<group>"; };
 		BF87D94212F50EDB00FE6643 /* ReferenceCellStylesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCellStylesViewController.m; sourceTree = "<group>"; };
 		BF87D94512F50EDB00FE6643 /* ReferenceEntityModelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceEntityModelsViewController.h; sourceTree = "<group>"; };
@@ -796,8 +796,6 @@
 				BF87D93C12F50EDB00FE6643 /* InventorDetailViewController.m */,
 				BF87D93D12F50EDB00FE6643 /* InventorsViewController.h */,
 				BF87D93E12F50EDB00FE6643 /* InventorsViewController.m */,
-				BF87D93F12F50EDB00FE6643 /* ReferenceCellForeachViewController.h */,
-				BF87D94012F50EDB00FE6643 /* ReferenceCellForeachViewController.m */,
 				BF87D94112F50EDB00FE6643 /* ReferenceCellStylesViewController.h */,
 				BF87D94212F50EDB00FE6643 /* ReferenceCellStylesViewController.m */,
 				BFE82E3612F62D4700D11B3F /* ReferenceCustomCodeViewController.h */,
@@ -806,6 +804,8 @@
 				BF87D94612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m */,
 				BF87D94712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.h */,
 				BF87D94812F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m */,
+				BF54177A12FC55C1007F8A4A /* ReferenceExpressionsViewController.h */,
+				BF54177B12FC55C1007F8A4A /* ReferenceExpressionsViewController.m */,
 				BF87D94912F50EDB00FE6643 /* ReferenceSectionCellForeachViewController.h */,
 				BF87D94A12F50EDB00FE6643 /* ReferenceSectionCellForeachViewController.m */,
 				BF87D94B12F50EDB00FE6643 /* ReferenceViewController.h */,
@@ -983,7 +983,6 @@
 				BF87D95012F50EDB00FE6643 /* InventionDetailViewController.m in Sources */,
 				BF87D95112F50EDB00FE6643 /* InventorDetailViewController.m in Sources */,
 				BF87D95212F50EDB00FE6643 /* InventorsViewController.m in Sources */,
-				BF87D95312F50EDB00FE6643 /* ReferenceCellForeachViewController.m in Sources */,
 				BF87D95412F50EDB00FE6643 /* ReferenceCellStylesViewController.m in Sources */,
 				BF87D95612F50EDB00FE6643 /* ReferenceEntityModelsViewController.m in Sources */,
 				BF87D95712F50EDB00FE6643 /* ReferenceErrorHandlingViewController.m in Sources */,
@@ -1035,6 +1034,7 @@
 				BF54164F12FC1ADD007F8A4A /* Reachability.m in Sources */,
 				BF54165012FC1ADD007F8A4A /* TTGlobalNetwork.m in Sources */,
 				BF54165112FC1ADD007F8A4A /* URLUtils.m in Sources */,
+				BF54177C12FC55C1007F8A4A /* ReferenceExpressionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

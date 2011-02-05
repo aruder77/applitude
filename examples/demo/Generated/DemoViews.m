@@ -40,10 +40,6 @@
 	return [[[ReferenceCellStylesViewController alloc] init] autorelease];
 }
 
-+ (ReferenceCellForeachViewController *) createReferenceCellForeach {
-	return [[[ReferenceCellForeachViewController alloc] init] autorelease];
-}
-
 + (ReferenceSectionCellForeachViewController *) createReferenceSectionCellForeach {
 	return [[[ReferenceSectionCellForeachViewController alloc] init] autorelease];
 }
@@ -62,6 +58,10 @@
 
 + (ReferenceEntityModelsViewController *) createReferenceEntityModels {
 	return [[[ReferenceEntityModelsViewController alloc] init] autorelease];
+}
+
++ (ReferenceExpressionsViewController *) createReferenceExpressions {
+	return [[[ReferenceExpressionsViewController alloc] init] autorelease];
 }
 
 @end
