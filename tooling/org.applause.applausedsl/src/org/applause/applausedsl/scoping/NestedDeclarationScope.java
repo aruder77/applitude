@@ -26,7 +26,7 @@ public class NestedDeclarationScope extends AbstractScope {
 	@Override
 	protected Iterable<IEObjectDescription> internalGetContents() {
 		TypeReference outerType = TypeUtil.getTypeOf(container.getObject());
-		if(outerType.getType() instanceof Entity) {
+		if (outerType != null && outerType.getType() instanceof Entity) {
 			Entity entity = (Entity) outerType.getType();
 			return scopedElementsFor(entity.getProperties());
 		} else
