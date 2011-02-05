@@ -7,49 +7,65 @@ generate applauseDsl "http://www.applause.org/applausedsl/ApplauseDsl"
 Model:
 	application=Application
 	(elements+=ModelElement)*;
+
+Application returns Application:
+	"application" name=ID '{'
+		( ('background:' background=ScalarExpression)?
+		& ('view:' startView=ViewCall) )
+	'}';
 	
 ModelElement:
 	Type | ContentProvider | View;
-	
+
 // -------------------------------------------
-// General
+// types
 
-// common supertype to allow variableReferences
-PropertyPathPart:
-	Parameter | Property | CollectionIterator;
+Type:
+	SimpleType | Entity;
 
-TypeDescription:
-	type=[Type] (many?='[]')?;
+SimpleType:
+	'type' name=ID 'mapsTo' platformType = STRING;
 	
-Parameter:
-	description=TypeDescription name=ID;
+Entity:
+	'entity' (runtimeType?='class')? name=ID ('extends' extends=[Entity])? '{'
+		(properties+=TypedName)*
+	'}';
 
-Variable returns Parameter:
-	description=TypeDescription name=ID '=' value=ProviderConstruction;
+TypeReference:
+	type=[Type] (many?='[]')?;
+
+ProjectClass:
+	'class' name=ID;
+
+// -------------------------------------------
+// expressions
+
+ScopeName:
+	TypedName | CollectionIterator;
+
+TypedName:
+	typeRef=TypeReference name=ID;
+
+//TODO: this pushes down the value attribute to TypedName
+Assignment returns TypedName:
+	typeRef=TypeReference name=ID '=' value=ProviderConstruction;
 
 ObjectReference:
-	object=[PropertyPathPart] tail=NestedObjectReference?;
+	object=[ScopeName] tail=NestedObjectReference?;
 	
 //workaround: NestedObjectReference as separate rule to guide the content 
 //   assist parser technically could have been include in ObjectReference like
 //   ObjectReference:
 //     object=[PropertyPathPart] ('.' tail=ObjectReference)?;
 NestedObjectReference returns ObjectReference:
-	'.' object=[PropertyPathPart] tail=NestedObjectReference?;
+	'.' object=[ScopeName] tail=NestedObjectReference?;
 
-//TODO: could this be ScalarExpression | CollectionExpression? and simplify rootParameter extension
 Expression:
 	StringLiteral | StringFunction | CollectionLiteral | CollectionFunction | ObjectReference;
 
-ImageExpression returns ScalarExpression:
-	ScalarExpression;
-
 ScalarExpression:
 	StringLiteral | StringFunction | ObjectReference;
-	
-CollectionExpression:
-	CollectionLiteral | CollectionFunction | ObjectReference;
-	
+
 StringLiteral:
 	value=STRING;
 
@@ -57,60 +73,42 @@ StringFunction:
 	{StringConcat} '(' (values+=ScalarExpression)+ ')' |
 	{StringReplace} 'replace(' value=ScalarExpression ',' match=ScalarExpression ',' replacement=ScalarExpression ')' |
 	{StringUrlConform} 'urlconform(' value=ScalarExpression ')';
-	
+
+ImageExpression returns ScalarExpression:
+	ScalarExpression;
+
+CollectionExpression:
+	CollectionLiteral | CollectionFunction | ObjectReference;
+
 CollectionLiteral:
 	'[' items+=ScalarExpression (',' items+=ScalarExpression)* ']';
-	
+
 CollectionFunction:
-	{StringSplit} 'split(' value=ScalarExpression ',' delimiter=ScalarExpression ')'
-;
-	
-// -------------------------------------------
-// applications
+	{StringSplit} 'split(' value=ScalarExpression ',' delimiter=ScalarExpression ')';
 
-Application returns Application:
-	"application" name=ID '{'
-		('background:' background=ScalarExpression)?
-		& ('view:' startView=ViewCall)
-	'}';
-
-// -------------------------------------------
-// types
-Type:
-	SimpleType | Entity;
-	
-SimpleType:
-	'type' name=ID 'mapsTo' platformType = STRING;
-	
-Entity :
-	'entity' (runtimeType?='class')? name=ID ('extends' extends=[Entity])? '{'
-		(properties+=Property)*
-	'}';
-
-Property:
-	(derived?='derived')? description=TypeDescription name=ID;
+CollectionIterator:
+	'for' name=ID 'in' collection=CollectionExpression;
 
 // -------------------------------------------
 // content provider
 
 ContentProvider:
 	'contentprovider' name=ID
-	('(' parameter=Parameter ')')? 
+	('(' parameter=TypedName ')')? 
 	('returns'|storing?="stores") type=[Type] (many?='[]')?
 	implementation=ContentProviderImplementation?;
 
 ContentProviderImplementation:
-	FetchingContentProviderImplementation | CustomContentProviderImplementation;
+	UrlContentProviderImplementation | CustomContentProviderImplementation;
 
 enum SerializationFormat:
 	XML | JSON;
 
-FetchingContentProviderImplementation:
+UrlContentProviderImplementation:
 	'fetches' format=SerializationFormat 'from' url=ScalarExpression ('selects' selection=ScalarExpression)?;
 
 CustomContentProviderImplementation:
-	'class' providerClass=ProjectClass;
-
+	providerClass=ProjectClass;
 
 ProviderConstruction:
 	{ComplexProviderConstruction} provider=[ContentProvider] '(' (argument=Expression)? ')' |
@@ -119,13 +117,11 @@ ProviderConstruction:
 // -------------------------------------------
 // views
 
-
-
 View:
 	TabView | TableView | CustomView;
 
 TabView:
-	'tabview' name=ID ('(' content=Parameter ')')? '{'
+	'tabview' name=ID ('(' content=TypedName ')')? '{'
 		(tabs += Tab)*
 	'}';
 
@@ -136,12 +132,9 @@ Tab:
 		& ('view:' view=ViewCall)? )
 	'}';
 
-enum TableViewStyle:
-	Plain | Grouped;
-
 TableView:
-	'tableview' name=ID ('(' content=Parameter ')')? '{'
-		(variables += Variable)*
+	'tableview' name=ID ('(' content=TypedName ')')? '{'
+		(variables += Assignment)*
 		
 		( ('title:' title=ScalarExpression)?
 		& ('titleImage:' titleImage=ImageExpression)?
@@ -149,28 +142,28 @@ TableView:
 		
 		(sections+=Section)*
 	'}';
-	
-CustomView:
-	'customview' name=ID ('(' content=Parameter ')')? 'class' className=STRING;
+
+enum TableViewStyle:
+	Plain | Grouped;
 
 ViewContentElement:
 	Section | Cell;
 
 Section:
-	'section' iterator=CollectionIterator? '{'
+	{Section} 'section' iterator=CollectionIterator? '{'
 		('title:' title=ScalarExpression)?
-		(cells+=Cell)+
+		(cells+=Cell)*
 	'}';
 	
 Cell:
 	'cell' type=CellType iterator=CollectionIterator? '{'
 		( ('text:' text=ScalarExpression)?
-		& ('details:' details=ScalarExpression)?
+		& ('detailText:' detailText=ScalarExpression)?
 		& ('image:' image=ScalarExpression)?
 		& ('action:' action=ViewAction)? 
 		& ('accessory:' accessory=CellAccessory)?)
 	'}';
-	
+
 enum CellType:
 	default = 'Default' |
 	value1 = 'Value1' |
@@ -180,23 +173,23 @@ enum CellType:
 enum CellAccessory:
 	None | Link | Detail | Check;
 
-CollectionIterator:
-	'for' name=ID 'in' collection=CollectionExpression;
-	
+CustomView:
+	'customview' name=ID ('(' content=TypedName ')')? projectClass=ProjectClass;
+
+// -------------------------------------------
+// actions
+
 ViewAction:
 	ViewCall | ExternalOpen | Selector;
 
-SelectorName returns ecore::EString: 
-  ID (':' ID)* ':'?;
+ViewCall:
+	view=[View] '(' (provider=ProviderConstruction)? ')';
 
 Selector:
 	'@selector' '(' name=SelectorName ')';
 
+SelectorName returns ecore::EString:
+  ID (':' ID)* ':'?;
+
 ExternalOpen:
 	url=ScalarExpression;
-
-ViewCall:
-	view=[View] '(' (provider=ProviderConstruction)? ')';
-	
-ProjectClass:
-	name=ID;

@@ -52,7 +52,7 @@ tableview InventorDetail(Inventor inventor) {
 	section {
 		cell Value2 {
 			text: "Name"
-			details: inventor.name //( inventor.name " (" inventor.name ")" )
+			detailText: inventor.name //( inventor.name " (" inventor.name ")" )
 			//action: InventorDetail(inventor)
 		}
 	}
@@ -143,9 +143,9 @@ tableview ReferenceCellStyles {
 
 	section {
 		cell Default { text: "Style Default" }
-		cell Subtitle { text: "Style" details: "Subtitle" }
-		cell Value1 { text: "Style" details: "Value1" }
-		cell Value2 { text: "Style" details: "Value2" }
+		cell Subtitle { text: "Style" detailText: "Subtitle" }
+		cell Value1 { text: "Style" detailText: "Value1" }
+		cell Value2 { text: "Style" detailText: "Value2" }
 	}
 
 }
@@ -192,7 +192,7 @@ tableview ReferenceErrorHandling {
 contentprovider Date returns String class DateContentProvider
 contentprovider StoredDate stores String class DateContentProvider
 
-customview CustomView class "CustomViewController"
+customview CustomView class CustomViewController
 
 tableview ReferenceCustomCode {
 	Inventor[] date = Date()
@@ -241,8 +241,8 @@ tableview ReferenceEntityModels {
 	style: Grouped
 	title: "Login"
 	section {
-		cell Value1 { text: "Username" details:login.username }
-		cell Value1 { text: "Password" details:login.password }
+		cell Value1 { text: "Username" detailText:login.username }
+		cell Value1 { text: "Password" detailText:login.password }
 	}
 
 	/*

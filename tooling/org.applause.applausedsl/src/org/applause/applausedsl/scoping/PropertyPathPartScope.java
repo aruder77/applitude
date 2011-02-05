@@ -2,7 +2,7 @@ package org.applause.applausedsl.scoping;
 
 import static org.eclipse.xtext.scoping.Scopes.scopedElementsFor;
 
-import org.applause.applausedsl.applauseDsl.PropertyPathPart;
+import org.applause.applausedsl.applauseDsl.ScopeName;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
@@ -29,7 +29,7 @@ public class PropertyPathPartScope extends AbstractScope {
 
 	@Override
 	protected Iterable<IEObjectDescription> internalGetContents() {
-		Iterable<PropertyPathPart> declarations = Iterables.filter(context.eContents(), PropertyPathPart.class);
+		Iterable<ScopeName> declarations = Iterables.filter(context.eContents(), ScopeName.class);
 		return scopedElementsFor(declarations);
 	}
 

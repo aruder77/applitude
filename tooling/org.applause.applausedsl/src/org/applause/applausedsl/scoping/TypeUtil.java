@@ -4,59 +4,51 @@ import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.CollectionIterator;
 import org.applause.applausedsl.applauseDsl.CollectionLiteral;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
-import org.applause.applausedsl.applauseDsl.Parameter;
-import org.applause.applausedsl.applauseDsl.Property;
-import org.applause.applausedsl.applauseDsl.PropertyPathPart;
+import org.applause.applausedsl.applauseDsl.ScopeName;
 import org.applause.applausedsl.applauseDsl.Type;
-import org.applause.applausedsl.applauseDsl.TypeDescription;
+import org.applause.applausedsl.applauseDsl.TypeReference;
+import org.applause.applausedsl.applauseDsl.TypedName;
 import org.applause.applausedsl.applauseDsl.util.ApplauseDslSwitch;
 import org.eclipse.emf.ecore.EObject;
 
 public class TypeUtil {
 	
-	public static ApplauseDslSwitch<TypeDescription> typeOf = new ApplauseDslSwitch<TypeDescription>() {
-		public TypeDescription caseProperty(Property object) {
-			return object.getDescription();
-		};
+	public static ApplauseDslSwitch<TypeReference> typeOf = new ApplauseDslSwitch<TypeReference>() {
 		
-		public TypeDescription casePropertyPathPart(PropertyPathPart object) {
-			return null;
-		};
-
-		public TypeDescription caseParameter(Parameter object) {
-			return object.getDescription();
-		};
-
-		public TypeDescription caseCollectionIterator(CollectionIterator object) {
+		@Override
+		public TypeReference caseTypedName(TypedName object) {
+			return object.getTypeRef();
+		}
+		
+		@Override
+		public TypeReference caseCollectionIterator(CollectionIterator object) {
 			return doGetTypeOf(object.getCollection());
-		};
+		}
 
-		public TypeDescription caseObjectReference(ObjectReference object) {
+		@Override
+		public TypeReference caseObjectReference(ObjectReference object) {
 			while (object.getTail() != null)
 				object = object.getTail();
 
 			return doGetTypeOf(object.getObject());
-		};
+		}
 		
-		public TypeDescription caseCollectionLiteral(CollectionLiteral object) {
-			TypeDescription result = ApplauseDslFactory.eINSTANCE.createTypeDescription();
+		@Override
+		public TypeReference caseCollectionLiteral(CollectionLiteral object) {
+			TypeReference result = ApplauseDslFactory.eINSTANCE.createTypeReference();
 			result.setMany(true);
 			Type type = doGetTypeOf(object.getItems().get(0)).getType();
 			result.setType(type);
 			return result;
-		};
+		}
 		
 	};
 	
-	private static TypeDescription doGetTypeOf(EObject object) {
-		TypeDescription result = typeOf.doSwitch(object);
-		if(result == null) {
-			typeOf.doSwitch(object);
-		}
-		return result;
+	private static TypeReference doGetTypeOf(EObject object) {
+		return typeOf.doSwitch(object);
 	}
 	
-	public static TypeDescription getTypeOf(PropertyPathPart declaration) {
+	public static TypeReference getTypeOf(ScopeName declaration) {
 		return doGetTypeOf(declaration);
 	}
 	

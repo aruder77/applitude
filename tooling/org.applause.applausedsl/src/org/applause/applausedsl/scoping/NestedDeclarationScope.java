@@ -4,7 +4,7 @@ import static org.eclipse.xtext.scoping.Scopes.scopedElementsFor;
 
 import org.applause.applausedsl.applauseDsl.Entity;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
-import org.applause.applausedsl.applauseDsl.TypeDescription;
+import org.applause.applausedsl.applauseDsl.TypeReference;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
@@ -25,7 +25,7 @@ public class NestedDeclarationScope extends AbstractScope {
 
 	@Override
 	protected Iterable<IEObjectDescription> internalGetContents() {
-		TypeDescription outerType = TypeUtil.getTypeOf(container.getObject());
+		TypeReference outerType = TypeUtil.getTypeOf(container.getObject());
 		if(outerType.getType() instanceof Entity) {
 			Entity entity = (Entity) outerType.getType();
 			return scopedElementsFor(entity.getProperties());

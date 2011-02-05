@@ -59,7 +59,7 @@ class(View this):
 	newProjectClass(this.name.toFirstUpper() + "ViewController");
 
 class(CustomView this):
-	newProjectClass(this.className);
+	this.projectClass;
 
 class(Type this):
 	newProjectClass(this.name);
@@ -135,15 +135,15 @@ providers(TableView view):
 	{ view.parameters(), view.variables }.flatten();
 
 parameters(View view):
-	(List[Parameter]) (view.content != null ? { view.content } : {});
+	(List[TypedName]) (view.content != null ? { view.content } : {});
 
-signature(Parameter param):
+signature(TypedName param):
 	param.name + ":(" + param.type() + ")" + param.name;
 
-type(Parameter param):
+type(TypedName param):
 	'ContentProvider'.use() + " *";
 
-ivar(Parameter param):
+ivar(TypedName param):
 	"f" + param.name.toFirstUpper();
 
 
@@ -159,7 +159,7 @@ cellClass(Cell cell):
 constructionStatements(Cell cell, String kvcTarget):
 	 cell.cellClass() + ' *cell = [[[' + cell.cellClass() + ' alloc] initWithStyle:' + cell.type.constant() + " reuseIdentifier:nil] autorelease];\n"
 	 + cell.text.assignment('cell.textLabel', 'text', kvcTarget)
-	 + cell.details.assignment('cell.detailTextLabel', 'text', kvcTarget)
+	 + cell.detailText.assignment('cell.detailTextLabel', 'text', kvcTarget)
 	 + cell.image.assignment('cell', 'imageUrl', kvcTarget)
 	 + ((cell.accessory.ordinal() == 0 && cell.action != null) ? 'cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;\n' : "")
 	 + ((cell.accessory.ordinal() > 0) ? 'cell.accessoryType = ' + cell.accessory.constant() + ";\n" : "")
@@ -212,10 +212,10 @@ providerExpression(ObjectReference expr):
 		: silentUse("ContentProvider+Nested") + "[ContentProvider nestedContentProviderWithContentProvider:" + expr.object.providerExpression() +
 		                  " keyPath:@\"" + expr.tail.keyPath().toString(".") + "\"]";
 
-providerExpression(PropertyPathPart this):
+providerExpression(ScopeName this):
 	"<providerExpression is abstract for: " + this + ">";
 
-providerExpression(Parameter parameter):
+providerExpression(TypedName parameter):
 	parameter.ivar();
 
 
@@ -227,25 +227,25 @@ providerExpression(Parameter parameter):
 // that truly resolve the expression, like expression or providerExpression
 // should be used instead
 
-Parameter rootParameter(CollectionExpression this):
+TypedName rootParameter(CollectionExpression this):
 	"<ERROR rootParameter not supported for " + this + ">";
 
-Parameter rootParameter(ScalarExpression this):
+TypedName rootParameter(ScalarExpression this):
 	"<ERROR rootParameter not supported for " + this + ">";
 
-Parameter rootParameter(StringLiteral expr):
+TypedName rootParameter(StringLiteral expr):
 	null;
 
-Parameter rootParameter(ObjectReference ref):
+TypedName rootParameter(ObjectReference ref):
  	ref.object.rootParameter();
 
-Parameter rootParameter(PropertyPathPart this):
+TypedName rootParameter(ScopeName this):
 	"<ERROR rootParameter not supported for " + this + ">";
 
-Parameter rootParameter(Parameter param):
+TypedName rootParameter(TypedName param):
  	param;
 
-Parameter rootParameter(CollectionIterator it):
+TypedName rootParameter(CollectionIterator it):
  	it.collection.rootParameter();
 
 
@@ -283,7 +283,7 @@ applicationDelegate(Application app):
 class(ContentProviderImplementation this):
 	Void;
 
-class(FetchingContentProviderImplementation this):
+class(UrlContentProviderImplementation this):
 	newProjectClass("UrlContentProvider");
 
 class(CustomContentProviderImplementation this):
@@ -321,7 +321,7 @@ hasBindings(TableView this):
 	!this.sections.select(e|e.iterator == null)
 	     .cells.select(e|e.iterator == null)
 	     .select(e|ObjectReference.isInstance(e.text)
-	     || ObjectReference.isInstance(e.details)
+	     || ObjectReference.isInstance(e.detailText)
 	     || ObjectReference.isInstance(e.image))
 	     .isEmpty;
 

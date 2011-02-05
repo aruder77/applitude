@@ -20,4 +20,4 @@ listViews(Application this):
 	model().elements.typeSelect(TableView);
 
 type(TableView this):
-	this.content.description.type.name;
+	this.content.typeRef.type.name;
