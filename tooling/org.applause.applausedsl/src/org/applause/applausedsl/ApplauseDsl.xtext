@@ -28,7 +28,7 @@ SimpleType:
 	
 Entity:
 	'entity' (runtimeType?='class')? name=ID ('extends' extends=[Entity])? '{'
-		(properties+=TypedName)*
+		(properties+=Property)*
 	'}';
 
 TypeReference:
@@ -44,10 +44,15 @@ ScopeName:
 	TypedName | CollectionIterator;
 
 TypedName:
+	Parameter | Property | Assignment;
+
+Parameter:
 	typeRef=TypeReference name=ID;
 
-//TODO: this pushes down the value attribute to TypedName
-Assignment returns TypedName:
+Property:
+	typeRef=TypeReference name=ID;
+
+Assignment:
 	typeRef=TypeReference name=ID '=' value=ProviderConstruction;
 
 ObjectReference:
@@ -94,7 +99,7 @@ CollectionIterator:
 
 ContentProvider:
 	'contentprovider' name=ID
-	('(' parameter=TypedName ')')? 
+	('(' parameter=Parameter ')')? 
 	('returns'|storing?="stores") type=[Type] (many?='[]')?
 	implementation=ContentProviderImplementation?;
 
@@ -121,7 +126,7 @@ View:
 	TabView | TableView | CustomView;
 
 TabView:
-	'tabview' name=ID ('(' content=TypedName ')')? '{'
+	'tabview' name=ID ('(' content=Parameter ')')? '{'
 		(tabs += Tab)*
 	'}';
 
@@ -133,7 +138,7 @@ Tab:
 	'}';
 
 TableView:
-	'tableview' name=ID ('(' content=TypedName ')')? '{'
+	'tableview' name=ID ('(' content=Parameter ')')? '{'
 		(variables += Assignment)*
 		
 		( ('title:' title=ScalarExpression)?
@@ -174,7 +179,7 @@ enum CellAccessory:
 	None | Link | Detail | Check;
 
 CustomView:
-	'customview' name=ID ('(' content=TypedName ')')? projectClass=ProjectClass;
+	'customview' name=ID ('(' content=Parameter ')')? projectClass=ProjectClass;
 
 // -------------------------------------------
 // actions

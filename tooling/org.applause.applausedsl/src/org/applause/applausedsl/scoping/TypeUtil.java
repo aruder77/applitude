@@ -12,14 +12,14 @@ import org.applause.applausedsl.applauseDsl.util.ApplauseDslSwitch;
 import org.eclipse.emf.ecore.EObject;
 
 public class TypeUtil {
-	
+
 	public static ApplauseDslSwitch<TypeReference> typeOf = new ApplauseDslSwitch<TypeReference>() {
-		
+
 		@Override
 		public TypeReference caseTypedName(TypedName object) {
 			return object.getTypeRef();
 		}
-		
+
 		@Override
 		public TypeReference caseCollectionIterator(CollectionIterator object) {
 			return doGetTypeOf(object.getCollection());
@@ -32,7 +32,7 @@ public class TypeUtil {
 
 			return doGetTypeOf(object.getObject());
 		}
-		
+
 		@Override
 		public TypeReference caseCollectionLiteral(CollectionLiteral object) {
 			TypeReference result = ApplauseDslFactory.eINSTANCE.createTypeReference();
@@ -41,15 +41,17 @@ public class TypeUtil {
 			result.setType(type);
 			return result;
 		}
-		
+
 	};
-	
+
 	private static TypeReference doGetTypeOf(EObject object) {
+		if (object == null)
+			return null;
 		return typeOf.doSwitch(object);
 	}
-	
+
 	public static TypeReference getTypeOf(ScopeName declaration) {
 		return doGetTypeOf(declaration);
 	}
-	
+
 }
