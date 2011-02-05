@@ -261,10 +261,11 @@ tableview ReferenceExpressions {
 	title: "Expressions"
 	
 	section {
-		title: ("String concat")
+		title: ("String manipulation")
 	
-		cell Default for inventor in inventors {
-			text: ( inventor.name " (" inventor.name ")" )
+		cell Subtitle for inventor in inventors {
+			text: inventor.name
+			detailText: ( urlconform(inventor.name) ", " replace(inventor.name, " ", "_") )
 		}
 	}
 	
