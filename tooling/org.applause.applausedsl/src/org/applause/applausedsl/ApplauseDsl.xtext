@@ -38,7 +38,7 @@ ProjectClass:
 	'class' name=ID;
 
 // -------------------------------------------
-// expressions
+// scoped names
 
 ScopeName:
 	TypedName | CollectionIterator;
@@ -64,6 +64,9 @@ ObjectReference:
 //     object=[PropertyPathPart] ('.' tail=ObjectReference)?;
 NestedObjectReference returns ObjectReference:
 	'.' object=[ScopeName] tail=NestedObjectReference?;
+
+// -------------------------------------------
+// expressions
 
 Expression:
 	StringLiteral | StringFunction | CollectionLiteral | CollectionFunction | ObjectReference;
