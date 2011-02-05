@@ -69,7 +69,7 @@ static «use(providerFactory())» *sharedProviders = nil;
 
 «DEFINE constructProvider FOR ContentProvider-»
 «IF this.implementation == null-»
-	«use("SimpleContentProvider")» *provider = [[SimpleContentProvider alloc] initWithContent:[«type.class().allocInit()» autorelease] name:@"«name»"];
+	«use("SimpleContentProvider")» *provider = [[SimpleContentProvider alloc] initWithContent:«type.class().objc_New()» name:@"«name»"];
 «ELSE-»
 	«EXPAND constructProvider(this) FOR this.implementation-»
 «ENDIF-»
@@ -96,5 +96,5 @@ static «use(providerFactory())» *sharedProviders = nil;
 «ENDDEFINE»
 
 «DEFINE constructProvider(ContentProvider provider) FOR CustomContentProviderImplementation-»
-	«use(this.class())» *provider = «this.class().allocInit()»;
+	«use(this.class())» *provider = «this.class().objc_Init()»;
 «ENDDEFINE»

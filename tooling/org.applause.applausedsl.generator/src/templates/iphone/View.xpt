@@ -23,7 +23,7 @@
 	«providers().collect(p|p.type() + p.ivar()).statements()»
 }
 
-«initSignature()»;
+«objcInitSignature()»;
 
 @end
 «ENDFILE»
@@ -36,7 +36,7 @@
 
 @implementation «class().name»
 
-«initSignature()» {
+«objcInitSignature()» {
 	self = [super initWithStyle:«style.constant()»];
 	if (self != nil) {
 		«IF this.hasBindings()-»
@@ -94,7 +94,7 @@
 			«IF it!=null-»
 				«it.rootParameter().typeRef.type.variable(cell.idname())» = cell.data;
 			«ENDIF-»
-			UIViewController *controller = «this.factoryCall(cell.idname(), '')»;
+			UIViewController *controller = «this.objcProviderMethodCall(cell.idname(), '')»;
 			[self.navigationController pushViewController:controller animated:YES];
 		}
 	«ENDLET»

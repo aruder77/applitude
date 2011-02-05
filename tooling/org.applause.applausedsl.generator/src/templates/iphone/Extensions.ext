@@ -45,15 +45,49 @@ h(ProjectClass class):
 m(ProjectClass class):
 	useImportBag(class.bagModuleImports()) -> (class.name + ".m");
 
-allocInit(ProjectClass class):
-	"[[" + use(class) + " alloc] init]";
+objc_Call(String target, String methodName, List[String] paramNames, List[String] paramValues):
+	"[" + target + " " + methodName + paramNames.objc_MethodParamValues(paramValues) + "]";
+
+objc_Call(String target, String methodName):
+	target.objc_Call(methodName, {}, {});
+
+objc_Call(ProjectClass class, String methodName, List[String] paramNames, List[String] paramValues):
+	"[" + use(class) + " " + methodName + paramNames.objc_MethodParamValues(paramValues) + "]";
+
+objc_Init(ProjectClass class, List[String] paramNames, List[String] paramValues):
+	("[" + use(class) + " alloc]").objc_Call("init", paramNames, paramValues);
+
+objc_Init(ProjectClass class):
+	class.objc_Init({}, {});
+
+objc_New(ProjectClass class, List[String] paramNames, List[String] paramValues):
+	class.objc_Init(paramNames, paramValues).objc_Call("autorelease");
+
+objc_New(ProjectClass class):
+	class.objc_New({}, {});
+
+objc_MethodParamNames(List[String] names):
+	names.isEmpty ? {} : {"With" + names.first().toFirstUpper(), names.withoutFirst()}.flatten();
+
+objc_MethodParamSignatures(List[String] names, List[String] types):
+	names.isEmpty ? "" :
+		(let n = names.objc_MethodParamNames() :
+					0.upTo(n.size - 1).collect(i|n.get(i)+ ":(" + types.get(i) + ")" + names.get(i)).toString(" "));
+
+objc_MethodParamValues(List[String] names, List[String] values):
+	names.isEmpty ? "" :
+		(let n = names.objc_MethodParamNames() :
+					0.upTo(n.size - 1).collect(i|n.get(i)+ ":" + values.get(i)).toString(" "));
+
+objc_MethodSignature(ProjectClass class, String modifier, String methodName, String returnType, List[String] paramNames, List[String] paramTypes):
+	modifier + " (" + returnType + ") " + methodName + paramNames.objc_MethodParamSignatures(paramTypes);
 
 statements(Collection[String] strings):
 	strings.without({null}).collect(e|e + ";").toString("\n");
 
 
 
-/* Views */
+/* Mapping Model Object -> Objective-C class */
 
 class(View this):
 	newProjectClass(this.name.toFirstUpper() + "ViewController");
@@ -64,34 +98,41 @@ class(CustomView this):
 class(Type this):
 	newProjectClass(this.name);
 
+class(TabView view):
+	newProjectClass("UITabBarController");
 
 
-/* View Accessor */
+/* Views */
+
 viewFactory(Application app):
 	newProjectClass(app.name + "Views");
 
-class(TabView view):
-	"UITabBarController".use();
+objcProviderMethodName(View view):
+	"create" + view.name.toFirstUpper();
 
-initSignature(View view):
-	"- (id) init" + view.initParameters();
+objcInitSignature(View view):
+	view.class().objc_MethodSignature(
+		"-", "init", "id",
+		view.parameters().name,
+		view.parameterTypes());
 
-initParameters(View view):
-	(view.parameters().isEmpty ? "" : "With") + view.parameters().signature().toString(" ").toFirstUpper();
+objcInitCall(View view, List[String] params):
+	view.class().objc_Init(view.parameters().name, params);
 
-initParametersForward(View view):
-	(view.parameters().isEmpty ? "" : "With") + view.parameters().collect(param|param.name + ":" + param.name).toString(" ").toFirstUpper();
+objcProviderMethodSignature(View view):
+	view.class().objc_MethodSignature(
+		"+", view.objcProviderMethodName(),
+		view.class().use() + " *",
+		view.parameters().name,
+		view.parameterTypes());
 
-factoryMethodSignature(View view):
-	"+ (" + view.class().use() + " *) " + view.factoryMethodName() + view.initParameters();
+objcProviderMethodCall(ViewCall call, String kvcTarget, String kvcPrefix):
+	call.application().viewFactory().objc_Call(
+		call.view.objcProviderMethodName(), 
+		call.view.parameters().name,
+		call.parameters().contentProvider(kvcTarget, kvcPrefix));
 
-factoryMethodName(View view):
-	"create" + view.name;
 
-factoryCall(ViewCall call, String kvcTarget, String kvcPrefix):
-	//TODO: make sharedProviders the default for provider access
-	//TODO: support proper multiple parameters, bind parameters properly
-	"[" + use(application(call.view).viewFactory()) + " " + call.view.factoryMethodName() + (call.provider != null ? "With" + call.view.content.name.toFirstUpper() + ":" + call.provider.contentProvider(kvcTarget, kvcPrefix) : "") + "]";
 
 /* TableView */
 
@@ -134,18 +175,25 @@ providers(View view):
 providers(TableView view):
 	{ view.parameters(), view.variables }.flatten();
 
-parameters(View view):
-	(List[TypedName]) (view.content != null ? { view.content } : {});
-
-signature(TypedName param):
-	param.name + ":(" + param.type() + ")" + param.name;
-
 type(TypedName param):
 	'ContentProvider'.use() + " *";
 
 ivar(TypedName param):
 	"f" + param.name.toFirstUpper();
 
+
+// Parameter handling
+
+// simulates parameter list, at the moment there can be only 0/1 parameters
+// remove with http://ralfebert.lighthouseapp.com/projects/67904/tickets/57-support-for-multiple-parameters
+List[Parameter] parameters(View view):
+	{ view.parameter }.remove(null);
+
+List[Parameter] parameterTypes(View view):
+	view.parameters().collect(e|"ContentProvider".use() + " *");
+
+List[ProviderConstruction] parameters(ViewCall view):
+	{ view.parameter }.remove(null);
 
 
 // Construction of content elements

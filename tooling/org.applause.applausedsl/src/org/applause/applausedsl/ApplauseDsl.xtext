@@ -61,7 +61,7 @@ ObjectReference:
 //workaround: NestedObjectReference as separate rule to guide the content 
 //   assist parser technically could have been include in ObjectReference like
 //   ObjectReference:
-//     object=[PropertyPathPart] ('.' tail=ObjectReference)?;
+//     object=[ScopeName] ('.' tail=ObjectReference)?;
 NestedObjectReference returns ObjectReference:
 	'.' object=[ScopeName] tail=NestedObjectReference?;
 
@@ -129,7 +129,7 @@ View:
 	TabView | TableView | CustomView;
 
 TabView:
-	'tabview' name=ID ('(' content=Parameter ')')? '{'
+	'tabview' name=ID ('(' parameter=Parameter ')')? '{'
 		(tabs += Tab)*
 	'}';
 
@@ -141,7 +141,7 @@ Tab:
 	'}';
 
 TableView:
-	'tableview' name=ID ('(' content=Parameter ')')? '{'
+	'tableview' name=ID ('(' parameter=Parameter ')')? '{'
 		(variables += Assignment)*
 		
 		( ('title:' title=ScalarExpression)?
@@ -182,7 +182,7 @@ enum CellAccessory:
 	None | Link | Detail | Check;
 
 CustomView:
-	'customview' name=ID ('(' content=Parameter ')')? projectClass=ProjectClass;
+	'customview' name=ID ('(' parameter=Parameter ')')? projectClass=ProjectClass;
 
 // -------------------------------------------
 // actions
@@ -191,7 +191,7 @@ ViewAction:
 	ViewCall | ExternalOpen | Selector;
 
 ViewCall:
-	view=[View] '(' (provider=ProviderConstruction)? ')';
+	view=[View] '(' (parameter=ProviderConstruction)? ')';
 
 Selector:
 	'@selector' '(' name=SelectorName ')';

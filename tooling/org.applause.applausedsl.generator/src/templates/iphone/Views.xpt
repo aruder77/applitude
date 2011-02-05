@@ -18,7 +18,7 @@
 }
 
 «FOREACH allViews() AS view-»
-«view.factoryMethodSignature()»;
+«view.objcProviderMethodSignature()»;
 «ENDFOREACH»
 
 @end
@@ -40,18 +40,18 @@
 
 
 «DEFINE viewFactoryMethod FOR View»
-«factoryMethodSignature()» {
-	return [[[«this.class().use()» alloc] init«this.initParametersForward()»] autorelease];
+«objcProviderMethodSignature()» {
+	return «class().objc_New(parameters().name, parameters().name)»;
 }
 «ENDDEFINE»
 
 
 «DEFINE viewFactoryMethod FOR TabView»
-«factoryMethodSignature()» {
+«objcProviderMethodSignature()» {
 	UITabBarController *tabController = [[[UITabBarController alloc] init] autorelease];
 
 «FOREACH tabs AS tab ITERATOR i-»
-	UINavigationController *tab«i.counter1» = [«use("BrandedUIFactory")» createUINavigationControllerWithRootViewController:«(tab.view != null) ? tab.view.factoryCall('', '') : "nil"»];
+	UINavigationController *tab«i.counter1» = [«use("BrandedUIFactory")» createUINavigationControllerWithRootViewController:«(tab.view != null) ? tab.view.objcProviderMethodCall('', '') : "nil"»];
 	tab«i.counter1».tabBarItem.title = «tab.title.expression('', '')»;
 	«IF tab.icon != null-»
 	tab«i.counter1».tabBarItem.image = [UIImage imageNamed:«tab.icon.expression('','')»];
