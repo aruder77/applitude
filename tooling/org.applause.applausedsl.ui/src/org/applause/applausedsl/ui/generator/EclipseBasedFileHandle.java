@@ -113,6 +113,8 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 				ensureExists(targetFile.getParent());
 				targetFile.create(contentStream, true, new NullProgressMonitor());
 			}
+			
+			targetFile.setDerived(true, new NullProgressMonitor());
 		}
 		catch (final CoreException e) {
 			throw new RuntimeException(e);

@@ -7,10 +7,13 @@ package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.CustomView;
+import org.applause.applausedsl.applauseDsl.ProjectClass;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -21,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CustomViewImpl#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CustomViewImpl#getProjectClass <em>Project Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +33,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class CustomViewImpl extends ViewImpl implements CustomView
 {
   /**
-   * The default value of the '{@link #getClassName() <em>Class Name</em>}' attribute.
+   * The cached value of the '{@link #getProjectClass() <em>Project Class</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getClassName()
+   * @see #getProjectClass()
    * @generated
    * @ordered
    */
-  protected static final String CLASS_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getClassName() <em>Class Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getClassName()
-   * @generated
-   * @ordered
-   */
-  protected String className = CLASS_NAME_EDEFAULT;
+  protected ProjectClass projectClass;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +68,9 @@ public class CustomViewImpl extends ViewImpl implements CustomView
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getClassName()
+  public ProjectClass getProjectClass()
   {
-    return className;
+    return projectClass;
   }
 
   /**
@@ -85,12 +78,53 @@ public class CustomViewImpl extends ViewImpl implements CustomView
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setClassName(String newClassName)
+  public NotificationChain basicSetProjectClass(ProjectClass newProjectClass, NotificationChain msgs)
   {
-    String oldClassName = className;
-    className = newClassName;
+    ProjectClass oldProjectClass = projectClass;
+    projectClass = newProjectClass;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CUSTOM_VIEW__CLASS_NAME, oldClassName, className));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS, oldProjectClass, newProjectClass);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setProjectClass(ProjectClass newProjectClass)
+  {
+    if (newProjectClass != projectClass)
+    {
+      NotificationChain msgs = null;
+      if (projectClass != null)
+        msgs = ((InternalEObject)projectClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS, null, msgs);
+      if (newProjectClass != null)
+        msgs = ((InternalEObject)newProjectClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS, null, msgs);
+      msgs = basicSetProjectClass(newProjectClass, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS, newProjectClass, newProjectClass));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS:
+        return basicSetProjectClass(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -103,8 +137,8 @@ public class CustomViewImpl extends ViewImpl implements CustomView
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.CUSTOM_VIEW__CLASS_NAME:
-        return getClassName();
+      case ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS:
+        return getProjectClass();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +153,8 @@ public class CustomViewImpl extends ViewImpl implements CustomView
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.CUSTOM_VIEW__CLASS_NAME:
-        setClassName((String)newValue);
+      case ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS:
+        setProjectClass((ProjectClass)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +170,8 @@ public class CustomViewImpl extends ViewImpl implements CustomView
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.CUSTOM_VIEW__CLASS_NAME:
-        setClassName(CLASS_NAME_EDEFAULT);
+      case ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS:
+        setProjectClass((ProjectClass)null);
         return;
     }
     super.eUnset(featureID);
@@ -153,27 +187,10 @@ public class CustomViewImpl extends ViewImpl implements CustomView
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.CUSTOM_VIEW__CLASS_NAME:
-        return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
+      case ApplauseDslPackage.CUSTOM_VIEW__PROJECT_CLASS:
+        return projectClass != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (className: ");
-    result.append(className);
-    result.append(')');
-    return result.toString();
   }
 
 } //CustomViewImpl

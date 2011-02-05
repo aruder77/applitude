@@ -7,7 +7,7 @@ package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Type;
-import org.applause.applausedsl.applauseDsl.TypeDescription;
+import org.applause.applausedsl.applauseDsl.TypeReference;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -19,19 +19,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Type Description</b></em>'.
+ * An implementation of the model object '<em><b>Type Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypeDescriptionImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypeDescriptionImpl#isMany <em>Many</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypeReferenceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypeReferenceImpl#isMany <em>Many</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements TypeDescription
+public class TypeReferenceImpl extends MinimalEObjectImpl.Container implements TypeReference
 {
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -68,7 +68,7 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  protected TypeDescriptionImpl()
+  protected TypeReferenceImpl()
   {
     super();
   }
@@ -81,7 +81,7 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.TYPE_DESCRIPTION;
+    return ApplauseDslPackage.Literals.TYPE_REFERENCE;
   }
 
   /**
@@ -98,7 +98,7 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
       if (type != oldType)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplauseDslPackage.TYPE_DESCRIPTION__TYPE, oldType, type));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplauseDslPackage.TYPE_REFERENCE__TYPE, oldType, type));
       }
     }
     return type;
@@ -124,7 +124,7 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
     Type oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPE_DESCRIPTION__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPE_REFERENCE__TYPE, oldType, type));
   }
 
   /**
@@ -147,7 +147,7 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
     boolean oldMany = many;
     many = newMany;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPE_DESCRIPTION__MANY, oldMany, many));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPE_REFERENCE__MANY, oldMany, many));
   }
 
   /**
@@ -160,10 +160,10 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPE_DESCRIPTION__TYPE:
+      case ApplauseDslPackage.TYPE_REFERENCE__TYPE:
         if (resolve) return getType();
         return basicGetType();
-      case ApplauseDslPackage.TYPE_DESCRIPTION__MANY:
+      case ApplauseDslPackage.TYPE_REFERENCE__MANY:
         return isMany();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -179,10 +179,10 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPE_DESCRIPTION__TYPE:
+      case ApplauseDslPackage.TYPE_REFERENCE__TYPE:
         setType((Type)newValue);
         return;
-      case ApplauseDslPackage.TYPE_DESCRIPTION__MANY:
+      case ApplauseDslPackage.TYPE_REFERENCE__MANY:
         setMany((Boolean)newValue);
         return;
     }
@@ -199,10 +199,10 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPE_DESCRIPTION__TYPE:
+      case ApplauseDslPackage.TYPE_REFERENCE__TYPE:
         setType((Type)null);
         return;
-      case ApplauseDslPackage.TYPE_DESCRIPTION__MANY:
+      case ApplauseDslPackage.TYPE_REFERENCE__MANY:
         setMany(MANY_EDEFAULT);
         return;
     }
@@ -219,9 +219,9 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.TYPE_DESCRIPTION__TYPE:
+      case ApplauseDslPackage.TYPE_REFERENCE__TYPE:
         return type != null;
-      case ApplauseDslPackage.TYPE_DESCRIPTION__MANY:
+      case ApplauseDslPackage.TYPE_REFERENCE__MANY:
         return many != MANY_EDEFAULT;
     }
     return super.eIsSet(featureID);
@@ -244,4 +244,4 @@ public class TypeDescriptionImpl extends MinimalEObjectImpl.Container implements
     return result.toString();
   }
 
-} //TypeDescriptionImpl
+} //TypeReferenceImpl

@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CollectionIteratorImpl extends PropertyPathPartImpl implements CollectionIterator
+public class CollectionIteratorImpl extends ScopeNameImpl implements CollectionIterator
 {
   /**
    * The cached value of the '{@link #getCollection() <em>Collection</em>}' containment reference.

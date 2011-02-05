@@ -22,7 +22,7 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface CollectionIterator extends PropertyPathPart
+public interface CollectionIterator extends ScopeName
 {
   /**
    * Returns the value of the '<em><b>Collection</b></em>' containment reference.

@@ -33,39 +33,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Model/application"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Model/elements"/>
     </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ModelElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//ModelElement/name"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//PropertyPathPart">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//PropertyPathPart/name"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//TypeDescription">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TypeDescription/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//TypeDescription/many"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//Parameter">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Parameter/description"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Parameter/value"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ObjectReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ObjectReference/object"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ObjectReference/tail"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//Expression"/>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ScalarExpression"/>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionExpression"/>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//StringLiteral">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//StringLiteral/value"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//StringFunction"/>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionLiteral">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CollectionLiteral/items"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionFunction"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//Application">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Application/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Application/background"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Application/startView"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//ModelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//ModelElement/name"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//Type"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//SimpleType">
@@ -76,9 +50,37 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Entity/extends"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Entity/properties"/>
     </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//Property">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Property/derived"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Property/description"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//TypeReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TypeReference/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//TypeReference/many"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//ProjectClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//ProjectClass/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//ScopeName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//ScopeName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//TypedName">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TypedName/typeRef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TypedName/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//ObjectReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ObjectReference/object"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ObjectReference/tail"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//Expression"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//ScalarExpression"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//StringFunction"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionExpression"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CollectionLiteral/items"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionFunction"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionIterator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CollectionIterator/collection"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ContentProvider">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ContentProvider/parameter"/>
@@ -88,10 +90,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ContentProvider/implementation"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ContentProviderImplementation"/>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//FetchingContentProviderImplementation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//FetchingContentProviderImplementation/format"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//FetchingContentProviderImplementation/url"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//FetchingContentProviderImplementation/selection"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//UrlContentProviderImplementation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//UrlContentProviderImplementation/format"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//UrlContentProviderImplementation/url"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//UrlContentProviderImplementation/selection"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//CustomContentProviderImplementation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CustomContentProviderImplementation/providerClass"/>
@@ -115,9 +117,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//TableView/style"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TableView/sections"/>
     </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//CustomView">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//CustomView/className"/>
-    </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ViewContentElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewContentElement/iterator"/>
     </genClasses>
@@ -128,27 +127,24 @@
     <genClasses ecoreClass="ApplauseDsl.ecore#//Cell">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Cell/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Cell/text"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Cell/details"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Cell/detailText"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Cell/image"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Cell/action"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Cell/accessory"/>
     </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionIterator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CollectionIterator/collection"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//CustomView">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CustomView/projectClass"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ViewAction"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//ViewCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/view"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/provider"/>
+    </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//Selector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Selector/name"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ExternalOpen">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ExternalOpen/url"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ViewCall">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/view"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/provider"/>
-    </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ProjectClass">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//ProjectClass/name"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//StringConcat">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//StringConcat/values"/>

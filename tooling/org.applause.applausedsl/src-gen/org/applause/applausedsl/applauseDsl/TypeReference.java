@@ -9,22 +9,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Type Description</b></em>'.
+ * A representation of the model object '<em><b>Type Reference</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.TypeDescription#getType <em>Type</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.TypeDescription#isMany <em>Many</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.TypeReference#getType <em>Type</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.TypeReference#isMany <em>Many</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getTypeDescription()
+ * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getTypeReference()
  * @model
  * @generated
  */
-public interface TypeDescription extends EObject
+public interface TypeReference extends EObject
 {
   /**
    * Returns the value of the '<em><b>Type</b></em>' reference.
@@ -36,14 +36,14 @@ public interface TypeDescription extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' reference.
    * @see #setType(Type)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getTypeDescription_Type()
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getTypeReference_Type()
    * @model
    * @generated
    */
   Type getType();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.TypeDescription#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.TypeReference#getType <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' reference.
@@ -62,14 +62,14 @@ public interface TypeDescription extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Many</em>' attribute.
    * @see #setMany(boolean)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getTypeDescription_Many()
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getTypeReference_Many()
    * @model
    * @generated
    */
   boolean isMany();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.TypeDescription#isMany <em>Many</em>}' attribute.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.TypeReference#isMany <em>Many</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Many</em>' attribute.
@@ -78,4 +78,4 @@ public interface TypeDescription extends EObject
    */
   void setMany(boolean value);
 
-} // TypeDescription
+} // TypeReference

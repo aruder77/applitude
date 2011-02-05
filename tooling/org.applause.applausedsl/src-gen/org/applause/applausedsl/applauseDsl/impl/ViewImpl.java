@@ -6,7 +6,7 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.Parameter;
+import org.applause.applausedsl.applauseDsl.TypedName;
 import org.applause.applausedsl.applauseDsl.View;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -40,7 +40,7 @@ public class ViewImpl extends ModelElementImpl implements View
    * @generated
    * @ordered
    */
-  protected Parameter content;
+  protected TypedName content;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter getContent()
+  public TypedName getContent()
   {
     return content;
   }
@@ -78,9 +78,9 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetContent(Parameter newContent, NotificationChain msgs)
+  public NotificationChain basicSetContent(TypedName newContent, NotificationChain msgs)
   {
-    Parameter oldContent = content;
+    TypedName oldContent = content;
     content = newContent;
     if (eNotificationRequired())
     {
@@ -95,7 +95,7 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setContent(Parameter newContent)
+  public void setContent(TypedName newContent)
   {
     if (newContent != content)
     {
@@ -154,7 +154,7 @@ public class ViewImpl extends ModelElementImpl implements View
     switch (featureID)
     {
       case ApplauseDslPackage.VIEW__CONTENT:
-        setContent((Parameter)newValue);
+        setContent((TypedName)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,7 +171,7 @@ public class ViewImpl extends ModelElementImpl implements View
     switch (featureID)
     {
       case ApplauseDslPackage.VIEW__CONTENT:
-        setContent((Parameter)null);
+        setContent((TypedName)null);
         return;
     }
     super.eUnset(featureID);

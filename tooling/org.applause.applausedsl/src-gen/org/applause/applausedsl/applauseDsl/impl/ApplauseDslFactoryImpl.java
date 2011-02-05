@@ -69,42 +69,41 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
     switch (eClass.getClassifierID())
     {
       case ApplauseDslPackage.MODEL: return createModel();
-      case ApplauseDslPackage.MODEL_ELEMENT: return createModelElement();
-      case ApplauseDslPackage.PROPERTY_PATH_PART: return createPropertyPathPart();
-      case ApplauseDslPackage.TYPE_DESCRIPTION: return createTypeDescription();
-      case ApplauseDslPackage.PARAMETER: return createParameter();
-      case ApplauseDslPackage.OBJECT_REFERENCE: return createObjectReference();
-      case ApplauseDslPackage.EXPRESSION: return createExpression();
-      case ApplauseDslPackage.SCALAR_EXPRESSION: return createScalarExpression();
-      case ApplauseDslPackage.COLLECTION_EXPRESSION: return createCollectionExpression();
-      case ApplauseDslPackage.STRING_LITERAL: return createStringLiteral();
-      case ApplauseDslPackage.STRING_FUNCTION: return createStringFunction();
-      case ApplauseDslPackage.COLLECTION_LITERAL: return createCollectionLiteral();
-      case ApplauseDslPackage.COLLECTION_FUNCTION: return createCollectionFunction();
       case ApplauseDslPackage.APPLICATION: return createApplication();
+      case ApplauseDslPackage.MODEL_ELEMENT: return createModelElement();
       case ApplauseDslPackage.TYPE: return createType();
       case ApplauseDslPackage.SIMPLE_TYPE: return createSimpleType();
       case ApplauseDslPackage.ENTITY: return createEntity();
-      case ApplauseDslPackage.PROPERTY: return createProperty();
+      case ApplauseDslPackage.TYPE_REFERENCE: return createTypeReference();
+      case ApplauseDslPackage.PROJECT_CLASS: return createProjectClass();
+      case ApplauseDslPackage.SCOPE_NAME: return createScopeName();
+      case ApplauseDslPackage.TYPED_NAME: return createTypedName();
+      case ApplauseDslPackage.OBJECT_REFERENCE: return createObjectReference();
+      case ApplauseDslPackage.EXPRESSION: return createExpression();
+      case ApplauseDslPackage.SCALAR_EXPRESSION: return createScalarExpression();
+      case ApplauseDslPackage.STRING_LITERAL: return createStringLiteral();
+      case ApplauseDslPackage.STRING_FUNCTION: return createStringFunction();
+      case ApplauseDslPackage.COLLECTION_EXPRESSION: return createCollectionExpression();
+      case ApplauseDslPackage.COLLECTION_LITERAL: return createCollectionLiteral();
+      case ApplauseDslPackage.COLLECTION_FUNCTION: return createCollectionFunction();
+      case ApplauseDslPackage.COLLECTION_ITERATOR: return createCollectionIterator();
       case ApplauseDslPackage.CONTENT_PROVIDER: return createContentProvider();
       case ApplauseDslPackage.CONTENT_PROVIDER_IMPLEMENTATION: return createContentProviderImplementation();
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION: return createFetchingContentProviderImplementation();
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION: return createUrlContentProviderImplementation();
       case ApplauseDslPackage.CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION: return createCustomContentProviderImplementation();
       case ApplauseDslPackage.PROVIDER_CONSTRUCTION: return createProviderConstruction();
       case ApplauseDslPackage.VIEW: return createView();
       case ApplauseDslPackage.TAB_VIEW: return createTabView();
       case ApplauseDslPackage.TAB: return createTab();
       case ApplauseDslPackage.TABLE_VIEW: return createTableView();
-      case ApplauseDslPackage.CUSTOM_VIEW: return createCustomView();
       case ApplauseDslPackage.VIEW_CONTENT_ELEMENT: return createViewContentElement();
       case ApplauseDslPackage.SECTION: return createSection();
       case ApplauseDslPackage.CELL: return createCell();
-      case ApplauseDslPackage.COLLECTION_ITERATOR: return createCollectionIterator();
+      case ApplauseDslPackage.CUSTOM_VIEW: return createCustomView();
       case ApplauseDslPackage.VIEW_ACTION: return createViewAction();
+      case ApplauseDslPackage.VIEW_CALL: return createViewCall();
       case ApplauseDslPackage.SELECTOR: return createSelector();
       case ApplauseDslPackage.EXTERNAL_OPEN: return createExternalOpen();
-      case ApplauseDslPackage.VIEW_CALL: return createViewCall();
-      case ApplauseDslPackage.PROJECT_CLASS: return createProjectClass();
       case ApplauseDslPackage.STRING_CONCAT: return createStringConcat();
       case ApplauseDslPackage.STRING_REPLACE: return createStringReplace();
       case ApplauseDslPackage.STRING_URL_CONFORM: return createStringUrlConform();
@@ -178,142 +177,21 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelElement createModelElement()
-  {
-    ModelElementImpl modelElement = new ModelElementImpl();
-    return modelElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PropertyPathPart createPropertyPathPart()
-  {
-    PropertyPathPartImpl propertyPathPart = new PropertyPathPartImpl();
-    return propertyPathPart;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TypeDescription createTypeDescription()
-  {
-    TypeDescriptionImpl typeDescription = new TypeDescriptionImpl();
-    return typeDescription;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Parameter createParameter()
-  {
-    ParameterImpl parameter = new ParameterImpl();
-    return parameter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ObjectReference createObjectReference()
-  {
-    ObjectReferenceImpl objectReference = new ObjectReferenceImpl();
-    return objectReference;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Expression createExpression()
-  {
-    ExpressionImpl expression = new ExpressionImpl();
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ScalarExpression createScalarExpression()
-  {
-    ScalarExpressionImpl scalarExpression = new ScalarExpressionImpl();
-    return scalarExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CollectionExpression createCollectionExpression()
-  {
-    CollectionExpressionImpl collectionExpression = new CollectionExpressionImpl();
-    return collectionExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringLiteral createStringLiteral()
-  {
-    StringLiteralImpl stringLiteral = new StringLiteralImpl();
-    return stringLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringFunction createStringFunction()
-  {
-    StringFunctionImpl stringFunction = new StringFunctionImpl();
-    return stringFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CollectionLiteral createCollectionLiteral()
-  {
-    CollectionLiteralImpl collectionLiteral = new CollectionLiteralImpl();
-    return collectionLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CollectionFunction createCollectionFunction()
-  {
-    CollectionFunctionImpl collectionFunction = new CollectionFunctionImpl();
-    return collectionFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Application createApplication()
   {
     ApplicationImpl application = new ApplicationImpl();
     return application;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ModelElement createModelElement()
+  {
+    ModelElementImpl modelElement = new ModelElementImpl();
+    return modelElement;
   }
 
   /**
@@ -354,10 +232,142 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Property createProperty()
+  public TypeReference createTypeReference()
   {
-    PropertyImpl property = new PropertyImpl();
-    return property;
+    TypeReferenceImpl typeReference = new TypeReferenceImpl();
+    return typeReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProjectClass createProjectClass()
+  {
+    ProjectClassImpl projectClass = new ProjectClassImpl();
+    return projectClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ScopeName createScopeName()
+  {
+    ScopeNameImpl scopeName = new ScopeNameImpl();
+    return scopeName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TypedName createTypedName()
+  {
+    TypedNameImpl typedName = new TypedNameImpl();
+    return typedName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ObjectReference createObjectReference()
+  {
+    ObjectReferenceImpl objectReference = new ObjectReferenceImpl();
+    return objectReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ScalarExpression createScalarExpression()
+  {
+    ScalarExpressionImpl scalarExpression = new ScalarExpressionImpl();
+    return scalarExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringFunction createStringFunction()
+  {
+    StringFunctionImpl stringFunction = new StringFunctionImpl();
+    return stringFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CollectionExpression createCollectionExpression()
+  {
+    CollectionExpressionImpl collectionExpression = new CollectionExpressionImpl();
+    return collectionExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CollectionLiteral createCollectionLiteral()
+  {
+    CollectionLiteralImpl collectionLiteral = new CollectionLiteralImpl();
+    return collectionLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CollectionFunction createCollectionFunction()
+  {
+    CollectionFunctionImpl collectionFunction = new CollectionFunctionImpl();
+    return collectionFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CollectionIterator createCollectionIterator()
+  {
+    CollectionIteratorImpl collectionIterator = new CollectionIteratorImpl();
+    return collectionIterator;
   }
 
   /**
@@ -387,10 +397,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public FetchingContentProviderImplementation createFetchingContentProviderImplementation()
+  public UrlContentProviderImplementation createUrlContentProviderImplementation()
   {
-    FetchingContentProviderImplementationImpl fetchingContentProviderImplementation = new FetchingContentProviderImplementationImpl();
-    return fetchingContentProviderImplementation;
+    UrlContentProviderImplementationImpl urlContentProviderImplementation = new UrlContentProviderImplementationImpl();
+    return urlContentProviderImplementation;
   }
 
   /**
@@ -464,17 +474,6 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public CustomView createCustomView()
-  {
-    CustomViewImpl customView = new CustomViewImpl();
-    return customView;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ViewContentElement createViewContentElement()
   {
     ViewContentElementImpl viewContentElement = new ViewContentElementImpl();
@@ -508,10 +507,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public CollectionIterator createCollectionIterator()
+  public CustomView createCustomView()
   {
-    CollectionIteratorImpl collectionIterator = new CollectionIteratorImpl();
-    return collectionIterator;
+    CustomViewImpl customView = new CustomViewImpl();
+    return customView;
   }
 
   /**
@@ -523,6 +522,17 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
   {
     ViewActionImpl viewAction = new ViewActionImpl();
     return viewAction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ViewCall createViewCall()
+  {
+    ViewCallImpl viewCall = new ViewCallImpl();
+    return viewCall;
   }
 
   /**
@@ -545,28 +555,6 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
   {
     ExternalOpenImpl externalOpen = new ExternalOpenImpl();
     return externalOpen;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ViewCall createViewCall()
-  {
-    ViewCallImpl viewCall = new ViewCallImpl();
-    return viewCall;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProjectClass createProjectClass()
-  {
-    ProjectClassImpl projectClass = new ProjectClassImpl();
-    return projectClass;
   }
 
   /**

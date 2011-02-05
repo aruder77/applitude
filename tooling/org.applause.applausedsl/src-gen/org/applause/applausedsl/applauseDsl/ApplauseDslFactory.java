@@ -35,114 +35,6 @@ public interface ApplauseDslFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Model Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model Element</em>'.
-   * @generated
-   */
-  ModelElement createModelElement();
-
-  /**
-   * Returns a new object of class '<em>Property Path Part</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Path Part</em>'.
-   * @generated
-   */
-  PropertyPathPart createPropertyPathPart();
-
-  /**
-   * Returns a new object of class '<em>Type Description</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Type Description</em>'.
-   * @generated
-   */
-  TypeDescription createTypeDescription();
-
-  /**
-   * Returns a new object of class '<em>Parameter</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter</em>'.
-   * @generated
-   */
-  Parameter createParameter();
-
-  /**
-   * Returns a new object of class '<em>Object Reference</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Object Reference</em>'.
-   * @generated
-   */
-  ObjectReference createObjectReference();
-
-  /**
-   * Returns a new object of class '<em>Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expression</em>'.
-   * @generated
-   */
-  Expression createExpression();
-
-  /**
-   * Returns a new object of class '<em>Scalar Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Scalar Expression</em>'.
-   * @generated
-   */
-  ScalarExpression createScalarExpression();
-
-  /**
-   * Returns a new object of class '<em>Collection Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collection Expression</em>'.
-   * @generated
-   */
-  CollectionExpression createCollectionExpression();
-
-  /**
-   * Returns a new object of class '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Literal</em>'.
-   * @generated
-   */
-  StringLiteral createStringLiteral();
-
-  /**
-   * Returns a new object of class '<em>String Function</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Function</em>'.
-   * @generated
-   */
-  StringFunction createStringFunction();
-
-  /**
-   * Returns a new object of class '<em>Collection Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collection Literal</em>'.
-   * @generated
-   */
-  CollectionLiteral createCollectionLiteral();
-
-  /**
-   * Returns a new object of class '<em>Collection Function</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collection Function</em>'.
-   * @generated
-   */
-  CollectionFunction createCollectionFunction();
-
-  /**
    * Returns a new object of class '<em>Application</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -150,6 +42,15 @@ public interface ApplauseDslFactory extends EFactory
    * @generated
    */
   Application createApplication();
+
+  /**
+   * Returns a new object of class '<em>Model Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Model Element</em>'.
+   * @generated
+   */
+  ModelElement createModelElement();
 
   /**
    * Returns a new object of class '<em>Type</em>'.
@@ -179,13 +80,121 @@ public interface ApplauseDslFactory extends EFactory
   Entity createEntity();
 
   /**
-   * Returns a new object of class '<em>Property</em>'.
+   * Returns a new object of class '<em>Type Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property</em>'.
+   * @return a new object of class '<em>Type Reference</em>'.
    * @generated
    */
-  Property createProperty();
+  TypeReference createTypeReference();
+
+  /**
+   * Returns a new object of class '<em>Project Class</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Project Class</em>'.
+   * @generated
+   */
+  ProjectClass createProjectClass();
+
+  /**
+   * Returns a new object of class '<em>Scope Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Scope Name</em>'.
+   * @generated
+   */
+  ScopeName createScopeName();
+
+  /**
+   * Returns a new object of class '<em>Typed Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Typed Name</em>'.
+   * @generated
+   */
+  TypedName createTypedName();
+
+  /**
+   * Returns a new object of class '<em>Object Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Object Reference</em>'.
+   * @generated
+   */
+  ObjectReference createObjectReference();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Scalar Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Scalar Expression</em>'.
+   * @generated
+   */
+  ScalarExpression createScalarExpression();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Function</em>'.
+   * @generated
+   */
+  StringFunction createStringFunction();
+
+  /**
+   * Returns a new object of class '<em>Collection Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collection Expression</em>'.
+   * @generated
+   */
+  CollectionExpression createCollectionExpression();
+
+  /**
+   * Returns a new object of class '<em>Collection Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collection Literal</em>'.
+   * @generated
+   */
+  CollectionLiteral createCollectionLiteral();
+
+  /**
+   * Returns a new object of class '<em>Collection Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collection Function</em>'.
+   * @generated
+   */
+  CollectionFunction createCollectionFunction();
+
+  /**
+   * Returns a new object of class '<em>Collection Iterator</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collection Iterator</em>'.
+   * @generated
+   */
+  CollectionIterator createCollectionIterator();
 
   /**
    * Returns a new object of class '<em>Content Provider</em>'.
@@ -206,13 +215,13 @@ public interface ApplauseDslFactory extends EFactory
   ContentProviderImplementation createContentProviderImplementation();
 
   /**
-   * Returns a new object of class '<em>Fetching Content Provider Implementation</em>'.
+   * Returns a new object of class '<em>Url Content Provider Implementation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Fetching Content Provider Implementation</em>'.
+   * @return a new object of class '<em>Url Content Provider Implementation</em>'.
    * @generated
    */
-  FetchingContentProviderImplementation createFetchingContentProviderImplementation();
+  UrlContentProviderImplementation createUrlContentProviderImplementation();
 
   /**
    * Returns a new object of class '<em>Custom Content Provider Implementation</em>'.
@@ -269,15 +278,6 @@ public interface ApplauseDslFactory extends EFactory
   TableView createTableView();
 
   /**
-   * Returns a new object of class '<em>Custom View</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Custom View</em>'.
-   * @generated
-   */
-  CustomView createCustomView();
-
-  /**
    * Returns a new object of class '<em>View Content Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -305,13 +305,13 @@ public interface ApplauseDslFactory extends EFactory
   Cell createCell();
 
   /**
-   * Returns a new object of class '<em>Collection Iterator</em>'.
+   * Returns a new object of class '<em>Custom View</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collection Iterator</em>'.
+   * @return a new object of class '<em>Custom View</em>'.
    * @generated
    */
-  CollectionIterator createCollectionIterator();
+  CustomView createCustomView();
 
   /**
    * Returns a new object of class '<em>View Action</em>'.
@@ -321,6 +321,15 @@ public interface ApplauseDslFactory extends EFactory
    * @generated
    */
   ViewAction createViewAction();
+
+  /**
+   * Returns a new object of class '<em>View Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>View Call</em>'.
+   * @generated
+   */
+  ViewCall createViewCall();
 
   /**
    * Returns a new object of class '<em>Selector</em>'.
@@ -339,24 +348,6 @@ public interface ApplauseDslFactory extends EFactory
    * @generated
    */
   ExternalOpen createExternalOpen();
-
-  /**
-   * Returns a new object of class '<em>View Call</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>View Call</em>'.
-   * @generated
-   */
-  ViewCall createViewCall();
-
-  /**
-   * Returns a new object of class '<em>Project Class</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Project Class</em>'.
-   * @generated
-   */
-  ProjectClass createProjectClass();
 
   /**
    * Returns a new object of class '<em>String Concat</em>'.

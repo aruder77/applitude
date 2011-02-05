@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Property Path Part</b></em>'.
+ * A representation of the model object '<em><b>Scope Name</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.PropertyPathPart#getName <em>Name</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.ScopeName#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getPropertyPathPart()
+ * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getScopeName()
  * @model
  * @generated
  */
-public interface PropertyPathPart extends EObject
+public interface ScopeName extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -35,14 +35,14 @@ public interface PropertyPathPart extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getPropertyPathPart_Name()
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getScopeName_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.PropertyPathPart#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ScopeName#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -51,4 +51,4 @@ public interface PropertyPathPart extends EObject
    */
   void setName(String value);
 
-} // PropertyPathPart
+} // ScopeName

@@ -6,9 +6,9 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.FetchingContentProviderImplementation;
 import org.applause.applausedsl.applauseDsl.ScalarExpression;
 import org.applause.applausedsl.applauseDsl.SerializationFormat;
+import org.applause.applausedsl.applauseDsl.UrlContentProviderImplementation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,20 +20,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Fetching Content Provider Implementation</b></em>'.
+ * An implementation of the model object '<em><b>Url Content Provider Implementation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.FetchingContentProviderImplementationImpl#getFormat <em>Format</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.FetchingContentProviderImplementationImpl#getUrl <em>Url</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.FetchingContentProviderImplementationImpl#getSelection <em>Selection</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.UrlContentProviderImplementationImpl#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.UrlContentProviderImplementationImpl#getUrl <em>Url</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.UrlContentProviderImplementationImpl#getSelection <em>Selection</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FetchingContentProviderImplementationImpl extends ContentProviderImplementationImpl implements FetchingContentProviderImplementation
+public class UrlContentProviderImplementationImpl extends ContentProviderImplementationImpl implements UrlContentProviderImplementation
 {
   /**
    * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
@@ -80,7 +80,7 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FetchingContentProviderImplementationImpl()
+  protected UrlContentProviderImplementationImpl()
   {
     super();
   }
@@ -93,7 +93,7 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION;
+    return ApplauseDslPackage.Literals.URL_CONTENT_PROVIDER_IMPLEMENTATION;
   }
 
   /**
@@ -116,7 +116,7 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
     SerializationFormat oldFormat = format;
     format = newFormat == null ? FORMAT_EDEFAULT : newFormat;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT, oldFormat, format));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT, oldFormat, format));
   }
 
   /**
@@ -140,7 +140,7 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
     url = newUrl;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL, oldUrl, newUrl);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL, oldUrl, newUrl);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -157,14 +157,14 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
     {
       NotificationChain msgs = null;
       if (url != null)
-        msgs = ((InternalEObject)url).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL, null, msgs);
+        msgs = ((InternalEObject)url).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL, null, msgs);
       if (newUrl != null)
-        msgs = ((InternalEObject)newUrl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL, null, msgs);
+        msgs = ((InternalEObject)newUrl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL, null, msgs);
       msgs = basicSetUrl(newUrl, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL, newUrl, newUrl));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL, newUrl, newUrl));
   }
 
   /**
@@ -188,7 +188,7 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
     selection = newSelection;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, oldSelection, newSelection);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, oldSelection, newSelection);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -205,14 +205,14 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
     {
       NotificationChain msgs = null;
       if (selection != null)
-        msgs = ((InternalEObject)selection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, null, msgs);
+        msgs = ((InternalEObject)selection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, null, msgs);
       if (newSelection != null)
-        msgs = ((InternalEObject)newSelection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, null, msgs);
+        msgs = ((InternalEObject)newSelection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, null, msgs);
       msgs = basicSetSelection(newSelection, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, newSelection, newSelection));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION, newSelection, newSelection));
   }
 
   /**
@@ -225,9 +225,9 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL:
         return basicSetUrl(null, msgs);
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
         return basicSetSelection(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -243,11 +243,11 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
         return getFormat();
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL:
         return getUrl();
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
         return getSelection();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -263,13 +263,13 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
         setFormat((SerializationFormat)newValue);
         return;
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL:
         setUrl((ScalarExpression)newValue);
         return;
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
         setSelection((ScalarExpression)newValue);
         return;
     }
@@ -286,13 +286,13 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
         setFormat(FORMAT_EDEFAULT);
         return;
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL:
         setUrl((ScalarExpression)null);
         return;
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
         setSelection((ScalarExpression)null);
         return;
     }
@@ -309,11 +309,11 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__FORMAT:
         return format != FORMAT_EDEFAULT;
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__URL:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__URL:
         return url != null;
-      case ApplauseDslPackage.FETCHING_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
+      case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION__SELECTION:
         return selection != null;
     }
     return super.eIsSet(featureID);
@@ -336,4 +336,4 @@ public class FetchingContentProviderImplementationImpl extends ContentProviderIm
     return result.toString();
   }
 
-} //FetchingContentProviderImplementationImpl
+} //UrlContentProviderImplementationImpl

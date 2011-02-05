@@ -31,7 +31,7 @@ public interface TableView extends View
 {
   /**
    * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-   * The list contents are of type {@link org.applause.applausedsl.applauseDsl.Parameter}.
+   * The list contents are of type {@link org.applause.applausedsl.applauseDsl.TypedName}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
@@ -43,7 +43,7 @@ public interface TableView extends View
    * @model containment="true"
    * @generated
    */
-  EList<Parameter> getVariables();
+  EList<TypedName> getVariables();
 
   /**
    * Returns the value of the '<em><b>Title</b></em>' containment reference.

@@ -33,12 +33,12 @@ public interface View extends ModelElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Content</em>' containment reference.
-   * @see #setContent(Parameter)
+   * @see #setContent(TypedName)
    * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getView_Content()
    * @model containment="true"
    * @generated
    */
-  Parameter getContent();
+  TypedName getContent();
 
   /**
    * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.View#getContent <em>Content</em>}' containment reference.
@@ -48,6 +48,6 @@ public interface View extends ModelElement
    * @see #getContent()
    * @generated
    */
-  void setContent(Parameter value);
+  void setContent(TypedName value);
 
 } // View

@@ -8,8 +8,8 @@ package org.applause.applausedsl.applauseDsl.impl;
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.ContentProvider;
 import org.applause.applausedsl.applauseDsl.ContentProviderImplementation;
-import org.applause.applausedsl.applauseDsl.Parameter;
 import org.applause.applausedsl.applauseDsl.Type;
+import org.applause.applausedsl.applauseDsl.TypedName;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -46,7 +46,7 @@ public class ContentProviderImpl extends ModelElementImpl implements ContentProv
    * @generated
    * @ordered
    */
-  protected Parameter parameter;
+  protected TypedName parameter;
 
   /**
    * The default value of the '{@link #isStoring() <em>Storing</em>}' attribute.
@@ -134,7 +134,7 @@ public class ContentProviderImpl extends ModelElementImpl implements ContentProv
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter getParameter()
+  public TypedName getParameter()
   {
     return parameter;
   }
@@ -144,9 +144,9 @@ public class ContentProviderImpl extends ModelElementImpl implements ContentProv
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameter(Parameter newParameter, NotificationChain msgs)
+  public NotificationChain basicSetParameter(TypedName newParameter, NotificationChain msgs)
   {
-    Parameter oldParameter = parameter;
+    TypedName oldParameter = parameter;
     parameter = newParameter;
     if (eNotificationRequired())
     {
@@ -161,7 +161,7 @@ public class ContentProviderImpl extends ModelElementImpl implements ContentProv
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameter(Parameter newParameter)
+  public void setParameter(TypedName newParameter)
   {
     if (newParameter != parameter)
     {
@@ -368,7 +368,7 @@ public class ContentProviderImpl extends ModelElementImpl implements ContentProv
     switch (featureID)
     {
       case ApplauseDslPackage.CONTENT_PROVIDER__PARAMETER:
-        setParameter((Parameter)newValue);
+        setParameter((TypedName)newValue);
         return;
       case ApplauseDslPackage.CONTENT_PROVIDER__STORING:
         setStoring((Boolean)newValue);
@@ -397,7 +397,7 @@ public class ContentProviderImpl extends ModelElementImpl implements ContentProv
     switch (featureID)
     {
       case ApplauseDslPackage.CONTENT_PROVIDER__PARAMETER:
-        setParameter((Parameter)null);
+        setParameter((TypedName)null);
         return;
       case ApplauseDslPackage.CONTENT_PROVIDER__STORING:
         setStoring(STORING_EDEFAULT);

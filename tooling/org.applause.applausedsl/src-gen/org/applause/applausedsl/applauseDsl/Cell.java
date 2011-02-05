@@ -16,7 +16,7 @@ package org.applause.applausedsl.applauseDsl;
  * <ul>
  *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getType <em>Type</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getText <em>Text</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getDetails <em>Details</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getDetailText <em>Detail Text</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getImage <em>Image</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getAction <em>Action</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.Cell#getAccessory <em>Accessory</em>}</li>
@@ -85,30 +85,30 @@ public interface Cell extends ViewContentElement
   void setText(ScalarExpression value);
 
   /**
-   * Returns the value of the '<em><b>Details</b></em>' containment reference.
+   * Returns the value of the '<em><b>Detail Text</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Details</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Detail Text</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Details</em>' containment reference.
-   * @see #setDetails(ScalarExpression)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getCell_Details()
+   * @return the value of the '<em>Detail Text</em>' containment reference.
+   * @see #setDetailText(ScalarExpression)
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getCell_DetailText()
    * @model containment="true"
    * @generated
    */
-  ScalarExpression getDetails();
+  ScalarExpression getDetailText();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.Cell#getDetails <em>Details</em>}' containment reference.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.Cell#getDetailText <em>Detail Text</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Details</em>' containment reference.
-   * @see #getDetails()
+   * @param value the new value of the '<em>Detail Text</em>' containment reference.
+   * @see #getDetailText()
    * @generated
    */
-  void setDetails(ScalarExpression value);
+  void setDetailText(ScalarExpression value);
 
   /**
    * Returns the value of the '<em><b>Image</b></em>' containment reference.

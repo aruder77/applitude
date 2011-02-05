@@ -37,12 +37,12 @@ public interface ContentProvider extends ModelElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameter</em>' containment reference.
-   * @see #setParameter(Parameter)
+   * @see #setParameter(TypedName)
    * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getContentProvider_Parameter()
    * @model containment="true"
    * @generated
    */
-  Parameter getParameter();
+  TypedName getParameter();
 
   /**
    * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ContentProvider#getParameter <em>Parameter</em>}' containment reference.
@@ -52,7 +52,7 @@ public interface ContentProvider extends ModelElement
    * @see #getParameter()
    * @generated
    */
-  void setParameter(Parameter value);
+  void setParameter(TypedName value);
 
   /**
    * Returns the value of the '<em><b>Storing</b></em>' attribute.

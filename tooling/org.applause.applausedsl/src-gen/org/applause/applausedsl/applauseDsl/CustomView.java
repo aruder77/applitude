@@ -14,7 +14,7 @@ package org.applause.applausedsl.applauseDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.CustomView#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.CustomView#getProjectClass <em>Project Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +25,29 @@ package org.applause.applausedsl.applauseDsl;
 public interface CustomView extends View
 {
   /**
-   * Returns the value of the '<em><b>Class Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Project Class</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Class Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Project Class</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Class Name</em>' attribute.
-   * @see #setClassName(String)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getCustomView_ClassName()
-   * @model
+   * @return the value of the '<em>Project Class</em>' containment reference.
+   * @see #setProjectClass(ProjectClass)
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getCustomView_ProjectClass()
+   * @model containment="true"
    * @generated
    */
-  String getClassName();
+  ProjectClass getProjectClass();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.CustomView#getClassName <em>Class Name</em>}' attribute.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.CustomView#getProjectClass <em>Project Class</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Class Name</em>' attribute.
-   * @see #getClassName()
+   * @param value the new value of the '<em>Project Class</em>' containment reference.
+   * @see #getProjectClass()
    * @generated
    */
-  void setClassName(String value);
+  void setProjectClass(ProjectClass value);
 
 } // CustomView

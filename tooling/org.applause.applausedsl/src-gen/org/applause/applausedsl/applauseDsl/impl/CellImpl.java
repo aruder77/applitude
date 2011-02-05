@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getDetails <em>Details</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getDetailText <em>Detail Text</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getImage <em>Image</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getAction <em>Action</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.CellImpl#getAccessory <em>Accessory</em>}</li>
@@ -71,14 +71,14 @@ public class CellImpl extends ViewContentElementImpl implements Cell
   protected ScalarExpression text;
 
   /**
-   * The cached value of the '{@link #getDetails() <em>Details</em>}' containment reference.
+   * The cached value of the '{@link #getDetailText() <em>Detail Text</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDetails()
+   * @see #getDetailText()
    * @generated
    * @ordered
    */
-  protected ScalarExpression details;
+  protected ScalarExpression detailText;
 
   /**
    * The cached value of the '{@link #getImage() <em>Image</em>}' containment reference.
@@ -217,9 +217,9 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
-  public ScalarExpression getDetails()
+  public ScalarExpression getDetailText()
   {
-    return details;
+    return detailText;
   }
 
   /**
@@ -227,13 +227,13 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDetails(ScalarExpression newDetails, NotificationChain msgs)
+  public NotificationChain basicSetDetailText(ScalarExpression newDetailText, NotificationChain msgs)
   {
-    ScalarExpression oldDetails = details;
-    details = newDetails;
+    ScalarExpression oldDetailText = detailText;
+    detailText = newDetailText;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CELL__DETAILS, oldDetails, newDetails);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CELL__DETAIL_TEXT, oldDetailText, newDetailText);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -244,20 +244,20 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDetails(ScalarExpression newDetails)
+  public void setDetailText(ScalarExpression newDetailText)
   {
-    if (newDetails != details)
+    if (newDetailText != detailText)
     {
       NotificationChain msgs = null;
-      if (details != null)
-        msgs = ((InternalEObject)details).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CELL__DETAILS, null, msgs);
-      if (newDetails != null)
-        msgs = ((InternalEObject)newDetails).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CELL__DETAILS, null, msgs);
-      msgs = basicSetDetails(newDetails, msgs);
+      if (detailText != null)
+        msgs = ((InternalEObject)detailText).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CELL__DETAIL_TEXT, null, msgs);
+      if (newDetailText != null)
+        msgs = ((InternalEObject)newDetailText).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CELL__DETAIL_TEXT, null, msgs);
+      msgs = basicSetDetailText(newDetailText, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CELL__DETAILS, newDetails, newDetails));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CELL__DETAIL_TEXT, newDetailText, newDetailText));
   }
 
   /**
@@ -391,8 +391,8 @@ public class CellImpl extends ViewContentElementImpl implements Cell
     {
       case ApplauseDslPackage.CELL__TEXT:
         return basicSetText(null, msgs);
-      case ApplauseDslPackage.CELL__DETAILS:
-        return basicSetDetails(null, msgs);
+      case ApplauseDslPackage.CELL__DETAIL_TEXT:
+        return basicSetDetailText(null, msgs);
       case ApplauseDslPackage.CELL__IMAGE:
         return basicSetImage(null, msgs);
       case ApplauseDslPackage.CELL__ACTION:
@@ -415,8 +415,8 @@ public class CellImpl extends ViewContentElementImpl implements Cell
         return getType();
       case ApplauseDslPackage.CELL__TEXT:
         return getText();
-      case ApplauseDslPackage.CELL__DETAILS:
-        return getDetails();
+      case ApplauseDslPackage.CELL__DETAIL_TEXT:
+        return getDetailText();
       case ApplauseDslPackage.CELL__IMAGE:
         return getImage();
       case ApplauseDslPackage.CELL__ACTION:
@@ -443,8 +443,8 @@ public class CellImpl extends ViewContentElementImpl implements Cell
       case ApplauseDslPackage.CELL__TEXT:
         setText((ScalarExpression)newValue);
         return;
-      case ApplauseDslPackage.CELL__DETAILS:
-        setDetails((ScalarExpression)newValue);
+      case ApplauseDslPackage.CELL__DETAIL_TEXT:
+        setDetailText((ScalarExpression)newValue);
         return;
       case ApplauseDslPackage.CELL__IMAGE:
         setImage((ScalarExpression)newValue);
@@ -475,8 +475,8 @@ public class CellImpl extends ViewContentElementImpl implements Cell
       case ApplauseDslPackage.CELL__TEXT:
         setText((ScalarExpression)null);
         return;
-      case ApplauseDslPackage.CELL__DETAILS:
-        setDetails((ScalarExpression)null);
+      case ApplauseDslPackage.CELL__DETAIL_TEXT:
+        setDetailText((ScalarExpression)null);
         return;
       case ApplauseDslPackage.CELL__IMAGE:
         setImage((ScalarExpression)null);
@@ -505,8 +505,8 @@ public class CellImpl extends ViewContentElementImpl implements Cell
         return type != TYPE_EDEFAULT;
       case ApplauseDslPackage.CELL__TEXT:
         return text != null;
-      case ApplauseDslPackage.CELL__DETAILS:
-        return details != null;
+      case ApplauseDslPackage.CELL__DETAIL_TEXT:
+        return detailText != null;
       case ApplauseDslPackage.CELL__IMAGE:
         return image != null;
       case ApplauseDslPackage.CELL__ACTION:

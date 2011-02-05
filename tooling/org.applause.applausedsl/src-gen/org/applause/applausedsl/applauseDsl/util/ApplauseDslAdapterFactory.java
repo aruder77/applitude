@@ -83,69 +83,14 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseModelElement(ModelElement object)
-      {
-        return createModelElementAdapter();
-      }
-      @Override
-      public Adapter casePropertyPathPart(PropertyPathPart object)
-      {
-        return createPropertyPathPartAdapter();
-      }
-      @Override
-      public Adapter caseTypeDescription(TypeDescription object)
-      {
-        return createTypeDescriptionAdapter();
-      }
-      @Override
-      public Adapter caseParameter(Parameter object)
-      {
-        return createParameterAdapter();
-      }
-      @Override
-      public Adapter caseObjectReference(ObjectReference object)
-      {
-        return createObjectReferenceAdapter();
-      }
-      @Override
-      public Adapter caseExpression(Expression object)
-      {
-        return createExpressionAdapter();
-      }
-      @Override
-      public Adapter caseScalarExpression(ScalarExpression object)
-      {
-        return createScalarExpressionAdapter();
-      }
-      @Override
-      public Adapter caseCollectionExpression(CollectionExpression object)
-      {
-        return createCollectionExpressionAdapter();
-      }
-      @Override
-      public Adapter caseStringLiteral(StringLiteral object)
-      {
-        return createStringLiteralAdapter();
-      }
-      @Override
-      public Adapter caseStringFunction(StringFunction object)
-      {
-        return createStringFunctionAdapter();
-      }
-      @Override
-      public Adapter caseCollectionLiteral(CollectionLiteral object)
-      {
-        return createCollectionLiteralAdapter();
-      }
-      @Override
-      public Adapter caseCollectionFunction(CollectionFunction object)
-      {
-        return createCollectionFunctionAdapter();
-      }
-      @Override
       public Adapter caseApplication(Application object)
       {
         return createApplicationAdapter();
+      }
+      @Override
+      public Adapter caseModelElement(ModelElement object)
+      {
+        return createModelElementAdapter();
       }
       @Override
       public Adapter caseType(Type object)
@@ -163,9 +108,69 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createEntityAdapter();
       }
       @Override
-      public Adapter caseProperty(Property object)
+      public Adapter caseTypeReference(TypeReference object)
       {
-        return createPropertyAdapter();
+        return createTypeReferenceAdapter();
+      }
+      @Override
+      public Adapter caseProjectClass(ProjectClass object)
+      {
+        return createProjectClassAdapter();
+      }
+      @Override
+      public Adapter caseScopeName(ScopeName object)
+      {
+        return createScopeNameAdapter();
+      }
+      @Override
+      public Adapter caseTypedName(TypedName object)
+      {
+        return createTypedNameAdapter();
+      }
+      @Override
+      public Adapter caseObjectReference(ObjectReference object)
+      {
+        return createObjectReferenceAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseScalarExpression(ScalarExpression object)
+      {
+        return createScalarExpressionAdapter();
+      }
+      @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringFunction(StringFunction object)
+      {
+        return createStringFunctionAdapter();
+      }
+      @Override
+      public Adapter caseCollectionExpression(CollectionExpression object)
+      {
+        return createCollectionExpressionAdapter();
+      }
+      @Override
+      public Adapter caseCollectionLiteral(CollectionLiteral object)
+      {
+        return createCollectionLiteralAdapter();
+      }
+      @Override
+      public Adapter caseCollectionFunction(CollectionFunction object)
+      {
+        return createCollectionFunctionAdapter();
+      }
+      @Override
+      public Adapter caseCollectionIterator(CollectionIterator object)
+      {
+        return createCollectionIteratorAdapter();
       }
       @Override
       public Adapter caseContentProvider(ContentProvider object)
@@ -178,9 +183,9 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createContentProviderImplementationAdapter();
       }
       @Override
-      public Adapter caseFetchingContentProviderImplementation(FetchingContentProviderImplementation object)
+      public Adapter caseUrlContentProviderImplementation(UrlContentProviderImplementation object)
       {
-        return createFetchingContentProviderImplementationAdapter();
+        return createUrlContentProviderImplementationAdapter();
       }
       @Override
       public Adapter caseCustomContentProviderImplementation(CustomContentProviderImplementation object)
@@ -213,11 +218,6 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createTableViewAdapter();
       }
       @Override
-      public Adapter caseCustomView(CustomView object)
-      {
-        return createCustomViewAdapter();
-      }
-      @Override
       public Adapter caseViewContentElement(ViewContentElement object)
       {
         return createViewContentElementAdapter();
@@ -233,14 +233,19 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createCellAdapter();
       }
       @Override
-      public Adapter caseCollectionIterator(CollectionIterator object)
+      public Adapter caseCustomView(CustomView object)
       {
-        return createCollectionIteratorAdapter();
+        return createCustomViewAdapter();
       }
       @Override
       public Adapter caseViewAction(ViewAction object)
       {
         return createViewActionAdapter();
+      }
+      @Override
+      public Adapter caseViewCall(ViewCall object)
+      {
+        return createViewCallAdapter();
       }
       @Override
       public Adapter caseSelector(Selector object)
@@ -251,16 +256,6 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseExternalOpen(ExternalOpen object)
       {
         return createExternalOpenAdapter();
-      }
-      @Override
-      public Adapter caseViewCall(ViewCall object)
-      {
-        return createViewCallAdapter();
-      }
-      @Override
-      public Adapter caseProjectClass(ProjectClass object)
-      {
-        return createProjectClassAdapter();
       }
       @Override
       public Adapter caseStringConcat(StringConcat object)
@@ -330,186 +325,6 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ModelElement <em>Model Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ModelElement
-   * @generated
-   */
-  public Adapter createModelElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.PropertyPathPart <em>Property Path Part</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.PropertyPathPart
-   * @generated
-   */
-  public Adapter createPropertyPathPartAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.TypeDescription <em>Type Description</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.TypeDescription
-   * @generated
-   */
-  public Adapter createTypeDescriptionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Parameter <em>Parameter</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.Parameter
-   * @generated
-   */
-  public Adapter createParameterAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ObjectReference <em>Object Reference</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ObjectReference
-   * @generated
-   */
-  public Adapter createObjectReferenceAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Expression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.Expression
-   * @generated
-   */
-  public Adapter createExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ScalarExpression <em>Scalar Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ScalarExpression
-   * @generated
-   */
-  public Adapter createScalarExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionExpression <em>Collection Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.CollectionExpression
-   * @generated
-   */
-  public Adapter createCollectionExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.StringLiteral
-   * @generated
-   */
-  public Adapter createStringLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.StringFunction <em>String Function</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.StringFunction
-   * @generated
-   */
-  public Adapter createStringFunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionLiteral <em>Collection Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.CollectionLiteral
-   * @generated
-   */
-  public Adapter createCollectionLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionFunction <em>Collection Function</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.CollectionFunction
-   * @generated
-   */
-  public Adapter createCollectionFunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Application <em>Application</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -520,6 +335,21 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createApplicationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ModelElement <em>Model Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ModelElement
+   * @generated
+   */
+  public Adapter createModelElementAdapter()
   {
     return null;
   }
@@ -570,16 +400,196 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Property <em>Property</em>}'.
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.TypeReference <em>Type Reference</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.Property
+   * @see org.applause.applausedsl.applauseDsl.TypeReference
    * @generated
    */
-  public Adapter createPropertyAdapter()
+  public Adapter createTypeReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ProjectClass <em>Project Class</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ProjectClass
+   * @generated
+   */
+  public Adapter createProjectClassAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ScopeName <em>Scope Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ScopeName
+   * @generated
+   */
+  public Adapter createScopeNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.TypedName <em>Typed Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.TypedName
+   * @generated
+   */
+  public Adapter createTypedNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ObjectReference <em>Object Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ObjectReference
+   * @generated
+   */
+  public Adapter createObjectReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ScalarExpression <em>Scalar Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ScalarExpression
+   * @generated
+   */
+  public Adapter createScalarExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.StringFunction <em>String Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.StringFunction
+   * @generated
+   */
+  public Adapter createStringFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionExpression <em>Collection Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.CollectionExpression
+   * @generated
+   */
+  public Adapter createCollectionExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionLiteral <em>Collection Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.CollectionLiteral
+   * @generated
+   */
+  public Adapter createCollectionLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionFunction <em>Collection Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.CollectionFunction
+   * @generated
+   */
+  public Adapter createCollectionFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionIterator <em>Collection Iterator</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.CollectionIterator
+   * @generated
+   */
+  public Adapter createCollectionIteratorAdapter()
   {
     return null;
   }
@@ -615,16 +625,16 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.FetchingContentProviderImplementation <em>Fetching Content Provider Implementation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.UrlContentProviderImplementation <em>Url Content Provider Implementation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.FetchingContentProviderImplementation
+   * @see org.applause.applausedsl.applauseDsl.UrlContentProviderImplementation
    * @generated
    */
-  public Adapter createFetchingContentProviderImplementationAdapter()
+  public Adapter createUrlContentProviderImplementationAdapter()
   {
     return null;
   }
@@ -720,21 +730,6 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CustomView <em>Custom View</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.CustomView
-   * @generated
-   */
-  public Adapter createCustomViewAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ViewContentElement <em>View Content Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -780,16 +775,16 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CollectionIterator <em>Collection Iterator</em>}'.
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.CustomView <em>Custom View</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.CollectionIterator
+   * @see org.applause.applausedsl.applauseDsl.CustomView
    * @generated
    */
-  public Adapter createCollectionIteratorAdapter()
+  public Adapter createCustomViewAdapter()
   {
     return null;
   }
@@ -805,6 +800,21 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createViewActionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ViewCall <em>View Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ViewCall
+   * @generated
+   */
+  public Adapter createViewCallAdapter()
   {
     return null;
   }
@@ -835,36 +845,6 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExternalOpenAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ViewCall <em>View Call</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ViewCall
-   * @generated
-   */
-  public Adapter createViewCallAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ProjectClass <em>Project Class</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ProjectClass
-   * @generated
-   */
-  public Adapter createProjectClassAdapter()
   {
     return null;
   }

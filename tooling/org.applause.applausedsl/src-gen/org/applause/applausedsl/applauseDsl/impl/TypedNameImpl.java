@@ -6,9 +6,9 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.Parameter;
 import org.applause.applausedsl.applauseDsl.ProviderConstruction;
-import org.applause.applausedsl.applauseDsl.TypeDescription;
+import org.applause.applausedsl.applauseDsl.TypeReference;
+import org.applause.applausedsl.applauseDsl.TypedName;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,29 +20,29 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter</b></em>'.
+ * An implementation of the model object '<em><b>Typed Name</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ParameterImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypedNameImpl#getTypeRef <em>Type Ref</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.TypedNameImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ParameterImpl extends PropertyPathPartImpl implements Parameter
+public class TypedNameImpl extends ScopeNameImpl implements TypedName
 {
   /**
-   * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
+   * The cached value of the '{@link #getTypeRef() <em>Type Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDescription()
+   * @see #getTypeRef()
    * @generated
    * @ordered
    */
-  protected TypeDescription description;
+  protected TypeReference typeRef;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -59,7 +59,7 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ParameterImpl()
+  protected TypedNameImpl()
   {
     super();
   }
@@ -72,7 +72,7 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.PARAMETER;
+    return ApplauseDslPackage.Literals.TYPED_NAME;
   }
 
   /**
@@ -80,9 +80,9 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypeDescription getDescription()
+  public TypeReference getTypeRef()
   {
-    return description;
+    return typeRef;
   }
 
   /**
@@ -90,13 +90,13 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDescription(TypeDescription newDescription, NotificationChain msgs)
+  public NotificationChain basicSetTypeRef(TypeReference newTypeRef, NotificationChain msgs)
   {
-    TypeDescription oldDescription = description;
-    description = newDescription;
+    TypeReference oldTypeRef = typeRef;
+    typeRef = newTypeRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.PARAMETER__DESCRIPTION, oldDescription, newDescription);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPED_NAME__TYPE_REF, oldTypeRef, newTypeRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -107,20 +107,20 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDescription(TypeDescription newDescription)
+  public void setTypeRef(TypeReference newTypeRef)
   {
-    if (newDescription != description)
+    if (newTypeRef != typeRef)
     {
       NotificationChain msgs = null;
-      if (description != null)
-        msgs = ((InternalEObject)description).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.PARAMETER__DESCRIPTION, null, msgs);
-      if (newDescription != null)
-        msgs = ((InternalEObject)newDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.PARAMETER__DESCRIPTION, null, msgs);
-      msgs = basicSetDescription(newDescription, msgs);
+      if (typeRef != null)
+        msgs = ((InternalEObject)typeRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.TYPED_NAME__TYPE_REF, null, msgs);
+      if (newTypeRef != null)
+        msgs = ((InternalEObject)newTypeRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.TYPED_NAME__TYPE_REF, null, msgs);
+      msgs = basicSetTypeRef(newTypeRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.PARAMETER__DESCRIPTION, newDescription, newDescription));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPED_NAME__TYPE_REF, newTypeRef, newTypeRef));
   }
 
   /**
@@ -144,7 +144,7 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
     value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.PARAMETER__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPED_NAME__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -161,14 +161,14 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
     {
       NotificationChain msgs = null;
       if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.PARAMETER__VALUE, null, msgs);
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.TYPED_NAME__VALUE, null, msgs);
       if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.PARAMETER__VALUE, null, msgs);
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.TYPED_NAME__VALUE, null, msgs);
       msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.PARAMETER__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.TYPED_NAME__VALUE, newValue, newValue));
   }
 
   /**
@@ -181,9 +181,9 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.PARAMETER__DESCRIPTION:
-        return basicSetDescription(null, msgs);
-      case ApplauseDslPackage.PARAMETER__VALUE:
+      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
+        return basicSetTypeRef(null, msgs);
+      case ApplauseDslPackage.TYPED_NAME__VALUE:
         return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -199,9 +199,9 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.PARAMETER__DESCRIPTION:
-        return getDescription();
-      case ApplauseDslPackage.PARAMETER__VALUE:
+      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
+        return getTypeRef();
+      case ApplauseDslPackage.TYPED_NAME__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -217,10 +217,10 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.PARAMETER__DESCRIPTION:
-        setDescription((TypeDescription)newValue);
+      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
+        setTypeRef((TypeReference)newValue);
         return;
-      case ApplauseDslPackage.PARAMETER__VALUE:
+      case ApplauseDslPackage.TYPED_NAME__VALUE:
         setValue((ProviderConstruction)newValue);
         return;
     }
@@ -237,10 +237,10 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.PARAMETER__DESCRIPTION:
-        setDescription((TypeDescription)null);
+      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
+        setTypeRef((TypeReference)null);
         return;
-      case ApplauseDslPackage.PARAMETER__VALUE:
+      case ApplauseDslPackage.TYPED_NAME__VALUE:
         setValue((ProviderConstruction)null);
         return;
     }
@@ -257,12 +257,12 @@ public class ParameterImpl extends PropertyPathPartImpl implements Parameter
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.PARAMETER__DESCRIPTION:
-        return description != null;
-      case ApplauseDslPackage.PARAMETER__VALUE:
+      case ApplauseDslPackage.TYPED_NAME__TYPE_REF:
+        return typeRef != null;
+      case ApplauseDslPackage.TYPED_NAME__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ParameterImpl
+} //TypedNameImpl

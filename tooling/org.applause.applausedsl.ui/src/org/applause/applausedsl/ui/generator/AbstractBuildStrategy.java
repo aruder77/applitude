@@ -94,11 +94,6 @@ public abstract class AbstractBuildStrategy {
 
 	protected FileHandle createFileHandle(IFolder folder, Outlet outlet, String qualifiedName) {
 		IFile file = folder.getFile(new Path(qualifiedName));
-		try {
-			file.setDerived(true, new NullProgressMonitor());
-		} catch (CoreException e) {
-			log.error(e);
-		}
 		return new EclipseBasedFileHandle(file, outlet);
 	}
 

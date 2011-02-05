@@ -81,7 +81,7 @@ public interface Entity extends Type
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-   * The list contents are of type {@link org.applause.applausedsl.applauseDsl.Property}.
+   * The list contents are of type {@link org.applause.applausedsl.applauseDsl.TypedName}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
@@ -93,6 +93,6 @@ public interface Entity extends Type
    * @model containment="true"
    * @generated
    */
-  EList<Property> getProperties();
+  EList<TypedName> getProperties();
 
 } // Entity
