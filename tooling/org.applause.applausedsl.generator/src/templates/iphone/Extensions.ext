@@ -7,11 +7,11 @@ extension templates::MetamodelExtensions;
 
 // Objective C language support
 
-String use(String name):
-	use(newProjectClass(name));
+cached ProjectClass projectClass(String name):
+	JAVA templates.Extensions.createProjectClass(java.lang.String);
 
-String silentUse(String name):
-	use(newProjectClass(name)) != null ? "" : "";
+String use(String name):
+	use(projectClass(name));
 
 String use(ProjectClass projectClass):
 	JAVA templates.Extensions.use(org.applause.applausedsl.applauseDsl.ProjectClass);
@@ -36,9 +36,6 @@ List[ProjectClass] headerImports(ProjectClass class):
 
 List[ProjectClass] moduleImports(ProjectClass class):
 	{class, class.bagModuleImports().withoutBuiltIns().without(class.bagHeaderImports()).without({class}).sortBy(e|e.name)}.flatten();
-
-cached ProjectClass newProjectClass(String name):
-	JAVA templates.Extensions.createProjectClass(java.lang.String);
 
 h(ProjectClass class):
 	useImportBag(class.bagHeaderImports()) -> (class.name + ".h");
@@ -91,22 +88,22 @@ statements(Collection[String] strings):
 /* Mapping Model Object -> Objective-C class */
 
 class(View this):
-	newProjectClass(this.name.toFirstUpper() + "ViewController");
+	projectClass(this.name.toFirstUpper() + "ViewController");
 
 class(CustomView this):
 	this.projectClass;
 
 class(Type this):
-	newProjectClass(this.name);
+	projectClass(this.name);
 
 class(TabView view):
-	newProjectClass("UITabBarController");
+	projectClass("UITabBarController");
 
 
 /* Views */
 
 viewFactory(Application app):
-	newProjectClass(app.name + "Views");
+	projectClass(app.name + "Views");
 
 //TODO: rename Provider -> Method?
 objcProviderMethodName(View view):
@@ -164,7 +161,6 @@ resolveToValue(Expression this):
 resolveToValue(StringLiteral this):
 	this.value.replaceSettings();
 
-// TODO: use vs. newProjectClass
 resolveToValue(StringConcat this):
 	'[NSString stringWithFormat:@"' 
 		+ values.collect(e|"%@").toString("") + '", '
@@ -364,22 +360,22 @@ objcSetup(ViewContentElement this):
 
 /* Providers */
 providerFactory(Application app):
-	newProjectClass(app.name + "Providers");
+	projectClass(app.name + "Providers");
 
 sharedProviderFactory(Application app):
 	"[" + app.providerFactory().use() + " sharedProviders]";
 
 applicationDelegate(Application app):
-	newProjectClass(app.name + "AppDelegate");
+	projectClass(app.name + "AppDelegate");
 
 class(ContentProviderImplementation this):
 	Void;
 
 class(UrlContentProviderImplementation this):
-	newProjectClass("UrlContentProvider");
+	projectClass("UrlContentProvider");
 
 class(CustomContentProviderImplementation this):
-	newProjectClass(this.providerClass.name);
+	projectClass(this.providerClass.name);
 
 ivar(ContentProvider provider):
 	"f" + provider.name.toFirstUpper();
