@@ -27,8 +27,6 @@ import org.eclipse.xtext.junit.AbstractXtextTests;
 import org.eclipse.xtext.resource.XtextResource;
 import org.junit.Test;
 
-import templates.Extensions;
-
 import com.google.common.collect.Iterables;
 
 public class ExtensionsTest extends AbstractXtextTests {
@@ -52,11 +50,8 @@ public class ExtensionsTest extends AbstractXtextTests {
 
 		model = (Model) resource.getContents().get(0);
 
-		Extensions.scopeStart();
-
 		parameterFoo = ApplauseDslFactory.eINSTANCE.createParameter();
 		parameterFoo.setName("foo");
-		Extensions.scopeBind(parameterFoo, "fFoo");
 
 		prop1 = ApplauseDslFactory.eINSTANCE.createProperty();
 		prop1.setName("prop1");
@@ -68,11 +63,6 @@ public class ExtensionsTest extends AbstractXtextTests {
 		complexProviderConstruction = (ComplexProviderConstruction) table.getVariables().get(0).getValue();
 
 	};
-
-	@Override
-	protected void tearDown() throws Exception {
-		Extensions.scopeEnd();
-	}
 
 	@Test
 	public void testResolveToProviderStraight() throws Exception {
@@ -195,7 +185,6 @@ public class ExtensionsTest extends AbstractXtextTests {
 		assertResolveToValue("fFoo.content", ref(parameterFoo));
 		assertResolveToValue("[fFoo.content valueForKey:@\"prop1\"]", ref(parameterFoo, prop1));
 		assertResolveToValue("[fFoo.content valueForKeyPath:@\"prop1.prop2\"]", ref(parameterFoo, prop1, prop2));
-
 	}
 
 	private StringConcat concat(ScalarExpression... values) {
