@@ -29,5 +29,4 @@
 + (TextViewViewController *) createTextViewWithTxt:(ContentProvider *)txt;
 + (ReferenceExpressionsViewController *) createReferenceExpressions;
 
-
 @end

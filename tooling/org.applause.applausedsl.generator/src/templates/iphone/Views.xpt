@@ -13,13 +13,11 @@
 «FILE viewFactory().h()-»
 «EXPAND ObjC::Import FOREACH viewFactory().headerImports() ONFILECLOSE-»
 
-@interface «use(viewFactory())» : NSObject {
+@interface «viewFactory().use()» : NSObject {
 
 }
 
-«FOREACH allViews() AS view-»
-«view.objcProviderMethodSignature()»;
-«ENDFOREACH»
+«allViews().callSignature().collect(e|e+";").toString("\n")»
 
 @end
 «ENDFILE»
@@ -31,7 +29,7 @@
 «FILE viewFactory().m()-»
 «EXPAND ObjC::Import FOREACH viewFactory().moduleImports() ONFILECLOSE-»
 
-@implementation «use(viewFactory())»
+@implementation «viewFactory().use()»
 «EXPAND viewFactoryMethod FOREACH allViews()»
 @end
 «ENDFILE»
@@ -40,18 +38,18 @@
 
 
 «DEFINE viewFactoryMethod FOR View»
-«objcProviderMethodSignature()» {
+«callSignature()» {
 	return «class().objc_New(parameters().name, parameters().name)»;
 }
 «ENDDEFINE»
 
 
 «DEFINE viewFactoryMethod FOR TabView»
-«objcProviderMethodSignature()» {
+«callSignature()» {
 	UITabBarController *tabController = [[[UITabBarController alloc] init] autorelease];
 
 «FOREACH tabs AS tab ITERATOR i-»
-	UINavigationController *tab«i.counter1» = [«use("BrandedUIFactory")» createUINavigationControllerWithRootViewController:«(tab.view != null) ? tab.view.objcProviderMethodCall('', '') : "nil"»];
+	UINavigationController *tab«i.counter1» = [«use("BrandedUIFactory")» createUINavigationControllerWithRootViewController:«(tab.view != null) ? tab.view.call() : "nil"»];
 	tab«i.counter1».tabBarItem.title = «tab.title.resolveToValue()»;
 	«IF tab.icon != null-»
 	tab«i.counter1».tabBarItem.image = [UIImage imageNamed:«tab.icon.resolveToValue()»];

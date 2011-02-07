@@ -18,7 +18,7 @@
 
 + («use(providerFactory())» *) sharedProviders;
 
-«allProviders().methodSignature().statements()»
+«allProviders().callSignature().collect(e|e+";").toString("\n")»
 
 @end
 «ENDFILE»
@@ -51,7 +51,7 @@ static «use(providerFactory())» *sharedProviders = nil;
 
 
 «DEFINE providerMethodImplementation FOR ContentProvider»
-«methodSignature()» {
+«callSignature()» {
 	«IF !this.storing-»
 		«EXPAND constructProvider-»
 		return [provider autorelease];

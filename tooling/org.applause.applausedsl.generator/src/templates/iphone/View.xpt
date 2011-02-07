@@ -20,10 +20,10 @@
 	«IF this.hasBindings()-»
 		«use('BindingContext')» *fBindings;
 	«ENDIF-»
-	«providers().collect(p|p.type() + p.ivar()).statements()»
+	«providers().collect(p|p.type() + p.ivar() + ";").toString("\n")»
 }
 
-«objcInitSignature()»;
+«initSignature()»;
 
 @end
 «ENDFILE»
@@ -36,20 +36,20 @@
 
 @implementation «class().name»
 
-«objcInitSignature()» {
+«initSignature()» {
 	self = [super initWithStyle:«style.constant()»];
 	if (self != nil) {
 		«IF this.hasBindings()-»
 			fBindings = [[BindingContext alloc] init];
 		«ENDIF-»
-		«parameters().collect(p|p.ivar() + " = [" + p.name + " retain]").statements()»
-		«variables.collect(p|p.ivar() + " = [" + p.value.resolveToProvider() + " retain]").statements()»
+		«parameters().collect(p|p.ivar() + " = [" + p.name + " retain];").toString("\n")»
+		«variables.collect(p|p.ivar() + " = [" + p.value.resolveToProvider() + " retain];").toString("\n")»
 	}
 	return self;
 }
 
 - (void) update {
-	«providers().collect(p|"[" + p.ivar() + " request]").statements()»
+	«providers().collect(p|"[" + p.ivar() + " request];").toString("\n")»
 	«IF title!=null-»
 		self.title = «title.resolveToValue()»;
 	«ENDIF-»
@@ -94,7 +94,7 @@
 			«IF it!=null-»
 				id «cell.idname()» = cell.data;
 			«ENDIF-»
-			UIViewController *controller = «this.objcProviderMethodCall(cell.idname(), '')»;
+			UIViewController *controller = «call()»;
 			[self.navigationController pushViewController:controller animated:YES];
 		}
 	«ENDLET»
@@ -106,7 +106,7 @@
 		«IF this.hasBindings()-»
 			[fBindings release];
 		«ENDIF-»
-		«providers().collect(p|"[" + p.ivar() + " release]").statements()»
+		«providers().collect(p|"[" + p.ivar() + " release];").toString("\n")»
 		[super dealloc];
 	}
 «ENDDEFINE»

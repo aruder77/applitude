@@ -94,12 +94,10 @@ objc_MethodParamValues(List[String] names, List[String] values):
 objc_MethodSignature(ProjectClass class, String modifier, String methodName, String returnType, List[String] paramNames, List[String] paramTypes):
 	modifier + " (" + returnType + ") " + methodName + paramNames.objc_MethodParamSignatures(paramTypes);
 
-statements(Collection[String] strings):
-	strings.without({null}).collect(e|e + ";").toString("\n");
 
 
 
-/* Mapping Model Object -> Objective-C class */
+/* Mapping Model -> Objective-C class names */
 
 class(View this):
 	projectClass(this.name.toFirstUpper() + "ViewController");
@@ -113,50 +111,75 @@ class(Type this):
 class(TabView view):
 	projectClass("UITabBarController");
 
+class(ContentProviderImplementation this):
+	"<Abstract " + this + ">";
 
-/* Views */
+class(UrlContentProviderImplementation this):
+	projectClass("UrlContentProvider");
+
+class(CustomContentProviderImplementation this):
+	projectClass(this.providerClass.name);
 
 viewFactory(Application app):
 	projectClass(app.name + "Views");
 
-//TODO: rename Provider -> Method?
-objcProviderMethodName(View view):
+providerFactory(Application app):
+	projectClass(app.name + "Providers");
+
+applicationDelegate(Application app):
+	projectClass(app.name + "AppDelegate");
+
+
+/* Views */
+
+methodName(View view):
 	"create" + view.name.toFirstUpper();
 
-objcInitSignature(View view):
+initSignature(View view):
 	view.class().objc_MethodSignature(
 		"-", "init", "id",
 		view.parameters().name,
 		view.parameterTypes());
 
-objcInitCall(View view, List[String] params):
+init(View view, List[String] params):
 	view.class().objc_Init(view.parameters().name, params);
 
-objcProviderMethodSignature(View view):
+callSignature(View view):
 	view.class().objc_MethodSignature(
-		"+", view.objcProviderMethodName(),
+		"+", view.methodName(),
 		view.class().use() + " *",
 		view.parameters().name,
 		view.parameterTypes());
 
-//TODO: potentially confusing to call this also Provider, maybe ViewFactory?
-objcProviderMethodCall(ViewCall call, String kvcTarget, String kvcPrefix):
+call(ViewCall call):
 	call.application().viewFactory().objc_Call(
-		call.view.objcProviderMethodName(), 
+		call.view.methodName(), 
 		call.view.parameters().name,
 		call.parameters().resolveToProvider());
 
 
 
-objcProviderMethodName(ContentProvider this):
+/* Content Provider */
+
+methodName(ContentProvider this):
 	"providerFor" + name.toFirstUpper();
 
+sharedProviders(Application this):
+	"[" + providerFactory().use() + " sharedProviders]";
+
+callSignature(ContentProvider this):
+	application().providerFactory().objc_MethodSignature(
+		"-", methodName(),
+		use('ContentProvider') + " *",
+		parameters().name,
+		parameterTypes());
+
+ivar(ContentProvider provider):
+	"f" + provider.name.toFirstUpper();
 
 
 
-String replaceSettings(String string):
-	JAVA templates.Extensions.replaceSettings(java.lang.String);
-
+/* Resolving expressions to a value */
 
 resolveToValue(Void this):
 	"nil";
@@ -167,10 +190,11 @@ resolveToValue(ScopeName this):
 resolveToValue(CollectionIterator this):
 	this.name;
 
-
-
 resolveToValue(Expression this):
 	"<resolveToValue is abstract for: " + this + ">";
+
+String replaceSettings(String string):
+	JAVA templates.Extensions.replaceSettings(java.lang.String);
 
 resolveToValue(StringLiteral this):
 	this.value.replaceSettings();
@@ -205,7 +229,7 @@ resolveToValue(ObjectReference this):
 
 
 
-
+/* Resolving expressions to a content provider */
 
 resolveToProvider(ScopeName this):
 	this.ivar();
@@ -225,8 +249,8 @@ resolveToProvider(SimpleProviderConstruction this): // TODO: ProviderReference?
 // TODO: ComplexProviderConstruction.provider, ViewCall.view are similar -> check similar naming conventions for both
 
 resolveToProvider(ComplexProviderConstruction this): // TODO: ProviderConstructionCall?
-	this.application().sharedProviderFactory().objc_Call(
-		provider.objcProviderMethodName(),
+	application().sharedProviders().objc_Call(
+		provider.methodName(),
 		provider.parameters().name,
 		parameterValues().resolveToProvider()
 	);
@@ -241,7 +265,7 @@ resolveToProvider(ObjectReference this):
 
 
 
-/* Assigning expressions */
+/* Assigning expression values to variables */
 
 assignment(Void this, String targetObject, String targetProperty):
 	'';
@@ -270,13 +294,13 @@ constant(CellAccessory ac):
 		default : 'UITableViewCellAccessoryNone'
 	};
 
-
 index(EObject obj, xpand2::Type type):
 	obj.eContainer().eContents().select(e|type.isInstance(e)).indexOf(obj) + 1;
 
 idname(StringLiteral str):
 	str.value.split(" ").toFirstUpper().toString("").toFirstLower().replaceAll("[^a-zA-Z]", "");
 
+// unique id for cell: cell.iterator or cell.text or section/cell index 
 idname(Cell cell):
 	cell.iterator != null
 		? cell.iterator.name
@@ -284,53 +308,12 @@ idname(Cell cell):
 			? ((StringLiteral)cell.text).idname()
 			: ('s' + cell.eContainer().index(Section) + 'c' + cell.index(Cell)));
 
-//TOOD: cell is handed in to calculate unique cell selector name for ViewCall - there has to be a better way
-action(ViewAction this, Cell cell):
-	throwError("action not supported for " + this);
-
-action(ViewCall call, Cell cell):
-	'[' + "SelectorAction".use() + ' actionWithObject:self selector:@selector(' + cell.idname() + 'CellSelected:)]';
-
-action(Selector sel, Cell cell):
-	'[' + "SelectorAction".use() + ' actionWithObject:self selector:@selector(' + sel.name + ')]';
-
-providers(View view):
-	view.parameters();
-	
 providers(TableView view):
 	{ view.parameters(), view.variables }.flatten();
 
-type(ScopeName param):
-	'ContentProvider'.use() + " *";
-
-ivar(ScopeName param):
-	"f" + param.name.toFirstUpper();
 
 
-// Parameter handling
-
-// simulates parameter list, at the moment there can be only 0/1 parameters
-// remove with http://ralfebert.lighthouseapp.com/projects/67904/tickets/57-support-for-multiple-parameters
-List[Parameter] parameters(View this):
-	{ parameter }.remove(null);
-
-List[Parameter] parameters(ContentProvider this):
-	{ parameter }.remove(null);
-
-List[Parameter] parameterTypes(View view):
-	view.parameters().collect(e|"ContentProvider".use() + " *");
-
-List[ProviderConstruction] parameters(ViewCall view):
-	{ view.parameter }.remove(null);
-
-//TODO: parameters vs. argument vs. parameterValues(Bindings?)
-
-List[Expression] parameterValues(ComplexProviderConstruction this):
-	{ this.argument }.remove(null);
-
-
-
-// Building section and cells
+/* TableView: Section and Cell */
 
 cellClass(Cell cell):
 	cell.image != null ? use('ImageCell') : use('BoxCell');
@@ -372,30 +355,49 @@ objcSetup(ViewContentElement this):
 
 
 
-/* Providers */
-providerFactory(Application app):
-	projectClass(app.name + "Providers");
+/* Actions */
 
-sharedProviderFactory(Application app):
-	"[" + app.providerFactory().use() + " sharedProviders]";
+//TOOD: cell is handed in to calculate unique cell selector name for ViewCall - there has to be a better way
+action(ViewAction this, Cell cell):
+	throwError("action not supported for " + this);
 
-applicationDelegate(Application app):
-	projectClass(app.name + "AppDelegate");
+action(ViewCall call, Cell cell):
+	'[' + "SelectorAction".use() + ' actionWithObject:self selector:@selector(' + cell.idname() + 'CellSelected:)]';
 
-class(ContentProviderImplementation this):
-	Void;
-
-class(UrlContentProviderImplementation this):
-	projectClass("UrlContentProvider");
-
-class(CustomContentProviderImplementation this):
-	projectClass(this.providerClass.name);
-
-ivar(ContentProvider provider):
-	"f" + provider.name.toFirstUpper();
+action(Selector sel, Cell cell):
+	'[' + "SelectorAction".use() + ' actionWithObject:self selector:@selector(' + sel.name + ')]';
 
 
 
+
+/* Parameter handling */
+
+// simulates parameter list, at the moment there can be only 0/1 parameters
+// remove with http://ralfebert.lighthouseapp.com/projects/67904/tickets/57-support-for-multiple-parameters
+List[Parameter] parameters(View this):
+	{ parameter }.remove(null);
+
+List[Parameter] parameters(ContentProvider this):
+	{ parameter }.remove(null);
+
+List[Parameter] parameterTypes(View view):
+	view.parameters().collect(e|"ContentProvider".use() + " *");
+
+List[Parameter] parameterTypes(ContentProvider this):
+	parameters().collect(e|"ContentProvider".use() + " *");
+
+List[ProviderConstruction] parameters(ViewCall view):
+	{ view.parameter }.remove(null);
+
+//TODO: parameters vs. argument vs. parameterValues(Bindings?)
+
+List[Expression] parameterValues(ComplexProviderConstruction this):
+	{ this.argument }.remove(null);
+
+
+
+
+/* Misc */
 
 objcType(Type this):
 	throwError("<objcType not supported for " + this + ">");
@@ -406,19 +408,15 @@ objcType(SimpleType type):
 objcType(Entity type):
 	type.runtimeType ? type.name + " *" : "id";
 
-
 variable(Type this, String name):
 	this.objcType() + (this.objcType().endsWith("*") ? "" : " ") + name;
 
+type(ScopeName param):
+	'ContentProvider'.use() + " *";
 
-
-
-type(Cell this):
-	type.toString().toFirstUpper();
+ivar(ScopeName param):
+	"f" + param.name.toFirstUpper();
 	
-firstCell(TableView this):
-	sections.first().cells.first();
-
 Boolean hasBindings(EObject this):
 	Binding.isInstance(this) || this.eContents().exists(e|((EObject)e).hasBindings());
 
@@ -428,20 +426,12 @@ List[String] keyPath(ObjectReference this):
 objcKeyPath(ObjectReference this):
 	'@"' + keyPath().toString(".") + '"';
 
-List[String] keyPath(ObjectReference this, String kvcPrefix):
-	let head = (kvcPrefix != "" ? {kvcPrefix} : {}):
-		head.addAll(keyPath().withoutFirst());
 
-methodSignature(ContentProvider p):
-	'- (' + use('ContentProvider') + ' *) providerFor' + p.name + (
-		p.parameter != null ? ':(id)' + p.parameter.name : '') 
-	;
-	
+
+/* Application */
+
 allProviders(Application this):
 	model().elements.typeSelect(ContentProvider);
 	
 allViews(Application this):
 	model().elements.typeSelect(View);
-	
-allViewClasses(Application this):
-	model().elements.typeSelect(View).removeAll(model().elements.typeSelect(TabView));
