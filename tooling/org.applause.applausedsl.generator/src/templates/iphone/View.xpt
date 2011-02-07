@@ -35,6 +35,7 @@
 «EXPAND ObjC::Import FOREACH class().moduleImports() ONFILECLOSE-»
 
 @implementation «class().name»
+«scopeStart()-»
 
 «objcInitSignature()» {
 	self = [super initWithStyle:«style.constant()»];
@@ -42,8 +43,8 @@
 		«IF this.hasBindings()-»
 			fBindings = [[BindingContext alloc] init];
 		«ENDIF-»
-		«parameters().collect(p|p.ivar() + " = [" + p.name + " retain]").statements()»
-		«variables.collect(p|p.ivar() + " = [" + p.value.contentProvider('', '') + " retain]").statements()»
+		«parameters().collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.name + " retain]").statements()»
+		«variables.collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.value.contentProvider('', '') + " retain]").statements()»
 	}
 	return self;
 }
@@ -64,6 +65,7 @@
 «EXPAND providerMethod FOREACH sections.cells.select(e|e.iterator!=null)-»
 «EXPAND cellActionMethod FOREACH sections.cells.select(e|e.action!=null)-»
 «EXPAND dealloc»
+«scopeEnd()-»
 @end
 «ENDFILE»
 «ENDDEFINE»

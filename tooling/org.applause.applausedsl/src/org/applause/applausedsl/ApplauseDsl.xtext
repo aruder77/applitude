@@ -63,7 +63,7 @@ ObjectReference:
 //   ObjectReference:
 //     object=[ScopeName] ('.' tail=ObjectReference)?;
 NestedObjectReference returns ObjectReference:
-	'.' object=[ScopeName] tail=NestedObjectReference?;
+	'.' object=[Property] tail=NestedObjectReference?;
 
 // -------------------------------------------
 // expressions

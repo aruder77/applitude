@@ -16,9 +16,9 @@ public class ApplauseDslScopeProvider extends AbstractDeclarativeScopeProvider {
 	
 	public IScope scope_ScopeName(EObject context, EReference ref) {
 		if(context.eContainer() instanceof ObjectReference)
-			return new NestedDeclarationScope((ObjectReference) context.eContainer());
+			return new ObjectReferenceScope((ObjectReference) context.eContainer());
 		else
-			return new PropertyPathPartScope(context);
+			return new ScopeNameScope(context);
 	}
 	
 

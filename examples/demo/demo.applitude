@@ -52,8 +52,12 @@ tableview InventorDetail(Inventor inventor) {
 	section {
 		cell Value2 {
 			text: "Name"
-			detailText: inventor.name //( inventor.name " (" inventor.name ")" )
-			//action: InventorDetail(inventor)
+			detailText: ( inventor.name " (" inventor.name ")" )
+			action: InventorDetail(inventor)
+		}
+		cell Value2 {
+			text: inventor.name
+			action: TextView(inventor.name)
 		}
 	}
 
@@ -253,6 +257,16 @@ tableview ReferenceEntityModels {
 
 }
 
+tableview TextView(String text) {
+	title: text
+	
+	section {
+		cell Default {
+			text: text
+		}
+	}
+}
+
 
 tableview ReferenceExpressions {
 	Inventor[] inventors = AllInventorsJSON()
@@ -266,6 +280,7 @@ tableview ReferenceExpressions {
 		cell Subtitle for inventor in inventors {
 			text: inventor.name
 			detailText: ( urlconform(inventor.name) ", " replace(inventor.name, " ", "_") )
+			action: TextView(inventor.name)
 		}
 	}
 	

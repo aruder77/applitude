@@ -11,11 +11,11 @@ import org.eclipse.xtext.scoping.impl.AbstractScope;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 
-public class PropertyPathPartScope extends AbstractScope {
+public class ScopeNameScope extends AbstractScope {
 
 	protected final EObject context;
 	
-	public PropertyPathPartScope(EObject context) {
+	public ScopeNameScope(EObject context) {
 		Preconditions.checkNotNull(context);
 		this.context = context;
 	}
@@ -24,7 +24,7 @@ public class PropertyPathPartScope extends AbstractScope {
 		if(context.eContainer() == null)
 			return IScope.NULLSCOPE;
 		else
-			return new PropertyPathPartScope(context.eContainer());
+			return new ScopeNameScope(context.eContainer());
 	}
 
 	@Override

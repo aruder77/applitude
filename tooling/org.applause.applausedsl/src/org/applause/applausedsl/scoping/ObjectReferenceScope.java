@@ -11,11 +11,11 @@ import org.eclipse.xtext.scoping.impl.AbstractScope;
 
 import com.google.common.collect.Iterables;
 
-public class NestedDeclarationScope extends AbstractScope {
+public class ObjectReferenceScope extends AbstractScope {
 
 	private final ObjectReference container;
 
-	public NestedDeclarationScope(ObjectReference container) {
+	public ObjectReferenceScope(ObjectReference container) {
 		this.container = container;
 	}
 
