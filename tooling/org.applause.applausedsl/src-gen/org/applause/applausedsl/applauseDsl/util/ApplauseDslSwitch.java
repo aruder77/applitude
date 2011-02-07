@@ -202,9 +202,9 @@ public class ApplauseDslSwitch<T>
       {
         ObjectReference objectReference = (ObjectReference)theEObject;
         T result = caseObjectReference(objectReference);
-        if (result == null) result = caseExpression(objectReference);
         if (result == null) result = caseScalarExpression(objectReference);
         if (result == null) result = caseCollectionExpression(objectReference);
+        if (result == null) result = caseExpression(objectReference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -219,6 +219,7 @@ public class ApplauseDslSwitch<T>
       {
         ScalarExpression scalarExpression = (ScalarExpression)theEObject;
         T result = caseScalarExpression(scalarExpression);
+        if (result == null) result = caseExpression(scalarExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -226,8 +227,8 @@ public class ApplauseDslSwitch<T>
       {
         StringLiteral stringLiteral = (StringLiteral)theEObject;
         T result = caseStringLiteral(stringLiteral);
-        if (result == null) result = caseExpression(stringLiteral);
         if (result == null) result = caseScalarExpression(stringLiteral);
+        if (result == null) result = caseExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -235,8 +236,17 @@ public class ApplauseDslSwitch<T>
       {
         StringFunction stringFunction = (StringFunction)theEObject;
         T result = caseStringFunction(stringFunction);
-        if (result == null) result = caseExpression(stringFunction);
         if (result == null) result = caseScalarExpression(stringFunction);
+        if (result == null) result = caseExpression(stringFunction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ApplauseDslPackage.BINDING:
+      {
+        Binding binding = (Binding)theEObject;
+        T result = caseBinding(binding);
+        if (result == null) result = caseScalarExpression(binding);
+        if (result == null) result = caseExpression(binding);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -244,6 +254,7 @@ public class ApplauseDslSwitch<T>
       {
         CollectionExpression collectionExpression = (CollectionExpression)theEObject;
         T result = caseCollectionExpression(collectionExpression);
+        if (result == null) result = caseExpression(collectionExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -251,8 +262,8 @@ public class ApplauseDslSwitch<T>
       {
         CollectionLiteral collectionLiteral = (CollectionLiteral)theEObject;
         T result = caseCollectionLiteral(collectionLiteral);
-        if (result == null) result = caseExpression(collectionLiteral);
         if (result == null) result = caseCollectionExpression(collectionLiteral);
+        if (result == null) result = caseExpression(collectionLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -260,8 +271,8 @@ public class ApplauseDslSwitch<T>
       {
         CollectionFunction collectionFunction = (CollectionFunction)theEObject;
         T result = caseCollectionFunction(collectionFunction);
-        if (result == null) result = caseExpression(collectionFunction);
         if (result == null) result = caseCollectionExpression(collectionFunction);
+        if (result == null) result = caseExpression(collectionFunction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -412,8 +423,8 @@ public class ApplauseDslSwitch<T>
         StringConcat stringConcat = (StringConcat)theEObject;
         T result = caseStringConcat(stringConcat);
         if (result == null) result = caseStringFunction(stringConcat);
-        if (result == null) result = caseExpression(stringConcat);
         if (result == null) result = caseScalarExpression(stringConcat);
+        if (result == null) result = caseExpression(stringConcat);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -422,8 +433,8 @@ public class ApplauseDslSwitch<T>
         StringReplace stringReplace = (StringReplace)theEObject;
         T result = caseStringReplace(stringReplace);
         if (result == null) result = caseStringFunction(stringReplace);
-        if (result == null) result = caseExpression(stringReplace);
         if (result == null) result = caseScalarExpression(stringReplace);
+        if (result == null) result = caseExpression(stringReplace);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -432,8 +443,8 @@ public class ApplauseDslSwitch<T>
         StringUrlConform stringUrlConform = (StringUrlConform)theEObject;
         T result = caseStringUrlConform(stringUrlConform);
         if (result == null) result = caseStringFunction(stringUrlConform);
-        if (result == null) result = caseExpression(stringUrlConform);
         if (result == null) result = caseScalarExpression(stringUrlConform);
+        if (result == null) result = caseExpression(stringUrlConform);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -442,8 +453,8 @@ public class ApplauseDslSwitch<T>
         StringSplit stringSplit = (StringSplit)theEObject;
         T result = caseStringSplit(stringSplit);
         if (result == null) result = caseCollectionFunction(stringSplit);
-        if (result == null) result = caseExpression(stringSplit);
         if (result == null) result = caseCollectionExpression(stringSplit);
+        if (result == null) result = caseExpression(stringSplit);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -751,6 +762,22 @@ public class ApplauseDslSwitch<T>
    * @generated
    */
   public T caseStringFunction(StringFunction object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Binding</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Binding</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBinding(Binding object)
   {
     return null;
   }

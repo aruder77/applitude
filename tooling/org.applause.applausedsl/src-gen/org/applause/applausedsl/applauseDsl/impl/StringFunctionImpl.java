@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class StringFunctionImpl extends ExpressionImpl implements StringFunction
+public class StringFunctionImpl extends ScalarExpressionImpl implements StringFunction
 {
   /**
    * <!-- begin-user-doc -->

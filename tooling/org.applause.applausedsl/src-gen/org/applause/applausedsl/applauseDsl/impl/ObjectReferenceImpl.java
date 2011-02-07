@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ObjectReferenceImpl extends ExpressionImpl implements ObjectReference
+public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectReference
 {
   /**
    * The cached value of the '{@link #getObject() <em>Object</em>}' reference.

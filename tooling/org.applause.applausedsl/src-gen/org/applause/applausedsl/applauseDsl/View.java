@@ -14,7 +14,7 @@ package org.applause.applausedsl.applauseDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.View#getContent <em>Content</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.View#getParameter <em>Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +25,29 @@ package org.applause.applausedsl.applauseDsl;
 public interface View extends ModelElement
 {
   /**
-   * Returns the value of the '<em><b>Content</b></em>' containment reference.
+   * Returns the value of the '<em><b>Parameter</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Content</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Parameter</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Content</em>' containment reference.
-   * @see #setContent(Parameter)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getView_Content()
+   * @return the value of the '<em>Parameter</em>' containment reference.
+   * @see #setParameter(Parameter)
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getView_Parameter()
    * @model containment="true"
    * @generated
    */
-  Parameter getContent();
+  Parameter getParameter();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.View#getContent <em>Content</em>}' containment reference.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.View#getParameter <em>Parameter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Content</em>' containment reference.
-   * @see #getContent()
+   * @param value the new value of the '<em>Parameter</em>' containment reference.
+   * @see #getParameter()
    * @generated
    */
-  void setContent(Parameter value);
+  void setParameter(Parameter value);
 
 } // View

@@ -49,23 +49,27 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ProviderConstruction"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectReference" eSuperTypes="#//Expression #//ScalarExpression #//CollectionExpression">
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectReference" eSuperTypes="#//ScalarExpression #//CollectionExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="object" eType="#//ScopeName"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tail" eType="#//ObjectReference"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ScalarExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Expression #//ScalarExpression">
+  <eClassifiers xsi:type="ecore:EClass" name="ScalarExpression" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//ScalarExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringFunction" eSuperTypes="#//Expression #//ScalarExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CollectionExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteral" eSuperTypes="#//Expression #//CollectionExpression">
+  <eClassifiers xsi:type="ecore:EClass" name="StringFunction" eSuperTypes="#//ScalarExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Binding" eSuperTypes="#//ScalarExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//ObjectReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionExpression" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionLiteral" eSuperTypes="#//CollectionExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//ScalarExpression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CollectionFunction" eSuperTypes="#//Expression #//CollectionExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionFunction" eSuperTypes="#//CollectionExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="CollectionIterator" eSuperTypes="#//ScopeName">
     <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="#//CollectionExpression"
         containment="true"/>
@@ -98,7 +102,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProviderConstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//ModelElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//Parameter"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//Parameter"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TabView" eSuperTypes="#//View">
@@ -169,7 +173,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ViewAction"/>
   <eClassifiers xsi:type="ecore:EClass" name="ViewCall" eSuperTypes="#//ViewAction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="view" eType="#//View"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="provider" eType="#//ProviderConstruction"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//ProviderConstruction"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Selector" eSuperTypes="#//ViewAction">

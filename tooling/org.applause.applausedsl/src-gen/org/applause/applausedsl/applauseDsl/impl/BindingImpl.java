@@ -6,8 +6,8 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.Parameter;
-import org.applause.applausedsl.applauseDsl.View;
+import org.applause.applausedsl.applauseDsl.Binding;
+import org.applause.applausedsl.applauseDsl.ObjectReference;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -19,35 +19,35 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>View</b></em>'.
+ * An implementation of the model object '<em><b>Binding</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.BindingImpl#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ViewImpl extends ModelElementImpl implements View
+public class BindingImpl extends ScalarExpressionImpl implements Binding
 {
   /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference.
+   * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameter()
+   * @see #getTarget()
    * @generated
    * @ordered
    */
-  protected Parameter parameter;
+  protected ObjectReference target;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ViewImpl()
+  protected BindingImpl()
   {
     super();
   }
@@ -60,7 +60,7 @@ public class ViewImpl extends ModelElementImpl implements View
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.VIEW;
+    return ApplauseDslPackage.Literals.BINDING;
   }
 
   /**
@@ -68,9 +68,9 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter getParameter()
+  public ObjectReference getTarget()
   {
-    return parameter;
+    return target;
   }
 
   /**
@@ -78,13 +78,13 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameter(Parameter newParameter, NotificationChain msgs)
+  public NotificationChain basicSetTarget(ObjectReference newTarget, NotificationChain msgs)
   {
-    Parameter oldParameter = parameter;
-    parameter = newParameter;
+    ObjectReference oldTarget = target;
+    target = newTarget;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW__PARAMETER, oldParameter, newParameter);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.BINDING__TARGET, oldTarget, newTarget);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameter(Parameter newParameter)
+  public void setTarget(ObjectReference newTarget)
   {
-    if (newParameter != parameter)
+    if (newTarget != target)
     {
       NotificationChain msgs = null;
-      if (parameter != null)
-        msgs = ((InternalEObject)parameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW__PARAMETER, null, msgs);
-      if (newParameter != null)
-        msgs = ((InternalEObject)newParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW__PARAMETER, null, msgs);
-      msgs = basicSetParameter(newParameter, msgs);
+      if (target != null)
+        msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.BINDING__TARGET, null, msgs);
+      if (newTarget != null)
+        msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.BINDING__TARGET, null, msgs);
+      msgs = basicSetTarget(newTarget, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW__PARAMETER, newParameter, newParameter));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.BINDING__TARGET, newTarget, newTarget));
   }
 
   /**
@@ -121,8 +121,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        return basicSetParameter(null, msgs);
+      case ApplauseDslPackage.BINDING__TARGET:
+        return basicSetTarget(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        return getParameter();
+      case ApplauseDslPackage.BINDING__TARGET:
+        return getTarget();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        setParameter((Parameter)newValue);
+      case ApplauseDslPackage.BINDING__TARGET:
+        setTarget((ObjectReference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        setParameter((Parameter)null);
+      case ApplauseDslPackage.BINDING__TARGET:
+        setTarget((ObjectReference)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,10 +187,10 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        return parameter != null;
+      case ApplauseDslPackage.BINDING__TARGET:
+        return target != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ViewImpl
+} //BindingImpl

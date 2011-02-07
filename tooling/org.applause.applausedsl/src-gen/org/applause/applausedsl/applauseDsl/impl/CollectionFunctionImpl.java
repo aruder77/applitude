@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class CollectionFunctionImpl extends ExpressionImpl implements CollectionFunction
+public class CollectionFunctionImpl extends CollectionExpressionImpl implements CollectionFunction
 {
   /**
    * <!-- begin-user-doc -->

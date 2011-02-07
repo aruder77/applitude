@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CollectionLiteral extends Expression, CollectionExpression
+public interface CollectionLiteral extends CollectionExpression
 {
   /**
    * Returns the value of the '<em><b>Items</b></em>' containment reference list.

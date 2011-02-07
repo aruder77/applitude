@@ -78,6 +78,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//StringLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//StringFunction"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//Binding">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//Binding/target"/>
+    </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionExpression"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//CollectionLiteral">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CollectionLiteral/items"/>
@@ -104,7 +107,7 @@
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ProviderConstruction"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//View">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//View/content"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//View/parameter"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//TabView">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//TabView/tabs"/>
@@ -142,7 +145,7 @@
     <genClasses ecoreClass="ApplauseDsl.ecore#//ViewAction"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ViewCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/view"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ViewCall/parameter"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//Selector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Selector/name"/>

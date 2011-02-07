@@ -1091,7 +1091,7 @@ ruleNestedObjectReference returns [EObject current=null]
         }
 	RULE_ID
 	{
-		createLeafNode(grammarAccess.getNestedObjectReferenceAccess().getObjectScopeNameCrossReference_1_0(), "object"); 
+		createLeafNode(grammarAccess.getNestedObjectReferenceAccess().getObjectPropertyCrossReference_1_0(), "object"); 
 	}
 
 )
@@ -1144,51 +1144,21 @@ ruleExpression returns [EObject current=null]
     }:
 (
     { 
-        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getStringLiteralParserRuleCall_0(), currentNode); 
+        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getScalarExpressionParserRuleCall_0(), currentNode); 
     }
-    this_StringLiteral_0=ruleStringLiteral
+    this_ScalarExpression_0=ruleScalarExpression
     { 
-        $current = $this_StringLiteral_0.current; 
+        $current = $this_ScalarExpression_0.current; 
         currentNode = currentNode.getParent();
     }
 
     |
     { 
-        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getStringFunctionParserRuleCall_1(), currentNode); 
+        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getCollectionExpressionParserRuleCall_1(), currentNode); 
     }
-    this_StringFunction_1=ruleStringFunction
+    this_CollectionExpression_1=ruleCollectionExpression
     { 
-        $current = $this_StringFunction_1.current; 
-        currentNode = currentNode.getParent();
-    }
-
-    |
-    { 
-        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getCollectionLiteralParserRuleCall_2(), currentNode); 
-    }
-    this_CollectionLiteral_2=ruleCollectionLiteral
-    { 
-        $current = $this_CollectionLiteral_2.current; 
-        currentNode = currentNode.getParent();
-    }
-
-    |
-    { 
-        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getCollectionFunctionParserRuleCall_3(), currentNode); 
-    }
-    this_CollectionFunction_3=ruleCollectionFunction
-    { 
-        $current = $this_CollectionFunction_3.current; 
-        currentNode = currentNode.getParent();
-    }
-
-    |
-    { 
-        currentNode=createCompositeNode(grammarAccess.getExpressionAccess().getObjectReferenceParserRuleCall_4(), currentNode); 
-    }
-    this_ObjectReference_4=ruleObjectReference
-    { 
-        $current = $this_ObjectReference_4.current; 
+        $current = $this_CollectionExpression_1.current; 
         currentNode = currentNode.getParent();
     }
 )
@@ -1241,6 +1211,16 @@ ruleScalarExpression returns [EObject current=null]
     this_ObjectReference_2=ruleObjectReference
     { 
         $current = $this_ObjectReference_2.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getScalarExpressionAccess().getBindingParserRuleCall_3(), currentNode); 
+    }
+    this_Binding_3=ruleBinding
+    { 
+        $current = $this_Binding_3.current; 
         currentNode = currentNode.getParent();
     }
 )
@@ -1501,6 +1481,61 @@ ruleStringFunction returns [EObject current=null]
         createLeafNode(grammarAccess.getStringFunctionAccess().getRightParenthesisKeyword_2_3(), null); 
     }
 ))
+;
+
+
+
+
+
+// Entry rule entryRuleBinding
+entryRuleBinding returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getBindingRule(), currentNode); }
+	 iv_ruleBinding=ruleBinding 
+	 { $current=$iv_ruleBinding.current; } 
+	 EOF 
+;
+
+// Rule Binding
+ruleBinding returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(	'bind(' 
+    {
+        createLeafNode(grammarAccess.getBindingAccess().getBindKeyword_0(), null); 
+    }
+(
+(
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getBindingAccess().getTargetObjectReferenceParserRuleCall_1_0(), currentNode); 
+	    }
+		lv_target_1_0=ruleObjectReference		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getBindingRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"target",
+	        		lv_target_1_0, 
+	        		"ObjectReference", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+
+)
+)	')' 
+    {
+        createLeafNode(grammarAccess.getBindingAccess().getRightParenthesisKeyword_2(), null); 
+    }
+)
 ;
 
 
@@ -2430,9 +2465,9 @@ ruleTabView returns [EObject current=null]
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTabViewAccess().getContentParameterParserRuleCall_2_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTabViewAccess().getParameterParameterParserRuleCall_2_1_0(), currentNode); 
 	    }
-		lv_content_3_0=ruleParameter		{
+		lv_parameter_3_0=ruleParameter		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTabViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -2440,8 +2475,8 @@ ruleTabView returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"content",
-	        		lv_content_3_0, 
+	       			"parameter",
+	        		lv_parameter_3_0, 
 	        		"Parameter", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -2717,9 +2752,9 @@ ruleTableView returns [EObject current=null]
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getTableViewAccess().getContentParameterParserRuleCall_2_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getTableViewAccess().getParameterParameterParserRuleCall_2_1_0(), currentNode); 
 	    }
-		lv_content_3_0=ruleParameter		{
+		lv_parameter_3_0=ruleParameter		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getTableViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -2727,8 +2762,8 @@ ruleTableView returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"content",
-	        		lv_content_3_0, 
+	       			"parameter",
+	        		lv_parameter_3_0, 
 	        		"Parameter", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -3415,9 +3450,9 @@ ruleCustomView returns [EObject current=null]
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getCustomViewAccess().getContentParameterParserRuleCall_2_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getCustomViewAccess().getParameterParameterParserRuleCall_2_1_0(), currentNode); 
 	    }
-		lv_content_3_0=ruleParameter		{
+		lv_parameter_3_0=ruleParameter		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getCustomViewRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -3425,8 +3460,8 @@ ruleCustomView returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"content",
-	        		lv_content_3_0, 
+	       			"parameter",
+	        		lv_parameter_3_0, 
 	        		"Parameter", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -3560,9 +3595,9 @@ ruleViewCall returns [EObject current=null]
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getViewCallAccess().getProviderProviderConstructionParserRuleCall_2_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getViewCallAccess().getParameterProviderConstructionParserRuleCall_2_0(), currentNode); 
 	    }
-		lv_provider_2_0=ruleProviderConstruction		{
+		lv_parameter_2_0=ruleProviderConstruction		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getViewCallRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -3570,8 +3605,8 @@ ruleViewCall returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"provider",
-	        		lv_provider_2_0, 
+	       			"parameter",
+	        		lv_parameter_2_0, 
 	        		"ProviderConstruction", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {

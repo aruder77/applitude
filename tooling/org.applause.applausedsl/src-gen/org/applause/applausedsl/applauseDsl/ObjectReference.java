@@ -23,7 +23,7 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface ObjectReference extends Expression, ScalarExpression, CollectionExpression
+public interface ObjectReference extends ScalarExpression, CollectionExpression
 {
   /**
    * Returns the value of the '<em><b>Object</b></em>' reference.

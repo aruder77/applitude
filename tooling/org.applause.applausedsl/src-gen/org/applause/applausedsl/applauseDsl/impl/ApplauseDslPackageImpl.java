@@ -9,6 +9,7 @@ import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Application;
 import org.applause.applausedsl.applauseDsl.Assignment;
+import org.applause.applausedsl.applauseDsl.Binding;
 import org.applause.applausedsl.applauseDsl.Cell;
 import org.applause.applausedsl.applauseDsl.CellAccessory;
 import org.applause.applausedsl.applauseDsl.CellType;
@@ -198,6 +199,13 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * @generated
    */
   private EClass stringFunctionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bindingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -854,6 +862,26 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getBinding()
+  {
+    return bindingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBinding_Target()
+  {
+    return (EReference)bindingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCollectionExpression()
   {
     return collectionExpressionEClass;
@@ -1064,7 +1092,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getView_Content()
+  public EReference getView_Parameter()
   {
     return (EReference)viewEClass.getEStructuralFeatures().get(0);
   }
@@ -1364,7 +1392,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getViewCall_Provider()
+  public EReference getViewCall_Parameter()
   {
     return (EReference)viewCallEClass.getEStructuralFeatures().get(1);
   }
@@ -1694,6 +1722,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
 
     stringFunctionEClass = createEClass(STRING_FUNCTION);
 
+    bindingEClass = createEClass(BINDING);
+    createEReference(bindingEClass, BINDING__TARGET);
+
     collectionExpressionEClass = createEClass(COLLECTION_EXPRESSION);
 
     collectionLiteralEClass = createEClass(COLLECTION_LITERAL);
@@ -1724,7 +1755,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     providerConstructionEClass = createEClass(PROVIDER_CONSTRUCTION);
 
     viewEClass = createEClass(VIEW);
-    createEReference(viewEClass, VIEW__CONTENT);
+    createEReference(viewEClass, VIEW__PARAMETER);
 
     tabViewEClass = createEClass(TAB_VIEW);
     createEReference(tabViewEClass, TAB_VIEW__TABS);
@@ -1763,7 +1794,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
 
     viewCallEClass = createEClass(VIEW_CALL);
     createEReference(viewCallEClass, VIEW_CALL__VIEW);
-    createEReference(viewCallEClass, VIEW_CALL__PROVIDER);
+    createEReference(viewCallEClass, VIEW_CALL__PARAMETER);
 
     selectorEClass = createEClass(SELECTOR);
     createEAttribute(selectorEClass, SELECTOR__NAME);
@@ -1836,16 +1867,14 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     parameterEClass.getESuperTypes().add(this.getTypedName());
     propertyEClass.getESuperTypes().add(this.getTypedName());
     assignmentEClass.getESuperTypes().add(this.getTypedName());
-    objectReferenceEClass.getESuperTypes().add(this.getExpression());
     objectReferenceEClass.getESuperTypes().add(this.getScalarExpression());
     objectReferenceEClass.getESuperTypes().add(this.getCollectionExpression());
-    stringLiteralEClass.getESuperTypes().add(this.getExpression());
+    scalarExpressionEClass.getESuperTypes().add(this.getExpression());
     stringLiteralEClass.getESuperTypes().add(this.getScalarExpression());
-    stringFunctionEClass.getESuperTypes().add(this.getExpression());
     stringFunctionEClass.getESuperTypes().add(this.getScalarExpression());
-    collectionLiteralEClass.getESuperTypes().add(this.getExpression());
+    bindingEClass.getESuperTypes().add(this.getScalarExpression());
+    collectionExpressionEClass.getESuperTypes().add(this.getExpression());
     collectionLiteralEClass.getESuperTypes().add(this.getCollectionExpression());
-    collectionFunctionEClass.getESuperTypes().add(this.getExpression());
     collectionFunctionEClass.getESuperTypes().add(this.getCollectionExpression());
     collectionIteratorEClass.getESuperTypes().add(this.getScopeName());
     contentProviderEClass.getESuperTypes().add(this.getModelElement());
@@ -1923,6 +1952,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
 
     initEClass(stringFunctionEClass, StringFunction.class, "StringFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(bindingEClass, Binding.class, "Binding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBinding_Target(), this.getObjectReference(), null, "target", null, 0, 1, Binding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(collectionExpressionEClass, CollectionExpression.class, "CollectionExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1953,7 +1985,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     initEClass(providerConstructionEClass, ProviderConstruction.class, "ProviderConstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getView_Content(), this.getParameter(), null, "content", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getView_Parameter(), this.getParameter(), null, "parameter", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tabViewEClass, TabView.class, "TabView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTabView_Tabs(), this.getTab(), null, "tabs", null, 0, -1, TabView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1992,7 +2024,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
 
     initEClass(viewCallEClass, ViewCall.class, "ViewCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getViewCall_View(), this.getView(), null, "view", null, 0, 1, ViewCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getViewCall_Provider(), this.getProviderConstruction(), null, "provider", null, 0, 1, ViewCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getViewCall_Parameter(), this.getProviderConstruction(), null, "parameter", null, 0, 1, ViewCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectorEClass, Selector.class, "Selector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

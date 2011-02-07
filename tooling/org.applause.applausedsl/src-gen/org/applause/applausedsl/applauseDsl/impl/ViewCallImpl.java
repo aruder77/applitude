@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl#getView <em>View</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl#getProvider <em>Provider</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,14 +45,14 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
   protected View view;
 
   /**
-   * The cached value of the '{@link #getProvider() <em>Provider</em>}' containment reference.
+   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProvider()
+   * @see #getParameter()
    * @generated
    * @ordered
    */
-  protected ProviderConstruction provider;
+  protected ProviderConstruction parameter;
 
   /**
    * <!-- begin-user-doc -->
@@ -123,9 +123,9 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProviderConstruction getProvider()
+  public ProviderConstruction getParameter()
   {
-    return provider;
+    return parameter;
   }
 
   /**
@@ -133,13 +133,13 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetProvider(ProviderConstruction newProvider, NotificationChain msgs)
+  public NotificationChain basicSetParameter(ProviderConstruction newParameter, NotificationChain msgs)
   {
-    ProviderConstruction oldProvider = provider;
-    provider = newProvider;
+    ProviderConstruction oldParameter = parameter;
+    parameter = newParameter;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PROVIDER, oldProvider, newProvider);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PARAMETER, oldParameter, newParameter);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -150,20 +150,20 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProvider(ProviderConstruction newProvider)
+  public void setParameter(ProviderConstruction newParameter)
   {
-    if (newProvider != provider)
+    if (newParameter != parameter)
     {
       NotificationChain msgs = null;
-      if (provider != null)
-        msgs = ((InternalEObject)provider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PROVIDER, null, msgs);
-      if (newProvider != null)
-        msgs = ((InternalEObject)newProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PROVIDER, null, msgs);
-      msgs = basicSetProvider(newProvider, msgs);
+      if (parameter != null)
+        msgs = ((InternalEObject)parameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PARAMETER, null, msgs);
+      if (newParameter != null)
+        msgs = ((InternalEObject)newParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PARAMETER, null, msgs);
+      msgs = basicSetParameter(newParameter, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PROVIDER, newProvider, newProvider));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PARAMETER, newParameter, newParameter));
   }
 
   /**
@@ -176,8 +176,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW_CALL__PROVIDER:
-        return basicSetProvider(null, msgs);
+      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
+        return basicSetParameter(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -195,8 +195,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         if (resolve) return getView();
         return basicGetView();
-      case ApplauseDslPackage.VIEW_CALL__PROVIDER:
-        return getProvider();
+      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
+        return getParameter();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -214,8 +214,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         setView((View)newValue);
         return;
-      case ApplauseDslPackage.VIEW_CALL__PROVIDER:
-        setProvider((ProviderConstruction)newValue);
+      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
+        setParameter((ProviderConstruction)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,8 +234,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         setView((View)null);
         return;
-      case ApplauseDslPackage.VIEW_CALL__PROVIDER:
-        setProvider((ProviderConstruction)null);
+      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
+        setParameter((ProviderConstruction)null);
         return;
     }
     super.eUnset(featureID);
@@ -253,8 +253,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
     {
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         return view != null;
-      case ApplauseDslPackage.VIEW_CALL__PROVIDER:
-        return provider != null;
+      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
+        return parameter != null;
     }
     return super.eIsSet(featureID);
   }

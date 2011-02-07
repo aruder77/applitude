@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CollectionLiteralImpl extends ExpressionImpl implements CollectionLiteral
+public class CollectionLiteralImpl extends CollectionExpressionImpl implements CollectionLiteral
 {
   /**
    * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.

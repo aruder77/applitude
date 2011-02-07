@@ -15,7 +15,7 @@ package org.applause.applausedsl.applauseDsl;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.applause.applausedsl.applauseDsl.ViewCall#getView <em>View</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.ViewCall#getProvider <em>Provider</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.ViewCall#getParameter <em>Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,29 +52,29 @@ public interface ViewCall extends ViewAction
   void setView(View value);
 
   /**
-   * Returns the value of the '<em><b>Provider</b></em>' containment reference.
+   * Returns the value of the '<em><b>Parameter</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Provider</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Parameter</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Provider</em>' containment reference.
-   * @see #setProvider(ProviderConstruction)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getViewCall_Provider()
+   * @return the value of the '<em>Parameter</em>' containment reference.
+   * @see #setParameter(ProviderConstruction)
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getViewCall_Parameter()
    * @model containment="true"
    * @generated
    */
-  ProviderConstruction getProvider();
+  ProviderConstruction getParameter();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ViewCall#getProvider <em>Provider</em>}' containment reference.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ViewCall#getParameter <em>Parameter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Provider</em>' containment reference.
-   * @see #getProvider()
+   * @param value the new value of the '<em>Parameter</em>' containment reference.
+   * @see #getParameter()
    * @generated
    */
-  void setProvider(ProviderConstruction value);
+  void setParameter(ProviderConstruction value);
 
 } // ViewCall

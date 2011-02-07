@@ -188,6 +188,15 @@ public interface ApplauseDslFactory extends EFactory
   StringFunction createStringFunction();
 
   /**
+   * Returns a new object of class '<em>Binding</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Binding</em>'.
+   * @generated
+   */
+  Binding createBinding();
+
+  /**
    * Returns a new object of class '<em>Collection Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

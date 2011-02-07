@@ -10,8 +10,6 @@ import org.applause.applausedsl.applauseDsl.CollectionExpression;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Collection Expression</b></em>'.
@@ -21,7 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class CollectionExpressionImpl extends MinimalEObjectImpl.Container implements CollectionExpression
+public class CollectionExpressionImpl extends ExpressionImpl implements CollectionExpression
 {
   /**
    * <!-- begin-user-doc -->

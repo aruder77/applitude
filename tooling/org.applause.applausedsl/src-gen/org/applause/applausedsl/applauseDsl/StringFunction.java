@@ -16,6 +16,6 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface StringFunction extends Expression, ScalarExpression
+public interface StringFunction extends ScalarExpression
 {
 } // StringFunction

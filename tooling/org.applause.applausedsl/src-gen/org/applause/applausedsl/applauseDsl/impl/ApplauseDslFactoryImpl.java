@@ -86,6 +86,7 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.SCALAR_EXPRESSION: return createScalarExpression();
       case ApplauseDslPackage.STRING_LITERAL: return createStringLiteral();
       case ApplauseDslPackage.STRING_FUNCTION: return createStringFunction();
+      case ApplauseDslPackage.BINDING: return createBinding();
       case ApplauseDslPackage.COLLECTION_EXPRESSION: return createCollectionExpression();
       case ApplauseDslPackage.COLLECTION_LITERAL: return createCollectionLiteral();
       case ApplauseDslPackage.COLLECTION_FUNCTION: return createCollectionFunction();
@@ -360,6 +361,17 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
   {
     StringFunctionImpl stringFunction = new StringFunctionImpl();
     return stringFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Binding createBinding()
+  {
+    BindingImpl binding = new BindingImpl();
+    return binding;
   }
 
   /**

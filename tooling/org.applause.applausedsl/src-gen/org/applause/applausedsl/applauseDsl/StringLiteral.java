@@ -22,7 +22,7 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface StringLiteral extends Expression, ScalarExpression
+public interface StringLiteral extends ScalarExpression
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

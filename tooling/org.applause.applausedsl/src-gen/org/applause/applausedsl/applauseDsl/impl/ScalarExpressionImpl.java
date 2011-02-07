@@ -10,8 +10,6 @@ import org.applause.applausedsl.applauseDsl.ScalarExpression;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Scalar Expression</b></em>'.
@@ -21,7 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class ScalarExpressionImpl extends MinimalEObjectImpl.Container implements ScalarExpression
+public class ScalarExpressionImpl extends ExpressionImpl implements ScalarExpression
 {
   /**
    * <!-- begin-user-doc -->

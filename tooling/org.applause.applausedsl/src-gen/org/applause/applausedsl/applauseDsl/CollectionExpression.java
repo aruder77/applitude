@@ -5,7 +5,6 @@
  */
 package org.applause.applausedsl.applauseDsl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface CollectionExpression extends EObject
+public interface CollectionExpression extends Expression
 {
 } // CollectionExpression

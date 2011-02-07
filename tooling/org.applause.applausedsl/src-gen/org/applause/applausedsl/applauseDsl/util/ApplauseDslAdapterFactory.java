@@ -168,6 +168,11 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createStringFunctionAdapter();
       }
       @Override
+      public Adapter caseBinding(Binding object)
+      {
+        return createBindingAdapter();
+      }
+      @Override
       public Adapter caseCollectionExpression(CollectionExpression object)
       {
         return createCollectionExpressionAdapter();
@@ -590,6 +595,21 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStringFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Binding <em>Binding</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.Binding
+   * @generated
+   */
+  public Adapter createBindingAdapter()
   {
     return null;
   }

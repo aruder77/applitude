@@ -16,6 +16,6 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface CollectionFunction extends Expression, CollectionExpression
+public interface CollectionFunction extends CollectionExpression
 {
 } // CollectionFunction
