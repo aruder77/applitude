@@ -83,14 +83,14 @@ static «use(providerFactory())» *sharedProviders = nil;
 
 «DEFINE constructProvider(ContentProvider provider) FOR UrlContentProviderImplementation-»
 «LET provider.parameter.name != null ? provider.parameter.name : '' AS kvcTarget-»
-	«use(this.class())» *provider = [[«use(this.class())» alloc] initWithURL:[NSURL URLWithString:«url.expression(kvcTarget, '')»]];
+	«use(this.class())» *provider = [[«use(this.class())» alloc] initWithURL:[NSURL URLWithString:«url.resolveToValue()»]];
 	«use(this.format.name + 'Filter')» *filter = [«this.format.name»Filter filter];
 	«IF this.format.name == "XML" && this.selection != null-»
-		filter.xpathQuery = «this.selection.resolve()»;
+		filter.xpathQuery = «this.selection.resolveToValue()»;
 	«ENDIF-»
 	[provider addFilter:filter];
 	«IF this.format.name != "XML" && this.selection != null-»
-		[provider addFilter:[«use('CommonFilters')» filterForKeyPath:«this.selection.resolve()»]];
+		[provider addFilter:[«use('CommonFilters')» filterForKeyPath:«this.selection.resolveToValue()»]];
 	«ENDIF-»
 «ENDLET-»
 «ENDDEFINE»

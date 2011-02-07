@@ -69,10 +69,10 @@ NestedObjectReference returns ObjectReference:
 // expressions
 
 Expression:
-	StringLiteral | StringFunction | CollectionLiteral | CollectionFunction | ObjectReference;
+	ScalarExpression | CollectionExpression;
 
 ScalarExpression:
-	StringLiteral | StringFunction | ObjectReference;
+	StringLiteral | StringFunction | ObjectReference | Binding;
 
 StringLiteral:
 	value=STRING;
@@ -81,6 +81,9 @@ StringFunction:
 	{StringConcat} '(' (values+=ScalarExpression)+ ')' |
 	{StringReplace} 'replace(' value=ScalarExpression ',' match=ScalarExpression ',' replacement=ScalarExpression ')' |
 	{StringUrlConform} 'urlconform(' value=ScalarExpression ')';
+
+Binding:
+	'bind(' target=ObjectReference ')';
 
 ImageExpression returns ScalarExpression:
 	ScalarExpression;

@@ -52,9 +52,9 @@
 
 «FOREACH tabs AS tab ITERATOR i-»
 	UINavigationController *tab«i.counter1» = [«use("BrandedUIFactory")» createUINavigationControllerWithRootViewController:«(tab.view != null) ? tab.view.objcProviderMethodCall('', '') : "nil"»];
-	tab«i.counter1».tabBarItem.title = «tab.title.expression('', '')»;
+	tab«i.counter1».tabBarItem.title = «tab.title.resolveToValue()»;
 	«IF tab.icon != null-»
-	tab«i.counter1».tabBarItem.image = [UIImage imageNamed:«tab.icon.expression('','')»];
+	tab«i.counter1».tabBarItem.image = [UIImage imageNamed:«tab.icon.resolveToValue()»];
 	«ENDIF-»
 
 «ENDFOREACH-»

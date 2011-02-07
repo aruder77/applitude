@@ -44,7 +44,7 @@
 
 - (void) applicationDidFinishLaunching:(UIApplication *)application {
 	«IF this.background != null-»
-	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:«this.background.expression('','')»]];
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:«this.background.resolveToValue()»]];
 	[window addSubview:backgroundImageView];
 	[backgroundImageView release];
 	«ENDIF-»

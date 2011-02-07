@@ -55,10 +55,6 @@ tableview InventorDetail(Inventor inventor) {
 			detailText: ( inventor.name " (" inventor.name ")" )
 			action: InventorDetail(inventor)
 		}
-		cell Value2 {
-			text: inventor.name
-			action: TextView(inventor.name)
-		}
 	}
 
 	section {
@@ -68,12 +64,6 @@ tableview InventorDetail(Inventor inventor) {
 			action: InventionDetail(invention)
 		}
 	}
-
-	/*section {
-		cell Value2 for n in split(inventor.name, " ") {
-			text: n
-		}
-	}*/
 
 }
 
@@ -125,14 +115,9 @@ tableview Reference {
 			action: ReferenceCustomCode()
 		}
 		cell Default {
-			text: "Entity models"
+			text: "Entity models and bindings"
 			action: ReferenceEntityModels()
 		}
-	}
-	
-	section {
-		title: "Tests"
-	
 		cell Default {
 			text: "Expressions"
 			action: ReferenceExpressions()
@@ -245,24 +230,22 @@ tableview ReferenceEntityModels {
 	style: Grouped
 	title: "Login"
 	section {
-		cell Value1 { text: "Username" detailText:login.username }
-		cell Value1 { text: "Password" detailText:login.password }
+		cell Value1 { text: "Username" detailText:bind(login.username) }
+		cell Value1 { text: "Password" detailText:bind(login.password) }
 	}
 
-	/*
 	section {
-		cell Value1 { text: "Spy" details: ( login.username ", " login.password ) }
+		cell Value1 { text: "Spy" detailText: ( login.username ", " login.password ) }
 	}
-	*/
 
 }
 
-tableview TextView(String text) {
-	title: text
+tableview TextView(String txt) {
+	title: txt
 	
 	section {
 		cell Default {
-			text: text
+			text: txt
 		}
 	}
 }
@@ -284,7 +267,6 @@ tableview ReferenceExpressions {
 		}
 	}
 	
-	/*
 	section {
 		title: "Collection literals"
 
@@ -296,9 +278,16 @@ tableview ReferenceExpressions {
 	section {
 		title: "String split"
 	
-		cell Default for i in split("1,2,3", ",") {
-			text: i
+		cell Default for number in split("1,2,3", ",") {
+			text: number
 		}
 	}
-	*/
+	
+	section for inv in inventors {
+		cell Default for name in split(inv.name, " ") {
+			text: name
+		}
+	}
+	
+	
 }

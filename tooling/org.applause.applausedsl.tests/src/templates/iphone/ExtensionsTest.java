@@ -5,8 +5,7 @@ package templates.iphone;
 
 import org.applause.applausedsl.ApplauseDslStandaloneSetup;
 import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
-import org.applause.applausedsl.applauseDsl.Cell;
-import org.applause.applausedsl.applauseDsl.CollectionIterator;
+import org.applause.applausedsl.applauseDsl.CollectionLiteral;
 import org.applause.applausedsl.applauseDsl.ComplexProviderConstruction;
 import org.applause.applausedsl.applauseDsl.Model;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
@@ -18,6 +17,7 @@ import org.applause.applausedsl.applauseDsl.SimpleProviderConstruction;
 import org.applause.applausedsl.applauseDsl.StringConcat;
 import org.applause.applausedsl.applauseDsl.StringLiteral;
 import org.applause.applausedsl.applauseDsl.StringReplace;
+import org.applause.applausedsl.applauseDsl.StringSplit;
 import org.applause.applausedsl.applauseDsl.StringUrlConform;
 import org.applause.applausedsl.applauseDsl.TableView;
 import org.eclipse.emf.ecore.EObject;
@@ -119,6 +119,16 @@ public class ExtensionsTest extends AbstractXtextTests {
 	}
 
 	@Test
+	public void testCollectionLiteralResolveToProvider() throws Exception {
+		CollectionLiteral literal = ApplauseDslFactory.eINSTANCE.createCollectionLiteral();
+		literal.getItems().add(str("1"));
+		literal.getItems().add(str("2"));
+		assertResolveToProvider(
+				"[SimpleContentProvider providerWithContent:[NSArray arrayWithObjects:@\"1\", @\"2\", nil] name:@\"\"]",
+				literal);
+	}
+
+	@Test
 	public void testStringLiteralResolveToValue() throws Exception {
 		assertResolveToValue("@\"foo\"", str("foo"));
 	}
@@ -131,13 +141,16 @@ public class ExtensionsTest extends AbstractXtextTests {
 
 	@Test
 	public void testStringConcatResolveToValue() throws Exception {
-		assertResolveToValue("[NSString stringWithFormat:@\"%@%@\", @\"foo\", @\"bar\"]", concat(str("foo"), str("bar")));
+		assertResolveToValue("[NSString stringWithFormat:@\"%@%@\", @\"foo\", @\"bar\"]",
+				concat(str("foo"), str("bar")));
 	}
 
 	@Test
 	public void testStringConcatResolveToValueNested() throws Exception {
 		StringConcat concat = concat(str("foo"), str("bar"));
-		assertResolveToValue("[NSString stringWithFormat:@\"%@%@\", [NSString stringWithFormat:@\"%@%@\", @\"foo\", @\"bar\"], @\"mo\"]", concat(concat, str("mo")));
+		assertResolveToValue(
+				"[NSString stringWithFormat:@\"%@%@\", [NSString stringWithFormat:@\"%@%@\", @\"foo\", @\"bar\"], @\"mo\"]",
+				concat(concat, str("mo")));
 	}
 
 	@Test
@@ -157,18 +170,31 @@ public class ExtensionsTest extends AbstractXtextTests {
 	}
 
 	@Test
+	public void testStringSplitResolveToValue() throws Exception {
+		StringSplit expr = ApplauseDslFactory.eINSTANCE.createStringSplit();
+		expr.setValue(str("foo"));
+		expr.setDelimiter(str("x"));
+		assertResolveToValue("[@\"foo\" componentsSeparatedByString:@\"x\"]", expr);
+	}
+
+	@Test
 	public void testNullResolveToValue() throws Exception {
 		assertResolveToValue("nil", null);
 	}
 
 	@Test
+	public void testCollectionLiteralResolveToValue() throws Exception {
+		CollectionLiteral literal = ApplauseDslFactory.eINSTANCE.createCollectionLiteral();
+		literal.getItems().add(str("1"));
+		literal.getItems().add(str("2"));
+		assertResolveToValue("[NSArray arrayWithObjects:@\"1\", @\"2\", nil]", literal);
+	}
+
+	@Test
 	public void testObjectReferenceResolveToValue() throws Exception {
-		assertResolveToValue("fFoo.content",
-				ref(parameterFoo));
-		assertResolveToValue("[fFoo.content valueForKey:@\"prop1\"]",
-				ref(parameterFoo, prop1));
-		assertResolveToValue("[fFoo.content valueForKeyPath:@\"prop1.prop2\"]",
-				ref(parameterFoo, prop1, prop2));
+		assertResolveToValue("fFoo.content", ref(parameterFoo));
+		assertResolveToValue("[fFoo.content valueForKey:@\"prop1\"]", ref(parameterFoo, prop1));
+		assertResolveToValue("[fFoo.content valueForKeyPath:@\"prop1.prop2\"]", ref(parameterFoo, prop1, prop2));
 
 	}
 
@@ -178,31 +204,6 @@ public class ExtensionsTest extends AbstractXtextTests {
 			concat.getValues().add(value);
 		}
 		return concat;
-	}
-
-	
-	@Test
-	public void testProviderExpressionStraight() throws Exception {
-		assertProviderExpression("fInventors", 0);
-	}
-
-	@Test
-	public void testProviderExpressionNested() throws Exception {
-		assertProviderExpression(
-				"[ContentProvider nestedContentProviderWithContentProvider:fInventor keyPath:@\"knows\"]", 1);
-	}
-
-	@Test
-	public void testProviderExpressionDeepNested() throws Exception {
-		assertProviderExpression(
-				"[ContentProvider nestedContentProviderWithContentProvider:fInventor keyPath:@\"inspiredBy.knows\"]", 2);
-	}
-
-	@Deprecated
-	private void assertProviderExpression(String expectedExpression, int cellIndex) {
-		Cell cell = table.getSections().get(0).getCells().get(cellIndex);
-		CollectionIterator iterator = cell.getIterator();
-		assertEquals(expectedExpression, xtend.call("providerExpression", iterator.getCollection()));
 	}
 
 	private void assertResolveToProvider(String expected, EObject object) {

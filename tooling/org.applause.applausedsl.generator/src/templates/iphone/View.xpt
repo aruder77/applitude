@@ -44,7 +44,7 @@
 			fBindings = [[BindingContext alloc] init];
 		«ENDIF-»
 		«parameters().collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.name + " retain]").statements()»
-		«variables.collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.value.contentProvider('', '') + " retain]").statements()»
+		«variables.collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.value.resolveToProvider() + " retain]").statements()»
 	}
 	return self;
 }
@@ -52,13 +52,13 @@
 - (void) update {
 	«providers().collect(p|"[" + p.ivar() + " request]").statements()»
 	«IF title!=null-»
-		self.title = «title.resolve()»;
+		self.title = «title.resolveToValue()»;
 	«ENDIF-»
 	«IF titleImage!=null-»
-		self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:«titleImage.resolve()»]] autorelease];
+		self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:«titleImage.resolveToValue()»]] autorelease];
 	«ENDIF-»
 
-	«sections.constructionStatements(null)»
+	«sections.objcSetup().toString("\n")»
 }
 
 «EXPAND providerMethod FOREACH sections.select(e|e.iterator!=null)-»
@@ -74,8 +74,8 @@
 
 «DEFINE providerMethod FOR ViewContentElement-»
 	«LET this.iterator AS it-»
-		- («this.targetType()» *) «it.name»«this.shortName().toFirstUpper()»:(«it.rootParameter().typeRef.type.objcType()»)«it.name» {
-			«this.constructionStatements(it.name)-»
+		- («this.targetType()» *) «it.name»«this.shortName().toFirstUpper()»:(id)«it.name» {
+			«this.objcConstruct()-»
 			return «this.shortName()»;
 		}
 	«ENDLET»
@@ -94,7 +94,7 @@
 	«LET cell.iterator AS it-»
 		- (void) «cell.idname()»CellSelected:(BoxCell *)cell {
 			«IF it!=null-»
-				«it.rootParameter().typeRef.type.variable(cell.idname())» = cell.data;
+				id «cell.idname()» = cell.data;
 			«ENDIF-»
 			UIViewController *controller = «this.objcProviderMethodCall(cell.idname(), '')»;
 			[self.navigationController pushViewController:controller animated:YES];
