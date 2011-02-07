@@ -5,7 +5,9 @@ extension org::eclipse::xtend::util::stdlib::io;
 extension templates::MetamodelExtensions;
 
 
-// Objective C language support
+// Objective C language support: Imports
+// While generating files, imports are collected in a list for header and module
+// calling use() for String or ProjectClass adds the class to the list of imports
 
 cached ProjectClass projectClass(String name):
 	JAVA templates.Extensions.createProjectClass(java.lang.String);
@@ -18,9 +20,6 @@ String use(ProjectClass projectClass):
 
 Void useImportBag(Set[ProjectClass] bag):
 	JAVA templates.Extensions.useImportBag(java.util.Set);
-
-objcImports(Collection[String] classNames):
-	classNames.toSet().remove(null).remove("").collect(e|"#import \"" + e + '.h";').toString("\n");
 
 create Set[ProjectClass] bagHeaderImports (ProjectClass class):
 	((List[ProjectClass]) {}).toSet();
@@ -43,40 +42,55 @@ h(ProjectClass class):
 m(ProjectClass class):
 	useImportBag(class.bagModuleImports()) -> (class.name + ".m");
 
+
+
+// Objective C Method signatures and calls
+
+// [target methodNameWithParam1:value1 param2:value2 ...] 
 objc_Call(String target, String methodName, List[String] paramNames, List[String] paramValues):
 	"[" + target + " " + methodName + paramNames.objc_MethodParamValues(paramValues) + "]";
 
+// [target methodName] 
 objc_Call(String target, String methodName):
 	target.objc_Call(methodName, {}, {});
 
+// [Class methodNameWithParam1:value1 param2:value2 ...] 
 objc_Call(ProjectClass class, String methodName, List[String] paramNames, List[String] paramValues):
-	"[" + use(class) + " " + methodName + paramNames.objc_MethodParamValues(paramValues) + "]";
+	objc_Call(use(class), methodName, paramNames, paramValues);
 
+// [[Class alloc] initWithParam1:value2 param2:value2 ...]
 objc_Init(ProjectClass class, List[String] paramNames, List[String] paramValues):
 	("[" + use(class) + " alloc]").objc_Call("init", paramNames, paramValues);
 
+// [[Class alloc] init]
 objc_Init(ProjectClass class):
 	class.objc_Init({}, {});
 
+// [[[Class alloc] initWithParam1:value2 param2:value2 ...] autorelease]
 objc_New(ProjectClass class, List[String] paramNames, List[String] paramValues):
 	class.objc_Init(paramNames, paramValues).objc_Call("autorelease");
 
+// [[[Class alloc] init] autorelease]
 objc_New(ProjectClass class):
 	class.objc_New({}, {});
 
+// { "WithName1", "name2", ... }
 objc_MethodParamNames(List[String] names):
 	names.isEmpty ? {} : {"With" + names.first().toFirstUpper(), names.withoutFirst()}.flatten();
 
+// WithName1:(Type1) name2:(Type2)name2 ...
 objc_MethodParamSignatures(List[String] names, List[String] types):
 	names.isEmpty ? "" :
 		(let n = names.objc_MethodParamNames() :
 					0.upTo(n.size - 1).collect(i|n.get(i)+ ":(" + types.get(i) + ")" + names.get(i)).toString(" "));
 
+// WithName1:value1 name2:value2 ...
 objc_MethodParamValues(List[String] names, List[String] values):
 	names.isEmpty ? "" :
 		(let n = names.objc_MethodParamNames() :
 					0.upTo(n.size - 1).collect(i|n.get(i)+ ":" + values.get(i)).toString(" "));
 
+// modifier (returnType) methodNameWithParam1:(Type1)param1 param2:(Type2)param2
 objc_MethodSignature(ProjectClass class, String modifier, String methodName, String returnType, List[String] paramNames, List[String] paramTypes):
 	modifier + " (" + returnType + ") " + methodName + paramNames.objc_MethodParamSignatures(paramTypes);
 
