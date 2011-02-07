@@ -160,6 +160,45 @@ objcProviderMethodName(ContentProvider this):
 
 
 
+String replaceSettings(String string):
+	JAVA templates.Extensions.replaceSettings(java.lang.String);
+
+resolveToValue(Void this):
+	"nil";
+	
+//TODO: special case collection iterator
+resolveToValue(ScopeName this):
+	this.scopeName() + ".content";
+
+resolveToValue(ScalarExpression this):
+	"<resolveToValue is abstract for: " + this + ">";
+
+resolveToValue(StringLiteral this):
+	this.value.replaceSettings();
+
+// TODO: use vs. newProjectClass
+resolveToValue(StringConcat this):
+	'[NSString stringWithFormat:@"' 
+		+ values.collect(e|"%@").toString("") + '", '
+		+ values.resolveToValue().toString(", ") + "]";
+
+resolveToValue(StringUrlConform this):
+	'[' + value.resolveToValue() 
+	    + ' stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]';
+	
+resolveToValue(StringReplace this):
+	'[' + value.resolveToValue() 
+	    + ' stringByReplacingOccurrencesOfString:' + match.resolveToValue()
+	    + ' withString:' + replacement.resolveToValue() + ']';
+
+resolveToValue(ObjectReference this):
+	tail == null ? this.object.resolveToValue()
+	             : ( '[' + this.object.resolveToValue() 
+	                     + ' valueFor' + ((tail.keyPath().size > 1) ? 'KeyPath:' : 'Key:')
+	                     + tail.objcKeyPath() + ']' );
+
+
+
 
 
 resolveToProvider(ProviderConstruction this): // TODO: rename to ProviderCall?
@@ -188,7 +227,7 @@ resolveToProvider(ObjectReference this):
 		: ("ContentProvider+Nested".use() -> 'ContentProvider'.objc_Call(
 				'nestedContentProvider',
 				{ 'contentProvider', 'keyPath' },
-				{ object.scopeName(), objcKeyPath() }));
+				{ object.scopeName(), tail.objcKeyPath() }));
 
 /* TableView */
 
@@ -452,44 +491,30 @@ expression(StringSplit s, String kvcTarget, String kvcPrefix):
 expression(ScalarExpression s, String kvcTarget, String kvcPrefix):
 	"<!ERROR!" + s.metaType + ">";
 
-String replaceSettings(String string):
-	JAVA templates.Extensions.replaceSettings(java.lang.String);
-
 expression(StringLiteral this, String kvcTarget, String kvcPrefix):
-	value.replaceSettings();
+	this.resolveToValue();
 	
 expression(StringConcat this, String kvcTarget, String kvcPrefix):
-	'[NSString stringWithFormat:@"' 
-		+ values.collect(e|"%@").toString("") + '", '
-		+ values.expression(kvcTarget, kvcPrefix).toString(", ") + "]";
+	this.resolveToValue();
 		
 expression(StringUrlConform this, String kvcTarget, String kvcPrefix):
-	'[' + value.expression(kvcTarget, kvcPrefix) + ' stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]';
+	this.resolveToValue();
 	
 expression(StringReplace this, String kvcTarget, String kvcPrefix):
-	'[' + 
-	value.expression(kvcTarget, kvcPrefix) +
-	' stringByReplacingOccurrencesOfString:' + 
-	match.expression(kvcTarget, kvcPrefix) +
-	' withString:' +
-	replacement.expression(kvcTarget, kvcPrefix) +
-	']';
-	
+	this.resolveToValue();
+
 List[String] keyPath(ObjectReference this):
 	tail == null ? {object.name} : {object.name}.addAll(tail.keyPath());
 
 objcKeyPath(ObjectReference this):
-	'@"' + keyPath('').toString(".") + '"';
+	'@"' + keyPath().toString(".") + '"';
 
 List[String] keyPath(ObjectReference this, String kvcPrefix):
 	let head = (kvcPrefix != "" ? {kvcPrefix} : {}):
 		head.addAll(keyPath().withoutFirst());
-	
+
 expression(ObjectReference this, String kvcTarget, String kvcPrefix):
-	let keyPath = keyPath(kvcPrefix):
-		keyPath.isEmpty ? 
-			kvcTarget : 
-			'[' + kvcTarget + ' ' + ((keyPath.size > 1) ? 'valueForKeyPath' : 'valueForKey') + ':@"' + keyPath.toString('.') + '"]';
+	this.resolveToValue();
 	
 contentProvider(ProviderConstruction this, String kvcTarget, String kvcPrefix):
 	"<!ERROR!" + metaType + ">";
@@ -497,7 +522,7 @@ contentProvider(ProviderConstruction this, String kvcTarget, String kvcPrefix):
 contentProvider(SimpleProviderConstruction this, String kvcTarget, String kvcPrefix):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' +
 	expression.expression(kvcTarget, kvcPrefix) + ' name:@""]';
-	 
+
 contentProvider(ComplexProviderConstruction this, String kvcTarget, String kvcPrefix):
 	'[' + this.application().sharedProviderFactory() + ' providerFor' + provider.name + 
 		(argument == null ? '' : ': ' + argument.expression(kvcTarget, kvcPrefix) )
