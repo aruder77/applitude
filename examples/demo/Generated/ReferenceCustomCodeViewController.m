@@ -9,8 +9,6 @@
 - (id) init {
 	self = [super initWithStyle:UITableViewStylePlain];
 	if (self != nil) {
-		fBindings = [[BindingContext alloc] init];
-
 		fDate = [[[DemoProviders sharedProviders] providerForDate] retain];
 		fStoredDate = [[[DemoProviders sharedProviders] providerForStoredDate] retain];
 	}
@@ -25,14 +23,14 @@
 	[self sectionWithTitle:@"ContentProvider"];
 	{
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-		[fBindings bind:fDate property:@"content" to:cell.textLabel property:@"text"];
+		cell.textLabel.text = fDate.content;
 		[self cell:cell];
 	}
 
 	[self sectionWithTitle:@"ContentProvider (stored)"];
 	{
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-		[fBindings bind:fStoredDate property:@"content" to:cell.textLabel property:@"text"];
+		cell.textLabel.text = fStoredDate.content;
 		[self cell:cell];
 	}
 
@@ -41,7 +39,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"Open CustomView";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(opencustomviewCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(openCustomViewCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -55,13 +53,12 @@
 	}
 }
 
-- (void) opencustomviewCellSelected:(BoxCell *)cell {
+- (void) openCustomViewCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createCustomView];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void) dealloc {
-	[fBindings release];
 	[fDate release];
 	[fStoredDate release];
 	[super dealloc];

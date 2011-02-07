@@ -36,7 +36,7 @@
 
 - (void) inventorCellSelected:(BoxCell *)cell {
 	id inventor = cell.data;
-	UIViewController *controller = [DemoViews createInventorDetailWithInventor:[SimpleContentProvider providerWithContent:inventor name:@""]];
+	UIViewController *controller = [DemoViews createInventorDetailWithInventor:[SimpleContentProvider providerWithContent:inventor name:@"inventor"]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -10,6 +10,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		BF0812AA130056AD00D5C42D /* TextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0812A9130056AD00D5C42D /* TextViewViewController.m */; };
 		BF4DCA5A12EA6A310005E01C /* BaseContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4DC9CE12EA6A310005E01C /* BaseContentProvider.m */; };
 		BF4DCA5C12EA6A310005E01C /* ContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4DC9D312EA6A310005E01C /* ContentProvider.m */; };
 		BF4DCA5D12EA6A310005E01C /* ContentProviderPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4DC9D512EA6A310005E01C /* ContentProviderPlaceholder.m */; };
@@ -182,6 +183,8 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = demo_Prefix.pch; path = ../../demo_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* demo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "demo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		BF0812A8130056AD00D5C42D /* TextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewViewController.h; sourceTree = "<group>"; };
+		BF0812A9130056AD00D5C42D /* TextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewViewController.m; sourceTree = "<group>"; };
 		BF4DC9CD12EA6A310005E01C /* BaseContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseContentProvider.h; sourceTree = "<group>"; };
 		BF4DC9CE12EA6A310005E01C /* BaseContentProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseContentProvider.m; sourceTree = "<group>"; };
 		BF4DC9D112EA6A310005E01C /* ContentFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentFilter.h; sourceTree = "<group>"; };
@@ -810,6 +813,8 @@
 				BF87D94A12F50EDB00FE6643 /* ReferenceSectionCellForeachViewController.m */,
 				BF87D94B12F50EDB00FE6643 /* ReferenceViewController.h */,
 				BF87D94C12F50EDB00FE6643 /* ReferenceViewController.m */,
+				BF0812A8130056AD00D5C42D /* TextViewViewController.h */,
+				BF0812A9130056AD00D5C42D /* TextViewViewController.m */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -1035,6 +1040,7 @@
 				BF54165012FC1ADD007F8A4A /* TTGlobalNetwork.m in Sources */,
 				BF54165112FC1ADD007F8A4A /* URLUtils.m in Sources */,
 				BF54177C12FC55C1007F8A4A /* ReferenceExpressionsViewController.m in Sources */,
+				BF0812AA130056AD00D5C42D /* TextViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

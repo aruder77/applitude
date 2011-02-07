@@ -60,6 +60,10 @@
 	return [[[ReferenceEntityModelsViewController alloc] init] autorelease];
 }
 
++ (TextViewViewController *) createTextViewWithTxt:(ContentProvider *)txt {
+	return [[[TextViewViewController alloc] initWithTxt:txt] autorelease];
+}
+
 + (ReferenceExpressionsViewController *) createReferenceExpressions {
 	return [[[ReferenceExpressionsViewController alloc] init] autorelease];
 }

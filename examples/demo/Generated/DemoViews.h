@@ -10,6 +10,7 @@
 #import "ReferenceExpressionsViewController.h"
 #import "ReferenceSectionCellForeachViewController.h"
 #import "ReferenceViewController.h"
+#import "TextViewViewController.h"
 
 @interface DemoViews : NSObject {
 }
@@ -25,6 +26,7 @@
 + (CustomViewController *) createCustomView;
 + (ReferenceCustomCodeViewController *) createReferenceCustomCode;
 + (ReferenceEntityModelsViewController *) createReferenceEntityModels;
++ (TextViewViewController *) createTextViewWithTxt:(ContentProvider *)txt;
 + (ReferenceExpressionsViewController *) createReferenceExpressions;
 
 

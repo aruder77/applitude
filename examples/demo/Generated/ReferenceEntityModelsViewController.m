@@ -32,6 +32,14 @@
 		[fBindings bind:fLogin property:@"content.password" to:cell.detailTextLabel property:@"text"];
 		[self cell:cell];
 	}
+
+	[self section];
+	{
+		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil] autorelease];
+		cell.textLabel.text = @"Spy";
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@%@", [fLogin.content valueForKey:@"username"], @", ", [fLogin.content valueForKey:@"password"]];
+		[self cell:cell];
+	}
 }
 
 - (void) dealloc {

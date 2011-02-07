@@ -12,7 +12,7 @@
 
 - (void) update {
 	[fInvention request];
-	self.title = [fInvention valueForKeyPath:@"content.name"];
+	self.title = [fInvention.content valueForKey:@"name"];
 }
 
 - (void) dealloc {

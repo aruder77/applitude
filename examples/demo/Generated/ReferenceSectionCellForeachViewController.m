@@ -25,7 +25,9 @@
 
 - (Section *) invSection:(id)inv {
 	Section *section = [self sectionWithTitle:[inv valueForKey:@"name"]];
-	[self cells:@selector(inventionCell:) forList:[inv valueForKey:@"inventions"]];
+	{
+		[self cells:@selector(inventionCell:) forList:[inv valueForKey:@"inventions"]];
+	}
 	return section;
 }
 
@@ -40,7 +42,7 @@
 
 - (void) inventionCellSelected:(BoxCell *)cell {
 	id invention = cell.data;
-	UIViewController *controller = [DemoViews createInventionDetailWithInvention:[SimpleContentProvider providerWithContent:invention name:@""]];
+	UIViewController *controller = [DemoViews createInventionDetailWithInvention:[SimpleContentProvider providerWithContent:invention name:@"invention"]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 

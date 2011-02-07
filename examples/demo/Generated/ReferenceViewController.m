@@ -22,7 +22,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"JSON";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(jsonCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(jSONCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -30,7 +30,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"XML";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(xmlCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(xMLCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -39,7 +39,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"Cell styles";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(cellstylesCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(cellStylesCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -47,7 +47,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"cell foreach";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(cellforeachCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(cellForeachCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -55,7 +55,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"section + cell foreach";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(sectioncellforeachCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(sectionCellForeachCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -63,7 +63,7 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"Error handling";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(errorhandlingCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(errorHandlingCellSelected:)];
 		[self cell:cell];
 	}
 
@@ -71,19 +71,18 @@
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"Custom code hooks";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(customcodehooksCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(customCodeHooksCellSelected:)];
 		[self cell:cell];
 	}
 
 	{
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-		cell.textLabel.text = @"Entity models";
+		cell.textLabel.text = @"Entity models and bindings";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(entitymodelsCellSelected:)];
+		cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(entityModelsAndBindingsCellSelected:)];
 		[self cell:cell];
 	}
 
-	[self sectionWithTitle:@"Tests"];
 	{
 		BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.textLabel.text = @"Expressions";
@@ -93,42 +92,42 @@
 	}
 }
 
-- (void) jsonCellSelected:(BoxCell *)cell {
+- (void) jSONCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsJSON]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) xmlCellSelected:(BoxCell *)cell {
+- (void) xMLCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsXML]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) cellstylesCellSelected:(BoxCell *)cell {
+- (void) cellStylesCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createReferenceCellStyles];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) cellforeachCellSelected:(BoxCell *)cell {
+- (void) cellForeachCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createInventorsWithInventors:[[DemoProviders sharedProviders] providerForAllInventorsJSON]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) sectioncellforeachCellSelected:(BoxCell *)cell {
+- (void) sectionCellForeachCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createReferenceSectionCellForeach];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) errorhandlingCellSelected:(BoxCell *)cell {
+- (void) errorHandlingCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createReferenceErrorHandling];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) customcodehooksCellSelected:(BoxCell *)cell {
+- (void) customCodeHooksCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createReferenceCustomCode];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) entitymodelsCellSelected:(BoxCell *)cell {
+- (void) entityModelsAndBindingsCellSelected:(BoxCell *)cell {
 	UIViewController *controller = [DemoViews createReferenceEntityModels];
 	[self.navigationController pushViewController:controller animated:YES];
 }
