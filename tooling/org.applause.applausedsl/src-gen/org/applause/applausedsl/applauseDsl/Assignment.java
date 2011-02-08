@@ -60,12 +60,12 @@ public interface Assignment extends Declaration
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(ConstructProviderCall)
+   * @see #setValue(ContentProviderCall)
    * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getAssignment_Value()
    * @model containment="true"
    * @generated
    */
-  ConstructProviderCall getValue();
+  ContentProviderCall getValue();
 
   /**
    * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.Assignment#getValue <em>Value</em>}' containment reference.
@@ -75,6 +75,6 @@ public interface Assignment extends Declaration
    * @see #getValue()
    * @generated
    */
-  void setValue(ConstructProviderCall value);
+  void setValue(ContentProviderCall value);
 
 } // Assignment

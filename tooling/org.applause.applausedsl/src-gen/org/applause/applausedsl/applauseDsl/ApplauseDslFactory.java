@@ -224,6 +224,24 @@ public interface ApplauseDslFactory extends EFactory
   Parameter createParameter();
 
   /**
+   * Returns a new object of class '<em>Parameterized Model Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameterized Model Element</em>'.
+   * @generated
+   */
+  ParameterizedModelElement createParameterizedModelElement();
+
+  /**
+   * Returns a new object of class '<em>Parameterized Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameterized Call</em>'.
+   * @generated
+   */
+  ParameterizedCall createParameterizedCall();
+
+  /**
    * Returns a new object of class '<em>Parameter Definitions</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -278,13 +296,13 @@ public interface ApplauseDslFactory extends EFactory
   CustomContentProviderImplementation createCustomContentProviderImplementation();
 
   /**
-   * Returns a new object of class '<em>Construct Provider Call</em>'.
+   * Returns a new object of class '<em>Content Provider Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Construct Provider Call</em>'.
+   * @return a new object of class '<em>Content Provider Call</em>'.
    * @generated
    */
-  ConstructProviderCall createConstructProviderCall();
+  ContentProviderCall createContentProviderCall();
 
   /**
    * Returns a new object of class '<em>Assignment</em>'.

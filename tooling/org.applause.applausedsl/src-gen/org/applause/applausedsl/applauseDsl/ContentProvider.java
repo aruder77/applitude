@@ -14,7 +14,6 @@ package org.applause.applausedsl.applauseDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.ContentProvider#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.ContentProvider#isStoring <em>Storing</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.ContentProvider#getType <em>Type</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.ContentProvider#isMany <em>Many</em>}</li>
@@ -26,34 +25,8 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface ContentProvider extends ModelElement
+public interface ContentProvider extends ParameterizedModelElement
 {
-  /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Parameters</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference.
-   * @see #setParameters(ParameterDefinitions)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getContentProvider_Parameters()
-   * @model containment="true"
-   * @generated
-   */
-  ParameterDefinitions getParameters();
-
-  /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ContentProvider#getParameters <em>Parameters</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parameters</em>' containment reference.
-   * @see #getParameters()
-   * @generated
-   */
-  void setParameters(ParameterDefinitions value);
-
   /**
    * Returns the value of the '<em><b>Storing</b></em>' attribute.
    * <!-- begin-user-doc -->

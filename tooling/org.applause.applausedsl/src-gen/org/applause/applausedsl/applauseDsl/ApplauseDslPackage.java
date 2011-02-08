@@ -740,6 +740,80 @@ public interface ApplauseDslPackage extends EPackage
   int PARAMETER_FEATURE_COUNT = DECLARATION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ParameterizedModelElementImpl <em>Parameterized Model Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.applause.applausedsl.applauseDsl.impl.ParameterizedModelElementImpl
+   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getParameterizedModelElement()
+   * @generated
+   */
+  int PARAMETERIZED_MODEL_ELEMENT = 22;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERIZED_MODEL_ELEMENT__NAME = MODEL_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERIZED_MODEL_ELEMENT__PARAMETERS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Parameterized Model Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ParameterizedCallImpl <em>Parameterized Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.applause.applausedsl.applauseDsl.impl.ParameterizedCallImpl
+   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getParameterizedCall()
+   * @generated
+   */
+  int PARAMETERIZED_CALL = 23;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERIZED_CALL__PARAMETERS = 0;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERIZED_CALL__TARGET = 1;
+
+  /**
+   * The number of structural features of the '<em>Parameterized Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETERIZED_CALL_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ParameterDefinitionsImpl <em>Parameter Definitions</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -747,7 +821,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getParameterDefinitions()
    * @generated
    */
-  int PARAMETER_DEFINITIONS = 22;
+  int PARAMETER_DEFINITIONS = 24;
 
   /**
    * The feature id for the '<em><b>Definitions</b></em>' containment reference list.
@@ -775,7 +849,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getParameterValues()
    * @generated
    */
-  int PARAMETER_VALUES = 23;
+  int PARAMETER_VALUES = 25;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -803,7 +877,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getContentProvider()
    * @generated
    */
-  int CONTENT_PROVIDER = 24;
+  int CONTENT_PROVIDER = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -812,7 +886,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER__NAME = MODEL_ELEMENT__NAME;
+  int CONTENT_PROVIDER__NAME = PARAMETERIZED_MODEL_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference.
@@ -821,7 +895,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER__PARAMETERS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+  int CONTENT_PROVIDER__PARAMETERS = PARAMETERIZED_MODEL_ELEMENT__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Storing</b></em>' attribute.
@@ -830,7 +904,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER__STORING = MODEL_ELEMENT_FEATURE_COUNT + 1;
+  int CONTENT_PROVIDER__STORING = PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -839,7 +913,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER__TYPE = MODEL_ELEMENT_FEATURE_COUNT + 2;
+  int CONTENT_PROVIDER__TYPE = PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Many</b></em>' attribute.
@@ -848,7 +922,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER__MANY = MODEL_ELEMENT_FEATURE_COUNT + 3;
+  int CONTENT_PROVIDER__MANY = PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Implementation</b></em>' containment reference.
@@ -857,7 +931,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER__IMPLEMENTATION = MODEL_ELEMENT_FEATURE_COUNT + 4;
+  int CONTENT_PROVIDER__IMPLEMENTATION = PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Content Provider</em>' class.
@@ -866,7 +940,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+  int CONTENT_PROVIDER_FEATURE_COUNT = PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ContentProviderImplementationImpl <em>Content Provider Implementation</em>}' class.
@@ -876,7 +950,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getContentProviderImplementation()
    * @generated
    */
-  int CONTENT_PROVIDER_IMPLEMENTATION = 25;
+  int CONTENT_PROVIDER_IMPLEMENTATION = 27;
 
   /**
    * The number of structural features of the '<em>Content Provider Implementation</em>' class.
@@ -895,7 +969,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getUrlContentProviderImplementation()
    * @generated
    */
-  int URL_CONTENT_PROVIDER_IMPLEMENTATION = 26;
+  int URL_CONTENT_PROVIDER_IMPLEMENTATION = 28;
 
   /**
    * The feature id for the '<em><b>Format</b></em>' attribute.
@@ -941,7 +1015,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getCustomContentProviderImplementation()
    * @generated
    */
-  int CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION = 27;
+  int CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION = 29;
 
   /**
    * The feature id for the '<em><b>Provider Class</b></em>' containment reference.
@@ -962,23 +1036,14 @@ public interface ApplauseDslPackage extends EPackage
   int CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION_FEATURE_COUNT = CONTENT_PROVIDER_IMPLEMENTATION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ConstructProviderCallImpl <em>Construct Provider Call</em>}' class.
+   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ContentProviderCallImpl <em>Content Provider Call</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.applause.applausedsl.applauseDsl.impl.ConstructProviderCallImpl
-   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getConstructProviderCall()
+   * @see org.applause.applausedsl.applauseDsl.impl.ContentProviderCallImpl
+   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getContentProviderCall()
    * @generated
    */
-  int CONSTRUCT_PROVIDER_CALL = 28;
-
-  /**
-   * The feature id for the '<em><b>Provider</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRUCT_PROVIDER_CALL__PROVIDER = SCALAR_EXPRESSION_FEATURE_COUNT + 0;
+  int CONTENT_PROVIDER_CALL = 30;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference.
@@ -987,16 +1052,25 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRUCT_PROVIDER_CALL__PARAMETERS = SCALAR_EXPRESSION_FEATURE_COUNT + 1;
+  int CONTENT_PROVIDER_CALL__PARAMETERS = SCALAR_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Construct Provider Call</em>' class.
+   * The feature id for the '<em><b>Target</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCT_PROVIDER_CALL_FEATURE_COUNT = SCALAR_EXPRESSION_FEATURE_COUNT + 2;
+  int CONTENT_PROVIDER_CALL__TARGET = SCALAR_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Content Provider Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTENT_PROVIDER_CALL_FEATURE_COUNT = SCALAR_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -1006,7 +1080,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getAssignment()
    * @generated
    */
-  int ASSIGNMENT = 29;
+  int ASSIGNMENT = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1052,7 +1126,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getView()
    * @generated
    */
-  int VIEW = 30;
+  int VIEW = 32;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1061,7 +1135,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEW__NAME = MODEL_ELEMENT__NAME;
+  int VIEW__NAME = PARAMETERIZED_MODEL_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference.
@@ -1070,7 +1144,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEW__PARAMETERS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+  int VIEW__PARAMETERS = PARAMETERIZED_MODEL_ELEMENT__PARAMETERS;
 
   /**
    * The number of structural features of the '<em>View</em>' class.
@@ -1079,7 +1153,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEW_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+  int VIEW_FEATURE_COUNT = PARAMETERIZED_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.TabViewImpl <em>Tab View</em>}' class.
@@ -1089,7 +1163,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getTabView()
    * @generated
    */
-  int TAB_VIEW = 31;
+  int TAB_VIEW = 33;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1135,7 +1209,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getTab()
    * @generated
    */
-  int TAB = 32;
+  int TAB = 34;
 
   /**
    * The feature id for the '<em><b>Title</b></em>' containment reference.
@@ -1181,7 +1255,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getTableView()
    * @generated
    */
-  int TABLE_VIEW = 33;
+  int TABLE_VIEW = 35;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1263,7 +1337,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getViewContentElement()
    * @generated
    */
-  int VIEW_CONTENT_ELEMENT = 34;
+  int VIEW_CONTENT_ELEMENT = 36;
 
   /**
    * The feature id for the '<em><b>Iterator</b></em>' containment reference.
@@ -1291,7 +1365,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getSection()
    * @generated
    */
-  int SECTION = 35;
+  int SECTION = 37;
 
   /**
    * The feature id for the '<em><b>Iterator</b></em>' containment reference.
@@ -1337,7 +1411,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getCell()
    * @generated
    */
-  int CELL = 36;
+  int CELL = 38;
 
   /**
    * The feature id for the '<em><b>Iterator</b></em>' containment reference.
@@ -1419,7 +1493,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getCustomView()
    * @generated
    */
-  int CUSTOM_VIEW = 37;
+  int CUSTOM_VIEW = 39;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1465,7 +1539,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getViewAction()
    * @generated
    */
-  int VIEW_ACTION = 38;
+  int VIEW_ACTION = 40;
 
   /**
    * The number of structural features of the '<em>View Action</em>' class.
@@ -1484,16 +1558,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getViewCall()
    * @generated
    */
-  int VIEW_CALL = 39;
-
-  /**
-   * The feature id for the '<em><b>View</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VIEW_CALL__VIEW = VIEW_ACTION_FEATURE_COUNT + 0;
+  int VIEW_CALL = 41;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference.
@@ -1502,7 +1567,16 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEW_CALL__PARAMETERS = VIEW_ACTION_FEATURE_COUNT + 1;
+  int VIEW_CALL__PARAMETERS = PARAMETERIZED_CALL__PARAMETERS;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIEW_CALL__TARGET = PARAMETERIZED_CALL__TARGET;
 
   /**
    * The number of structural features of the '<em>View Call</em>' class.
@@ -1511,7 +1585,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEW_CALL_FEATURE_COUNT = VIEW_ACTION_FEATURE_COUNT + 2;
+  int VIEW_CALL_FEATURE_COUNT = PARAMETERIZED_CALL_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.SelectorImpl <em>Selector</em>}' class.
@@ -1521,7 +1595,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getSelector()
    * @generated
    */
-  int SELECTOR = 40;
+  int SELECTOR = 42;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1549,7 +1623,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getExternalOpen()
    * @generated
    */
-  int EXTERNAL_OPEN = 41;
+  int EXTERNAL_OPEN = 43;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' containment reference.
@@ -1577,7 +1651,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getStringConcat()
    * @generated
    */
-  int STRING_CONCAT = 42;
+  int STRING_CONCAT = 44;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -1605,7 +1679,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getStringReplace()
    * @generated
    */
-  int STRING_REPLACE = 43;
+  int STRING_REPLACE = 45;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1651,7 +1725,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getStringUrlConform()
    * @generated
    */
-  int STRING_URL_CONFORM = 44;
+  int STRING_URL_CONFORM = 46;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1679,7 +1753,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getStringSplit()
    * @generated
    */
-  int STRING_SPLIT = 45;
+  int STRING_SPLIT = 47;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1716,7 +1790,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getSerializationFormat()
    * @generated
    */
-  int SERIALIZATION_FORMAT = 46;
+  int SERIALIZATION_FORMAT = 48;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.TableViewStyle <em>Table View Style</em>}' enum.
@@ -1726,7 +1800,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getTableViewStyle()
    * @generated
    */
-  int TABLE_VIEW_STYLE = 47;
+  int TABLE_VIEW_STYLE = 49;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.CellType <em>Cell Type</em>}' enum.
@@ -1736,7 +1810,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getCellType()
    * @generated
    */
-  int CELL_TYPE = 48;
+  int CELL_TYPE = 50;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.CellAccessory <em>Cell Accessory</em>}' enum.
@@ -1746,7 +1820,7 @@ public interface ApplauseDslPackage extends EPackage
    * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getCellAccessory()
    * @generated
    */
-  int CELL_ACCESSORY = 49;
+  int CELL_ACCESSORY = 51;
 
 
   /**
@@ -2212,6 +2286,59 @@ public interface ApplauseDslPackage extends EPackage
   EReference getParameter_TypeRef();
 
   /**
+   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ParameterizedModelElement <em>Parameterized Model Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameterized Model Element</em>'.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedModelElement
+   * @generated
+   */
+  EClass getParameterizedModelElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.ParameterizedModelElement#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters</em>'.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedModelElement#getParameters()
+   * @see #getParameterizedModelElement()
+   * @generated
+   */
+  EReference getParameterizedModelElement_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ParameterizedCall <em>Parameterized Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameterized Call</em>'.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedCall
+   * @generated
+   */
+  EClass getParameterizedCall();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.ParameterizedCall#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters</em>'.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedCall#getParameters()
+   * @see #getParameterizedCall()
+   * @generated
+   */
+  EReference getParameterizedCall_Parameters();
+
+  /**
+   * Returns the meta object for the reference '{@link org.applause.applausedsl.applauseDsl.ParameterizedCall#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Target</em>'.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedCall#getTarget()
+   * @see #getParameterizedCall()
+   * @generated
+   */
+  EReference getParameterizedCall_Target();
+
+  /**
    * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ParameterDefinitions <em>Parameter Definitions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2262,17 +2389,6 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    */
   EClass getContentProvider();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.ContentProvider#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parameters</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ContentProvider#getParameters()
-   * @see #getContentProvider()
-   * @generated
-   */
-  EReference getContentProvider_Parameters();
 
   /**
    * Returns the meta object for the attribute '{@link org.applause.applausedsl.applauseDsl.ContentProvider#isStoring <em>Storing</em>}'.
@@ -2393,36 +2509,14 @@ public interface ApplauseDslPackage extends EPackage
   EReference getCustomContentProviderImplementation_ProviderClass();
 
   /**
-   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ConstructProviderCall <em>Construct Provider Call</em>}'.
+   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ContentProviderCall <em>Content Provider Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Construct Provider Call</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ConstructProviderCall
+   * @return the meta object for class '<em>Content Provider Call</em>'.
+   * @see org.applause.applausedsl.applauseDsl.ContentProviderCall
    * @generated
    */
-  EClass getConstructProviderCall();
-
-  /**
-   * Returns the meta object for the reference '{@link org.applause.applausedsl.applauseDsl.ConstructProviderCall#getProvider <em>Provider</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Provider</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ConstructProviderCall#getProvider()
-   * @see #getConstructProviderCall()
-   * @generated
-   */
-  EReference getConstructProviderCall_Provider();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.ConstructProviderCall#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parameters</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ConstructProviderCall#getParameters()
-   * @see #getConstructProviderCall()
-   * @generated
-   */
-  EReference getConstructProviderCall_Parameters();
+  EClass getContentProviderCall();
 
   /**
    * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.Assignment <em>Assignment</em>}'.
@@ -2465,17 +2559,6 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    */
   EClass getView();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.View#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parameters</em>'.
-   * @see org.applause.applausedsl.applauseDsl.View#getParameters()
-   * @see #getView()
-   * @generated
-   */
-  EReference getView_Parameters();
 
   /**
    * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.TabView <em>Tab View</em>}'.
@@ -2775,28 +2858,6 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    */
   EClass getViewCall();
-
-  /**
-   * Returns the meta object for the reference '{@link org.applause.applausedsl.applauseDsl.ViewCall#getView <em>View</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>View</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ViewCall#getView()
-   * @see #getViewCall()
-   * @generated
-   */
-  EReference getViewCall_View();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.ViewCall#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parameters</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ViewCall#getParameters()
-   * @see #getViewCall()
-   * @generated
-   */
-  EReference getViewCall_Parameters();
 
   /**
    * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.Selector <em>Selector</em>}'.
@@ -3417,6 +3478,50 @@ public interface ApplauseDslPackage extends EPackage
     EReference PARAMETER__TYPE_REF = eINSTANCE.getParameter_TypeRef();
 
     /**
+     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ParameterizedModelElementImpl <em>Parameterized Model Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.applause.applausedsl.applauseDsl.impl.ParameterizedModelElementImpl
+     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getParameterizedModelElement()
+     * @generated
+     */
+    EClass PARAMETERIZED_MODEL_ELEMENT = eINSTANCE.getParameterizedModelElement();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETERIZED_MODEL_ELEMENT__PARAMETERS = eINSTANCE.getParameterizedModelElement_Parameters();
+
+    /**
+     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ParameterizedCallImpl <em>Parameterized Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.applause.applausedsl.applauseDsl.impl.ParameterizedCallImpl
+     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getParameterizedCall()
+     * @generated
+     */
+    EClass PARAMETERIZED_CALL = eINSTANCE.getParameterizedCall();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETERIZED_CALL__PARAMETERS = eINSTANCE.getParameterizedCall_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETERIZED_CALL__TARGET = eINSTANCE.getParameterizedCall_Target();
+
+    /**
      * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ParameterDefinitionsImpl <em>Parameter Definitions</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3461,14 +3566,6 @@ public interface ApplauseDslPackage extends EPackage
      * @generated
      */
     EClass CONTENT_PROVIDER = eINSTANCE.getContentProvider();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONTENT_PROVIDER__PARAMETERS = eINSTANCE.getContentProvider_Parameters();
 
     /**
      * The meta object literal for the '<em><b>Storing</b></em>' attribute feature.
@@ -3565,30 +3662,14 @@ public interface ApplauseDslPackage extends EPackage
     EReference CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION__PROVIDER_CLASS = eINSTANCE.getCustomContentProviderImplementation_ProviderClass();
 
     /**
-     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ConstructProviderCallImpl <em>Construct Provider Call</em>}' class.
+     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ContentProviderCallImpl <em>Content Provider Call</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.applause.applausedsl.applauseDsl.impl.ConstructProviderCallImpl
-     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getConstructProviderCall()
+     * @see org.applause.applausedsl.applauseDsl.impl.ContentProviderCallImpl
+     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getContentProviderCall()
      * @generated
      */
-    EClass CONSTRUCT_PROVIDER_CALL = eINSTANCE.getConstructProviderCall();
-
-    /**
-     * The meta object literal for the '<em><b>Provider</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONSTRUCT_PROVIDER_CALL__PROVIDER = eINSTANCE.getConstructProviderCall_Provider();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONSTRUCT_PROVIDER_CALL__PARAMETERS = eINSTANCE.getConstructProviderCall_Parameters();
+    EClass CONTENT_PROVIDER_CALL = eINSTANCE.getContentProviderCall();
 
     /**
      * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -3625,14 +3706,6 @@ public interface ApplauseDslPackage extends EPackage
      * @generated
      */
     EClass VIEW = eINSTANCE.getView();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VIEW__PARAMETERS = eINSTANCE.getView_Parameters();
 
     /**
      * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.TabViewImpl <em>Tab View</em>}' class.
@@ -3875,22 +3948,6 @@ public interface ApplauseDslPackage extends EPackage
      * @generated
      */
     EClass VIEW_CALL = eINSTANCE.getViewCall();
-
-    /**
-     * The meta object literal for the '<em><b>View</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VIEW_CALL__VIEW = eINSTANCE.getViewCall_View();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VIEW_CALL__PARAMETERS = eINSTANCE.getViewCall_Parameters();
 
     /**
      * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.SelectorImpl <em>Selector</em>}' class.

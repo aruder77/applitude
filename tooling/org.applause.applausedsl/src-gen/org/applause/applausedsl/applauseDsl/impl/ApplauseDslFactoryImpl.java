@@ -90,13 +90,15 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.COLLECTION_FUNCTION: return createCollectionFunction();
       case ApplauseDslPackage.COLLECTION_ITERATOR: return createCollectionIterator();
       case ApplauseDslPackage.PARAMETER: return createParameter();
+      case ApplauseDslPackage.PARAMETERIZED_MODEL_ELEMENT: return createParameterizedModelElement();
+      case ApplauseDslPackage.PARAMETERIZED_CALL: return createParameterizedCall();
       case ApplauseDslPackage.PARAMETER_DEFINITIONS: return createParameterDefinitions();
       case ApplauseDslPackage.PARAMETER_VALUES: return createParameterValues();
       case ApplauseDslPackage.CONTENT_PROVIDER: return createContentProvider();
       case ApplauseDslPackage.CONTENT_PROVIDER_IMPLEMENTATION: return createContentProviderImplementation();
       case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION: return createUrlContentProviderImplementation();
       case ApplauseDslPackage.CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION: return createCustomContentProviderImplementation();
-      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL: return createConstructProviderCall();
+      case ApplauseDslPackage.CONTENT_PROVIDER_CALL: return createContentProviderCall();
       case ApplauseDslPackage.ASSIGNMENT: return createAssignment();
       case ApplauseDslPackage.VIEW: return createView();
       case ApplauseDslPackage.TAB_VIEW: return createTabView();
@@ -412,6 +414,28 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
+  public ParameterizedModelElement createParameterizedModelElement()
+  {
+    ParameterizedModelElementImpl parameterizedModelElement = new ParameterizedModelElementImpl();
+    return parameterizedModelElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterizedCall createParameterizedCall()
+  {
+    ParameterizedCallImpl parameterizedCall = new ParameterizedCallImpl();
+    return parameterizedCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ParameterDefinitions createParameterDefinitions()
   {
     ParameterDefinitionsImpl parameterDefinitions = new ParameterDefinitionsImpl();
@@ -478,10 +502,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConstructProviderCall createConstructProviderCall()
+  public ContentProviderCall createContentProviderCall()
   {
-    ConstructProviderCallImpl constructProviderCall = new ConstructProviderCallImpl();
-    return constructProviderCall;
+    ContentProviderCallImpl contentProviderCall = new ContentProviderCallImpl();
+    return contentProviderCall;
   }
 
   /**

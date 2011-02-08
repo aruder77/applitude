@@ -188,6 +188,16 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createParameterAdapter();
       }
       @Override
+      public Adapter caseParameterizedModelElement(ParameterizedModelElement object)
+      {
+        return createParameterizedModelElementAdapter();
+      }
+      @Override
+      public Adapter caseParameterizedCall(ParameterizedCall object)
+      {
+        return createParameterizedCallAdapter();
+      }
+      @Override
       public Adapter caseParameterDefinitions(ParameterDefinitions object)
       {
         return createParameterDefinitionsAdapter();
@@ -218,9 +228,9 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createCustomContentProviderImplementationAdapter();
       }
       @Override
-      public Adapter caseConstructProviderCall(ConstructProviderCall object)
+      public Adapter caseContentProviderCall(ContentProviderCall object)
       {
-        return createConstructProviderCallAdapter();
+        return createContentProviderCallAdapter();
       }
       @Override
       public Adapter caseAssignment(Assignment object)
@@ -660,6 +670,36 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ParameterizedModelElement <em>Parameterized Model Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedModelElement
+   * @generated
+   */
+  public Adapter createParameterizedModelElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ParameterizedCall <em>Parameterized Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.applause.applausedsl.applauseDsl.ParameterizedCall
+   * @generated
+   */
+  public Adapter createParameterizedCallAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ParameterDefinitions <em>Parameter Definitions</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -750,16 +790,16 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ConstructProviderCall <em>Construct Provider Call</em>}'.
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ContentProviderCall <em>Content Provider Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ConstructProviderCall
+   * @see org.applause.applausedsl.applauseDsl.ContentProviderCall
    * @generated
    */
-  public Adapter createConstructProviderCallAdapter()
+  public Adapter createContentProviderCallAdapter()
   {
     return null;
   }

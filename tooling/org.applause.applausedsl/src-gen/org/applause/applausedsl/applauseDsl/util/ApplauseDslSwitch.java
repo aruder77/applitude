@@ -275,6 +275,21 @@ public class ApplauseDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ApplauseDslPackage.PARAMETERIZED_MODEL_ELEMENT:
+      {
+        ParameterizedModelElement parameterizedModelElement = (ParameterizedModelElement)theEObject;
+        T result = caseParameterizedModelElement(parameterizedModelElement);
+        if (result == null) result = caseModelElement(parameterizedModelElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ApplauseDslPackage.PARAMETERIZED_CALL:
+      {
+        ParameterizedCall parameterizedCall = (ParameterizedCall)theEObject;
+        T result = caseParameterizedCall(parameterizedCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ApplauseDslPackage.PARAMETER_DEFINITIONS:
       {
         ParameterDefinitions parameterDefinitions = (ParameterDefinitions)theEObject;
@@ -293,6 +308,7 @@ public class ApplauseDslSwitch<T>
       {
         ContentProvider contentProvider = (ContentProvider)theEObject;
         T result = caseContentProvider(contentProvider);
+        if (result == null) result = caseParameterizedModelElement(contentProvider);
         if (result == null) result = caseModelElement(contentProvider);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -320,13 +336,14 @@ public class ApplauseDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL:
+      case ApplauseDslPackage.CONTENT_PROVIDER_CALL:
       {
-        ConstructProviderCall constructProviderCall = (ConstructProviderCall)theEObject;
-        T result = caseConstructProviderCall(constructProviderCall);
-        if (result == null) result = caseScalarExpression(constructProviderCall);
-        if (result == null) result = caseCollectionExpression(constructProviderCall);
-        if (result == null) result = caseExpression(constructProviderCall);
+        ContentProviderCall contentProviderCall = (ContentProviderCall)theEObject;
+        T result = caseContentProviderCall(contentProviderCall);
+        if (result == null) result = caseScalarExpression(contentProviderCall);
+        if (result == null) result = caseCollectionExpression(contentProviderCall);
+        if (result == null) result = caseParameterizedCall(contentProviderCall);
+        if (result == null) result = caseExpression(contentProviderCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -343,6 +360,7 @@ public class ApplauseDslSwitch<T>
       {
         View view = (View)theEObject;
         T result = caseView(view);
+        if (result == null) result = caseParameterizedModelElement(view);
         if (result == null) result = caseModelElement(view);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -352,6 +370,7 @@ public class ApplauseDslSwitch<T>
         TabView tabView = (TabView)theEObject;
         T result = caseTabView(tabView);
         if (result == null) result = caseView(tabView);
+        if (result == null) result = caseParameterizedModelElement(tabView);
         if (result == null) result = caseModelElement(tabView);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -368,6 +387,7 @@ public class ApplauseDslSwitch<T>
         TableView tableView = (TableView)theEObject;
         T result = caseTableView(tableView);
         if (result == null) result = caseView(tableView);
+        if (result == null) result = caseParameterizedModelElement(tableView);
         if (result == null) result = caseModelElement(tableView);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -400,6 +420,7 @@ public class ApplauseDslSwitch<T>
         CustomView customView = (CustomView)theEObject;
         T result = caseCustomView(customView);
         if (result == null) result = caseView(customView);
+        if (result == null) result = caseParameterizedModelElement(customView);
         if (result == null) result = caseModelElement(customView);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -415,6 +436,7 @@ public class ApplauseDslSwitch<T>
       {
         ViewCall viewCall = (ViewCall)theEObject;
         T result = caseViewCall(viewCall);
+        if (result == null) result = caseParameterizedCall(viewCall);
         if (result == null) result = caseViewAction(viewCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -832,6 +854,38 @@ public class ApplauseDslSwitch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameterized Model Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameterized Model Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterizedModelElement(ParameterizedModelElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameterized Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameterized Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterizedCall(ParameterizedCall object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Parameter Definitions</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -928,17 +982,17 @@ public class ApplauseDslSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Construct Provider Call</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Content Provider Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Construct Provider Call</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Content Provider Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseConstructProviderCall(ConstructProviderCall object)
+  public T caseContentProviderCall(ContentProviderCall object)
   {
     return null;
   }

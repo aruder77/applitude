@@ -7,7 +7,7 @@ package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Assignment;
-import org.applause.applausedsl.applauseDsl.ConstructProviderCall;
+import org.applause.applausedsl.applauseDsl.ContentProviderCall;
 import org.applause.applausedsl.applauseDsl.TypeReference;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -52,7 +52,7 @@ public class AssignmentImpl extends DeclarationImpl implements Assignment
    * @generated
    * @ordered
    */
-  protected ConstructProviderCall value;
+  protected ContentProviderCall value;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,7 +128,7 @@ public class AssignmentImpl extends DeclarationImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConstructProviderCall getValue()
+  public ContentProviderCall getValue()
   {
     return value;
   }
@@ -138,9 +138,9 @@ public class AssignmentImpl extends DeclarationImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(ConstructProviderCall newValue, NotificationChain msgs)
+  public NotificationChain basicSetValue(ContentProviderCall newValue, NotificationChain msgs)
   {
-    ConstructProviderCall oldValue = value;
+    ContentProviderCall oldValue = value;
     value = newValue;
     if (eNotificationRequired())
     {
@@ -155,7 +155,7 @@ public class AssignmentImpl extends DeclarationImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(ConstructProviderCall newValue)
+  public void setValue(ContentProviderCall newValue)
   {
     if (newValue != value)
     {
@@ -221,7 +221,7 @@ public class AssignmentImpl extends DeclarationImpl implements Assignment
         setTypeRef((TypeReference)newValue);
         return;
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
-        setValue((ConstructProviderCall)newValue);
+        setValue((ContentProviderCall)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -241,7 +241,7 @@ public class AssignmentImpl extends DeclarationImpl implements Assignment
         setTypeRef((TypeReference)null);
         return;
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
-        setValue((ConstructProviderCall)null);
+        setValue((ContentProviderCall)null);
         return;
     }
     super.eUnset(featureID);
