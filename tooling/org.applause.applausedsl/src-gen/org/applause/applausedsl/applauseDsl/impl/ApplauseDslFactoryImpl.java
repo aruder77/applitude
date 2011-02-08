@@ -74,13 +74,11 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.TYPE: return createType();
       case ApplauseDslPackage.SIMPLE_TYPE: return createSimpleType();
       case ApplauseDslPackage.ENTITY: return createEntity();
+      case ApplauseDslPackage.PROPERTY: return createProperty();
       case ApplauseDslPackage.TYPE_REFERENCE: return createTypeReference();
       case ApplauseDslPackage.PROJECT_CLASS: return createProjectClass();
-      case ApplauseDslPackage.SCOPE_NAME: return createScopeName();
-      case ApplauseDslPackage.TYPED_NAME: return createTypedName();
-      case ApplauseDslPackage.PARAMETER: return createParameter();
-      case ApplauseDslPackage.PROPERTY: return createProperty();
-      case ApplauseDslPackage.ASSIGNMENT: return createAssignment();
+      case ApplauseDslPackage.DECLARATION: return createDeclaration();
+      case ApplauseDslPackage.NAMED: return createNamed();
       case ApplauseDslPackage.OBJECT_REFERENCE: return createObjectReference();
       case ApplauseDslPackage.EXPRESSION: return createExpression();
       case ApplauseDslPackage.SCALAR_EXPRESSION: return createScalarExpression();
@@ -91,11 +89,15 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.COLLECTION_LITERAL: return createCollectionLiteral();
       case ApplauseDslPackage.COLLECTION_FUNCTION: return createCollectionFunction();
       case ApplauseDslPackage.COLLECTION_ITERATOR: return createCollectionIterator();
+      case ApplauseDslPackage.PARAMETER: return createParameter();
+      case ApplauseDslPackage.PARAMETER_DEFINITIONS: return createParameterDefinitions();
+      case ApplauseDslPackage.PARAMETER_VALUES: return createParameterValues();
       case ApplauseDslPackage.CONTENT_PROVIDER: return createContentProvider();
       case ApplauseDslPackage.CONTENT_PROVIDER_IMPLEMENTATION: return createContentProviderImplementation();
       case ApplauseDslPackage.URL_CONTENT_PROVIDER_IMPLEMENTATION: return createUrlContentProviderImplementation();
       case ApplauseDslPackage.CUSTOM_CONTENT_PROVIDER_IMPLEMENTATION: return createCustomContentProviderImplementation();
-      case ApplauseDslPackage.PROVIDER_CONSTRUCTION: return createProviderConstruction();
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL: return createConstructProviderCall();
+      case ApplauseDslPackage.ASSIGNMENT: return createAssignment();
       case ApplauseDslPackage.VIEW: return createView();
       case ApplauseDslPackage.TAB_VIEW: return createTabView();
       case ApplauseDslPackage.TAB: return createTab();
@@ -112,8 +114,6 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.STRING_REPLACE: return createStringReplace();
       case ApplauseDslPackage.STRING_URL_CONFORM: return createStringUrlConform();
       case ApplauseDslPackage.STRING_SPLIT: return createStringSplit();
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION: return createComplexProviderConstruction();
-      case ApplauseDslPackage.SIMPLE_PROVIDER_CONSTRUCTION: return createSimpleProviderConstruction();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -236,6 +236,17 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
+  public Property createProperty()
+  {
+    PropertyImpl property = new PropertyImpl();
+    return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public TypeReference createTypeReference()
   {
     TypeReferenceImpl typeReference = new TypeReferenceImpl();
@@ -258,10 +269,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ScopeName createScopeName()
+  public Declaration createDeclaration()
   {
-    ScopeNameImpl scopeName = new ScopeNameImpl();
-    return scopeName;
+    DeclarationImpl declaration = new DeclarationImpl();
+    return declaration;
   }
 
   /**
@@ -269,43 +280,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypedName createTypedName()
+  public Named createNamed()
   {
-    TypedNameImpl typedName = new TypedNameImpl();
-    return typedName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Parameter createParameter()
-  {
-    ParameterImpl parameter = new ParameterImpl();
-    return parameter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Property createProperty()
-  {
-    PropertyImpl property = new PropertyImpl();
-    return property;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Assignment createAssignment()
-  {
-    AssignmentImpl assignment = new AssignmentImpl();
-    return assignment;
+    NamedImpl named = new NamedImpl();
+    return named;
   }
 
   /**
@@ -423,6 +401,39 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
+  public Parameter createParameter()
+  {
+    ParameterImpl parameter = new ParameterImpl();
+    return parameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterDefinitions createParameterDefinitions()
+  {
+    ParameterDefinitionsImpl parameterDefinitions = new ParameterDefinitionsImpl();
+    return parameterDefinitions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterValues createParameterValues()
+  {
+    ParameterValuesImpl parameterValues = new ParameterValuesImpl();
+    return parameterValues;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ContentProvider createContentProvider()
   {
     ContentProviderImpl contentProvider = new ContentProviderImpl();
@@ -467,10 +478,21 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProviderConstruction createProviderConstruction()
+  public ConstructProviderCall createConstructProviderCall()
   {
-    ProviderConstructionImpl providerConstruction = new ProviderConstructionImpl();
-    return providerConstruction;
+    ConstructProviderCallImpl constructProviderCall = new ConstructProviderCallImpl();
+    return constructProviderCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Assignment createAssignment()
+  {
+    AssignmentImpl assignment = new AssignmentImpl();
+    return assignment;
   }
 
   /**
@@ -647,28 +669,6 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
   {
     StringSplitImpl stringSplit = new StringSplitImpl();
     return stringSplit;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ComplexProviderConstruction createComplexProviderConstruction()
-  {
-    ComplexProviderConstructionImpl complexProviderConstruction = new ComplexProviderConstructionImpl();
-    return complexProviderConstruction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SimpleProviderConstruction createSimpleProviderConstruction()
-  {
-    SimpleProviderConstructionImpl simpleProviderConstruction = new SimpleProviderConstructionImpl();
-    return simpleProviderConstruction;
   }
 
   /**

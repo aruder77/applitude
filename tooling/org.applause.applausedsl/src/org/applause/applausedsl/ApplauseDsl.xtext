@@ -49,7 +49,6 @@ Declaration:
 Named:
 	Declaration | Property;
 
-//TODO: rename object to declaration and property
 ObjectReference hidden():
 	object=[Declaration] tail=PropertyReference?;
 	

@@ -14,7 +14,7 @@ package org.applause.applausedsl.applauseDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.View#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.View#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +25,29 @@ package org.applause.applausedsl.applauseDsl;
 public interface View extends ModelElement
 {
   /**
-   * Returns the value of the '<em><b>Parameter</b></em>' containment reference.
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameter</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Parameters</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameter</em>' containment reference.
-   * @see #setParameter(Parameter)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getView_Parameter()
+   * @return the value of the '<em>Parameters</em>' containment reference.
+   * @see #setParameters(ParameterDefinitions)
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getView_Parameters()
    * @model containment="true"
    * @generated
    */
-  Parameter getParameter();
+  ParameterDefinitions getParameters();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.View#getParameter <em>Parameter</em>}' containment reference.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.View#getParameters <em>Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parameter</em>' containment reference.
-   * @see #getParameter()
+   * @param value the new value of the '<em>Parameters</em>' containment reference.
+   * @see #getParameters()
    * @generated
    */
-  void setParameter(Parameter value);
+  void setParameters(ParameterDefinitions value);
 
 } // View

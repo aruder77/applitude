@@ -34,12 +34,12 @@ public interface ObjectReference extends ScalarExpression, CollectionExpression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Object</em>' reference.
-   * @see #setObject(ScopeName)
+   * @see #setObject(Named)
    * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getObjectReference_Object()
    * @model
    * @generated
    */
-  ScopeName getObject();
+  Named getObject();
 
   /**
    * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ObjectReference#getObject <em>Object</em>}' reference.
@@ -49,7 +49,7 @@ public interface ObjectReference extends ScalarExpression, CollectionExpression
    * @see #getObject()
    * @generated
    */
-  void setObject(ScopeName value);
+  void setObject(Named value);
 
   /**
    * Returns the value of the '<em><b>Tail</b></em>' containment reference.

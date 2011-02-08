@@ -6,29 +6,27 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.ProviderConstruction;
+import org.applause.applausedsl.applauseDsl.Declaration;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Provider Construction</b></em>'.
+ * An implementation of the model object '<em><b>Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ProviderConstructionImpl extends MinimalEObjectImpl.Container implements ProviderConstruction
+public class DeclarationImpl extends NamedImpl implements Declaration
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ProviderConstructionImpl()
+  protected DeclarationImpl()
   {
     super();
   }
@@ -41,7 +39,7 @@ public class ProviderConstructionImpl extends MinimalEObjectImpl.Container imple
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.PROVIDER_CONSTRUCTION;
+    return ApplauseDslPackage.Literals.DECLARATION;
   }
 
-} //ProviderConstructionImpl
+} //DeclarationImpl

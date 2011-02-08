@@ -7,7 +7,8 @@ package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Assignment;
-import org.applause.applausedsl.applauseDsl.ProviderConstruction;
+import org.applause.applausedsl.applauseDsl.ConstructProviderCall;
+import org.applause.applausedsl.applauseDsl.TypeReference;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,14 +25,25 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.AssignmentImpl#getTypeRef <em>Type Ref</em>}</li>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.AssignmentImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AssignmentImpl extends TypedNameImpl implements Assignment
+public class AssignmentImpl extends DeclarationImpl implements Assignment
 {
+  /**
+   * The cached value of the '{@link #getTypeRef() <em>Type Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeRef()
+   * @generated
+   * @ordered
+   */
+  protected TypeReference typeRef;
+
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -40,7 +52,7 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
    * @generated
    * @ordered
    */
-  protected ProviderConstruction value;
+  protected ConstructProviderCall value;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,7 +80,55 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProviderConstruction getValue()
+  public TypeReference getTypeRef()
+  {
+    return typeRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeRef(TypeReference newTypeRef, NotificationChain msgs)
+  {
+    TypeReference oldTypeRef = typeRef;
+    typeRef = newTypeRef;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.ASSIGNMENT__TYPE_REF, oldTypeRef, newTypeRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypeRef(TypeReference newTypeRef)
+  {
+    if (newTypeRef != typeRef)
+    {
+      NotificationChain msgs = null;
+      if (typeRef != null)
+        msgs = ((InternalEObject)typeRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.ASSIGNMENT__TYPE_REF, null, msgs);
+      if (newTypeRef != null)
+        msgs = ((InternalEObject)newTypeRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.ASSIGNMENT__TYPE_REF, null, msgs);
+      msgs = basicSetTypeRef(newTypeRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.ASSIGNMENT__TYPE_REF, newTypeRef, newTypeRef));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConstructProviderCall getValue()
   {
     return value;
   }
@@ -78,9 +138,9 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(ProviderConstruction newValue, NotificationChain msgs)
+  public NotificationChain basicSetValue(ConstructProviderCall newValue, NotificationChain msgs)
   {
-    ProviderConstruction oldValue = value;
+    ConstructProviderCall oldValue = value;
     value = newValue;
     if (eNotificationRequired())
     {
@@ -95,7 +155,7 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(ProviderConstruction newValue)
+  public void setValue(ConstructProviderCall newValue)
   {
     if (newValue != value)
     {
@@ -121,6 +181,8 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
   {
     switch (featureID)
     {
+      case ApplauseDslPackage.ASSIGNMENT__TYPE_REF:
+        return basicSetTypeRef(null, msgs);
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
         return basicSetValue(null, msgs);
     }
@@ -137,6 +199,8 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
   {
     switch (featureID)
     {
+      case ApplauseDslPackage.ASSIGNMENT__TYPE_REF:
+        return getTypeRef();
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
         return getValue();
     }
@@ -153,8 +217,11 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
   {
     switch (featureID)
     {
+      case ApplauseDslPackage.ASSIGNMENT__TYPE_REF:
+        setTypeRef((TypeReference)newValue);
+        return;
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
-        setValue((ProviderConstruction)newValue);
+        setValue((ConstructProviderCall)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +237,11 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
   {
     switch (featureID)
     {
+      case ApplauseDslPackage.ASSIGNMENT__TYPE_REF:
+        setTypeRef((TypeReference)null);
+        return;
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
-        setValue((ProviderConstruction)null);
+        setValue((ConstructProviderCall)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,6 +257,8 @@ public class AssignmentImpl extends TypedNameImpl implements Assignment
   {
     switch (featureID)
     {
+      case ApplauseDslPackage.ASSIGNMENT__TYPE_REF:
+        return typeRef != null;
       case ApplauseDslPackage.ASSIGNMENT__VALUE:
         return value != null;
     }

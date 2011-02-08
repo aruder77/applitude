@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Scope Name</b></em>'.
+ * A representation of the model object '<em><b>Named</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.ScopeName#getName <em>Name</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.Named#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getScopeName()
+ * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getNamed()
  * @model
  * @generated
  */
-public interface ScopeName extends EObject
+public interface Named extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -35,14 +35,14 @@ public interface ScopeName extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getScopeName_Name()
+   * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getNamed_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.ScopeName#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.Named#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -51,4 +51,4 @@ public interface ScopeName extends EObject
    */
   void setName(String value);
 
-} // ScopeName
+} // Named

@@ -6,8 +6,8 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
+import org.applause.applausedsl.applauseDsl.Named;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
-import org.applause.applausedsl.applauseDsl.ScopeName;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -41,7 +41,7 @@ public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectR
    * @generated
    * @ordered
    */
-  protected ScopeName object;
+  protected Named object;
 
   /**
    * The cached value of the '{@link #getTail() <em>Tail</em>}' containment reference.
@@ -79,12 +79,12 @@ public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectR
    * <!-- end-user-doc -->
    * @generated
    */
-  public ScopeName getObject()
+  public Named getObject()
   {
     if (object != null && object.eIsProxy())
     {
       InternalEObject oldObject = (InternalEObject)object;
-      object = (ScopeName)eResolveProxy(oldObject);
+      object = (Named)eResolveProxy(oldObject);
       if (object != oldObject)
       {
         if (eNotificationRequired())
@@ -99,7 +99,7 @@ public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectR
    * <!-- end-user-doc -->
    * @generated
    */
-  public ScopeName basicGetObject()
+  public Named basicGetObject()
   {
     return object;
   }
@@ -109,9 +109,9 @@ public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectR
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setObject(ScopeName newObject)
+  public void setObject(Named newObject)
   {
-    ScopeName oldObject = object;
+    Named oldObject = object;
     object = newObject;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.OBJECT_REFERENCE__OBJECT, oldObject, object));
@@ -211,7 +211,7 @@ public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectR
     switch (featureID)
     {
       case ApplauseDslPackage.OBJECT_REFERENCE__OBJECT:
-        setObject((ScopeName)newValue);
+        setObject((Named)newValue);
         return;
       case ApplauseDslPackage.OBJECT_REFERENCE__TAIL:
         setTail((ObjectReference)newValue);
@@ -231,7 +231,7 @@ public class ObjectReferenceImpl extends ScalarExpressionImpl implements ObjectR
     switch (featureID)
     {
       case ApplauseDslPackage.OBJECT_REFERENCE__OBJECT:
-        setObject((ScopeName)null);
+        setObject((Named)null);
         return;
       case ApplauseDslPackage.OBJECT_REFERENCE__TAIL:
         setTail((ObjectReference)null);

@@ -80,6 +80,15 @@ public interface ApplauseDslFactory extends EFactory
   Entity createEntity();
 
   /**
+   * Returns a new object of class '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property</em>'.
+   * @generated
+   */
+  Property createProperty();
+
+  /**
    * Returns a new object of class '<em>Type Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -98,49 +107,22 @@ public interface ApplauseDslFactory extends EFactory
   ProjectClass createProjectClass();
 
   /**
-   * Returns a new object of class '<em>Scope Name</em>'.
+   * Returns a new object of class '<em>Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Scope Name</em>'.
+   * @return a new object of class '<em>Declaration</em>'.
    * @generated
    */
-  ScopeName createScopeName();
+  Declaration createDeclaration();
 
   /**
-   * Returns a new object of class '<em>Typed Name</em>'.
+   * Returns a new object of class '<em>Named</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Typed Name</em>'.
+   * @return a new object of class '<em>Named</em>'.
    * @generated
    */
-  TypedName createTypedName();
-
-  /**
-   * Returns a new object of class '<em>Parameter</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter</em>'.
-   * @generated
-   */
-  Parameter createParameter();
-
-  /**
-   * Returns a new object of class '<em>Property</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property</em>'.
-   * @generated
-   */
-  Property createProperty();
-
-  /**
-   * Returns a new object of class '<em>Assignment</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Assignment</em>'.
-   * @generated
-   */
-  Assignment createAssignment();
+  Named createNamed();
 
   /**
    * Returns a new object of class '<em>Object Reference</em>'.
@@ -233,6 +215,33 @@ public interface ApplauseDslFactory extends EFactory
   CollectionIterator createCollectionIterator();
 
   /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
+   * Returns a new object of class '<em>Parameter Definitions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Definitions</em>'.
+   * @generated
+   */
+  ParameterDefinitions createParameterDefinitions();
+
+  /**
+   * Returns a new object of class '<em>Parameter Values</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Values</em>'.
+   * @generated
+   */
+  ParameterValues createParameterValues();
+
+  /**
    * Returns a new object of class '<em>Content Provider</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -269,13 +278,22 @@ public interface ApplauseDslFactory extends EFactory
   CustomContentProviderImplementation createCustomContentProviderImplementation();
 
   /**
-   * Returns a new object of class '<em>Provider Construction</em>'.
+   * Returns a new object of class '<em>Construct Provider Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Provider Construction</em>'.
+   * @return a new object of class '<em>Construct Provider Call</em>'.
    * @generated
    */
-  ProviderConstruction createProviderConstruction();
+  ConstructProviderCall createConstructProviderCall();
+
+  /**
+   * Returns a new object of class '<em>Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignment</em>'.
+   * @generated
+   */
+  Assignment createAssignment();
 
   /**
    * Returns a new object of class '<em>View</em>'.
@@ -420,24 +438,6 @@ public interface ApplauseDslFactory extends EFactory
    * @generated
    */
   StringSplit createStringSplit();
-
-  /**
-   * Returns a new object of class '<em>Complex Provider Construction</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Complex Provider Construction</em>'.
-   * @generated
-   */
-  ComplexProviderConstruction createComplexProviderConstruction();
-
-  /**
-   * Returns a new object of class '<em>Simple Provider Construction</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Simple Provider Construction</em>'.
-   * @generated
-   */
-  SimpleProviderConstruction createSimpleProviderConstruction();
 
   /**
    * Returns the package supported by this factory.

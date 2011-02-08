@@ -6,7 +6,7 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.ProviderConstruction;
+import org.applause.applausedsl.applauseDsl.ParameterValues;
 import org.applause.applausedsl.applauseDsl.View;
 import org.applause.applausedsl.applauseDsl.ViewCall;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl#getView <em>View</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,14 +45,14 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
   protected View view;
 
   /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameter()
+   * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected ProviderConstruction parameter;
+  protected ParameterValues parameters;
 
   /**
    * <!-- begin-user-doc -->
@@ -123,9 +123,9 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProviderConstruction getParameter()
+  public ParameterValues getParameters()
   {
-    return parameter;
+    return parameters;
   }
 
   /**
@@ -133,13 +133,13 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameter(ProviderConstruction newParameter, NotificationChain msgs)
+  public NotificationChain basicSetParameters(ParameterValues newParameters, NotificationChain msgs)
   {
-    ProviderConstruction oldParameter = parameter;
-    parameter = newParameter;
+    ParameterValues oldParameters = parameters;
+    parameters = newParameters;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PARAMETER, oldParameter, newParameter);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PARAMETERS, oldParameters, newParameters);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -150,20 +150,20 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameter(ProviderConstruction newParameter)
+  public void setParameters(ParameterValues newParameters)
   {
-    if (newParameter != parameter)
+    if (newParameters != parameters)
     {
       NotificationChain msgs = null;
-      if (parameter != null)
-        msgs = ((InternalEObject)parameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PARAMETER, null, msgs);
-      if (newParameter != null)
-        msgs = ((InternalEObject)newParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PARAMETER, null, msgs);
-      msgs = basicSetParameter(newParameter, msgs);
+      if (parameters != null)
+        msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PARAMETERS, null, msgs);
+      if (newParameters != null)
+        msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW_CALL__PARAMETERS, null, msgs);
+      msgs = basicSetParameters(newParameters, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PARAMETER, newParameter, newParameter));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW_CALL__PARAMETERS, newParameters, newParameters));
   }
 
   /**
@@ -176,8 +176,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
-        return basicSetParameter(null, msgs);
+      case ApplauseDslPackage.VIEW_CALL__PARAMETERS:
+        return basicSetParameters(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -195,8 +195,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         if (resolve) return getView();
         return basicGetView();
-      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
-        return getParameter();
+      case ApplauseDslPackage.VIEW_CALL__PARAMETERS:
+        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -214,8 +214,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         setView((View)newValue);
         return;
-      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
-        setParameter((ProviderConstruction)newValue);
+      case ApplauseDslPackage.VIEW_CALL__PARAMETERS:
+        setParameters((ParameterValues)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,8 +234,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         setView((View)null);
         return;
-      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
-        setParameter((ProviderConstruction)null);
+      case ApplauseDslPackage.VIEW_CALL__PARAMETERS:
+        setParameters((ParameterValues)null);
         return;
     }
     super.eUnset(featureID);
@@ -253,8 +253,8 @@ public class ViewCallImpl extends ViewActionImpl implements ViewCall
     {
       case ApplauseDslPackage.VIEW_CALL__VIEW:
         return view != null;
-      case ApplauseDslPackage.VIEW_CALL__PARAMETER:
-        return parameter != null;
+      case ApplauseDslPackage.VIEW_CALL__PARAMETERS:
+        return parameters != null;
     }
     return super.eIsSet(featureID);
   }

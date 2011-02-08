@@ -6,7 +6,7 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.ScopeName;
+import org.applause.applausedsl.applauseDsl.Named;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -17,18 +17,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Scope Name</b></em>'.
+ * An implementation of the model object '<em><b>Named</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ScopeNameImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.NamedImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ScopeNameImpl extends MinimalEObjectImpl.Container implements ScopeName
+public class NamedImpl extends MinimalEObjectImpl.Container implements Named
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -55,7 +55,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ScopeNameImpl()
+  protected NamedImpl()
   {
     super();
   }
@@ -68,7 +68,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.SCOPE_NAME;
+    return ApplauseDslPackage.Literals.NAMED;
   }
 
   /**
@@ -91,7 +91,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.SCOPE_NAME__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.NAMED__NAME, oldName, name));
   }
 
   /**
@@ -104,7 +104,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.SCOPE_NAME__NAME:
+      case ApplauseDslPackage.NAMED__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -120,7 +120,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.SCOPE_NAME__NAME:
+      case ApplauseDslPackage.NAMED__NAME:
         setName((String)newValue);
         return;
     }
@@ -137,7 +137,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.SCOPE_NAME__NAME:
+      case ApplauseDslPackage.NAMED__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -154,7 +154,7 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.SCOPE_NAME__NAME:
+      case ApplauseDslPackage.NAMED__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -177,4 +177,4 @@ public class ScopeNameImpl extends MinimalEObjectImpl.Container implements Scope
     return result.toString();
   }
 
-} //ScopeNameImpl
+} //NamedImpl

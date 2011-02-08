@@ -6,9 +6,9 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.ComplexProviderConstruction;
+import org.applause.applausedsl.applauseDsl.ConstructProviderCall;
 import org.applause.applausedsl.applauseDsl.ContentProvider;
-import org.applause.applausedsl.applauseDsl.Expression;
+import org.applause.applausedsl.applauseDsl.ParameterValues;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,19 +20,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Complex Provider Construction</b></em>'.
+ * An implementation of the model object '<em><b>Construct Provider Call</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ComplexProviderConstructionImpl#getProvider <em>Provider</em>}</li>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ComplexProviderConstructionImpl#getArgument <em>Argument</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ConstructProviderCallImpl#getProvider <em>Provider</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ConstructProviderCallImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ComplexProviderConstructionImpl extends ProviderConstructionImpl implements ComplexProviderConstruction
+public class ConstructProviderCallImpl extends ScalarExpressionImpl implements ConstructProviderCall
 {
   /**
    * The cached value of the '{@link #getProvider() <em>Provider</em>}' reference.
@@ -45,21 +45,21 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   protected ContentProvider provider;
 
   /**
-   * The cached value of the '{@link #getArgument() <em>Argument</em>}' containment reference.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArgument()
+   * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected Expression argument;
+  protected ParameterValues parameters;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ComplexProviderConstructionImpl()
+  protected ConstructProviderCallImpl()
   {
     super();
   }
@@ -72,7 +72,7 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.COMPLEX_PROVIDER_CONSTRUCTION;
+    return ApplauseDslPackage.Literals.CONSTRUCT_PROVIDER_CALL;
   }
 
   /**
@@ -89,7 +89,7 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
       if (provider != oldProvider)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__PROVIDER, oldProvider, provider));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PROVIDER, oldProvider, provider));
       }
     }
     return provider;
@@ -115,7 +115,7 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
     ContentProvider oldProvider = provider;
     provider = newProvider;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__PROVIDER, oldProvider, provider));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PROVIDER, oldProvider, provider));
   }
 
   /**
@@ -123,9 +123,9 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getArgument()
+  public ParameterValues getParameters()
   {
-    return argument;
+    return parameters;
   }
 
   /**
@@ -133,13 +133,13 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetArgument(Expression newArgument, NotificationChain msgs)
+  public NotificationChain basicSetParameters(ParameterValues newParameters, NotificationChain msgs)
   {
-    Expression oldArgument = argument;
-    argument = newArgument;
+    ParameterValues oldParameters = parameters;
+    parameters = newParameters;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT, oldArgument, newArgument);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS, oldParameters, newParameters);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -150,20 +150,20 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setArgument(Expression newArgument)
+  public void setParameters(ParameterValues newParameters)
   {
-    if (newArgument != argument)
+    if (newParameters != parameters)
     {
       NotificationChain msgs = null;
-      if (argument != null)
-        msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT, null, msgs);
-      if (newArgument != null)
-        msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT, null, msgs);
-      msgs = basicSetArgument(newArgument, msgs);
+      if (parameters != null)
+        msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS, null, msgs);
+      if (newParameters != null)
+        msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS, null, msgs);
+      msgs = basicSetParameters(newParameters, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT, newArgument, newArgument));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS, newParameters, newParameters));
   }
 
   /**
@@ -176,8 +176,8 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT:
-        return basicSetArgument(null, msgs);
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS:
+        return basicSetParameters(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -192,11 +192,11 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__PROVIDER:
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PROVIDER:
         if (resolve) return getProvider();
         return basicGetProvider();
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT:
-        return getArgument();
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS:
+        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -211,11 +211,11 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__PROVIDER:
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PROVIDER:
         setProvider((ContentProvider)newValue);
         return;
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT:
-        setArgument((Expression)newValue);
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS:
+        setParameters((ParameterValues)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -231,11 +231,11 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__PROVIDER:
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PROVIDER:
         setProvider((ContentProvider)null);
         return;
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT:
-        setArgument((Expression)null);
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS:
+        setParameters((ParameterValues)null);
         return;
     }
     super.eUnset(featureID);
@@ -251,12 +251,12 @@ public class ComplexProviderConstructionImpl extends ProviderConstructionImpl im
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__PROVIDER:
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PROVIDER:
         return provider != null;
-      case ApplauseDslPackage.COMPLEX_PROVIDER_CONSTRUCTION__ARGUMENT:
-        return argument != null;
+      case ApplauseDslPackage.CONSTRUCT_PROVIDER_CALL__PARAMETERS:
+        return parameters != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ComplexProviderConstructionImpl
+} //ConstructProviderCallImpl

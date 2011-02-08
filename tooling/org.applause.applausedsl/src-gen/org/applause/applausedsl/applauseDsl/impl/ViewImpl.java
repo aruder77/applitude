@@ -6,7 +6,7 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.Parameter;
+import org.applause.applausedsl.applauseDsl.ParameterDefinitions;
 import org.applause.applausedsl.applauseDsl.View;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ViewImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,14 +33,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ViewImpl extends ModelElementImpl implements View
 {
   /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameter()
+   * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected Parameter parameter;
+  protected ParameterDefinitions parameters;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,9 +68,9 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter getParameter()
+  public ParameterDefinitions getParameters()
   {
-    return parameter;
+    return parameters;
   }
 
   /**
@@ -78,13 +78,13 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameter(Parameter newParameter, NotificationChain msgs)
+  public NotificationChain basicSetParameters(ParameterDefinitions newParameters, NotificationChain msgs)
   {
-    Parameter oldParameter = parameter;
-    parameter = newParameter;
+    ParameterDefinitions oldParameters = parameters;
+    parameters = newParameters;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW__PARAMETER, oldParameter, newParameter);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW__PARAMETERS, oldParameters, newParameters);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class ViewImpl extends ModelElementImpl implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameter(Parameter newParameter)
+  public void setParameters(ParameterDefinitions newParameters)
   {
-    if (newParameter != parameter)
+    if (newParameters != parameters)
     {
       NotificationChain msgs = null;
-      if (parameter != null)
-        msgs = ((InternalEObject)parameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW__PARAMETER, null, msgs);
-      if (newParameter != null)
-        msgs = ((InternalEObject)newParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW__PARAMETER, null, msgs);
-      msgs = basicSetParameter(newParameter, msgs);
+      if (parameters != null)
+        msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW__PARAMETERS, null, msgs);
+      if (newParameters != null)
+        msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.VIEW__PARAMETERS, null, msgs);
+      msgs = basicSetParameters(newParameters, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW__PARAMETER, newParameter, newParameter));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.VIEW__PARAMETERS, newParameters, newParameters));
   }
 
   /**
@@ -121,8 +121,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        return basicSetParameter(null, msgs);
+      case ApplauseDslPackage.VIEW__PARAMETERS:
+        return basicSetParameters(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        return getParameter();
+      case ApplauseDslPackage.VIEW__PARAMETERS:
+        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        setParameter((Parameter)newValue);
+      case ApplauseDslPackage.VIEW__PARAMETERS:
+        setParameters((ParameterDefinitions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        setParameter((Parameter)null);
+      case ApplauseDslPackage.VIEW__PARAMETERS:
+        setParameters((ParameterDefinitions)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,8 +187,8 @@ public class ViewImpl extends ModelElementImpl implements View
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.VIEW__PARAMETER:
-        return parameter != null;
+      case ApplauseDslPackage.VIEW__PARAMETERS:
+        return parameters != null;
     }
     return super.eIsSet(featureID);
   }
