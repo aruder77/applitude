@@ -89,7 +89,7 @@
 «ENDDEFINE»
 
 «DEFINE cellActionMethod(Cell cell) FOR ViewCall-»
-- (void) «cell.idname()»CellSelected:(BoxCell *)cell {
+- (void) «actionSelectorName()»(BoxCell *)cell {
 	«IF cell.section().iterator!=null-»
 		id «cell.section().iterator.name» = cell.data;
 	«ENDIF-»

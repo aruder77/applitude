@@ -294,13 +294,12 @@ index(EObject obj, xpand2::Type type):
 idname(StringLiteral str):
 	str.value.split(" ").toFirstUpper().toString("").toFirstLower().replaceAll("[^a-zA-Z]", "");
 
-// unique id for cell: cell.iterator or cell.text or section/cell index 
 idname(Cell cell):
 	cell.iterator != null
-		? cell.iterator.name
+		? cell.iterator.name   // 1) use name of cell.iterator if present
 		: (StringLiteral.isInstance(cell.text)
-			? ((StringLiteral)cell.text).idname()
-			: ('s' + cell.eContainer().index(Section) + 'c' + cell.index(Cell)));
+			? ((StringLiteral)cell.text).idname()    // 2) use text if string literal if present
+			: ('s' + cell.eContainer().index(Section) + 'c' + cell.index(Cell)));   // 3) fallback: use section/cell index
 
 providers(TableView view):
 	{ view.parameters.definitions, view.variables }.flatten();
@@ -331,7 +330,7 @@ objcConstruct(Cell cell):
 	 + cell.image.assignment('cell', 'imageUrl')
 	 + ((cell.accessory.ordinal() == 0 && cell.action != null) ? 'cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;\n' : "")
 	 + ((cell.accessory.ordinal() > 0) ? 'cell.accessoryType = ' + cell.accessory.constant() + ";\n" : "")
-	 + ((cell.action != null) ? 'cell.onTouch = ' + action(cell.action, cell) + ";\n" : "")
+	 + ((cell.action != null) ? 'cell.onTouch = ' + cell.action.objcCall() + ";\n" : "")
 	 + ((cell.iterator != null) ? 'cell.data = ' + cell.iterator.resolveToValue() + ';\n' : "[self cell:cell];\n");
 
 objcConstruct(Section section):
@@ -354,16 +353,17 @@ objcSetup(ViewContentElement this):
 
 /* Actions */
 
-//TOOD: cell is handed in to calculate unique cell selector name for ViewCall - there has to be a better way
-action(ViewAction this, Cell cell):
-	throwError("action not supported for " + this);
+actionSelectorName(ViewAction this):
+	"<actionSelectorName is abstract for: " + this + ">";
 
-action(ViewCall call, Cell cell):
-	'[' + "SelectorAction".use() + ' actionWithObject:self selector:@selector(' + cell.idname() + 'CellSelected:)]';
+actionSelectorName(Selector sel):
+	sel.name;
 
-action(Selector sel, Cell cell):
-	'[' + "SelectorAction".use() + ' actionWithObject:self selector:@selector(' + sel.name + ')]';
+actionSelectorName(ViewCall call):
+	((Cell)call.eContainer()).idname()  + 'CellSelected:';
 
+objcCall(ViewAction this):
+	'[' + use("SelectorAction") + ' actionWithObject:self selector:@selector(' + this.actionSelectorName() + ')]';
 
 
 
@@ -381,7 +381,7 @@ List[Parameter] parameterTypes(ContentProvider this):
 /* Misc */
 
 objcType(Type this):
-	throwError("<objcType not supported for " + this + ">");
+	"<objcType is abstract for: " + this + ">";
 
 objcType(SimpleType type):
 	type.platformType + " *";
