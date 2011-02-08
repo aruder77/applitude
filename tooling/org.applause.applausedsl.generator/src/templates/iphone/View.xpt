@@ -89,17 +89,18 @@
 «ENDDEFINE»
 
 «DEFINE cellActionMethod(Cell cell) FOR ViewCall-»
-	«LET cell.iterator AS it-»
-		- (void) «cell.idname()»CellSelected:(BoxCell *)cell {
-			«IF it!=null-»
-				id «cell.idname()» = cell.data;
-			«ENDIF-»
-			UIViewController *controller = «call()»;
-			[self.navigationController pushViewController:controller animated:YES];
-		}
-	«ENDLET»
-«ENDDEFINE»
+- (void) «cell.idname()»CellSelected:(BoxCell *)cell {
+	«IF cell.section().iterator!=null-»
+		id «cell.section().iterator.name» = cell.data;
+	«ENDIF-»
+	«IF cell.iterator!=null-»
+		id «cell.iterator.name» = cell.data;
+	«ENDIF-»
+	UIViewController *controller = «call()»;
+	[self.navigationController pushViewController:controller animated:YES];
+}
 
+«ENDDEFINE»
 
 «DEFINE dealloc FOR TableView-»
 	- (void) dealloc {

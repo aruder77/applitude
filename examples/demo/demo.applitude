@@ -61,15 +61,26 @@ tableview InventorDetail(Inventor inventor) {
 		title: "Inventions"
 		cell Default for invention in inventor.inventions {
 			text: invention.name
-			action: InventionDetail(invention)
+			action: InventionDetail(inventor, invention)
 		}
 	}
 
 }
 
-tableview InventionDetail(Invention invention) {
+tableview InventionDetail(Inventor inventor, Invention invention) {
 	title: invention.name
 	style: Grouped
+	
+	section {
+		cell Value2 {
+			text: "Inventor"
+			detailText: inventor.name
+		}
+		cell Value2 {
+			text: "Invention"
+			detailText: invention.name
+		}
+	}
 }
 
 
@@ -148,7 +159,6 @@ tableview ReferenceSectionCellForeach {
 		title: inv.name
 		cell Default for invention in inv.inventions {
 			text: invention.name
-			action: InventionDetail(invention)
 		}
 	}
 
@@ -172,7 +182,6 @@ tableview ReferenceErrorHandling {
 		title: inv.name
 		cell Default for invention in inv.inventions {
 			text: invention.name
-			action: InventionDetail(invention)
 		}
 	}
 

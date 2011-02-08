@@ -309,6 +309,9 @@ providers(TableView view):
 
 /* TableView: Section and Cell */
 
+section(Cell cell):
+	(Section) cell.eContainer();
+
 cellClass(Cell cell):
 	cell.image != null ? use('ImageCell') : use('BoxCell');
 
