@@ -6,14 +6,13 @@ package templates.iphone;
 import org.applause.applausedsl.ApplauseDslStandaloneSetup;
 import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.CollectionLiteral;
-import org.applause.applausedsl.applauseDsl.ComplexProviderConstruction;
+import org.applause.applausedsl.applauseDsl.ConstructProviderCall;
 import org.applause.applausedsl.applauseDsl.Model;
+import org.applause.applausedsl.applauseDsl.Named;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
 import org.applause.applausedsl.applauseDsl.Parameter;
 import org.applause.applausedsl.applauseDsl.Property;
 import org.applause.applausedsl.applauseDsl.ScalarExpression;
-import org.applause.applausedsl.applauseDsl.ScopeName;
-import org.applause.applausedsl.applauseDsl.SimpleProviderConstruction;
 import org.applause.applausedsl.applauseDsl.StringConcat;
 import org.applause.applausedsl.applauseDsl.StringLiteral;
 import org.applause.applausedsl.applauseDsl.StringReplace;
@@ -38,7 +37,7 @@ public class ExtensionsTest extends AbstractXtextTests {
 	private Property prop2;
 	private Model model;
 	private TableView table;
-	private ComplexProviderConstruction complexProviderConstruction;
+	private ConstructProviderCall constructProviderCall;
 
 	@Override
 	protected void setUp() throws Exception {
@@ -60,7 +59,7 @@ public class ExtensionsTest extends AbstractXtextTests {
 		prop2.setName("prop2");
 
 		table = Iterables.filter(model.eContents(), TableView.class).iterator().next();
-		complexProviderConstruction = (ComplexProviderConstruction) table.getVariables().get(0).getValue();
+		constructProviderCall = (ConstructProviderCall) table.getVariables().get(0).getValue();
 
 	};
 
@@ -85,27 +84,19 @@ public class ExtensionsTest extends AbstractXtextTests {
 	}
 
 	@Test
-	public void testSimpleProviderConstructionResolveToProvider() throws Exception {
-		ObjectReference ref = ref(parameterFoo);
-		SimpleProviderConstruction construction = ApplauseDslFactory.eINSTANCE.createSimpleProviderConstruction();
-		construction.setExpression(ref);
-		assertResolveToProvider("fFoo", construction);
-	}
-
-	@Test
 	public void testComplexProviderConstructionResolveToProvider() throws Exception {
 		assertResolveToProvider("[[ExtensionsTestProviders sharedProviders] providerForAllInventors]",
-				complexProviderConstruction);
+				constructProviderCall);
 	}
 
 	@Test
 	public void testComplexProviderConstructionWithArgsResolveToProvider() throws Exception {
 		Parameter param1 = ApplauseDslFactory.eINSTANCE.createParameter();
 		param1.setName("param1");
-		complexProviderConstruction.getProvider().setParameter(param1);
-		complexProviderConstruction.setArgument(ref(parameterFoo));
+		constructProviderCall.getProvider().getParameters().getDefinitions().add(param1);
+		constructProviderCall.getParameters().getValues().add(ref(parameterFoo));
 		assertResolveToProvider("[[ExtensionsTestProviders sharedProviders] providerForAllInventorsWithParam1:fFoo]",
-				complexProviderConstruction);
+				constructProviderCall);
 	}
 
 	@Test
@@ -203,12 +194,12 @@ public class ExtensionsTest extends AbstractXtextTests {
 		assertEquals(expected, xtend.call("resolveToValue", object));
 	}
 
-	private ObjectReference ref(ScopeName... path) {
+	private ObjectReference ref(Named... path) {
 		final ObjectReference rootRef = ApplauseDslFactory.eINSTANCE.createObjectReference();
 		ObjectReference lastRef = rootRef;
 
 		for (int i = 0; i < path.length; i++) {
-			ScopeName i_name = path[i];
+			Named i_name = path[i];
 			if (i == 0) {
 				rootRef.setObject(i_name);
 			} else {

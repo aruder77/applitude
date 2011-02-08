@@ -3,6 +3,7 @@
  */
 package org.applause.applausedsl.scoping;
 
+import org.applause.applausedsl.applauseDsl.CollectionIterator;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -14,12 +15,20 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 public class ApplauseDslScopeProvider extends AbstractDeclarativeScopeProvider {
 	
-	public IScope scope_ScopeName(EObject context, EReference ref) {
-		if(context.eContainer() instanceof ObjectReference)
-			return new ObjectReferenceScope((ObjectReference) context.eContainer());
-		else
-			return new ScopeNameScope(context);
+	public IScope scope_Named(EObject ctx, EReference ref) {
+		// [Property]
+		if(ctx.eContainer() instanceof ObjectReference) {
+			return new ObjectReferenceScope((ObjectReference) ctx.eContainer());
+		}
+
+		// [Declaration]
+		if (ctx instanceof CollectionIterator) {
+			// while the iterator is technically inside the cell/section,
+			// it is not allowed to use variables defined in the scope of the
+			// cell/section
+			ctx = ctx.eContainer().eContainer();
+		}
+		return new DeclarationScope(ctx);
 	}
 	
-
 }

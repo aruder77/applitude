@@ -5,8 +5,8 @@ extension org::eclipse::xtend::util::stdlib::io;
 extension templates::MetamodelExtensions;
 
 
-// Objective C language support: Imports
-// While generating files, imports are collected in a list for header and module
+// Objective C imports
+// While generating files, imports are collected in a list for header and module,
 // calling use() for String or ProjectClass adds the class to the list of imports
 
 cached ProjectClass projectClass(String name):
@@ -88,7 +88,7 @@ objc_MethodParamSignatures(List[String] names, List[String] types):
 objc_MethodParamValues(List[String] names, List[String] values):
 	names.isEmpty ? "" :
 		(let n = names.objc_MethodParamNames() :
-					0.upTo(n.size - 1).collect(i|n.get(i)+ ":" + values.get(i)).toString(" "));
+					0.upTo((n.size < values.size ? n.size : values.size) - 1).collect(i|n.get(i)+ ":" + values.get(i)).toString(" "));
 
 // modifier (returnType) methodNameWithParam1:(Type1)param1 param2:(Type2)param2
 objc_MethodSignature(ProjectClass class, String modifier, String methodName, String returnType, List[String] paramNames, List[String] paramTypes):
@@ -132,30 +132,32 @@ applicationDelegate(Application app):
 
 /* Views */
 
+//TODO: these methods are very similar for views/providers - search parameters.definitions.name - unify?
+
 methodName(View view):
 	"create" + view.name.toFirstUpper();
 
 initSignature(View view):
 	view.class().objc_MethodSignature(
 		"-", "init", "id",
-		view.parameters().name,
+		view.parameters.definitions.name,
 		view.parameterTypes());
 
 init(View view, List[String] params):
-	view.class().objc_Init(view.parameters().name, params);
+	view.class().objc_Init(view.parameters.definitions.name, params);
 
 callSignature(View view):
 	view.class().objc_MethodSignature(
 		"+", view.methodName(),
 		view.class().use() + " *",
-		view.parameters().name,
+		view.parameters.definitions.name,
 		view.parameterTypes());
 
 call(ViewCall call):
 	call.application().viewFactory().objc_Call(
 		call.view.methodName(), 
-		call.view.parameters().name,
-		call.parameters().resolveToProvider());
+		call.view.parameters.definitions.name,
+		call.parameters.values.resolveToProvider());
 
 
 
@@ -171,7 +173,7 @@ callSignature(ContentProvider this):
 	application().providerFactory().objc_MethodSignature(
 		"-", methodName(),
 		use('ContentProvider') + " *",
-		parameters().name,
+		parameters.definitions.name,
 		parameterTypes());
 
 ivar(ContentProvider provider):
@@ -184,7 +186,7 @@ ivar(ContentProvider provider):
 resolveToValue(Void this):
 	"nil";
 
-resolveToValue(ScopeName this):
+resolveToValue(Named this):
 	this.ivar() + ".content";
 
 resolveToValue(CollectionIterator this):
@@ -231,7 +233,7 @@ resolveToValue(ObjectReference this):
 
 /* Resolving expressions to a content provider */
 
-resolveToProvider(ScopeName this):
+resolveToProvider(Named this):
 	this.ivar();
 
 resolveToProvider(CollectionIterator this):
@@ -240,19 +242,11 @@ resolveToProvider(CollectionIterator this):
 resolveToProvider(Expression this):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.resolveToValue() + ' name:@""]';
 
-resolveToProvider(ProviderConstruction this): // TODO: rename to ProviderCall?
-	"<resolveToProvider is abstract for: " + this + ">";
-
-resolveToProvider(SimpleProviderConstruction this): // TODO: ProviderReference?
-	this.expression.resolveToProvider();
-
-// TODO: ComplexProviderConstruction.provider, ViewCall.view are similar -> check similar naming conventions for both
-
-resolveToProvider(ComplexProviderConstruction this): // TODO: ProviderConstructionCall?
+resolveToProvider(ConstructProviderCall this):
 	application().sharedProviders().objc_Call(
 		provider.methodName(),
-		provider.parameters().name,
-		parameterValues().resolveToProvider()
+		provider.parameters.definitions.name,
+		parameters.values.resolveToProvider()
 	);
 
 resolveToProvider(ObjectReference this):
@@ -309,7 +303,7 @@ idname(Cell cell):
 			: ('s' + cell.eContainer().index(Section) + 'c' + cell.index(Cell)));
 
 providers(TableView view):
-	{ view.parameters(), view.variables }.flatten();
+	{ view.parameters.definitions, view.variables }.flatten();
 
 
 
@@ -372,27 +366,11 @@ action(Selector sel, Cell cell):
 
 /* Parameter handling */
 
-// simulates parameter list, at the moment there can be only 0/1 parameters
-// remove with http://ralfebert.lighthouseapp.com/projects/67904/tickets/57-support-for-multiple-parameters
-List[Parameter] parameters(View this):
-	{ parameter }.remove(null);
-
-List[Parameter] parameters(ContentProvider this):
-	{ parameter }.remove(null);
-
 List[Parameter] parameterTypes(View view):
-	view.parameters().collect(e|"ContentProvider".use() + " *");
+	view.parameters.definitions.collect(e|"ContentProvider".use() + " *");
 
 List[Parameter] parameterTypes(ContentProvider this):
-	parameters().collect(e|"ContentProvider".use() + " *");
-
-List[ProviderConstruction] parameters(ViewCall view):
-	{ view.parameter }.remove(null);
-
-//TODO: parameters vs. argument vs. parameterValues(Bindings?)
-
-List[Expression] parameterValues(ComplexProviderConstruction this):
-	{ this.argument }.remove(null);
+	parameters.definitions.collect(e|"ContentProvider".use() + " *");
 
 
 
@@ -411,11 +389,11 @@ objcType(Entity type):
 variable(Type this, String name):
 	this.objcType() + (this.objcType().endsWith("*") ? "" : " ") + name;
 
-type(ScopeName param):
-	'ContentProvider'.use() + " *";
+type(Named this):
+	use('ContentProvider') + " *";
 
-ivar(ScopeName param):
-	"f" + param.name.toFirstUpper();
+ivar(Named this):
+	"f" + this.name.toFirstUpper();
 	
 Boolean hasBindings(EObject this):
 	Binding.isInstance(this) || this.eContents().exists(e|((EObject)e).hasBindings());

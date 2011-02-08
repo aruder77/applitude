@@ -1,0 +1,14 @@
+process(xtext::GeneratedMetamodel this):
+	process(ePackage);
+ 
+process(ecore::EPackage this):
+  	this.eContents.select(e|ecore::EClass.isInstance(e)).forAll(e|process((ecore::EClass)e)->true);
+
+process(ecore::EClass this):
+	let expr = ePackage.findClass("Expression")
+		: (this.name == "ScalarExpression" || this.name == "CollectionExpression")
+			? this.eSuperTypes.add(expr)
+			: this.eSuperTypes.remove(expr);
+
+ecore::EClass findClass(ecore::EPackage this, String name):
+	((List[ecore::EClass])(eContents.select(e|ecore::EClass.isInstance(e)))).selectFirst(e|e.name == name);

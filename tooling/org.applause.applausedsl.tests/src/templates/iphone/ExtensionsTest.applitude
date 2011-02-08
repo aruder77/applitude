@@ -17,8 +17,8 @@ contentprovider AllInventors returns Inventor[] fetches JSON from "..." selects 
 contentprovider OneInventor returns Inventor fetches JSON from "..." selects ""
 
 tableview Table {
-	Inventor[] inventors = AllInventors()
-	Inventor[] inventor = OneInventor()
+	Inventor[] inventors = new AllInventors()
+	Inventor[] inventor = new OneInventor()
 	
 	section {
 		cell Default for i1 in inventors { text: i1 }	

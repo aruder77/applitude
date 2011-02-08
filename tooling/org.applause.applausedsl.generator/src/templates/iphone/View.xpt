@@ -42,7 +42,7 @@
 		«IF this.hasBindings()-»
 			fBindings = [[BindingContext alloc] init];
 		«ENDIF-»
-		«parameters().collect(p|p.ivar() + " = [" + p.name + " retain];").toString("\n")»
+		«parameters.definitions.collect(p|p.ivar() + " = [" + p.name + " retain];").toString("\n")»
 		«variables.collect(p|p.ivar() + " = [" + p.value.resolveToProvider() + " retain];").toString("\n")»
 	}
 	return self;

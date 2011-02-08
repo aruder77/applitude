@@ -26,7 +26,7 @@ public class ApplauseDslJavaValidator extends AbstractApplauseDslJavaValidator {
 
 	@Check
 	void cachingOnlyForUnparameterizedContent(ContentProvider contentProvider) {
-		if (contentProvider.isStoring() && contentProvider.getParameter()!=null) {
+		if (contentProvider.isStoring() && !contentProvider.getParameters().getDefinitions().isEmpty()) {
 			error("Storing the content provider is only supported for content providers without parameters.", ApplauseDslPackage.CONTENT_PROVIDER__STORING);
 		}
 	}

@@ -39,7 +39,7 @@
 
 «DEFINE viewFactoryMethod FOR View»
 «callSignature()» {
-	return «class().objc_New(parameters().name, parameters().name)»;
+	return «class().objc_New(parameters.definitions.name, parameters.definitions.name)»;
 }
 «ENDDEFINE»
 

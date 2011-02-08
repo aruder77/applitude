@@ -31,6 +31,9 @@ Entity:
 		(properties+=Property)*
 	'}';
 
+Property:
+	typeRef=TypeReference name=ID;
+
 TypeReference:
 	type=[Type] (many?='[]')?;
 
@@ -38,41 +41,32 @@ ProjectClass:
 	'class' name=ID;
 
 // -------------------------------------------
-// scoped names
+// names and references
 
-ScopeName:
-	TypedName | CollectionIterator;
+Declaration:
+	Parameter | Assignment | CollectionIterator;
 
-TypedName:
-	Parameter | Property | Assignment;
+Named:
+	Declaration | Property;
 
-Parameter:
-	typeRef=TypeReference name=ID;
-
-Property:
-	typeRef=TypeReference name=ID;
-
-Assignment:
-	typeRef=TypeReference name=ID '=' value=ProviderConstruction;
-
-ObjectReference:
-	object=[ScopeName] tail=NestedObjectReference?;
+//TODO: rename object to declaration and property
+ObjectReference hidden():
+	object=[Declaration] tail=PropertyReference?;
 	
-//workaround: NestedObjectReference as separate rule to guide the content 
-//   assist parser technically could have been include in ObjectReference like
-//   ObjectReference:
-//     object=[ScopeName] ('.' tail=ObjectReference)?;
-NestedObjectReference returns ObjectReference:
-	'.' object=[Property] tail=NestedObjectReference?;
+PropertyReference returns ObjectReference:
+	'.' object=[Property] tail=PropertyReference?;
 
 // -------------------------------------------
 // expressions
 
 Expression:
-	ScalarExpression | CollectionExpression;
+	CollectionLiteral | CollectionFunction | StringLiteral | StringFunction | ObjectReference | ConstructProviderCall | Binding;
+	// defining this as what it is (ScalarExpression | CollectionExpression)
+	// would cause grammar errors because ObjectReference is ScalarExpression and CollectionExpression
+	// the resulting model is corrected in ApplauseDslPostProcessor.ext
 
 ScalarExpression:
-	StringLiteral | StringFunction | ObjectReference | Binding;
+	StringLiteral | StringFunction | ObjectReference | ConstructProviderCall | Binding;
 
 StringLiteral:
 	value=STRING;
@@ -89,7 +83,7 @@ ImageExpression returns ScalarExpression:
 	ScalarExpression;
 
 CollectionExpression:
-	CollectionLiteral | CollectionFunction | ObjectReference;
+	CollectionLiteral | CollectionFunction | ObjectReference | ConstructProviderCall;
 
 CollectionLiteral:
 	'[' items+=ScalarExpression (',' items+=ScalarExpression)* ']';
@@ -101,11 +95,23 @@ CollectionIterator:
 	'for' name=ID 'in' collection=CollectionExpression;
 
 // -------------------------------------------
+// parameters
+
+Parameter:
+	typeRef=TypeReference name=ID;
+
+ParameterDefinitions:
+	{ParameterDefinitions} ('(' definitions+=Parameter (',' definitions+=Parameter)* ')')?;
+
+ParameterValues:
+	{ParameterValues} '(' (values+=Expression (',' values+=Expression)*)? ')';
+
+// -------------------------------------------
 // content provider
 
 ContentProvider:
 	'contentprovider' name=ID
-	('(' parameter=Parameter ')')? 
+	parameters=ParameterDefinitions
 	('returns'|storing?="stores") type=[Type] (many?='[]')?
 	implementation=ContentProviderImplementation?;
 
@@ -121,9 +127,11 @@ UrlContentProviderImplementation:
 CustomContentProviderImplementation:
 	providerClass=ProjectClass;
 
-ProviderConstruction:
-	{ComplexProviderConstruction} provider=[ContentProvider] '(' (argument=Expression)? ')' |
-	{SimpleProviderConstruction} expression=Expression;
+ConstructProviderCall:
+	'new' provider=[ContentProvider] parameters=ParameterValues;
+
+Assignment:
+	typeRef=TypeReference name=ID '=' value=ConstructProviderCall;
 
 // -------------------------------------------
 // views
@@ -132,7 +140,7 @@ View:
 	TabView | TableView | CustomView;
 
 TabView:
-	'tabview' name=ID ('(' parameter=Parameter ')')? '{'
+	'tabview' name=ID parameters=ParameterDefinitions '{'
 		(tabs += Tab)*
 	'}';
 
@@ -144,7 +152,7 @@ Tab:
 	'}';
 
 TableView:
-	'tableview' name=ID ('(' parameter=Parameter ')')? '{'
+	'tableview' name=ID parameters=ParameterDefinitions '{'
 		(variables += Assignment)*
 		
 		( ('title:' title=ScalarExpression)?
@@ -185,7 +193,7 @@ enum CellAccessory:
 	None | Link | Detail | Check;
 
 CustomView:
-	'customview' name=ID ('(' parameter=Parameter ')')? projectClass=ProjectClass;
+	'customview' name=ID parameters=ParameterDefinitions projectClass=ProjectClass;
 
 // -------------------------------------------
 // actions
@@ -194,7 +202,7 @@ ViewAction:
 	ViewCall | ExternalOpen | Selector;
 
 ViewCall:
-	view=[View] '(' (parameter=ProviderConstruction)? ')';
+	view=[View] parameters=ParameterValues;
 
 Selector:
 	'@selector' '(' name=SelectorName ')';

@@ -82,7 +82,6 @@ static «use(providerFactory())» *sharedProviders = nil;
 «ENDDEFINE»
 
 «DEFINE constructProvider(ContentProvider provider) FOR UrlContentProviderImplementation-»
-«LET provider.parameter.name != null ? provider.parameter.name : '' AS kvcTarget-»
 	«use(this.class())» *provider = [[«use(this.class())» alloc] initWithURL:[NSURL URLWithString:«url.resolveToValue()»]];
 	«use(this.format.name + 'Filter')» *filter = [«this.format.name»Filter filter];
 	«IF this.format.name == "XML" && this.selection != null-»
@@ -92,7 +91,6 @@ static «use(providerFactory())» *sharedProviders = nil;
 	«IF this.format.name != "XML" && this.selection != null-»
 		[provider addFilter:[«use('CommonFilters')» filterForKeyPath:«this.selection.resolveToValue()»]];
 	«ENDIF-»
-«ENDLET-»
 «ENDDEFINE»
 
 «DEFINE constructProvider(ContentProvider provider) FOR CustomContentProviderImplementation-»
