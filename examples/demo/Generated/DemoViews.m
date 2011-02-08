@@ -28,8 +28,8 @@
 	return [[[InventorDetailViewController alloc] initWithInventor:inventor] autorelease];
 }
 
-+ (InventionDetailViewController *) createInventionDetailWithInvention:(ContentProvider *)invention {
-	return [[[InventionDetailViewController alloc] initWithInvention:invention] autorelease];
++ (InventionDetailViewController *) createInventionDetailWithInventor:(ContentProvider *)inventor invention:(ContentProvider *)invention {
+	return [[[InventionDetailViewController alloc] initWithInventor:inventor invention:invention] autorelease];
 }
 
 + (ReferenceViewController *) createReference {

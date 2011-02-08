@@ -51,7 +51,7 @@
 
 - (void) inventionCellSelected:(BoxCell *)cell {
 	id invention = cell.data;
-	UIViewController *controller = [DemoViews createInventionDetailWithInvention:[SimpleContentProvider providerWithContent:invention name:@"invention"]];
+	UIViewController *controller = [DemoViews createInventionDetailWithInventor:fInventor invention:[SimpleContentProvider providerWithContent:invention name:@"invention"]];
 	[self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -1,10 +1,7 @@
 #import "ReferenceSectionCellForeachViewController.h"
 #import "BoxCell.h"
 #import "DemoProviders.h"
-#import "DemoViews.h"
 #import "Section.h"
-#import "SelectorAction.h"
-#import "SimpleContentProvider.h"
 
 @implementation ReferenceSectionCellForeachViewController
 
@@ -34,16 +31,8 @@
 - (UITableViewCell *) inventionCell:(id)invention {
 	BoxCell *cell = [[[BoxCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	cell.textLabel.text = [invention valueForKey:@"name"];
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.onTouch = [SelectorAction actionWithObject:self selector:@selector(inventionCellSelected:)];
 	cell.data = invention;
 	return cell;
-}
-
-- (void) inventionCellSelected:(BoxCell *)cell {
-	id invention = cell.data;
-	UIViewController *controller = [DemoViews createInventionDetailWithInvention:[SimpleContentProvider providerWithContent:invention name:@"invention"]];
-	[self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void) dealloc {
