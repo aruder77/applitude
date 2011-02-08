@@ -41,34 +41,24 @@
 	return date;
 }
 
-// License exception
-// 4-clause license (original "BSD License")
-// Copyright 2006 Peter Hosey. All rights reserved.
-// http://boredzo.org/iso8601parser/
-
-#define ISO_TIMEZONE_UTC_FORMAT @"Z"
-#define ISO_TIMEZONE_OFFSET_FORMAT @"+%02d:%02d"
-
 - (NSString *) iso8601String {
+	NSTimeZone *timezone = [NSTimeZone localTimeZone];
+
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+	formatter.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+	[formatter setTimeZone:timezone];
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
 
-	NSTimeZone *timeZone = [NSTimeZone localTimeZone];
-	int offset = [timeZone secondsFromGMT];
+	int minutesFromUTC = [timezone secondsFromGMT] / 60;
 
-	NSMutableString *strFormat = [NSMutableString stringWithString:@"yyyy-MM-dd'T'HH:mm:ss"];
-	offset /= 60; // to minutes
-	if (offset == 0)
-		[strFormat appendString:ISO_TIMEZONE_UTC_FORMAT];
+	NSMutableString *result = [NSMutableString stringWithString:[formatter stringFromDate:self]];
+	if (minutesFromUTC == 0)
+		[result appendString:@"Z"];
 	else
-		[strFormat appendFormat:ISO_TIMEZONE_OFFSET_FORMAT, offset / 60, offset % 60];
+		[result appendFormat:@"%@%02d:%02d", (minutesFromUTC < 0 ? @"-" : @"+"), abs(minutesFromUTC) / 60, abs(minutesFromUTC) % 60];
 
-	[formatter setTimeStyle:NSDateFormatterFullStyle];
-	[formatter setDateFormat:strFormat];
-
-	NSString *result = [formatter stringFromDate:self];
 	[formatter release];
-	return result;
+	return [NSString stringWithString:result];
 }
-// End license exception
 
 @end
