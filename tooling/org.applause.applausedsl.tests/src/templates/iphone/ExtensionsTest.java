@@ -6,7 +6,7 @@ package templates.iphone;
 import org.applause.applausedsl.ApplauseDslStandaloneSetup;
 import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.CollectionLiteral;
-import org.applause.applausedsl.applauseDsl.ConstructProviderCall;
+import org.applause.applausedsl.applauseDsl.ContentProviderCall;
 import org.applause.applausedsl.applauseDsl.Model;
 import org.applause.applausedsl.applauseDsl.Named;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
@@ -37,7 +37,7 @@ public class ExtensionsTest extends AbstractXtextTests {
 	private Property prop2;
 	private Model model;
 	private TableView table;
-	private ConstructProviderCall constructProviderCall;
+	private ContentProviderCall ContentProviderCall;
 
 	@Override
 	protected void setUp() throws Exception {
@@ -59,7 +59,7 @@ public class ExtensionsTest extends AbstractXtextTests {
 		prop2.setName("prop2");
 
 		table = Iterables.filter(model.eContents(), TableView.class).iterator().next();
-		constructProviderCall = (ConstructProviderCall) table.getVariables().get(0).getValue();
+		ContentProviderCall = (ContentProviderCall) table.getVariables().get(0).getValue();
 
 	};
 
@@ -86,17 +86,17 @@ public class ExtensionsTest extends AbstractXtextTests {
 	@Test
 	public void testComplexProviderConstructionResolveToProvider() throws Exception {
 		assertResolveToProvider("[[ExtensionsTestProviders sharedProviders] providerForAllInventors]",
-				constructProviderCall);
+				ContentProviderCall);
 	}
 
 	@Test
 	public void testComplexProviderConstructionWithArgsResolveToProvider() throws Exception {
 		Parameter param1 = ApplauseDslFactory.eINSTANCE.createParameter();
 		param1.setName("param1");
-		constructProviderCall.getProvider().getParameters().getDefinitions().add(param1);
-		constructProviderCall.getParameters().getValues().add(ref(parameterFoo));
+		ContentProviderCall.getTarget().getParameters().getDefinitions().add(param1);
+		ContentProviderCall.getParameters().getValues().add(ref(parameterFoo));
 		assertResolveToProvider("[[ExtensionsTestProviders sharedProviders] providerForAllInventorsWithParam1:fFoo]",
-				constructProviderCall);
+				ContentProviderCall);
 	}
 
 	@Test

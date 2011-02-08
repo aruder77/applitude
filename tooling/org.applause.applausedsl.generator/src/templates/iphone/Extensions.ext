@@ -91,7 +91,7 @@ objc_MethodParamValues(List[String] names, List[String] values):
 					0.upTo((n.size < values.size ? n.size : values.size) - 1).collect(i|n.get(i)+ ":" + values.get(i)).toString(" "));
 
 // modifier (returnType) methodNameWithParam1:(Type1)param1 param2:(Type2)param2
-objc_MethodSignature(ProjectClass class, String modifier, String methodName, String returnType, List[String] paramNames, List[String] paramTypes):
+objc_MethodSignature(String modifier, String methodName, String returnType, List[String] paramNames, List[String] paramTypes):
 	modifier + " (" + returnType + ") " + methodName + paramNames.objc_MethodParamSignatures(paramTypes);
 
 
@@ -130,47 +130,64 @@ applicationDelegate(Application app):
 	projectClass(app.name + "AppDelegate");
 
 
+
+
+// Parameter handling
+
+List[Parameter] parameterTypes(ParameterizedModelElement this):
+	parameters.definitions.collect(e|"ContentProvider".use() + " *");
+
+factory(ParameterizedModelElement this):
+	"<factory is abstract for: " + this + ">";
+
+methodName(ParameterizedModelElement this):
+	"<methodName is abstract for: " + this + ">";
+
+call(ParameterizedCall this):
+	target.factory().objc_Call(
+		target.methodName(), 
+		target.parameters.definitions.name,
+		parameters.values.resolveToProvider());
+
+
+
+
 /* Views */
 
-//TODO: these methods are very similar for views/providers - search parameters.definitions.name - unify?
+factory(View this):
+	application().viewFactory().use();
 
 methodName(View view):
 	"create" + view.name.toFirstUpper();
 
-initSignature(View view):
-	view.class().objc_MethodSignature(
+initSignature(View this):
+	objc_MethodSignature(
 		"-", "init", "id",
-		view.parameters.definitions.name,
-		view.parameterTypes());
+		parameters.definitions.name,
+		parameterTypes());
 
 init(View view, List[String] params):
 	view.class().objc_Init(view.parameters.definitions.name, params);
 
 callSignature(View view):
-	view.class().objc_MethodSignature(
+	objc_MethodSignature(
 		"+", view.methodName(),
 		view.class().use() + " *",
 		view.parameters.definitions.name,
 		view.parameterTypes());
 
-call(ViewCall call):
-	call.application().viewFactory().objc_Call(
-		call.view.methodName(), 
-		call.view.parameters.definitions.name,
-		call.parameters.values.resolveToProvider());
-
 
 
 /* Content Provider */
 
+factory(ContentProvider this):
+	"[" + application().providerFactory().use() + " sharedProviders]";
+
 methodName(ContentProvider this):
 	"providerFor" + name.toFirstUpper();
 
-sharedProviders(Application this):
-	"[" + providerFactory().use() + " sharedProviders]";
-
 callSignature(ContentProvider this):
-	application().providerFactory().objc_MethodSignature(
+	objc_MethodSignature(
 		"-", methodName(),
 		use('ContentProvider') + " *",
 		parameters.definitions.name,
@@ -242,12 +259,8 @@ resolveToProvider(CollectionIterator this):
 resolveToProvider(Expression this):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.resolveToValue() + ' name:@""]';
 
-resolveToProvider(ConstructProviderCall this):
-	application().sharedProviders().objc_Call(
-		provider.methodName(),
-		provider.parameters.definitions.name,
-		parameters.values.resolveToProvider()
-	);
+resolveToProvider(ContentProviderCall this):
+	this.call();
 
 resolveToProvider(ObjectReference this):
 	this.tail == null
@@ -364,16 +377,6 @@ actionSelectorName(ViewCall call):
 
 objcCall(ViewAction this):
 	'[' + use("SelectorAction") + ' actionWithObject:self selector:@selector(' + this.actionSelectorName() + ')]';
-
-
-
-/* Parameter handling */
-
-List[Parameter] parameterTypes(View view):
-	view.parameters.definitions.collect(e|"ContentProvider".use() + " *");
-
-List[Parameter] parameterTypes(ContentProvider this):
-	parameters.definitions.collect(e|"ContentProvider".use() + " *");
 
 
 

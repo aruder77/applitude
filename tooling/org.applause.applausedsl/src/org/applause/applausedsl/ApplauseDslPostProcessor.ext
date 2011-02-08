@@ -5,10 +5,26 @@ process(ecore::EPackage this):
   	this.eContents.select(e|ecore::EClass.isInstance(e)).forAll(e|process((ecore::EClass)e)->true);
 
 process(ecore::EClass this):
+	fixExpression() -> fixParameterizedCall();
+
+fixExpression(ecore::EClass this):
 	let expr = ePackage.findClass("Expression")
 		: (this.name == "ScalarExpression" || this.name == "CollectionExpression")
 			? this.eSuperTypes.add(expr)
 			: this.eSuperTypes.remove(expr);
+
+fixParameterizedCall(ecore::EClass this):
+	switch(name) {
+		case "ContentProviderCall" : 
+			(let target = eStructuralFeatures.selectFirst(e|e.name=='target')
+				: eStructuralFeatures.remove(target)
+				-> ePackage.findClass("ParameterizedCall").eStructuralFeatures.add(target)
+				-> target.setEType(ePackage.findClass("ParameterizedModelElement")))
+		case "ViewCall" :
+			(let target = eStructuralFeatures.selectFirst(e|e.name=='target')
+				: eStructuralFeatures.remove(target))
+		default: null
+	};
 
 ecore::EClass findClass(ecore::EPackage this, String name):
 	((List[ecore::EClass])(eContents.select(e|ecore::EClass.isInstance(e)))).selectFirst(e|e.name == name);

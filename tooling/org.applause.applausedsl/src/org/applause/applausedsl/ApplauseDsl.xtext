@@ -15,7 +15,7 @@ Application returns Application:
 	'}';
 	
 ModelElement:
-	Type | ContentProvider | View;
+	Type | ParameterizedModelElement;
 
 // -------------------------------------------
 // types
@@ -59,13 +59,13 @@ PropertyReference returns ObjectReference:
 // expressions
 
 Expression:
-	CollectionLiteral | CollectionFunction | StringLiteral | StringFunction | ObjectReference | ConstructProviderCall | Binding;
+	CollectionLiteral | CollectionFunction | StringLiteral | StringFunction | ObjectReference | ContentProviderCall | Binding;
 	// defining this as what it is (ScalarExpression | CollectionExpression)
 	// would cause grammar errors because ObjectReference is ScalarExpression and CollectionExpression
 	// the resulting model is corrected in ApplauseDslPostProcessor.ext
 
 ScalarExpression:
-	StringLiteral | StringFunction | ObjectReference | ConstructProviderCall | Binding;
+	StringLiteral | StringFunction | ObjectReference | ContentProviderCall | Binding;
 
 StringLiteral:
 	value=STRING;
@@ -82,7 +82,7 @@ ImageExpression returns ScalarExpression:
 	ScalarExpression;
 
 CollectionExpression:
-	CollectionLiteral | CollectionFunction | ObjectReference | ConstructProviderCall;
+	CollectionLiteral | CollectionFunction | ObjectReference | ContentProviderCall;
 
 CollectionLiteral:
 	'[' items+=ScalarExpression (',' items+=ScalarExpression)* ']';
@@ -98,6 +98,12 @@ CollectionIterator:
 
 Parameter:
 	typeRef=TypeReference name=ID;
+	
+ParameterizedModelElement:
+	View | ContentProvider;
+
+ParameterizedCall:
+	ViewCall | ContentProviderCall;
 
 ParameterDefinitions:
 	{ParameterDefinitions} ('(' definitions+=Parameter (',' definitions+=Parameter)* ')')?;
@@ -126,11 +132,11 @@ UrlContentProviderImplementation:
 CustomContentProviderImplementation:
 	providerClass=ProjectClass;
 
-ConstructProviderCall:
-	'new' provider=[ContentProvider] parameters=ParameterValues;
+ContentProviderCall:
+	'new' target=[ContentProvider] parameters=ParameterValues;
 
 Assignment:
-	typeRef=TypeReference name=ID '=' value=ConstructProviderCall;
+	typeRef=TypeReference name=ID '=' value=ContentProviderCall;
 
 // -------------------------------------------
 // views
@@ -201,7 +207,7 @@ ViewAction:
 	ViewCall | ExternalOpen | Selector;
 
 ViewCall:
-	view=[View] parameters=ParameterValues;
+	target=[View] parameters=ParameterValues;
 
 Selector:
 	'@selector' '(' name=SelectorName ')';

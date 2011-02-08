@@ -2,15 +2,14 @@ package org.applause.applausedsl.validation;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Application;
-import org.applause.applausedsl.applauseDsl.ConstructProviderCall;
 import org.applause.applausedsl.applauseDsl.ContentProvider;
 import org.applause.applausedsl.applauseDsl.Parameter;
 import org.applause.applausedsl.applauseDsl.ParameterDefinitions;
 import org.applause.applausedsl.applauseDsl.ParameterValues;
+import org.applause.applausedsl.applauseDsl.ParameterizedCall;
 import org.applause.applausedsl.applauseDsl.StringLiteral;
 import org.applause.applausedsl.applauseDsl.Tab;
 import org.applause.applausedsl.applauseDsl.View;
-import org.applause.applausedsl.applauseDsl.ViewCall;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -52,10 +51,8 @@ public class ApplauseDslJavaValidator extends AbstractApplauseDslJavaValidator {
 
 	private ParameterDefinitions getParameterDefinitions(ParameterValues parameterValues) {
 		EObject container = parameterValues.eContainer();
-		if (container instanceof ViewCall)
-			return ((ViewCall) container).getView().getParameters();
-		if (container instanceof ConstructProviderCall)
-			return ((ConstructProviderCall) container).getProvider().getParameters();
+		if (container instanceof ParameterizedCall)
+			return ((ParameterizedCall) container).getTarget().getParameters();
 		throw new RuntimeException("Unknown ParameterValues container: "+container);
 	}
 
