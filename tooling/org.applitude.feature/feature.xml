@@ -2,7 +2,7 @@
 <feature
       id="org.applitude.feature"
       label="Applitude Eclipse IDE Tooling"
-      version="0.2.1.qualifier"
+      version="0.3.0.qualifier"
       provider-name="Ralf Ebert">
 
    <description url="http://www.example.com/description">
