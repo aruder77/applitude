@@ -96,8 +96,7 @@ objc_MethodSignature(String modifier, String methodName, String returnType, List
 
 
 
-
-/* Mapping Model -> Objective-C class names */
+/* Mapping to Objective C names and classes */
 
 class(View this):
 	projectClass(this.name.toFirstUpper() + "ViewController");
@@ -120,19 +119,18 @@ class(UrlContentProviderImplementation this):
 class(CustomContentProviderImplementation this):
 	projectClass(this.providerClass.name);
 
-viewFactory(Application app):
-	projectClass(app.name + "Views");
+ivar(ContentProvider provider):
+	"f" + provider.name.toFirstUpper();
 
-providerFactory(Application app):
-	projectClass(app.name + "Providers");
+ivar(Named this):
+	"f" + this.name.toFirstUpper();
 
-applicationDelegate(Application app):
-	projectClass(app.name + "AppDelegate");
-
-
+objcType(Named this):
+	use('ContentProvider') + " *";
 
 
-// Parameter handling
+
+/* Parameter handling */
 
 List[Parameter] parameterTypes(ParameterizedModelElement this):
 	parameters.definitions.collect(e|"ContentProvider".use() + " *");
@@ -149,6 +147,15 @@ call(ParameterizedCall this):
 		target.parameters.definitions.name,
 		parameters.values.resolveToProvider());
 
+
+
+/* Expression helpers */
+
+List[String] keyPath(ObjectReference this):
+	tail == null ? {object.name} : {object.name}.addAll(tail.keyPath());
+
+objcKeyPath(ObjectReference this):
+	'@"' + keyPath().toString(".") + '"';
 
 
 
@@ -192,9 +199,6 @@ callSignature(ContentProvider this):
 		use('ContentProvider') + " *",
 		parameters.definitions.name,
 		parameterTypes());
-
-ivar(ContentProvider provider):
-	"f" + provider.name.toFirstUpper();
 
 
 
@@ -362,6 +366,9 @@ objcSetup(ViewContentElement this):
 	 let code = (iterator != null ? objcConstructPlaceholder() : objcConstruct())
 	          : Cell.isInstance(this) ? "{\n" + code + "\n}\n" : code; 
 
+Boolean hasBindings(EObject this):
+	Binding.isInstance(this) || this.eContents().exists(e|((EObject)e).hasBindings());
+
 
 
 /* Actions */
@@ -380,38 +387,6 @@ objcCall(Action this):
 
 
 
-
-/* Misc */
-
-objcType(Type this):
-	"<objcType is abstract for: " + this + ">";
-
-objcType(SimpleType type):
-	type.platformType + " *";
-
-objcType(Entity type):
-	type.runtimeType ? type.name + " *" : "id";
-
-variable(Type this, String name):
-	this.objcType() + (this.objcType().endsWith("*") ? "" : " ") + name;
-
-type(Named this):
-	use('ContentProvider') + " *";
-
-ivar(Named this):
-	"f" + this.name.toFirstUpper();
-	
-Boolean hasBindings(EObject this):
-	Binding.isInstance(this) || this.eContents().exists(e|((EObject)e).hasBindings());
-
-List[String] keyPath(ObjectReference this):
-	tail == null ? {object.name} : {object.name}.addAll(tail.keyPath());
-
-objcKeyPath(ObjectReference this):
-	'@"' + keyPath().toString(".") + '"';
-
-
-
 /* Application */
 
 allProviders(Application this):
@@ -419,3 +394,12 @@ allProviders(Application this):
 	
 allViews(Application this):
 	model().elements.typeSelect(View);
+
+viewFactory(Application app):
+	projectClass(app.name + "Views");
+
+providerFactory(Application app):
+	projectClass(app.name + "Providers");
+
+applicationDelegate(Application app):
+	projectClass(app.name + "AppDelegate");

@@ -20,7 +20,7 @@
 	«IF this.hasBindings()-»
 		«use('BindingContext')» *fBindings;
 	«ENDIF-»
-	«providers().collect(p|p.type() + p.ivar() + ";").toString("\n")»
+	«providers().collect(p|p.objcType() + p.ivar() + ";").toString("\n")»
 }
 
 «initSignature()»;
