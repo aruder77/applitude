@@ -54,7 +54,11 @@
 		[self.window release];
 	}
 	[«use('BrandedUIFactory')» brandApplication:application];
-	self.rootController = «this.startView.call()»;
+	self.rootController = «
+		TabView.isInstance(startView.target)
+			? startView.call()
+			: projectClass('UINavigationController').objc_New({'rootViewController'}, {startView.call()})
+		»;
 	[window makeKeyAndVisible];
 }
 
