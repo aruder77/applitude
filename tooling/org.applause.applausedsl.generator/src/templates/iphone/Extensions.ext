@@ -44,6 +44,24 @@ m(ProjectClass class):
 
 
 
+// Scope bindings
+Void scopeStart():
+	JAVA templates.Extensions.scopeStart();
+
+Void scopeEnd():
+	JAVA templates.Extensions.scopeEnd();
+
+Void scopeBind(EObject obj, String name):
+	JAVA templates.Extensions.scopeBind(org.eclipse.emf.ecore.EObject, java.lang.String);
+
+String internalScopeGet(EObject obj):
+	JAVA templates.Extensions.scopeGet(org.eclipse.emf.ecore.EObject);
+
+scopeName(EObject obj):
+	let name = obj.internalScopeGet() : (name == null ? "<" + obj + " not bound in current scope>" : name);
+
+
+
 // Objective C Method signatures and calls
 
 // [target methodNameWithParam1:value1 param2:value2 ...] 

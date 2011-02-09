@@ -1,9 +1,11 @@
 package templates;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +22,7 @@ public class Extensions {
 
 	private static Set<ProjectClass> currentImportBag = new HashSet<ProjectClass>();
 	private static Map<String, ProjectClass> classes = new ConcurrentHashMap<String, ProjectClass>();
+	private static Stack<Map<EObject, String>> scopeStack = new Stack<Map<EObject, String>>();
 
 	public static EObject getRootContainer(EObject obj) {
 		EObject result = EcoreUtil2.getRootContainer(obj);
@@ -62,6 +65,29 @@ public class Extensions {
 			use(createProjectClass("Settings"));
 			return "[NSString stringWithFormat:@\"" + sb.toString() + "\", " + StringUtils.join(params, ", ") + "]";
 		}
+	}
+
+	public static void scopeStart() {
+		Map<EObject, String> scope = new HashMap<EObject, String>();
+		if (!scopeStack.isEmpty())
+			scope.putAll(scopeStack.peek());
+		scopeStack.push(scope);
+	}
+
+	public static void scopeEnd() {
+		scopeStack.pop();
+	}
+
+	public static void scopeBind(EObject obj, String name) {
+		if (scopeStack.isEmpty())
+			throw new RuntimeException("No scope was started!");
+		scopeStack.peek().put(obj, name);
+	}
+
+	public static String scopeGet(EObject obj) {
+		if (scopeStack.isEmpty())
+			return null;
+		return scopeStack.peek().get(obj);
 	}
 
 }

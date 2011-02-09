@@ -20,6 +20,8 @@ import org.eclipse.xtend.type.impl.java.JavaBeansMetaModel;
 import org.eclipse.xtext.junit.AbstractXtextTests;
 import org.eclipse.xtext.resource.XtextResource;
 
+import templates.Extensions;
+
 import com.google.common.collect.Iterables;
 
 public abstract class AbstractExtensionsTest extends AbstractXtextTests {
@@ -42,9 +44,11 @@ public abstract class AbstractExtensionsTest extends AbstractXtextTests {
 		XtextResource resource = getResource(this.getClass().getResourceAsStream("ExtensionsTest.applitude"));
 
 		model = (Model) resource.getContents().get(0);
+		Extensions.scopeStart();
 
 		parameterFoo = ApplauseDslFactory.eINSTANCE.createParameter();
 		parameterFoo.setName("foo");
+		Extensions.scopeBind(parameterFoo, "fFoo");
 
 		prop1 = ApplauseDslFactory.eINSTANCE.createProperty();
 		prop1.setName("prop1");
@@ -54,7 +58,12 @@ public abstract class AbstractExtensionsTest extends AbstractXtextTests {
 
 		table = Iterables.filter(model.eContents(), TableView.class).iterator().next();
 		contentProviderCall = (ContentProviderCall) table.getVariables().get(0).getValue();
-	};
+	}
+	
+	@Override
+	protected void tearDown() throws Exception {
+		Extensions.scopeEnd();
+	}
 
 	protected StringConcat concat(ScalarExpression... values) {
 		StringConcat concat = ApplauseDslFactory.eINSTANCE.createStringConcat();
