@@ -155,13 +155,13 @@
     <genClasses ecoreClass="ApplauseDsl.ecore#//CustomView">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//CustomView/projectClass"/>
     </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ViewAction"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//Action"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//ViewCall"/>
     <genClasses ecoreClass="ApplauseDsl.ecore#//Selector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplauseDsl.ecore#//Selector/name"/>
     </genClasses>
-    <genClasses ecoreClass="ApplauseDsl.ecore#//ExternalOpen">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//ExternalOpen/url"/>
+    <genClasses ecoreClass="ApplauseDsl.ecore#//OpenURL">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//OpenURL/url"/>
     </genClasses>
     <genClasses ecoreClass="ApplauseDsl.ecore#//StringConcat">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplauseDsl.ecore#//StringConcat/values"/>

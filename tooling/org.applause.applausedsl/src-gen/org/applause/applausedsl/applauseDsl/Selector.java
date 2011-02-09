@@ -22,7 +22,7 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface Selector extends ViewAction
+public interface Selector extends Action
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

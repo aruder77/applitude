@@ -16,6 +16,6 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface ViewCall extends ParameterizedCall, ViewAction
+public interface ViewCall extends ParameterizedCall, Action
 {
 } // ViewCall

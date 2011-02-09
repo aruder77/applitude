@@ -6,7 +6,7 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.ExternalOpen;
+import org.applause.applausedsl.applauseDsl.OpenURL;
 import org.applause.applausedsl.applauseDsl.ScalarExpression;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,18 +19,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>External Open</b></em>'.
+ * An implementation of the model object '<em><b>Open URL</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.applause.applausedsl.applauseDsl.impl.ExternalOpenImpl#getUrl <em>Url</em>}</li>
+ *   <li>{@link org.applause.applausedsl.applauseDsl.impl.OpenURLImpl#getUrl <em>Url</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
+public class OpenURLImpl extends ActionImpl implements OpenURL
 {
   /**
    * The cached value of the '{@link #getUrl() <em>Url</em>}' containment reference.
@@ -47,7 +47,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ExternalOpenImpl()
+  protected OpenURLImpl()
   {
     super();
   }
@@ -60,7 +60,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
   @Override
   protected EClass eStaticClass()
   {
-    return ApplauseDslPackage.Literals.EXTERNAL_OPEN;
+    return ApplauseDslPackage.Literals.OPEN_URL;
   }
 
   /**
@@ -84,7 +84,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
     url = newUrl;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.EXTERNAL_OPEN__URL, oldUrl, newUrl);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.OPEN_URL__URL, oldUrl, newUrl);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -101,14 +101,14 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
     {
       NotificationChain msgs = null;
       if (url != null)
-        msgs = ((InternalEObject)url).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.EXTERNAL_OPEN__URL, null, msgs);
+        msgs = ((InternalEObject)url).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.OPEN_URL__URL, null, msgs);
       if (newUrl != null)
-        msgs = ((InternalEObject)newUrl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.EXTERNAL_OPEN__URL, null, msgs);
+        msgs = ((InternalEObject)newUrl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplauseDslPackage.OPEN_URL__URL, null, msgs);
       msgs = basicSetUrl(newUrl, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.EXTERNAL_OPEN__URL, newUrl, newUrl));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplauseDslPackage.OPEN_URL__URL, newUrl, newUrl));
   }
 
   /**
@@ -121,7 +121,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.EXTERNAL_OPEN__URL:
+      case ApplauseDslPackage.OPEN_URL__URL:
         return basicSetUrl(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -137,7 +137,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.EXTERNAL_OPEN__URL:
+      case ApplauseDslPackage.OPEN_URL__URL:
         return getUrl();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -153,7 +153,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.EXTERNAL_OPEN__URL:
+      case ApplauseDslPackage.OPEN_URL__URL:
         setUrl((ScalarExpression)newValue);
         return;
     }
@@ -170,7 +170,7 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.EXTERNAL_OPEN__URL:
+      case ApplauseDslPackage.OPEN_URL__URL:
         setUrl((ScalarExpression)null);
         return;
     }
@@ -187,10 +187,10 @@ public class ExternalOpenImpl extends ViewActionImpl implements ExternalOpen
   {
     switch (featureID)
     {
-      case ApplauseDslPackage.EXTERNAL_OPEN__URL:
+      case ApplauseDslPackage.OPEN_URL__URL:
         return url != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ExternalOpenImpl
+} //OpenURLImpl

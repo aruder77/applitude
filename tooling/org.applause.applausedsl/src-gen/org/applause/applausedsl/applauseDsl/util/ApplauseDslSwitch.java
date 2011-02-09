@@ -340,10 +340,8 @@ public class ApplauseDslSwitch<T>
       {
         ContentProviderCall contentProviderCall = (ContentProviderCall)theEObject;
         T result = caseContentProviderCall(contentProviderCall);
-        if (result == null) result = caseScalarExpression(contentProviderCall);
-        if (result == null) result = caseCollectionExpression(contentProviderCall);
-        if (result == null) result = caseParameterizedCall(contentProviderCall);
         if (result == null) result = caseExpression(contentProviderCall);
+        if (result == null) result = caseParameterizedCall(contentProviderCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -425,10 +423,10 @@ public class ApplauseDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplauseDslPackage.VIEW_ACTION:
+      case ApplauseDslPackage.ACTION:
       {
-        ViewAction viewAction = (ViewAction)theEObject;
-        T result = caseViewAction(viewAction);
+        Action action = (Action)theEObject;
+        T result = caseAction(action);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -437,7 +435,7 @@ public class ApplauseDslSwitch<T>
         ViewCall viewCall = (ViewCall)theEObject;
         T result = caseViewCall(viewCall);
         if (result == null) result = caseParameterizedCall(viewCall);
-        if (result == null) result = caseViewAction(viewCall);
+        if (result == null) result = caseAction(viewCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -445,15 +443,15 @@ public class ApplauseDslSwitch<T>
       {
         Selector selector = (Selector)theEObject;
         T result = caseSelector(selector);
-        if (result == null) result = caseViewAction(selector);
+        if (result == null) result = caseAction(selector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplauseDslPackage.EXTERNAL_OPEN:
+      case ApplauseDslPackage.OPEN_URL:
       {
-        ExternalOpen externalOpen = (ExternalOpen)theEObject;
-        T result = caseExternalOpen(externalOpen);
-        if (result == null) result = caseViewAction(externalOpen);
+        OpenURL openURL = (OpenURL)theEObject;
+        T result = caseOpenURL(openURL);
+        if (result == null) result = caseAction(openURL);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1142,17 +1140,17 @@ public class ApplauseDslSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>View Action</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>View Action</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Action</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseViewAction(ViewAction object)
+  public T caseAction(Action object)
   {
     return null;
   }
@@ -1190,17 +1188,17 @@ public class ApplauseDslSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>External Open</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Open URL</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>External Open</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Open URL</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseExternalOpen(ExternalOpen object)
+  public T caseOpenURL(OpenURL object)
   {
     return null;
   }

@@ -1052,7 +1052,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER_CALL__PARAMETERS = SCALAR_EXPRESSION_FEATURE_COUNT + 0;
+  int CONTENT_PROVIDER_CALL__PARAMETERS = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1061,7 +1061,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER_CALL__TARGET = SCALAR_EXPRESSION_FEATURE_COUNT + 1;
+  int CONTENT_PROVIDER_CALL__TARGET = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Content Provider Call</em>' class.
@@ -1070,7 +1070,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTENT_PROVIDER_CALL_FEATURE_COUNT = SCALAR_EXPRESSION_FEATURE_COUNT + 2;
+  int CONTENT_PROVIDER_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -1532,23 +1532,23 @@ public interface ApplauseDslPackage extends EPackage
   int CUSTOM_VIEW_FEATURE_COUNT = VIEW_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ViewActionImpl <em>View Action</em>}' class.
+   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ActionImpl <em>Action</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.applause.applausedsl.applauseDsl.impl.ViewActionImpl
-   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getViewAction()
+   * @see org.applause.applausedsl.applauseDsl.impl.ActionImpl
+   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getAction()
    * @generated
    */
-  int VIEW_ACTION = 40;
+  int ACTION = 40;
 
   /**
-   * The number of structural features of the '<em>View Action</em>' class.
+   * The number of structural features of the '<em>Action</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEW_ACTION_FEATURE_COUNT = 0;
+  int ACTION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl <em>View Call</em>}' class.
@@ -1604,7 +1604,7 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECTOR__NAME = VIEW_ACTION_FEATURE_COUNT + 0;
+  int SELECTOR__NAME = ACTION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Selector</em>' class.
@@ -1613,17 +1613,17 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SELECTOR_FEATURE_COUNT = VIEW_ACTION_FEATURE_COUNT + 1;
+  int SELECTOR_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.ExternalOpenImpl <em>External Open</em>}' class.
+   * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.OpenURLImpl <em>Open URL</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.applause.applausedsl.applauseDsl.impl.ExternalOpenImpl
-   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getExternalOpen()
+   * @see org.applause.applausedsl.applauseDsl.impl.OpenURLImpl
+   * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getOpenURL()
    * @generated
    */
-  int EXTERNAL_OPEN = 43;
+  int OPEN_URL = 43;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' containment reference.
@@ -1632,16 +1632,16 @@ public interface ApplauseDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXTERNAL_OPEN__URL = VIEW_ACTION_FEATURE_COUNT + 0;
+  int OPEN_URL__URL = ACTION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>External Open</em>' class.
+   * The number of structural features of the '<em>Open URL</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXTERNAL_OPEN_FEATURE_COUNT = VIEW_ACTION_FEATURE_COUNT + 1;
+  int OPEN_URL_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.applause.applausedsl.applauseDsl.impl.StringConcatImpl <em>String Concat</em>}' class.
@@ -2840,14 +2840,14 @@ public interface ApplauseDslPackage extends EPackage
   EReference getCustomView_ProjectClass();
 
   /**
-   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ViewAction <em>View Action</em>}'.
+   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.Action <em>Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>View Action</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ViewAction
+   * @return the meta object for class '<em>Action</em>'.
+   * @see org.applause.applausedsl.applauseDsl.Action
    * @generated
    */
-  EClass getViewAction();
+  EClass getAction();
 
   /**
    * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ViewCall <em>View Call</em>}'.
@@ -2881,25 +2881,25 @@ public interface ApplauseDslPackage extends EPackage
   EAttribute getSelector_Name();
 
   /**
-   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.ExternalOpen <em>External Open</em>}'.
+   * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.OpenURL <em>Open URL</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>External Open</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ExternalOpen
+   * @return the meta object for class '<em>Open URL</em>'.
+   * @see org.applause.applausedsl.applauseDsl.OpenURL
    * @generated
    */
-  EClass getExternalOpen();
+  EClass getOpenURL();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.ExternalOpen#getUrl <em>Url</em>}'.
+   * Returns the meta object for the containment reference '{@link org.applause.applausedsl.applauseDsl.OpenURL#getUrl <em>Url</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Url</em>'.
-   * @see org.applause.applausedsl.applauseDsl.ExternalOpen#getUrl()
-   * @see #getExternalOpen()
+   * @see org.applause.applausedsl.applauseDsl.OpenURL#getUrl()
+   * @see #getOpenURL()
    * @generated
    */
-  EReference getExternalOpen_Url();
+  EReference getOpenURL_Url();
 
   /**
    * Returns the meta object for class '{@link org.applause.applausedsl.applauseDsl.StringConcat <em>String Concat</em>}'.
@@ -3930,14 +3930,14 @@ public interface ApplauseDslPackage extends EPackage
     EReference CUSTOM_VIEW__PROJECT_CLASS = eINSTANCE.getCustomView_ProjectClass();
 
     /**
-     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ViewActionImpl <em>View Action</em>}' class.
+     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ActionImpl <em>Action</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.applause.applausedsl.applauseDsl.impl.ViewActionImpl
-     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getViewAction()
+     * @see org.applause.applausedsl.applauseDsl.impl.ActionImpl
+     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getAction()
      * @generated
      */
-    EClass VIEW_ACTION = eINSTANCE.getViewAction();
+    EClass ACTION = eINSTANCE.getAction();
 
     /**
      * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ViewCallImpl <em>View Call</em>}' class.
@@ -3968,14 +3968,14 @@ public interface ApplauseDslPackage extends EPackage
     EAttribute SELECTOR__NAME = eINSTANCE.getSelector_Name();
 
     /**
-     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.ExternalOpenImpl <em>External Open</em>}' class.
+     * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.OpenURLImpl <em>Open URL</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.applause.applausedsl.applauseDsl.impl.ExternalOpenImpl
-     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getExternalOpen()
+     * @see org.applause.applausedsl.applauseDsl.impl.OpenURLImpl
+     * @see org.applause.applausedsl.applauseDsl.impl.ApplauseDslPackageImpl#getOpenURL()
      * @generated
      */
-    EClass EXTERNAL_OPEN = eINSTANCE.getExternalOpen();
+    EClass OPEN_URL = eINSTANCE.getOpenURL();
 
     /**
      * The meta object literal for the '<em><b>Url</b></em>' containment reference feature.
@@ -3983,7 +3983,7 @@ public interface ApplauseDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXTERNAL_OPEN__URL = eINSTANCE.getExternalOpen_Url();
+    EReference OPEN_URL__URL = eINSTANCE.getOpenURL_Url();
 
     /**
      * The meta object literal for the '{@link org.applause.applausedsl.applauseDsl.impl.StringConcatImpl <em>String Concat</em>}' class.

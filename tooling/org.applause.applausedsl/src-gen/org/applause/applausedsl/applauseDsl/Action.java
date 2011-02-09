@@ -9,14 +9,14 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>View Action</b></em>'.
+ * A representation of the model object '<em><b>Action</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getViewAction()
+ * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getAction()
  * @model
  * @generated
  */
-public interface ViewAction extends EObject
+public interface Action extends EObject
 {
-} // ViewAction
+} // Action

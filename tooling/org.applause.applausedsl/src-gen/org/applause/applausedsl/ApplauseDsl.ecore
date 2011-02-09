@@ -114,7 +114,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="providerClass" eType="#//ProjectClass"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ContentProviderCall" eSuperTypes="#//ScalarExpression #//CollectionExpression #//ParameterizedCall"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContentProviderCall" eSuperTypes="#//Expression #//ParameterizedCall"/>
   <eClassifiers xsi:type="ecore:EClass" name="Assignment" eSuperTypes="#//Declaration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="typeRef" eType="#//TypeReference"
         containment="true"/>
@@ -167,7 +167,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="#//ScalarExpression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//ViewAction"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessory" eType="#//CellAccessory"/>
   </eClassifiers>
@@ -187,12 +187,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="projectClass" eType="#//ProjectClass"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ViewAction"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ViewCall" eSuperTypes="#//ParameterizedCall #//ViewAction"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Selector" eSuperTypes="#//ViewAction">
+  <eClassifiers xsi:type="ecore:EClass" name="Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewCall" eSuperTypes="#//ParameterizedCall #//Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Selector" eSuperTypes="#//Action">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalOpen" eSuperTypes="#//ViewAction">
+  <eClassifiers xsi:type="ecore:EClass" name="OpenURL" eSuperTypes="#//Action">
     <eStructuralFeatures xsi:type="ecore:EReference" name="url" eType="#//ScalarExpression"
         containment="true"/>
   </eClassifiers>

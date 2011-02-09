@@ -16,6 +16,6 @@ package org.applause.applausedsl.applauseDsl;
  * @model
  * @generated
  */
-public interface ContentProviderCall extends ScalarExpression, CollectionExpression, ParameterizedCall
+public interface ContentProviderCall extends Expression, ParameterizedCall
 {
 } // ContentProviderCall

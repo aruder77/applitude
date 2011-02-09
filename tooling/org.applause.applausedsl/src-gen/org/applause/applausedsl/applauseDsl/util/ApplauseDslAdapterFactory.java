@@ -278,9 +278,9 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createCustomViewAdapter();
       }
       @Override
-      public Adapter caseViewAction(ViewAction object)
+      public Adapter caseAction(Action object)
       {
-        return createViewActionAdapter();
+        return createActionAdapter();
       }
       @Override
       public Adapter caseViewCall(ViewCall object)
@@ -293,9 +293,9 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
         return createSelectorAdapter();
       }
       @Override
-      public Adapter caseExternalOpen(ExternalOpen object)
+      public Adapter caseOpenURL(OpenURL object)
       {
-        return createExternalOpenAdapter();
+        return createOpenURLAdapter();
       }
       @Override
       public Adapter caseStringConcat(StringConcat object)
@@ -940,16 +940,16 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ViewAction <em>View Action</em>}'.
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.Action <em>Action</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ViewAction
+   * @see org.applause.applausedsl.applauseDsl.Action
    * @generated
    */
-  public Adapter createViewActionAdapter()
+  public Adapter createActionAdapter()
   {
     return null;
   }
@@ -985,16 +985,16 @@ public class ApplauseDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.ExternalOpen <em>External Open</em>}'.
+   * Creates a new adapter for an object of class '{@link org.applause.applausedsl.applauseDsl.OpenURL <em>Open URL</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.applause.applausedsl.applauseDsl.ExternalOpen
+   * @see org.applause.applausedsl.applauseDsl.OpenURL
    * @generated
    */
-  public Adapter createExternalOpenAdapter()
+  public Adapter createOpenURLAdapter()
   {
     return null;
   }

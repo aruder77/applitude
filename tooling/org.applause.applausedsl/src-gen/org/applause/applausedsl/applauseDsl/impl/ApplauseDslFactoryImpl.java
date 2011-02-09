@@ -108,10 +108,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
       case ApplauseDslPackage.SECTION: return createSection();
       case ApplauseDslPackage.CELL: return createCell();
       case ApplauseDslPackage.CUSTOM_VIEW: return createCustomView();
-      case ApplauseDslPackage.VIEW_ACTION: return createViewAction();
+      case ApplauseDslPackage.ACTION: return createAction();
       case ApplauseDslPackage.VIEW_CALL: return createViewCall();
       case ApplauseDslPackage.SELECTOR: return createSelector();
-      case ApplauseDslPackage.EXTERNAL_OPEN: return createExternalOpen();
+      case ApplauseDslPackage.OPEN_URL: return createOpenURL();
       case ApplauseDslPackage.STRING_CONCAT: return createStringConcat();
       case ApplauseDslPackage.STRING_REPLACE: return createStringReplace();
       case ApplauseDslPackage.STRING_URL_CONFORM: return createStringUrlConform();
@@ -612,10 +612,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ViewAction createViewAction()
+  public Action createAction()
   {
-    ViewActionImpl viewAction = new ViewActionImpl();
-    return viewAction;
+    ActionImpl action = new ActionImpl();
+    return action;
   }
 
   /**
@@ -645,10 +645,10 @@ public class ApplauseDslFactoryImpl extends EFactoryImpl implements ApplauseDslF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ExternalOpen createExternalOpen()
+  public OpenURL createOpenURL()
   {
-    ExternalOpenImpl externalOpen = new ExternalOpenImpl();
-    return externalOpen;
+    OpenURLImpl openURL = new OpenURLImpl();
+    return openURL;
   }
 
   /**

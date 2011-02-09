@@ -145,12 +145,12 @@ public interface Cell extends ViewContentElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Action</em>' containment reference.
-   * @see #setAction(ViewAction)
+   * @see #setAction(Action)
    * @see org.applause.applausedsl.applauseDsl.ApplauseDslPackage#getCell_Action()
    * @model containment="true"
    * @generated
    */
-  ViewAction getAction();
+  Action getAction();
 
   /**
    * Sets the value of the '{@link org.applause.applausedsl.applauseDsl.Cell#getAction <em>Action</em>}' containment reference.
@@ -160,7 +160,7 @@ public interface Cell extends ViewContentElement
    * @see #getAction()
    * @generated
    */
-  void setAction(ViewAction value);
+  void setAction(Action value);
 
   /**
    * Returns the value of the '<em><b>Accessory</b></em>' attribute.

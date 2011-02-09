@@ -5,6 +5,7 @@
  */
 package org.applause.applausedsl.applauseDsl.impl;
 
+import org.applause.applausedsl.applauseDsl.Action;
 import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Application;
@@ -25,11 +26,11 @@ import org.applause.applausedsl.applauseDsl.CustomView;
 import org.applause.applausedsl.applauseDsl.Declaration;
 import org.applause.applausedsl.applauseDsl.Entity;
 import org.applause.applausedsl.applauseDsl.Expression;
-import org.applause.applausedsl.applauseDsl.ExternalOpen;
 import org.applause.applausedsl.applauseDsl.Model;
 import org.applause.applausedsl.applauseDsl.ModelElement;
 import org.applause.applausedsl.applauseDsl.Named;
 import org.applause.applausedsl.applauseDsl.ObjectReference;
+import org.applause.applausedsl.applauseDsl.OpenURL;
 import org.applause.applausedsl.applauseDsl.Parameter;
 import org.applause.applausedsl.applauseDsl.ParameterDefinitions;
 import org.applause.applausedsl.applauseDsl.ParameterValues;
@@ -56,7 +57,6 @@ import org.applause.applausedsl.applauseDsl.Type;
 import org.applause.applausedsl.applauseDsl.TypeReference;
 import org.applause.applausedsl.applauseDsl.UrlContentProviderImplementation;
 import org.applause.applausedsl.applauseDsl.View;
-import org.applause.applausedsl.applauseDsl.ViewAction;
 import org.applause.applausedsl.applauseDsl.ViewCall;
 import org.applause.applausedsl.applauseDsl.ViewContentElement;
 
@@ -361,7 +361,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass viewActionEClass = null;
+  private EClass actionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -382,7 +382,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass externalOpenEClass = null;
+  private EClass openURLEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1468,9 +1468,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getViewAction()
+  public EClass getAction()
   {
-    return viewActionEClass;
+    return actionEClass;
   }
 
   /**
@@ -1508,9 +1508,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getExternalOpen()
+  public EClass getOpenURL()
   {
-    return externalOpenEClass;
+    return openURLEClass;
   }
 
   /**
@@ -1518,9 +1518,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getExternalOpen_Url()
+  public EReference getOpenURL_Url()
   {
-    return (EReference)externalOpenEClass.getEStructuralFeatures().get(0);
+    return (EReference)openURLEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1839,15 +1839,15 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     customViewEClass = createEClass(CUSTOM_VIEW);
     createEReference(customViewEClass, CUSTOM_VIEW__PROJECT_CLASS);
 
-    viewActionEClass = createEClass(VIEW_ACTION);
+    actionEClass = createEClass(ACTION);
 
     viewCallEClass = createEClass(VIEW_CALL);
 
     selectorEClass = createEClass(SELECTOR);
     createEAttribute(selectorEClass, SELECTOR__NAME);
 
-    externalOpenEClass = createEClass(EXTERNAL_OPEN);
-    createEReference(externalOpenEClass, EXTERNAL_OPEN__URL);
+    openURLEClass = createEClass(OPEN_URL);
+    createEReference(openURLEClass, OPEN_URL__URL);
 
     stringConcatEClass = createEClass(STRING_CONCAT);
     createEReference(stringConcatEClass, STRING_CONCAT__VALUES);
@@ -1920,8 +1920,7 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     contentProviderEClass.getESuperTypes().add(this.getParameterizedModelElement());
     urlContentProviderImplementationEClass.getESuperTypes().add(this.getContentProviderImplementation());
     customContentProviderImplementationEClass.getESuperTypes().add(this.getContentProviderImplementation());
-    contentProviderCallEClass.getESuperTypes().add(this.getScalarExpression());
-    contentProviderCallEClass.getESuperTypes().add(this.getCollectionExpression());
+    contentProviderCallEClass.getESuperTypes().add(this.getExpression());
     contentProviderCallEClass.getESuperTypes().add(this.getParameterizedCall());
     assignmentEClass.getESuperTypes().add(this.getDeclaration());
     viewEClass.getESuperTypes().add(this.getParameterizedModelElement());
@@ -1931,9 +1930,9 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     cellEClass.getESuperTypes().add(this.getViewContentElement());
     customViewEClass.getESuperTypes().add(this.getView());
     viewCallEClass.getESuperTypes().add(this.getParameterizedCall());
-    viewCallEClass.getESuperTypes().add(this.getViewAction());
-    selectorEClass.getESuperTypes().add(this.getViewAction());
-    externalOpenEClass.getESuperTypes().add(this.getViewAction());
+    viewCallEClass.getESuperTypes().add(this.getAction());
+    selectorEClass.getESuperTypes().add(this.getAction());
+    openURLEClass.getESuperTypes().add(this.getAction());
     stringConcatEClass.getESuperTypes().add(this.getStringFunction());
     stringReplaceEClass.getESuperTypes().add(this.getStringFunction());
     stringUrlConformEClass.getESuperTypes().add(this.getStringFunction());
@@ -2070,21 +2069,21 @@ public class ApplauseDslPackageImpl extends EPackageImpl implements ApplauseDslP
     initEReference(getCell_Text(), this.getScalarExpression(), null, "text", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCell_DetailText(), this.getScalarExpression(), null, "detailText", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCell_Image(), this.getScalarExpression(), null, "image", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCell_Action(), this.getViewAction(), null, "action", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCell_Action(), this.getAction(), null, "action", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCell_Accessory(), this.getCellAccessory(), "accessory", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customViewEClass, CustomView.class, "CustomView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCustomView_ProjectClass(), this.getProjectClass(), null, "projectClass", null, 0, 1, CustomView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(viewActionEClass, ViewAction.class, "ViewAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(viewCallEClass, ViewCall.class, "ViewCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(selectorEClass, Selector.class, "Selector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(externalOpenEClass, ExternalOpen.class, "ExternalOpen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExternalOpen_Url(), this.getScalarExpression(), null, "url", null, 0, 1, ExternalOpen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(openURLEClass, OpenURL.class, "OpenURL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOpenURL_Url(), this.getScalarExpression(), null, "url", null, 0, 1, OpenURL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringConcatEClass, StringConcat.class, "StringConcat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getStringConcat_Values(), this.getScalarExpression(), null, "values", null, 0, -1, StringConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

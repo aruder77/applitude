@@ -5,12 +5,12 @@
  */
 package org.applause.applausedsl.applauseDsl.impl;
 
+import org.applause.applausedsl.applauseDsl.Action;
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
 import org.applause.applausedsl.applauseDsl.Cell;
 import org.applause.applausedsl.applauseDsl.CellAccessory;
 import org.applause.applausedsl.applauseDsl.CellType;
 import org.applause.applausedsl.applauseDsl.ScalarExpression;
-import org.applause.applausedsl.applauseDsl.ViewAction;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -98,7 +98,7 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * @generated
    * @ordered
    */
-  protected ViewAction action;
+  protected Action action;
 
   /**
    * The default value of the '{@link #getAccessory() <em>Accessory</em>}' attribute.
@@ -313,7 +313,7 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
-  public ViewAction getAction()
+  public Action getAction()
   {
     return action;
   }
@@ -323,9 +323,9 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetAction(ViewAction newAction, NotificationChain msgs)
+  public NotificationChain basicSetAction(Action newAction, NotificationChain msgs)
   {
-    ViewAction oldAction = action;
+    Action oldAction = action;
     action = newAction;
     if (eNotificationRequired())
     {
@@ -340,7 +340,7 @@ public class CellImpl extends ViewContentElementImpl implements Cell
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAction(ViewAction newAction)
+  public void setAction(Action newAction)
   {
     if (newAction != action)
     {
@@ -450,7 +450,7 @@ public class CellImpl extends ViewContentElementImpl implements Cell
         setImage((ScalarExpression)newValue);
         return;
       case ApplauseDslPackage.CELL__ACTION:
-        setAction((ViewAction)newValue);
+        setAction((Action)newValue);
         return;
       case ApplauseDslPackage.CELL__ACCESSORY:
         setAccessory((CellAccessory)newValue);
@@ -482,7 +482,7 @@ public class CellImpl extends ViewContentElementImpl implements Cell
         setImage((ScalarExpression)null);
         return;
       case ApplauseDslPackage.CELL__ACTION:
-        setAction((ViewAction)null);
+        setAction((Action)null);
         return;
       case ApplauseDslPackage.CELL__ACCESSORY:
         setAccessory(ACCESSORY_EDEFAULT);

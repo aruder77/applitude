@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class SelectorImpl extends ViewActionImpl implements Selector
+public class SelectorImpl extends ActionImpl implements Selector
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

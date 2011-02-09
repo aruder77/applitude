@@ -6,7 +6,6 @@
 package org.applause.applausedsl.applauseDsl.impl;
 
 import org.applause.applausedsl.applauseDsl.ApplauseDslPackage;
-import org.applause.applausedsl.applauseDsl.CollectionExpression;
 import org.applause.applausedsl.applauseDsl.ContentProviderCall;
 import org.applause.applausedsl.applauseDsl.ParameterValues;
 import org.applause.applausedsl.applauseDsl.ParameterizedCall;
@@ -34,7 +33,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ContentProviderCallImpl extends ScalarExpressionImpl implements ContentProviderCall
+public class ContentProviderCallImpl extends ExpressionImpl implements ContentProviderCall
 {
   /**
    * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
@@ -269,13 +268,6 @@ public class ContentProviderCallImpl extends ScalarExpressionImpl implements Con
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
-    if (baseClass == CollectionExpression.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
     if (baseClass == ParameterizedCall.class)
     {
       switch (derivedFeatureID)
@@ -296,13 +288,6 @@ public class ContentProviderCallImpl extends ScalarExpressionImpl implements Con
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
-    if (baseClass == CollectionExpression.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
     if (baseClass == ParameterizedCall.class)
     {
       switch (baseFeatureID)

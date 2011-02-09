@@ -230,7 +230,6 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
       </alternatives>
     </rules>
@@ -319,7 +318,6 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CollectionLiteral">
@@ -549,7 +547,6 @@
         <classifier xsi:type="ecore:EClass" href="http://www.applause.org/applausedsl/ApplauseDsl#//ContentProviderCall"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="new"/>
         <elements xsi:type="xtext:Assignment" feature="target" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.1">
@@ -843,9 +840,9 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="ViewAction">
+    <rules xsi:type="xtext:ParserRule" name="Action">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.applause.org/applausedsl/ApplauseDsl#//ViewAction"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.applause.org/applausedsl/ApplauseDsl#//Action"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
@@ -897,9 +894,9 @@
         <elements xsi:type="xtext:Keyword" cardinality="?" value=":"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="ExternalOpen">
+    <rules xsi:type="xtext:ParserRule" name="OpenURL">
       <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.applause.org/applausedsl/ApplauseDsl#//ExternalOpen"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.applause.org/applausedsl/ApplauseDsl#//OpenURL"/>
       </type>
       <alternatives xsi:type="xtext:Assignment" feature="url" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>

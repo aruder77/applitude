@@ -386,13 +386,13 @@ public interface ApplauseDslFactory extends EFactory
   CustomView createCustomView();
 
   /**
-   * Returns a new object of class '<em>View Action</em>'.
+   * Returns a new object of class '<em>Action</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>View Action</em>'.
+   * @return a new object of class '<em>Action</em>'.
    * @generated
    */
-  ViewAction createViewAction();
+  Action createAction();
 
   /**
    * Returns a new object of class '<em>View Call</em>'.
@@ -413,13 +413,13 @@ public interface ApplauseDslFactory extends EFactory
   Selector createSelector();
 
   /**
-   * Returns a new object of class '<em>External Open</em>'.
+   * Returns a new object of class '<em>Open URL</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>External Open</em>'.
+   * @return a new object of class '<em>Open URL</em>'.
    * @generated
    */
-  ExternalOpen createExternalOpen();
+  OpenURL createOpenURL();
 
   /**
    * Returns a new object of class '<em>String Concat</em>'.
