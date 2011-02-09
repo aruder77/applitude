@@ -52,6 +52,7 @@ static «use(providerFactory())» *sharedProviders = nil;
 
 «DEFINE providerMethodImplementation FOR ContentProvider»
 «callSignature()» {
+«scopeStart() -> parameters.definitions.collect(e|e.scopeBind(e.name)) -> ''-»
 	«IF !this.storing-»
 		«EXPAND constructProvider-»
 		return [provider autorelease];
@@ -63,6 +64,7 @@ static «use(providerFactory())» *sharedProviders = nil;
 		return «this.ivar()»;
 	«ENDIF-»
 }
+«scopeEnd()-»
 «ENDDEFINE»
 
 

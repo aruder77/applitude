@@ -20,10 +20,20 @@ import com.google.common.collect.Lists;
 
 public class Extensions {
 
-	private static Set<ProjectClass> currentImportBag = new HashSet<ProjectClass>();
-	private static Map<String, ProjectClass> classes = new ConcurrentHashMap<String, ProjectClass>();
-	private static Stack<Map<EObject, String>> scopeStack = new Stack<Map<EObject, String>>();
+	private static Set<ProjectClass> currentImportBag;
+	private static Map<String, ProjectClass> classes;
+	private static Stack<Map<EObject, String>> scopeStack;
 
+	static {
+		reset();
+	}
+	
+	public static void reset() {
+		currentImportBag = new HashSet<ProjectClass>();
+		classes = new ConcurrentHashMap<String, ProjectClass>();
+		scopeStack = new Stack<Map<EObject, String>>();
+	}
+	
 	public static EObject getRootContainer(EObject obj) {
 		EObject result = EcoreUtil2.getRootContainer(obj);
 		return result;
@@ -78,10 +88,11 @@ public class Extensions {
 		scopeStack.pop();
 	}
 
-	public static void scopeBind(EObject obj, String name) {
+	public static String scopeBind(EObject obj, String name) {
 		if (scopeStack.isEmpty())
 			throw new RuntimeException("No scope was started!");
 		scopeStack.peek().put(obj, name);
+		return name;
 	}
 
 	public static String scopeGet(EObject obj) {

@@ -51,7 +51,7 @@ Void scopeStart():
 Void scopeEnd():
 	JAVA templates.Extensions.scopeEnd();
 
-Void scopeBind(EObject obj, String name):
+String scopeBind(EObject obj, String name):
 	JAVA templates.Extensions.scopeBind(org.eclipse.emf.ecore.EObject, java.lang.String);
 
 String internalScopeGet(EObject obj):
@@ -226,10 +226,10 @@ resolveToValue(Void this):
 	"nil";
 
 resolveToValue(Named this):
-	this.ivar() + ".content";
+	this.scopeName() + ".content";
 
 resolveToValue(CollectionIterator this):
-	this.name;
+	this.scopeName();
 
 resolveToValue(Expression this):
 	"<resolveToValue is abstract for: " + this + ">";
@@ -273,7 +273,7 @@ resolveToValue(ObjectReference this):
 /* Resolving expressions to a content provider */
 
 resolveToProvider(Named this):
-	this.ivar();
+	this.scopeName();
 
 resolveToProvider(CollectionIterator this):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.name + ' name:@"' + this.name + '"]';

@@ -43,8 +43,8 @@
 		«IF this.hasBindings()-»
 			fBindings = [[BindingContext alloc] init];
 		«ENDIF-»
-		«parameters.definitions.collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.name + " retain];").toString("\n")»
-		«variables.collect(p|p.scopeBind(p.ivar()) -> p.ivar() + " = [" + p.value.resolveToProvider() + " retain];").toString("\n")»
+		«parameters.definitions.collect(p|p.scopeBind(p.ivar()) + " = [" + p.name + " retain];").toString("\n")»
+		«variables.collect(p|p.scopeBind(p.ivar()) + " = [" + p.value.resolveToProvider() + " retain];").toString("\n")»
 	}
 	return self;
 }
@@ -74,10 +74,12 @@
 
 «DEFINE providerMethod FOR ViewContentElement-»
 	«LET this.iterator AS it-»
-		- («this.targetType()» *) «it.name»«this.shortName().toFirstUpper()»:(id)«it.name» {
+		«scopeStart()-»
+		- («this.targetType()» *) «it.name»«this.shortName().toFirstUpper()»:(id)«it.scopeBind(it.name)» {
 			«this.objcConstruct()-»
 			return «this.shortName()»;
 		}
+		«scopeEnd()-»
 	«ENDLET»
 «ENDDEFINE»
 
@@ -92,14 +94,20 @@
 
 «DEFINE cellActionMethod(Cell cell) FOR ViewCall-»
 - (void) «actionSelectorName()»(BoxCell *)cell {
+«scopeStart()»
 	«IF cell.section().iterator!=null-»
-		id «cell.section().iterator.name» = cell.data;
+		«LET cell.section().iterator AS it-»
+			id «it.scopeBind(it.name)» = cell.data;
+		«ENDLET-»
 	«ENDIF-»
 	«IF cell.iterator!=null-»
-		id «cell.iterator.name» = cell.data;
+		«LET cell.iterator AS it-»
+			id «it.scopeBind(it.name)» = cell.data;
+		«ENDLET-»
 	«ENDIF-»
 	UIViewController *controller = «call()»;
 	[self.navigationController pushViewController:controller animated:YES];
+«scopeEnd()»
 }
 
 «ENDDEFINE»

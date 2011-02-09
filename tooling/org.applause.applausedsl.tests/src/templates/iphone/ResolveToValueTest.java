@@ -3,30 +3,14 @@
 
 package templates.iphone;
 
-import org.applause.applausedsl.ApplauseDslStandaloneSetup;
 import org.applause.applausedsl.applauseDsl.ApplauseDslFactory;
 import org.applause.applausedsl.applauseDsl.CollectionLiteral;
-import org.applause.applausedsl.applauseDsl.ContentProviderCall;
-import org.applause.applausedsl.applauseDsl.Model;
-import org.applause.applausedsl.applauseDsl.Named;
-import org.applause.applausedsl.applauseDsl.ObjectReference;
-import org.applause.applausedsl.applauseDsl.Parameter;
-import org.applause.applausedsl.applauseDsl.Property;
-import org.applause.applausedsl.applauseDsl.ScalarExpression;
 import org.applause.applausedsl.applauseDsl.StringConcat;
-import org.applause.applausedsl.applauseDsl.StringLiteral;
 import org.applause.applausedsl.applauseDsl.StringReplace;
 import org.applause.applausedsl.applauseDsl.StringSplit;
 import org.applause.applausedsl.applauseDsl.StringUrlConform;
-import org.applause.applausedsl.applauseDsl.TableView;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.XtendFacade;
-import org.eclipse.xtend.type.impl.java.JavaBeansMetaModel;
-import org.eclipse.xtext.junit.AbstractXtextTests;
-import org.eclipse.xtext.resource.XtextResource;
 import org.junit.Test;
-
-import com.google.common.collect.Iterables;
 
 public class ResolveToValueTest extends AbstractExtensionsTest {
 
