@@ -60,12 +60,12 @@ PropertyReference returns ObjectReference:
 
 Expression:
 	CollectionLiteral | CollectionFunction | StringLiteral | StringFunction | ObjectReference | ContentProviderCall | Binding;
-	// defining this as what it is (ScalarExpression | CollectionExpression)
+	// defining this as what it is (ScalarExpression | CollectionExpression | ContentProviderCall)
 	// would cause grammar errors because ObjectReference is ScalarExpression and CollectionExpression
 	// the resulting model is corrected in ApplauseDslPostProcessor.ext
 
 ScalarExpression:
-	StringLiteral | StringFunction | ObjectReference | ContentProviderCall | Binding;
+	StringLiteral | StringFunction | ObjectReference | Binding;
 
 StringLiteral:
 	value=STRING;
@@ -82,7 +82,7 @@ ImageExpression returns ScalarExpression:
 	ScalarExpression;
 
 CollectionExpression:
-	CollectionLiteral | CollectionFunction | ObjectReference | ContentProviderCall;
+	CollectionLiteral | CollectionFunction | ObjectReference;
 
 CollectionLiteral:
 	'[' items+=ScalarExpression (',' items+=ScalarExpression)* ']';
@@ -133,7 +133,7 @@ CustomContentProviderImplementation:
 	providerClass=ProjectClass;
 
 ContentProviderCall:
-	'new' target=[ContentProvider] parameters=ParameterValues;
+	target=[ContentProvider] parameters=ParameterValues;
 
 Assignment:
 	typeRef=TypeReference name=ID '=' value=ContentProviderCall;

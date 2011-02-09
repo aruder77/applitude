@@ -1,19 +1,21 @@
+import ecore;
+
 process(xtext::GeneratedMetamodel this):
 	process(ePackage);
  
-process(ecore::EPackage this):
-  	this.eContents.select(e|ecore::EClass.isInstance(e)).forAll(e|process((ecore::EClass)e)->true);
+process(EPackage this):
+  	this.eContents.select(e|EClass.isInstance(e)).forAll(e|process((EClass)e)->true);
 
-process(ecore::EClass this):
+process(EClass this):
 	fixExpression() -> fixParameterizedCall();
 
-fixExpression(ecore::EClass this):
+fixExpression(EClass this):
 	let expr = ePackage.findClass("Expression")
-		: (this.name == "ScalarExpression" || this.name == "CollectionExpression")
+		: (this.name == "ScalarExpression" || this.name == "CollectionExpression" || this.name == "ContentProviderCall")
 			? this.eSuperTypes.add(expr)
 			: this.eSuperTypes.remove(expr);
 
-fixParameterizedCall(ecore::EClass this):
+fixParameterizedCall(EClass this):
 	switch(name) {
 		case "ContentProviderCall" : 
 			(let target = eStructuralFeatures.selectFirst(e|e.name=='target')
@@ -26,5 +28,5 @@ fixParameterizedCall(ecore::EClass this):
 		default: null
 	};
 
-ecore::EClass findClass(ecore::EPackage this, String name):
-	((List[ecore::EClass])(eContents.select(e|ecore::EClass.isInstance(e)))).selectFirst(e|e.name == name);
+EClass findClass(EPackage this, String name):
+	((List[EClass])(eContents.select(e|EClass.isInstance(e)))).selectFirst(e|e.name == name);

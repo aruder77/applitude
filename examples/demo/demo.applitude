@@ -8,7 +8,7 @@ application Demo {
 tabview Tabs {
 	tab {
 		title: "Inventors"
-		view: Inventors(new AllInventorsJSON())
+		view: Inventors(AllInventorsJSON())
 		icon: "lightbulb.png"
 	}
 	tab {
@@ -95,11 +95,11 @@ tableview Reference {
 		title: "Content Providers"
 		cell Default {
 			text: "JSON"
-			action: Inventors(new AllInventorsJSON())
+			action: Inventors(AllInventorsJSON())
 		}
 		cell Default {
 			text: "XML"
-			action: Inventors(new AllInventorsXML())
+			action: Inventors(AllInventorsXML())
 		}
 	}
 
@@ -111,7 +111,7 @@ tableview Reference {
 		}
 		cell Default {
 			text: "cell foreach"
-			action: Inventors(new AllInventorsJSON())
+			action: Inventors(AllInventorsJSON())
 		}
 		cell Default {
 			text: "section + cell foreach"
@@ -151,7 +151,7 @@ tableview ReferenceCellStyles {
 }
 
 tableview ReferenceSectionCellForeach {
-	Inventor[] inventors = new AllInventorsJSON()
+	Inventor[] inventors = AllInventorsJSON()
 
 	title: "section/cell foreach"
 
@@ -167,7 +167,7 @@ tableview ReferenceSectionCellForeach {
 contentprovider Error returns Inventor[] fetches JSON from "http://localhost/none.json"
 
 tableview ReferenceErrorHandling {
-	Inventor[] inventors = new Error()
+	Inventor[] inventors = Error()
 
 	title: "Error handling"
 	style: Grouped
@@ -193,8 +193,8 @@ contentprovider StoredDate stores String class DateContentProvider
 customview CustomView class CustomViewController
 
 tableview ReferenceCustomCode {
-	Inventor[] date = new Date()
-	Inventor[] storedDate = new StoredDate()
+	Inventor[] date = Date()
+	Inventor[] storedDate = StoredDate()
 	title: "Custom code hooks"
 	
 	section {
@@ -234,7 +234,7 @@ entity Login {
 contentprovider MyLogin returns Login
 
 tableview ReferenceEntityModels {
-	Login login = new MyLogin()
+	Login login = MyLogin()
 
 	style: Grouped
 	title: "Login"
@@ -261,7 +261,7 @@ tableview TextView(String txt) {
 
 
 tableview ReferenceExpressions {
-	Inventor[] inventors = new AllInventorsJSON()
+	Inventor[] inventors = AllInventorsJSON()
 
 	style: Grouped
 	title: "Expressions"
