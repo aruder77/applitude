@@ -9,14 +9,14 @@ layout: default
 
 # ![applitude](applitude.png)
 
-applitude is an Objective C runtime framework and a domain-specific language for iPhone application development. It is an extended, iPhone-only version of the [Applause](http://code.google.com/p/applause/) project.
+applitude is a runtime framework and a domain-specific language for iPhone application development. It is an extended, iPhone-only version of the [Applause](http://code.google.com/p/applause/) project.
 
 
 ## Overview
 
-applitude comes with a domain specific language ("DSL") that allows to express frequently needed parts of iPhone applications in a very dense format. This language is made-to-measure to express iPhone apps, so instead of keywords like `if`, `then`, `while` it has keywords like `contentprovider`, `tableview`, `section` or `cell`.
+applitude comes with a domain specific language (DSL) to express commonly used elements of iPhone applications in a very dense format. This language is made-to-measure to express iPhone apps, so instead of keywords like `if`, `then`, `while` it has keywords like `contentprovider`, `tableview` or `cell`.
 
-For example, this application displays [JSON data](http://applitude.org/demo/inventors.json) about inventors loaded from an URL:
+For example, this application loads and displays [JSON data](https://github.com/ralfebert/applitude/raw/gh-pages/demo/inventors.json) data loaded via HTTP:
 
 ![Screenshots Inventors demo application](demo.png)
 
@@ -33,6 +33,7 @@ tabview Tabs {
 	tab {
 		title: "Inventors"
 		view: Inventors()
+		icon: "lightbulb.png"
 	}
 }
 
@@ -49,7 +50,7 @@ entity Invention {
 }
 
 contentprovider AllInventors returns Inventor[] fetches JSON from
-	"http://applitude.org/demo/inventors.json" selects ""
+	"http://applitude.org/demo/inventors.json"
 
 tableview Inventors {
 	Inventor[] inventors = AllInventors()
@@ -91,31 +92,33 @@ You can edit this document in a convenient editor featuring code completion and 
 
 Then, as soon as you hit save, Objective C code is generated for `demo.applitude`. The generated code is small and tidied up by making use of runtime components wherever possible. Have a look at [InventorDetailViewController](https://github.com/ralfebert/applitude/blob/master/examples/demo/Generated/InventorDetailViewController.m) for an example of the kind of code generated for applitude apps.
 
-Last but not least, the runtime components utilized by the generated code are not tied to the DSL at all and you can utilize them in hand-written code as well; the DSL just adds a very convenient layer on top. But why write boring code by hand if you can express it using a more appropriate language?
+Also, the applitude runtime components are not tied to the DSL at all and can be utilized in hand-written code as well. The DSL just adds a very convenient layer on top. But why write boring code by hand if you can express it using a more appropriate language?
 
 ## Ok, where is the catch?
 
-* You will need good knowledge of iPhone development in Objective C and some knowledge of building DSLs with Eclipse Xtext to enjoy Applitude.
-* Currently, Applitude is intended as a tool for developers who like tinkering with own tools and languages. Please don't use Applitude if you don't feel comfortable with solving issues around such a tool yourself.
-* Applitude is currently work in progress. Syntax and API might change, please check the [Release notes](#whatsnew) after installing new versions.
+* You will need good knowledge of iPhone development in Objective C and some knowledge of building DSLs with Eclipse Xtext to enjoy applitude.
+* Currently, applitude is intended as a tool for developers who like tinkering with own tools and languages. Please don't use applitude if you don't feel comfortable with solving issues around such a tool yourself.
+* applitude is currently work in progress. Syntax and API might change, please check the [Release notes](#whatsnew) after installing new versions.
 
 <a name="installation"> </a>
 
 ## Installation
 
 * Get Eclipse IDE 3.6.1 from the [Eclipse download page](http://www.eclipse.org/downloads/) (it doesn't matter which package you choose, Eclipse IDE for Java Developers is fine)
-* In Eclipse, click `Help > Eclipse Marketplace...`, choose the Eclipse Marketplace, search for "Applitude" and click `Install`:
+* In Eclipse, click `Help > Eclipse Marketplace...`, choose the Eclipse Marketplace, search for "applitude" and click `Install`:
 
-    ![Applitude Installation using Eclipse Marketplace](install_marketplace.png)
+    ![applitude Installation using Eclipse Marketplace](install_marketplace.png)
 
     It might take some time to 'calculate requirements and dependencies'. You will be prompted to install unsigned content and to restart Eclipse.
 
-    Alternatively, you can install Applitude from the p2 site `http://applitude.org/p2/` using `Help > Install New Software`.
+    Alternatively, you can install applitude from the p2 site `http://applitude.org/p2/` using `Help > Install New Software`.
 
-* It is recommended to install the [Uncrustify code formatter](http://uncrustify.sourceforge.net/) because Applitude uses it to format the generated code. You can install it using [MacPorts](http://www.macports.org/) or [homebrew](http://mxcl.github.com/homebrew/). Applitude should find the binary automatically, you can also configure it from `Eclipse Preferences > Applitude > Generator`.
+* It is recommended to install the [Uncrustify code formatter](http://uncrustify.sourceforge.net/) because applitude uses it to format the generated code. You can install it using [MacPorts](http://www.macports.org/) or [homebrew](http://mxcl.github.com/homebrew/). applitude should find the binary automatically, you can also configure it from `Eclipse Preferences > Applitude > Generator`.
 * Download the [applitude source zip](https://github.com/ralfebert/applitude/zipball/master) or clone the git repository:
 
 		$ git clone git://github.com/ralfebert/applitude
+
+* Hint: You can use `Help > Check for updates` to update applitude when new versions are released.
 
 
 ## Running the demo example project
@@ -140,9 +143,11 @@ To edit `demo.applitude` in Eclipse:
 * Open `demo.applitude` from the project root.
 * Change something in demo.applitude and save it - the code under `Generated/` will be re-generated.
 
+<a name="newproject"> </a>
+
 ## Creating a new project
 
-* Use `File > New > Project > Xtext > Applitude iPhone Project` in Eclipse to create a new Applitude project:
+* Use `File > New > Project > Xtext > Applitude iPhone Project` in Eclipse to create a new applitude project:
 
     ![Eclipse IDE new wizard](ide_new_wizard.png)
 
@@ -152,7 +157,7 @@ To edit `demo.applitude` in Eclipse:
 
 * Open the `.applitude` file.
 * Make sure the code was generated by checking files are present in the `Generated` folder (if not, try cleaning/building).
-* You need to add the applitude runtime to the project folder. The wizard does not do this automatically because the setup varies. The generated Xcode project expects to see `libs/applitude/runtime/...` in the project folder. The easiest way is to copy the full applitude folder to `libs/` in your project. Alternatively, if you're using git to version your project, I recommend to use a submodule to setup your project like this:
+* You need to add the applitude runtime to the project folder. The wizard does not do this automatically because the setup varies. The generated Xcode project expects to see `libs/applitude/runtime/...` in the project folder. The easiest way is to copy the full applitude folder to `libs/` in your project. Alternatively, if you're using git to version your project, I recommend to use a submodule, for example:
 
 		cd <project_folder>
 		git init
@@ -161,39 +166,63 @@ To edit `demo.applitude` in Eclipse:
 		git submodule add git://github.com/ralfebert/applitude.git libs/applitude/
 		git commit -m "applitude project setup"
 
-* Note: The wizard only adds the bare minimum of the runtime to the project. You need to manage these runtime folders manually in Xcode; as soon as you use more applitude features, you need to add additional runtime folders/classes. Also, if you update to newer versions of Applitude, the runtime structure might have changed.
+  Unfortunately, there is a problem here: The `examples/demo/demo.applitude` file will be detected and generated as well when you add the full project/submodule. You can prevent this from happening by excluding the `libs` folder in the `Project properties > Resource > Resource filters`.
+
+* Note: The wizard only adds the bare minimum of the runtime to the project. You need to manage these runtime folders manually in Xcode; as soon as you use more applitude features, you need to add additional runtime folders/classes. Everything in runtime/ is supposed to be added to the projectas folder when needed, except 'Utils', these util classes should be added individually as needed. Also, if you update to newer versions of applitude, you might need update the runtime because files might have been changed/added/removed.
 * Open the project in Xcode, choose the target with `Run > Set Active Target` and do `Run > Debug`.
 
 ## Next steps
 
 * I recommend to learn about Xtext DSLs by following the tutorial in the [Xtext Getting started documentation](http://www.eclipse.org/Xtext/documentation/).
 * If you want to tinker with the DSL, install the `Xtext SDK` into your Eclipse IDE, clone the git repository and import the plug-in projects from the `tooling/` folder in Eclipse. Create a new Eclipse Application launch configuration, using the default settings to launch an Eclipse IDE instance running the imported workspace plug-ins.
-* The best way to learn about applitude is to use it, adopting the projects to your needs, adding features to the DSL or the runtime libraries.
+* The best way to learn about applitude is to use it, adopting the generated projects to your needs, adding features to the DSL or the runtime libraries.
 
 <a name="whatsnew"> </a>
 
 ## Release Notes, What's new?
 
-v0.3.0
+v0.3.0 (2010-02-09)
 
-* Wizard to create new projects including Xcode project, see `File > New > Project > Xtext > Applitude iPhone Project` in Eclipse ([#12](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/12)):
+* IDE: There is a wizard now to create new projects (including the Xcode project), see [Creating a new project](#newproject) ([#12](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/12)):
 
     ![Eclipse IDE new wizard](ide_new_wizard.png)
 
-* Added template proposals for `for, cell, section, tableview` ([#31](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/31))
+* IDE: The editor features now content assist proposals for `for, cell, section, tableview` ([#31](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/31))
 
     ![tableview template proposal](whatsnew/0.3.0_templates.png)
 
-* `contentprovider ... selects [keyPath]`: `selects` is now optional and supported [#40](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/40)
+* DSL: `selects` for `contentprovider` can now be omitted and is actually supported ([#40](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/40)):
 
-* `contentprovider ... fetches XML` is now fully supported by runtime component `ContentProvider+XML`, added inventors demo reference example for JSON and XML [#51](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/51)
+		contentprovider Inventors returns Inventor[]
+			fetches JSON from "http://applitude.org/demo/inventors.json"
+			selects "data.allInventors"
 
-* Runtime classes were restructured ([#21](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/21), [#46](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/46)):
-	* `/Laces -> /Bindings`
-	* `/Laces/DateConverter.* -> /Utils/`
-	* `/Laces/*Actions*.* -> /Actions/`
-	* `/ContentProvider/UrlContentProvider.*`, `/ASIHTTPRequest -> /ContentProvider+URL/`
-	* `JSONFilter`, `/TouchJSON -> /ContentProvider+JSON/`
+
+* DSL/Runtime: `contentprovider ... fetches XML` is now fully supported via runtime component `ContentProvider+XML`. The inventors demo shows boths JSON and XML now [#51](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/51). Example for XML content provider:
+
+		contentprovider AllInventorsXML returns Inventor[]
+			fetches XML from "http://applitude.org/demo/inventors.xml"
+			selects "/inventors/inventor"
+
+
+* Runtime: Components were restructured `ContentProvider, ContentProvider+JSON, ContentProvider+URL, ContentProvider+XML, Tables, Actions, Bindings` and to utility classes in `Utils`  ([#21](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/21), [#46](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/46)).
+
+* Generator: All expressions defined by the DSL language are now supported by the generator. Along the way, the generator templates/extensions were cleaned up a lot. Check `Reference > Expressions` in [`demo.applitude`](https://github.com/ralfebert/applitude/blob/master/examples/demo/demo.applitude) for expression examples:
+
+	![applitude expressions](demo_expressions.png)
+
+* DSL/Generator: Views and ContentProvider support passing multiple parameters now ([#56](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/56), [#57](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/57)):
+
+		cell {
+			action: InventionDetail(inventor, invention)
+		}
+
+		tableview InventionDetail(Inventor inventor, Invention invention) {
+			...
+		}
+
+* Generator: Regular views are supported as application view now, UINavigationController is instantiated automatically ([#20](http://ralfebert.lighthouseapp.com/projects/67904-applitude/tickets/20))
+
 
 v0.2.1 (2010-01-31)
 
@@ -202,18 +231,18 @@ v0.2.1 (2010-01-31)
 
 ## Reporting bugs
 
-* If something is not working or not documented, please check if there is already a [ticket in the issue tracker](http://ralfebert.lighthouseapp.com/projects/67904). If not, please create a new one.
+* If something is not working or not documented, please check if there is already a [ticket in the issue tracker](http://ralfebert.lighthouseapp.com/projects/67904). If not, please create a new ticket.
 * Attaching a patch for the demo project or the tests that demonstrates the problem is very helpful.
 
-## Contributing to Applitude
+## Contributing to applitude
 
 * Contributions to applitude under the Eclipse Public License (code) or the Creative Commons (documentation) are welcome.
-* Just fork the project and send me a pull request on GitHub or [create a ticket](http://ralfebert.lighthouseapp.com/projects/67904) and attach a patch.
+* Just fork the project and send me a pull request on GitHub or [create a ticket](http://ralfebert.lighthouseapp.com/projects/67904) and attach a patches created with `git format-patch`.
 * I'll review every contribution within 3 business days.
 
 ## Support
 
-* Please understand that, while I use applitude in my own commercial projects, most of the work on it is done in my free time. While I will answer questions by improving the documentation, I can not offer free support. Please don't use Applitude if you don't feel comfortable with solving issues around such a tool yourself.
+* Please understand that, while I use applitude in my own commercial projects, most of the work on it is done in my free time. While I will answer questions by improving the documentation, I can not offer free support. Please don't use applitude if you don't feel comfortable with solving issues around such a tool yourself.
 * I can provide commercial support and development services for the project, provided that the resulting work is licensed under open source licenses. If you're interested in such services, send me a message on GitHub.
 
 
