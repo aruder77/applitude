@@ -184,7 +184,7 @@ Cell:
 		( ('text:' text=ScalarExpression)?
 		& ('detailText:' detailText=ScalarExpression)?
 		& ('image:' image=ScalarExpression)?
-		& ('action:' action=ViewAction)? 
+		& ('action:' action=Action)? 
 		& ('accessory:' accessory=CellAccessory)?)
 	'}';
 
@@ -203,8 +203,8 @@ CustomView:
 // -------------------------------------------
 // actions
 
-ViewAction:
-	ViewCall | ExternalOpen | Selector;
+Action:
+	ViewCall | OpenURL | Selector;
 
 ViewCall:
 	target=[View] parameters=ParameterValues;
@@ -213,7 +213,7 @@ Selector:
 	'@selector' '(' name=SelectorName ')';
 
 SelectorName returns ecore::EString:
-  ID (':' ID)* ':'?;
+	ID (':' ID)* ':'?;
 
-ExternalOpen:
+OpenURL:
 	url=ScalarExpression;

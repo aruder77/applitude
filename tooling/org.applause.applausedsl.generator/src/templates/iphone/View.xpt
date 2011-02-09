@@ -85,7 +85,7 @@
 	«EXPAND cellActionMethod(this) FOR this.action-»
 «ENDDEFINE»
 
-«DEFINE cellActionMethod(Cell cell) FOR ViewAction-»
+«DEFINE cellActionMethod(Cell cell) FOR Action-»
 «ENDDEFINE»
 
 «DEFINE cellActionMethod(Cell cell) FOR ViewCall-»

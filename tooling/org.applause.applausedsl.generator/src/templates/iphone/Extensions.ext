@@ -366,7 +366,7 @@ objcSetup(ViewContentElement this):
 
 /* Actions */
 
-actionSelectorName(ViewAction this):
+actionSelectorName(Action this):
 	"<actionSelectorName is abstract for: " + this + ">";
 
 actionSelectorName(Selector sel):
@@ -375,7 +375,7 @@ actionSelectorName(Selector sel):
 actionSelectorName(ViewCall call):
 	((Cell)call.eContainer()).idname()  + 'CellSelected:';
 
-objcCall(ViewAction this):
+objcCall(Action this):
 	'[' + use("SelectorAction") + ' actionWithObject:self selector:@selector(' + this.actionSelectorName() + ')]';
 
 
