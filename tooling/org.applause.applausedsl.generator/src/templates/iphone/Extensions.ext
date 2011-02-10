@@ -63,6 +63,12 @@ scopeName(EObject obj):
 
 // Objective C Method signatures and calls
 
+toIdentifier(String this):
+	split(" ").toFirstUpper().toString("").toFirstLower().replaceAll("[^a-zA-Z]", "");
+
+objc(String this):
+	'@"' + this + '"';
+
 // [target methodNameWithParam1:value1 param2:value2 ...]
 objc_Call(String target, String methodName, List[String] paramNames, List[String] paramValues):
 	"[" + target + " " + methodName + paramNames.objc_MethodParamValues(paramValues) + "]";
@@ -172,7 +178,7 @@ List[String] keyPath(ObjectReference this):
 	tail == null ? {object.name} : {object.name}.addAll(tail.keyPath());
 
 objcKeyPath(ObjectReference this):
-	'@"' + keyPath().toString(".") + '"';
+	keyPath().toString(".").objc();
 
 
 
@@ -275,7 +281,7 @@ resolveToProvider(Named this):
 	this.scopeName();
 
 resolveToProvider(CollectionIterator this):
-	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.name + ' name:@"' + this.name + '"]';
+	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.name + ' name:' + this.name.objc() + ']';
 
 resolveToProvider(Expression this):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.resolveToValue() + ' name:@""]';
@@ -302,7 +308,7 @@ assignment(ScalarExpression this, String targetObject, String targetProperty):
 	targetObject + "." + targetProperty + " = " + resolveToValue() + ";";
 
 assignment(Binding this, String targetObject, String targetProperty):
-	'[fBindings bind:' + target.object.resolveToProvider() + ' property:@"content.' + target.tail.keyPath().toString('.') + '" to:' + targetObject + ' property:@"' + targetProperty + '"];';
+	'[fBindings bind:' + target.object.resolveToProvider() + ' property:@"content.' + target.tail.keyPath().toString('.') + '" to:' + targetObject + ' property:' + targetProperty.objc() + '];';
 
 
 
@@ -326,7 +332,7 @@ index(EObject obj, xpand2::Type type):
 	obj.eContainer().eContents().select(e|type.isInstance(e)).indexOf(obj) + 1;
 
 idname(StringLiteral str):
-	str.value.split(" ").toFirstUpper().toString("").toFirstLower().replaceAll("[^a-zA-Z]", "");
+	str.value.toIdentifier();
 
 idname(Cell cell):
 	cell.iterator != null
