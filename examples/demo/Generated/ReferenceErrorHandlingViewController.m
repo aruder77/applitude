@@ -22,13 +22,13 @@
 		[self cells:@selector(inventor2Cell:) forContentProvider:fInventors];
 	}
 
-	[self sections:@selector(invSection:) forContentProvider:fInventors];
+	[self sections:@selector(inventorSection:) forContentProvider:fInventors];
 }
 
-- (Section *) invSection:(id)inv {
-	Section *section = [self sectionWithTitle:[inv valueForKey:@"name"]];
+- (Section *) inventorSection:(id)inventor {
+	Section *section = [self sectionWithTitle:[inventor valueForKey:@"name"]];
 	{
-		[self cells:@selector(inventionCell:) forList:[inv valueForKey:@"inventions"]];
+		[self cells:@selector(inventionCell:) forList:[inventor valueForKey:@"inventions"]];
 	}
 	return section;
 }
