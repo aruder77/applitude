@@ -1,7 +1,6 @@
 import org::eclipse::emf::ecore;
 import org::applause::applausedsl::applauseDsl;
 
-extension org::eclipse::xtend::util::stdlib::io;
 extension templates::MetamodelExtensions;
 
 
