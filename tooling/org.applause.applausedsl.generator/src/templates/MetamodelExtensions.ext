@@ -18,3 +18,6 @@ entities(Application this):
 
 listViews(Application this):
 	model().elements.typeSelect(TableView);
+
+compact(List this):
+	reject(e|e == null);
