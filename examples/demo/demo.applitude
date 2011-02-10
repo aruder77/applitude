@@ -70,7 +70,7 @@ tableview InventorDetail(Inventor inventor) {
 tableview InventionDetail(Inventor inventor, Invention invention) {
 	title: invention.name
 	style: Grouped
-	
+
 	section {
 		cell Value2 {
 			text: "Inventor"
@@ -196,7 +196,7 @@ tableview ReferenceCustomCode {
 	Inventor[] date = Date()
 	Inventor[] storedDate = StoredDate()
 	title: "Custom code hooks"
-	
+
 	section {
 		title: "ContentProvider"
 		cell Default { text: date }
@@ -206,7 +206,7 @@ tableview ReferenceCustomCode {
 		title: "ContentProvider (stored)"
 		cell Default { text: storedDate }
 	}
-	
+
 	section {
 		title: "Custom ViewControllers"
 		cell Default {
@@ -251,7 +251,7 @@ tableview ReferenceEntityModels {
 
 tableview TextView(String txt) {
 	title: txt
-	
+
 	section {
 		cell Default {
 			text: txt
@@ -265,17 +265,17 @@ tableview ReferenceExpressions {
 
 	style: Grouped
 	title: "Expressions"
-	
+
 	section {
 		title: ("String manipulation")
-	
+
 		cell Subtitle for inventor in inventors {
 			text: inventor.name
 			detailText: ( urlconform(inventor.name) ", " replace(inventor.name, " ", "_") )
 			action: TextView(inventor.name)
 		}
 	}
-	
+
 	section {
 		title: "Collection literals"
 
@@ -286,17 +286,16 @@ tableview ReferenceExpressions {
 
 	section {
 		title: "String split"
-	
+
 		cell Default for number in split("1,2,3", ",") {
 			text: number
 		}
 	}
-	
+
 	section for inv in inventors {
 		cell Default for name in split(inv.name, " ") {
 			text: name
 		}
 	}
-	
-	
+
 }

@@ -17,7 +17,7 @@ import org.eclipse.xtext.validation.Check;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
- 
+
 
 public class ApplauseDslJavaValidator extends AbstractApplauseDslJavaValidator {
 
@@ -62,14 +62,14 @@ public class ApplauseDslJavaValidator extends AbstractApplauseDslJavaValidator {
 			error("Storing the content provider is only supported for content providers without parameters.", ApplauseDslPackage.CONTENT_PROVIDER__STORING);
 		}
 	}
-	
+
 	@Check
 	void viewNamesShouldStartWithCapital(View view) {
 		if (!Character.isUpperCase(view.getName().charAt(0))) {
 			error("View names should start with an uppercase letter.", ApplauseDslPackage.VIEW__NAME, VIEW_NAME_UPPERCASE);
 		}
 	}
-	
+
 	@Check
 	void imageExists(Application application) {
 		if (application.getBackground() instanceof StringLiteral) {
@@ -81,13 +81,13 @@ public class ApplauseDslJavaValidator extends AbstractApplauseDslJavaValidator {
 			}
 		}
 	}
-	
+
 	@Check
 	void iconExists(Tab tab) {
 		if (tab.getIcon() instanceof StringLiteral) {
 			String filename = ((StringLiteral) tab.getIcon()).getValue();
 			Resource res = tab.eResource();
-			
+
 			if (!imageExists(filename, res)) {
 				error("The icon image file you specified does not exist.", ApplauseDslPackage.TAB__ICON);
 			}
@@ -99,5 +99,5 @@ public class ApplauseDslJavaValidator extends AbstractApplauseDslJavaValidator {
 		return (res.getResourceSet().getURIConverter().exists(uri, null));
 	}
 
-	
+
 }

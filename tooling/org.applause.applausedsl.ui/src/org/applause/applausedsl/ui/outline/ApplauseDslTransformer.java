@@ -7,8 +7,8 @@ import org.eclipse.xtext.ui.editor.outline.transformer.AbstractDeclarativeSemant
 
 /**
  * customization of the default outline structure
- * 
+ *
  */
 public class ApplauseDslTransformer extends AbstractDeclarativeSemanticModelTransformer {
-	
+
 }

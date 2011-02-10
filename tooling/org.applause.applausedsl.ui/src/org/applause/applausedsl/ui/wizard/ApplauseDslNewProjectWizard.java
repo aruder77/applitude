@@ -15,7 +15,7 @@ public class ApplauseDslNewProjectWizard extends XtextNewProjectWizard {
 
 	@Inject
 	private IImageHelper imageHelper;
-	
+
 	@Inject
 	public ApplauseDslNewProjectWizard(IProjectCreator projectCreator) {
 		super(projectCreator);

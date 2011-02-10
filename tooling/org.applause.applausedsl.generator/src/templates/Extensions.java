@@ -27,13 +27,13 @@ public class Extensions {
 	static {
 		reset();
 	}
-	
+
 	public static void reset() {
 		currentImportBag = new HashSet<ProjectClass>();
 		classes = new ConcurrentHashMap<String, ProjectClass>();
 		scopeStack = new Stack<Map<EObject, String>>();
 	}
-	
+
 	public static EObject getRootContainer(EObject obj) {
 		EObject result = EcoreUtil2.getRootContainer(obj);
 		return result;

@@ -63,15 +63,15 @@ scopeName(EObject obj):
 
 // Objective C Method signatures and calls
 
-// [target methodNameWithParam1:value1 param2:value2 ...] 
+// [target methodNameWithParam1:value1 param2:value2 ...]
 objc_Call(String target, String methodName, List[String] paramNames, List[String] paramValues):
 	"[" + target + " " + methodName + paramNames.objc_MethodParamValues(paramValues) + "]";
 
-// [target methodName] 
+// [target methodName]
 objc_Call(String target, String methodName):
 	target.objc_Call(methodName, {}, {});
 
-// [Class methodNameWithParam1:value1 param2:value2 ...] 
+// [Class methodNameWithParam1:value1 param2:value2 ...]
 objc_Call(ProjectClass class, String methodName, List[String] paramNames, List[String] paramValues):
 	objc_Call(use(class), methodName, paramNames, paramValues);
 
@@ -160,7 +160,7 @@ methodName(ParameterizedModelElement this):
 
 call(ParameterizedCall this):
 	target.factory().objc_Call(
-		target.methodName(), 
+		target.methodName(),
 		target.parameters.definitions.name,
 		parameters.values.resolveToProvider());
 
@@ -240,32 +240,32 @@ resolveToValue(StringLiteral this):
 	this.value.replaceSettings();
 
 resolveToValue(StringConcat this):
-	'[NSString stringWithFormat:@"' 
+	'[NSString stringWithFormat:@"'
 		+ values.collect(e|"%@").toString("") + '", '
 		+ values.resolveToValue().toString(", ") + "]";
 
 resolveToValue(StringUrlConform this):
-	'[' + value.resolveToValue() 
-	    + ' stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]';
-	
+	'[' + value.resolveToValue()
+		+ ' stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]';
+
 resolveToValue(StringReplace this):
-	'[' + value.resolveToValue() 
-	    + ' stringByReplacingOccurrencesOfString:' + match.resolveToValue()
-	    + ' withString:' + replacement.resolveToValue() + ']';
+	'[' + value.resolveToValue()
+		+ ' stringByReplacingOccurrencesOfString:' + match.resolveToValue()
+		+ ' withString:' + replacement.resolveToValue() + ']';
 
 resolveToValue(StringSplit this):
 	"[" + value.resolveToValue()
-	    + " componentsSeparatedByString:"
-	    + delimiter.resolveToValue() + "]";
+		+ " componentsSeparatedByString:"
+		+ delimiter.resolveToValue() + "]";
 
 resolveToValue(CollectionLiteral this):
 	'[NSArray arrayWithObjects:' + items.collect(e|e.resolveToValue()).toString(", ") + ", nil]";
 
 resolveToValue(ObjectReference this):
 	tail == null ? this.object.resolveToValue()
-	             : ( '[' + this.object.resolveToValue() 
-	                     + ' valueFor' + ((tail.keyPath().size > 1) ? 'KeyPath:' : 'Key:')
-	                     + tail.objcKeyPath() + ']' );
+				 : ( '[' + this.object.resolveToValue()
+						 + ' valueFor' + ((tail.keyPath().size > 1) ? 'KeyPath:' : 'Key:')
+						 + tail.objcKeyPath() + ']' );
 
 
 
@@ -276,7 +276,7 @@ resolveToProvider(Named this):
 
 resolveToProvider(CollectionIterator this):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.name + ' name:@"' + this.name + '"]';
-	
+
 resolveToProvider(Expression this):
 	'[' + use('SimpleContentProvider') + ' providerWithContent:' + this.resolveToValue() + ' name:@""]';
 
@@ -358,19 +358,19 @@ String objcConstruct(ViewContentElement this):
 	"<objcConstruct is abstract for: " + this + ">";
 
 objcConstruct(Cell cell):
-	 cell.cellClass() + ' *cell = [[[' + cell.cellClass() + ' alloc] initWithStyle:' + cell.type.constant() + " reuseIdentifier:nil] autorelease];\n"
-	 + cell.text.assignment('cell.textLabel', 'text')
-	 + cell.detailText.assignment('cell.detailTextLabel', 'text')
-	 + cell.image.assignment('cell', 'imageUrl')
-	 + ((cell.accessory.ordinal() == 0 && cell.action != null) ? 'cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;\n' : "")
-	 + ((cell.accessory.ordinal() > 0) ? 'cell.accessoryType = ' + cell.accessory.constant() + ";\n" : "")
-	 + ((cell.action != null) ? 'cell.onTouch = ' + cell.action.objcCall() + ";\n" : "")
-	 + ((cell.iterator != null) ? 'cell.data = ' + cell.iterator.resolveToValue() + ';\n' : "[self cell:cell];\n");
+	cell.cellClass() + ' *cell = [[[' + cell.cellClass() + ' alloc] initWithStyle:' + cell.type.constant() + " reuseIdentifier:nil] autorelease];\n"
+	+ cell.text.assignment('cell.textLabel', 'text')
+	+ cell.detailText.assignment('cell.detailTextLabel', 'text')
+	+ cell.image.assignment('cell', 'imageUrl')
+	+ ((cell.accessory.ordinal() == 0 && cell.action != null) ? 'cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;\n' : "")
+	+ ((cell.accessory.ordinal() > 0) ? 'cell.accessoryType = ' + cell.accessory.constant() + ";\n" : "")
+	+ ((cell.action != null) ? 'cell.onTouch = ' + cell.action.objcCall() + ";\n" : "")
+	+ ((cell.iterator != null) ? 'cell.data = ' + cell.iterator.resolveToValue() + ';\n' : "[self cell:cell];\n");
 
 objcConstruct(Section section):
-	(section.iterator != null ? use('Section') + " *section = " : "") 
-	 + '[self section' + (section.title == null ? '' : 'WithTitle:' + section.title.resolveToValue()) + '];\n'
-	 + section.cells.objcSetup().toString("\n");
+	(section.iterator != null ? use('Section') + " *section = " : "")
+	+ '[self section' + (section.title == null ? '' : 'WithTitle:' + section.title.resolveToValue()) + '];\n'
+	+ section.cells.objcSetup().toString("\n");
 
 objcConstructPlaceholder(ViewContentElement e):
 	"[self " + e.shortName() + "s:@selector(" + e.iterator.name + e.shortName().toFirstUpper() + ":) " +
@@ -380,8 +380,8 @@ objcConstructPlaceholder(ViewContentElement e):
 				) + "];";
 
 objcSetup(ViewContentElement this):
-	 let code = (iterator != null ? objcConstructPlaceholder() : objcConstruct())
-	          : Cell.isInstance(this) ? "{\n" + code + "\n}\n" : code; 
+	let code = (iterator != null ? objcConstructPlaceholder() : objcConstruct())
+			  : Cell.isInstance(this) ? "{\n" + code + "\n}\n" : code;
 
 Boolean hasBindings(EObject this):
 	Binding.isInstance(this) || this.eContents().exists(e|((EObject)e).hasBindings());
@@ -408,7 +408,7 @@ objcCall(Action this):
 
 allProviders(Application this):
 	model().elements.typeSelect(ContentProvider);
-	
+
 allViews(Application this):
 	model().elements.typeSelect(View);
 

@@ -18,7 +18,7 @@ import org.junit.Test;
  * Uncrustify executable is installed as <tt>/usr/local/bin/uncrustify</tt> on
  * your machine. To override this set the system property '
  * <tt>UNCRUSTIFY_PATH</tt>'.
- * 
+ *
  * @author Karsten Thoms
  */
 @SuppressWarnings("restriction")

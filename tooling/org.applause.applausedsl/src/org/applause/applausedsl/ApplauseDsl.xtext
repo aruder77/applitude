@@ -13,7 +13,7 @@ Application returns Application:
 		( ('background:' background=ScalarExpression)?
 		& ('view:' startView=ViewCall) )
 	'}';
-	
+
 ModelElement:
 	Type | ParameterizedModelElement;
 
@@ -25,7 +25,7 @@ Type:
 
 SimpleType:
 	'type' name=ID 'mapsTo' platformType = STRING;
-	
+
 Entity:
 	'entity' (runtimeType?='class')? name=ID ('extends' extends=[Entity])? '{'
 		(properties+=Property)*
@@ -51,7 +51,7 @@ Named:
 
 ObjectReference hidden():
 	object=[Declaration] tail=PropertyReference?;
-	
+
 PropertyReference returns ObjectReference:
 	'.' object=[Property] tail=PropertyReference?;
 
@@ -98,7 +98,7 @@ CollectionIterator:
 
 Parameter:
 	typeRef=TypeReference name=ID;
-	
+
 ParameterizedModelElement:
 	View | ContentProvider;
 
@@ -159,11 +159,11 @@ Tab:
 TableView:
 	'tableview' name=ID parameters=ParameterDefinitions '{'
 		(variables += Assignment)*
-		
+
 		( ('title:' title=ScalarExpression)?
 		& ('titleImage:' titleImage=ImageExpression)?
 		& ('style:' style=TableViewStyle)? )
-		
+
 		(sections+=Section)*
 	'}';
 
@@ -178,13 +178,13 @@ Section:
 		('title:' title=ScalarExpression)?
 		(cells+=Cell)*
 	'}';
-	
+
 Cell:
 	'cell' type=CellType iterator=CollectionIterator? '{'
 		( ('text:' text=ScalarExpression)?
 		& ('detailText:' detailText=ScalarExpression)?
 		& ('image:' image=ScalarExpression)?
-		& ('action:' action=Action)? 
+		& ('action:' action=Action)?
 		& ('accessory:' accessory=CellAccessory)?)
 	'}';
 

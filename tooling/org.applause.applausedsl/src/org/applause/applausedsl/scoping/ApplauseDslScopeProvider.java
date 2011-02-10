@@ -14,7 +14,7 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  * @see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping
  */
 public class ApplauseDslScopeProvider extends AbstractDeclarativeScopeProvider {
-	
+
 	public IScope scope_Named(EObject ctx, EReference ref) {
 		// [Property]
 		if(ctx.eContainer() instanceof ObjectReference) {
@@ -30,5 +30,5 @@ public class ApplauseDslScopeProvider extends AbstractDeclarativeScopeProvider {
 		}
 		return new DeclarationScope(ctx);
 	}
-	
+
 }

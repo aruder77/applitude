@@ -35,16 +35,16 @@ public class ApplauseDslProjectCreator extends AbstractProjectCreator {
 	protected ApplauseDslProjectInfo getProjectInfo() {
 		return (ApplauseDslProjectInfo) super.getProjectInfo();
 	}
-	
+
 	@Override
 	protected String getModelFolderName() {
 		return ".";
 	}
-	
+
 	@Override
 	protected List<String> getAllFolders() {
-        return SRC_FOLDER_LIST;
-    }
+		return SRC_FOLDER_LIST;
+	}
 
 	@Override
 	protected void enhanceProject(final IProject project, final IProgressMonitor monitor) throws CoreException {
@@ -79,7 +79,7 @@ public class ApplauseDslProjectCreator extends AbstractProjectCreator {
 	protected IFile getModelFile(IProject project) throws CoreException {
 		return project.getFile(getProjectInfo().getProjectName() + "." + getPrimaryModelFileExtension());
 	}
-	
+
 	private String replaceTemplate(String str) {
 		String projectName = getProjectInfo().getProjectName();
 		String capitalizedProjectName = projectName.equals("_template_") ? "_Template_" : StringUtils.capitalize(projectName);
@@ -92,7 +92,7 @@ public class ApplauseDslProjectCreator extends AbstractProjectCreator {
 	protected ProjectFactory createProjectFactory() {
 		return projectFactoryProvider.get();
 	}
-	
+
 	@Override
 	protected String[] getProjectNatures() {
 		return new String[] { XtextProjectHelper.NATURE_ID };

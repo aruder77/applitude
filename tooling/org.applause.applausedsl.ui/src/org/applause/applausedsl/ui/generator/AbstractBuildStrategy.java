@@ -30,7 +30,7 @@ import org.eclipse.xtext.resource.IResourceDescription.Delta;
 import com.google.common.collect.Iterables;
 
 public abstract class AbstractBuildStrategy {
-	
+
 	private static Logger log = Logger.getLogger(AbstractBuildStrategy.class);
 
 	private final IBuildContext context;
@@ -38,7 +38,7 @@ public abstract class AbstractBuildStrategy {
 	public AbstractBuildStrategy(IBuildContext context) {
 		this.context = context;
 	}
-	
+
 	protected IBuildContext getContext() {
 		return context;
 	}
@@ -77,7 +77,7 @@ public abstract class AbstractBuildStrategy {
 			};
 			configureOutlet(outlet);
 			output.addOutlet(outlet);
-			
+
 			try {
 				monitor.subTask("Generating code...");
 				monitor.beginTask("Generating code...", 50);
@@ -97,10 +97,10 @@ public abstract class AbstractBuildStrategy {
 	}
 
 	protected abstract String getGeneratedSourcesFolderName();
-	
+
 	public void generate(Application app, Output output) {
 		XpandExecutionContextImpl ctx = new XpandExecutionContextImpl(output, null, Collections.<String, Variable>emptyMap(), null, null);
-		
+
 		ctx.registerMetaModel(new JavaBeansMetaModel());
 		try {
 			XpandFacade.create(ctx).evaluate(getMainTemplateName(), app);
@@ -108,8 +108,8 @@ public abstract class AbstractBuildStrategy {
 			log.error(e);
 		}
 	}
-	
+
 	protected abstract String getMainTemplateName();
-	
+
 
 }

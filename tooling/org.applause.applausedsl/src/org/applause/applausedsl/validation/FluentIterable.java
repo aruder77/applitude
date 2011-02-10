@@ -30,5 +30,5 @@ public class FluentIterable<T> implements Iterable<T> {
 	public boolean exactlyOnce() {
 		return Iterables.size(this) == 1;
 	}
-	
+
 }

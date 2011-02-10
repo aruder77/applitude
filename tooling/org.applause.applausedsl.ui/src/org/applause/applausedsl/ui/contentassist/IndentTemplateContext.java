@@ -17,7 +17,7 @@ import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
 public class IndentTemplateContext extends XtextTemplateContext {
 
 	private boolean indent = true;
-	
+
 	public IndentTemplateContext(TemplateContextType type, IDocument document, Position position,
 			ContentAssistContext contentAssistContext, IScopeProvider scopeProvider) {
 		super(type, document, position, contentAssistContext, scopeProvider);
@@ -43,7 +43,7 @@ public class IndentTemplateContext extends XtextTemplateContext {
 	public TemplateBuffer evaluate(Template template) throws BadLocationException, TemplateException {
 		if (!isIndent())
 			return super.evaluate(template);
-		
+
 		String pattern = template.getPattern();
 
 		IDocument document = getDocument();

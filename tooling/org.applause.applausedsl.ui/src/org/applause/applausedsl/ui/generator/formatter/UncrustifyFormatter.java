@@ -28,9 +28,9 @@ import org.eclipse.xpand2.output.PostProcessor;
 
 /**
  * Xpand Postprocessor for code formatting using uncrustify.
- * 
+ *
  * <p>Configuration:</p>
- * 
+ *
  * <pre>
  * &lt;outlet path=&quot;${src-gen}&quot; &gt;
  * 	<b>&lt;postprocessor class=&quot;org.fornax.utilities.formatter.uncrustify.UncrustifyFormatter&quot;&gt;
@@ -39,7 +39,7 @@ import org.eclipse.xpand2.output.PostProcessor;
  * 	&lt;/postprocessor&gt;</b>
  * &lt;/outlet&gt;
  * </pre>
- * 
+ *
  * @author Karsten Thoms, Ralf Ebert
  * @see http://uncrustify.sourceforge.net/
  */
@@ -69,13 +69,13 @@ public class UncrustifyFormatter implements PostProcessor {
 
 	/**
 	 * Formats the given string with Uncrustify.
-	 * 
+	 *
 	 * @param unformatted
 	 *            Unformatted code
 	 * @param args
 	 * @return Formatted code
 	 */
-	public CharSequence format(CharSequence unformatted, List<String> args) {	
+	public CharSequence format(CharSequence unformatted, List<String> args) {
 		if (unformatted == null) {
 			return null;
 		}
@@ -136,7 +136,7 @@ public class UncrustifyFormatter implements PostProcessor {
 
 	/**
 	 * Initializes the component and checks its configuration
-	 * 
+	 *
 	 * @param fileHandle
 	 * @throws IllegalArgumentException
 	 *             On invalid configuration

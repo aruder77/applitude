@@ -1,6 +1,6 @@
 tableview ${TableView} {
 	title: "${Table}"
-	
+
 	section {
 		title: "${Section}"
 

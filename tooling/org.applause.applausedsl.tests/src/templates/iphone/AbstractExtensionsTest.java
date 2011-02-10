@@ -59,7 +59,7 @@ public abstract class AbstractExtensionsTest extends AbstractXtextTests {
 		table = Iterables.filter(model.eContents(), TableView.class).iterator().next();
 		contentProviderCall = (ContentProviderCall) table.getVariables().get(0).getValue();
 	}
-	
+
 	@Override
 	protected void tearDown() throws Exception {
 		Extensions.scopeEnd();

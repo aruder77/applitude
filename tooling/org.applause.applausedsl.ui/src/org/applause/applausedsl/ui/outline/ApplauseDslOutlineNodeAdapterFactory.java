@@ -7,7 +7,7 @@ import org.eclipse.xtext.ui.editor.outline.actions.DefaultContentOutlineNodeAdap
 
 public class ApplauseDslOutlineNodeAdapterFactory extends DefaultContentOutlineNodeAdapterFactory {
 
-	private static final Class<?>[] types = { 
+	private static final Class<?>[] types = {
 		// provide list of classes to adapt to, e.g.:
 		// Entity.class
 		// Service.class

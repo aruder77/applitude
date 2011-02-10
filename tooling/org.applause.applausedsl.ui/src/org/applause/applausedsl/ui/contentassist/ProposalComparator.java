@@ -6,7 +6,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 
 public class ProposalComparator implements ICompletionProposalComparator {
-	
+
 	public int compare(ICompletionProposal o1, ICompletionProposal o2) {
 		int cmp = -1 * getPriority(o1).compareTo(getPriority(o2));
 		if (cmp == 0)

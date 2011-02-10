@@ -29,7 +29,7 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 	private Map<Statement, CharSequence> namedBuffers = new HashMap<Statement, CharSequence>();
 	private CharSequence currentNamedBuffer = null;
 	private CharSequence currentUnnamedBuffer;
-	
+
 	private IFile targetFile = null;
 	private Outlet outlet = null;
 
@@ -39,15 +39,15 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 		buffers.add(new StringBuilder(4096));
 		currentUnnamedBuffer = buffers.get(0);
 	}
-	
+
 	public Outlet getOutlet() {
 		return outlet;
 	}
-	
+
 	public CharSequence getBuffer() {
 		return currentNamedBuffer!=null ? currentNamedBuffer : currentUnnamedBuffer;
 	}
-	
+
 	public void setBuffer(final CharSequence newBuffer) {
 		if (currentNamedBuffer != null) {
 			int idx = buffers.indexOf(currentNamedBuffer);
@@ -69,28 +69,28 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 			currentUnnamedBuffer = newBuffer;
 		}
 	}
-	
+
 	@Deprecated
 	public File getTargetFile() {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	public String getAbsolutePath() {
 		return targetFile.getFullPath().toOSString();
 	}
-	
+
 	public boolean isAppend() {
 		return outlet.isAppend();
 	}
-	
+
 	public boolean isOverwrite() {
 		return outlet.isOverwrite();
 	}
-	
+
 	public String getFileEncoding() {
 		return outlet.getFileEncoding();
 	}
-	
+
 	public void writeAndClose() {
 		try {
 			if (!isOverwrite() && targetFile.exists()) {
@@ -102,25 +102,25 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 			if (log.isDebugEnabled()) {
 				log.debug("Opening file : " + targetFile);
 			}
-			
+
 			outlet.beforeWriteAndClose(this);
-			
+
 			InputStream contentStream = new ByteArrayInputStream(getBytes());
-			
+
 			if (targetFile.exists()) {
 				targetFile.setContents(contentStream, true, true, new NullProgressMonitor());
 			} else {
 				ensureExists(targetFile.getParent());
 				targetFile.create(contentStream, true, new NullProgressMonitor());
 			}
-			
+
 			targetFile.setDerived(true, new NullProgressMonitor());
 		}
 		catch (final CoreException e) {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	protected void ensureExists(IContainer parent) {
 		if (parent instanceof IFolder && !parent.exists()) {
 			ensureExists(parent.getParent());
@@ -131,7 +131,7 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 			}
 		}
 	}
-	
+
 	public byte[] getBytes() {
 		CharSequence buffer = null;
 		if (buffers.size()==1) {
@@ -153,7 +153,7 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 		}
 		return buffer.toString().getBytes();
 	}
-	
+
 	public void activateInsertionPoint(Statement stmt) {
 		CharSequence buffer = namedBuffers.get(stmt);
 		if (buffer == null) {
@@ -161,7 +161,7 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 		}
 		currentNamedBuffer = buffer;
 	}
-	
+
 	public void deactivateInsertionPoint(Statement stmt) {
 		if (currentNamedBuffer == null) {
 			throw new IllegalStateException ("Insertion point for "+stmt+" was not activated.");
@@ -175,14 +175,14 @@ public class EclipseBasedFileHandle implements FileHandle, InsertionPointSupport
 		}
 		currentNamedBuffer = null;
 	}
-	
+
 	public void registerInsertionPoint(Statement stmt) {
 		CharSequence namedBuffer = namedBuffers.get(stmt);
 		if (namedBuffer == null) {
 			namedBuffer = new StringBuilder();
 			namedBuffers.put(stmt, namedBuffer);
 		}
-		
+
 		buffers.add(namedBuffer);
 		currentUnnamedBuffer = new StringBuilder();
 		buffers.add(currentUnnamedBuffer);

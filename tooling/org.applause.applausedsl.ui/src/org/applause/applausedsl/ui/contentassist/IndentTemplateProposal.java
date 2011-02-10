@@ -23,12 +23,12 @@ public class IndentTemplateProposal extends XtextTemplateProposal {
 			((IndentTemplateContext)getContext()).setIndent(true);
 		super.apply(viewer, trigger, stateMask, offset);
 	}
-	
+
 	@Override
 	public String getAdditionalProposalInfo() {
 		if (getContext() instanceof IndentTemplateContext)
 			((IndentTemplateContext)getContext()).setIndent(false);
 		return super.getAdditionalProposalInfo();
 	}
-	
+
 }

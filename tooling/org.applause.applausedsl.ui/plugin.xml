@@ -3,123 +3,123 @@
 
 <plugin>
 
-    <extension
-            point="org.eclipse.ui.editors">
-        <editor
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            default="true"
-            extensions="applitude"
-            id="org.applause.applausedsl.ApplauseDsl"
-            name="Applitude Editor">
-        </editor>
-    </extension>
-    <extension
-        point="org.eclipse.ui.handlers">
-        <handler
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
-            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
-            <activeWhen>
-                <reference
-                    definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
-                </reference>
-            </activeWhen>
-        </handler>
-        <handler
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.applause.applausedsl.ApplauseDsl.validate">
-         <activeWhen>
-            <reference
-                    definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
-            </reference>
-         </activeWhen>
-      </handler>
-    </extension>
-    <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.applause.applausedsl.ApplauseDsl.Editor.opened">
-            <and>
-                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
-                <with variable="activeEditor">
-                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.applause.applausedsl.ApplauseDsl" 
-                        forcePluginActivation="true"/>
-                </with>        
-            </and>
-        </definition>
-    </extension>
-    <extension
-            point="org.eclipse.ui.preferencePages">
-        <page
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.applause.applausedsl.ApplauseDsl"
-            name="Applitude">
-            <keywordReference id="org.applause.applausedsl.ui.keyword_ApplauseDsl"/>
-        </page>
-        <page
-            category="org.applause.applausedsl.ApplauseDsl"
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.applause.applausedsl.ApplauseDsl.coloring"
-            name="Syntax Coloring">
-            <keywordReference id="org.applause.applausedsl.ui.keyword_ApplauseDsl"/>
-        </page>
-        <page
-            category="org.applause.applausedsl.ApplauseDsl"
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.applause.applausedsl.ApplauseDsl.templates"
-            name="Templates">
-            <keywordReference id="org.applause.applausedsl.ui.keyword_ApplauseDsl"/>
-        </page>
-    </extension>
-    <extension
-        point="org.eclipse.ui.keywords">
-        <keyword
-            id="org.applause.applausedsl.ui.keyword_ApplauseDsl"
-            label="ApplauseDsl"/>
-    </extension>
-    <extension
-         point="org.eclipse.ui.commands">
-      <command
-            description="Trigger expensive validation"
-            id="org.applause.applausedsl.ApplauseDsl.validate"
-            name="Validate">
-      </command>
-    </extension>
-    <extension point="org.eclipse.ui.menus">
-        <menuContribution
-            locationURI="popup:#TextEditorContext?after=group.edit">
-             <command
-                 commandId="org.applause.applausedsl.ApplauseDsl.validate"
-                 style="push"
-                 tooltip="Trigger expensive validation">
-            <visibleWhen checkEnabled="false">
-                <reference
-                    definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
-                </reference>
-            </visibleWhen>
-         </command>  
-         </menuContribution>
-    </extension>
-    <extension point="org.eclipse.ui.menus">
+	<extension
+			point="org.eclipse.ui.editors">
+		<editor
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+			default="true"
+			extensions="applitude"
+			id="org.applause.applausedsl.ApplauseDsl"
+			name="Applitude Editor">
+		</editor>
+	</extension>
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+			<activeWhen>
+				<reference
+					definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="org.applause.applausedsl.ApplauseDsl.validate">
+		 <activeWhen>
+			<reference
+					definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
+			</reference>
+		 </activeWhen>
+	  </handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="org.applause.applausedsl.ApplauseDsl.Editor.opened">
+			<and>
+				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="org.applause.applausedsl.ApplauseDsl"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+	</extension>
+	<extension
+			point="org.eclipse.ui.preferencePages">
+		<page
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="org.applause.applausedsl.ApplauseDsl"
+			name="Applitude">
+			<keywordReference id="org.applause.applausedsl.ui.keyword_ApplauseDsl"/>
+		</page>
+		<page
+			category="org.applause.applausedsl.ApplauseDsl"
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="org.applause.applausedsl.ApplauseDsl.coloring"
+			name="Syntax Coloring">
+			<keywordReference id="org.applause.applausedsl.ui.keyword_ApplauseDsl"/>
+		</page>
+		<page
+			category="org.applause.applausedsl.ApplauseDsl"
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="org.applause.applausedsl.ApplauseDsl.templates"
+			name="Templates">
+			<keywordReference id="org.applause.applausedsl.ui.keyword_ApplauseDsl"/>
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.keywords">
+		<keyword
+			id="org.applause.applausedsl.ui.keyword_ApplauseDsl"
+			label="ApplauseDsl"/>
+	</extension>
+	<extension
+		 point="org.eclipse.ui.commands">
+	  <command
+			description="Trigger expensive validation"
+			id="org.applause.applausedsl.ApplauseDsl.validate"
+			name="Validate">
+	  </command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			 <command
+				 commandId="org.applause.applausedsl.ApplauseDsl.validate"
+				 style="push"
+				 tooltip="Trigger expensive validation">
+			<visibleWhen checkEnabled="false">
+				<reference
+					definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
+				</reference>
+			</visibleWhen>
+		 </command>
+		 </menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
-                	</reference>
-            	</visibleWhen>
+					<reference definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
+					</reference>
+				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
-	    <handler
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
-            commandId="org.eclipse.xtext.ui.editor.FindReferences">
-            <activeWhen>
-                <reference
-                    definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
-                </reference>
-            </activeWhen>
-        </handler>
-    </extension>   
+		<handler
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			commandId="org.eclipse.xtext.ui.editor.FindReferences">
+			<activeWhen>
+				<reference
+					definitionId="org.applause.applausedsl.ApplauseDsl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
 
 <!-- adding resource factories -->
 
@@ -131,11 +131,11 @@
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
-        <resourceServiceProvider
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="applitude">
-        </resourceServiceProvider>
-    </extension>
+		<resourceServiceProvider
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="applitude">
+		</resourceServiceProvider>
+	</extension>
 
 
 
@@ -143,7 +143,7 @@
 	<!-- Quick Outline -->
 	<extension
 		point="org.eclipse.ui.handlers">
-		<handler 
+		<handler
 			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
@@ -173,42 +173,42 @@
 			</command>
 		</menuContribution>
 	</extension>
-	
-   <!-- quickfix marker resolution generator -->
-   <extension
-         point="org.eclipse.ui.ide.markerResolution">
-      <markerResolutionGenerator
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
-      </markerResolutionGenerator>
-   </extension>
-   
-   <!-- Builder -->
-   <extension
-         point="org.eclipse.xtext.builder.participant">
-      <participant
-            class="org.applause.applausedsl.ui.generator.Generator">
-      </participant>
-   </extension>   
-   
-   <!-- New Project Wizard -->
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.eclipse.xtext.projectwiz"
-            class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.applause.applausedsl.ui.wizard.ApplauseDslNewProjectWizard"
-            icon="icons/iphone.png"
-            id="org.applause.applausedsl.ui.wizard.ApplauseDslNewProjectWizard"
-            name="Applitude iPhone Project"
-            project="true">
-      </wizard>
-   </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="org.applause.applausedsl.ApplauseDsl"
-            class="org.applause.applausedsl.ui.preferences.GeneratorPreferencePage"
-            id="org.applause.applausedsl.ui.prefs"
-            name="Generator">
-      </page>
-   </extension>
+
+<!-- quickfix marker resolution generator -->
+<extension
+		 point="org.eclipse.ui.ide.markerResolution">
+	  <markerResolutionGenerator
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
+	  </markerResolutionGenerator>
+</extension>
+
+<!-- Builder -->
+<extension
+		 point="org.eclipse.xtext.builder.participant">
+	  <participant
+			class="org.applause.applausedsl.ui.generator.Generator">
+	  </participant>
+</extension>
+
+<!-- New Project Wizard -->
+<extension
+		 point="org.eclipse.ui.newWizards">
+	  <wizard
+			category="org.eclipse.xtext.projectwiz"
+			class="org.applause.applausedsl.ui.ApplauseDslExecutableExtensionFactory:org.applause.applausedsl.ui.wizard.ApplauseDslNewProjectWizard"
+			icon="icons/iphone.png"
+			id="org.applause.applausedsl.ui.wizard.ApplauseDslNewProjectWizard"
+			name="Applitude iPhone Project"
+			project="true">
+	  </wizard>
+</extension>
+<extension
+		 point="org.eclipse.ui.preferencePages">
+	  <page
+			category="org.applause.applausedsl.ApplauseDsl"
+			class="org.applause.applausedsl.ui.preferences.GeneratorPreferencePage"
+			id="org.applause.applausedsl.ui.prefs"
+			name="Generator">
+	  </page>
+</extension>
 </plugin>

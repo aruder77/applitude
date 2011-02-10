@@ -2,7 +2,7 @@
 package org.applause.applausedsl;
 
 /**
- * Initialization support for running Xtext languages 
+ * Initialization support for running Xtext languages
  * without equinox extension registry
  */
 public class ApplauseDslStandaloneSetup extends ApplauseDslStandaloneSetupGenerated{

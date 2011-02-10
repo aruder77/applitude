@@ -19,7 +19,7 @@ public class ApplitudePreferences {
 
 		if (path != null && new File(path).exists())
 			return path;
-		
+
 		for (String defaultPath : DEFAULT_UNCRUSTIFY_LOCATIONS) {
 			if (new File(defaultPath).exists()) {
 				path = defaultPath;

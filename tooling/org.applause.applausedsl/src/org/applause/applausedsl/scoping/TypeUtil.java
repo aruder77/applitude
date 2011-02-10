@@ -30,7 +30,7 @@ public class TypeUtil {
 		public TypeReference caseAssignment(Assignment object) {
 			return object.getTypeRef();
 		}
-		
+
 		@Override
 		public TypeReference caseCollectionIterator(CollectionIterator object) {
 			return doSwitch(object.getCollection());
@@ -57,7 +57,7 @@ public class TypeUtil {
 				return null;
 			return super.doSwitch(object);
 		}
-		
+
 	};
 
 	public static TypeReference getTypeOf(EObject object) {
