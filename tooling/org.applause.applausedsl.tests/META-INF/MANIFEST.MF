@@ -8,6 +8,5 @@ Require-Bundle: org.junit;bundle-version="4.8.1",
  org.applause.applausedsl.generator,
  org.applause.applausedsl,
  org.eclipse.xtext.junit;bundle-version="1.0.1",
- org.applause.applausedsl.ui,
- org.apache.commons.io;bundle-version="1.4.0"
+ org.applause.applausedsl.ui
 Bundle-Vendor: Ralf Ebert

@@ -6,7 +6,7 @@ package org.applause.applausedsl.ui.generator.formatter;
 import java.io.File;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
+import org.applause.applausedsl.ui.utils.IOUtils;
 import org.eclipse.xpand2.output.FileHandle;
 import org.eclipse.xpand2.output.FileHandleImpl;
 import org.junit.Assert;

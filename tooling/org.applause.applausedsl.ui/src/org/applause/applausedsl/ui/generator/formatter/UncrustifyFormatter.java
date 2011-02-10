@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.applause.applausedsl.ui.utils.IOUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.xpand2.output.FileHandle;
 import org.eclipse.xpand2.output.PostProcessor;
