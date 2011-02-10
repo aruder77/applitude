@@ -80,7 +80,7 @@ static «use(providerFactory())» *sharedProviders = nil;
 
 
 «DEFINE constructProvider(ContentProvider provider) FOR ContentProviderImplementation»
-	<Unknown «provider»> 
+	<Unknown «provider»>
 «ENDDEFINE»
 
 «DEFINE constructProvider(ContentProvider provider) FOR UrlContentProviderImplementation-»

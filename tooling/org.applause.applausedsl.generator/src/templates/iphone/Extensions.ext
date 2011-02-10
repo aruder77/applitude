@@ -263,9 +263,9 @@ resolveToValue(CollectionLiteral this):
 
 resolveToValue(ObjectReference this):
 	tail == null ? this.object.resolveToValue()
-				 : ( '[' + this.object.resolveToValue()
-						 + ' valueFor' + ((tail.keyPath().size > 1) ? 'KeyPath:' : 'Key:')
-						 + tail.objcKeyPath() + ']' );
+				: ( '[' + this.object.resolveToValue()
+						+ ' valueFor' + ((tail.keyPath().size > 1) ? 'KeyPath:' : 'Key:')
+						+ tail.objcKeyPath() + ']' );
 
 
 
@@ -381,7 +381,7 @@ objcConstructPlaceholder(ViewContentElement e):
 
 objcSetup(ViewContentElement this):
 	let code = (iterator != null ? objcConstructPlaceholder() : objcConstruct())
-			  : Cell.isInstance(this) ? "{\n" + code + "\n}\n" : code;
+			: Cell.isInstance(this) ? "{\n" + code + "\n}\n" : code;
 
 Boolean hasBindings(EObject this):
 	Binding.isInstance(this) || this.eContents().exists(e|((EObject)e).hasBindings());

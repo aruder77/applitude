@@ -12,7 +12,7 @@ application(org::eclipse::emf::ecore::EObject this):
 
 providersWithImplementation(Application this):
 	model().elements.typeSelect(ContentProvider);
-	
+
 entities(Application this):
 	model().elements.typeSelect(Entity);
 
