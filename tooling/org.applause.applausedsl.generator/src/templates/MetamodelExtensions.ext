@@ -21,3 +21,6 @@ listViews(Application this):
 
 compact(List this):
 	reject(e|e == null);
+
+compact(Set this):
+	reject(e|e == null);
