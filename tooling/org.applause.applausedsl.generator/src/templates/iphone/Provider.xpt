@@ -86,11 +86,11 @@ static «use(providerFactory())» *sharedProviders = nil;
 «DEFINE constructProvider(ContentProvider provider) FOR UrlContentProviderImplementation-»
 	«use(this.class())» *provider = [[«use(this.class())» alloc] initWithURL:[NSURL URLWithString:«url.resolveToValue()»]];
 	«use(this.format.name + 'Filter')» *filter = [«this.format.name»Filter filter];
-	«IF this.format.name == "XML" && this.selection != null-»
+	«IF this.format == SerializationFormat::XML && this.selection != null-»
 		filter.xpathQuery = «this.selection.resolveToValue()»;
 	«ENDIF-»
 	[provider addFilter:filter];
-	«IF this.format.name != "XML" && this.selection != null-»
+	«IF this.format != SerializationFormat::XML && this.selection != null-»
 		[provider addFilter:[«use('CommonFilters')» filterForKeyPath:«this.selection.resolveToValue()»]];
 	«ENDIF-»
 «ENDDEFINE»
