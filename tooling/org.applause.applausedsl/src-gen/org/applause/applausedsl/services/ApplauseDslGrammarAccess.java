@@ -1605,130 +1605,134 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class CellElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Cell");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCellKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeCellTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cIteratorAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cIteratorCollectionIteratorParserRuleCall_2_0 = (RuleCall)cIteratorAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final UnorderedGroup cUnorderedGroup_4 = (UnorderedGroup)cGroup.eContents().get(4);
-		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
-		private final Keyword cTextKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
-		private final Assignment cTextAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cTextScalarExpressionParserRuleCall_4_0_1_0 = (RuleCall)cTextAssignment_4_0_1.eContents().get(0);
-		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
-		private final Keyword cDetailTextKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
-		private final Assignment cDetailTextAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cDetailTextScalarExpressionParserRuleCall_4_1_1_0 = (RuleCall)cDetailTextAssignment_4_1_1.eContents().get(0);
-		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
-		private final Keyword cImageKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
-		private final Assignment cImageAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cImageScalarExpressionParserRuleCall_4_2_1_0 = (RuleCall)cImageAssignment_4_2_1.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cUnorderedGroup_4.eContents().get(3);
-		private final Keyword cActionKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cActionAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cActionActionParserRuleCall_4_3_1_0 = (RuleCall)cActionAssignment_4_3_1.eContents().get(0);
-		private final Group cGroup_4_4 = (Group)cUnorderedGroup_4.eContents().get(4);
-		private final Keyword cAccessoryKeyword_4_4_0 = (Keyword)cGroup_4_4.eContents().get(0);
-		private final Assignment cAccessoryAssignment_4_4_1 = (Assignment)cGroup_4_4.eContents().get(1);
-		private final RuleCall cAccessoryCellAccessoryEnumRuleCall_4_4_1_0 = (RuleCall)cAccessoryAssignment_4_4_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Action cCellAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCellKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeCellTypeEnumRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cIteratorAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cIteratorCollectionIteratorParserRuleCall_3_0 = (RuleCall)cIteratorAssignment_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final UnorderedGroup cUnorderedGroup_5 = (UnorderedGroup)cGroup.eContents().get(5);
+		private final Group cGroup_5_0 = (Group)cUnorderedGroup_5.eContents().get(0);
+		private final Keyword cTextKeyword_5_0_0 = (Keyword)cGroup_5_0.eContents().get(0);
+		private final Assignment cTextAssignment_5_0_1 = (Assignment)cGroup_5_0.eContents().get(1);
+		private final RuleCall cTextScalarExpressionParserRuleCall_5_0_1_0 = (RuleCall)cTextAssignment_5_0_1.eContents().get(0);
+		private final Group cGroup_5_1 = (Group)cUnorderedGroup_5.eContents().get(1);
+		private final Keyword cDetailTextKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
+		private final Assignment cDetailTextAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cDetailTextScalarExpressionParserRuleCall_5_1_1_0 = (RuleCall)cDetailTextAssignment_5_1_1.eContents().get(0);
+		private final Group cGroup_5_2 = (Group)cUnorderedGroup_5.eContents().get(2);
+		private final Keyword cImageKeyword_5_2_0 = (Keyword)cGroup_5_2.eContents().get(0);
+		private final Assignment cImageAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
+		private final RuleCall cImageScalarExpressionParserRuleCall_5_2_1_0 = (RuleCall)cImageAssignment_5_2_1.eContents().get(0);
+		private final Group cGroup_5_3 = (Group)cUnorderedGroup_5.eContents().get(3);
+		private final Keyword cActionKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
+		private final Assignment cActionAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
+		private final RuleCall cActionActionParserRuleCall_5_3_1_0 = (RuleCall)cActionAssignment_5_3_1.eContents().get(0);
+		private final Group cGroup_5_4 = (Group)cUnorderedGroup_5.eContents().get(4);
+		private final Keyword cAccessoryKeyword_5_4_0 = (Keyword)cGroup_5_4.eContents().get(0);
+		private final Assignment cAccessoryAssignment_5_4_1 = (Assignment)cGroup_5_4.eContents().get(1);
+		private final RuleCall cAccessoryCellAccessoryEnumRuleCall_5_4_1_0 = (RuleCall)cAccessoryAssignment_5_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Cell:
-		//	"cell" type=CellType iterator=CollectionIterator? "{" (("text:" text=ScalarExpression)? & ("detailText:"
+		//	{Cell} "cell" type=CellType? iterator=CollectionIterator? "{" (("text:" text=ScalarExpression)? & ("detailText:"
 		//	detailText=ScalarExpression)? & ("image:" image=ScalarExpression)? & ("action:" action=Action)? & ("accessory:"
 		//	accessory=CellAccessory)?) "}";
 		public ParserRule getRule() { return rule; }
 
-		//"cell" type=CellType iterator=CollectionIterator? "{" (("text:" text=ScalarExpression)? & ("detailText:"
+		//{Cell} "cell" type=CellType? iterator=CollectionIterator? "{" (("text:" text=ScalarExpression)? & ("detailText:"
 		//detailText=ScalarExpression)? & ("image:" image=ScalarExpression)? & ("action:" action=Action)? & ("accessory:"
 		//accessory=CellAccessory)?) "}"
 		public Group getGroup() { return cGroup; }
 
-		//"cell"
-		public Keyword getCellKeyword_0() { return cCellKeyword_0; }
+		//{Cell}
+		public Action getCellAction_0() { return cCellAction_0; }
 
-		//type=CellType
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		//"cell"
+		public Keyword getCellKeyword_1() { return cCellKeyword_1; }
+
+		//type=CellType?
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 
 		//CellType
-		public RuleCall getTypeCellTypeEnumRuleCall_1_0() { return cTypeCellTypeEnumRuleCall_1_0; }
+		public RuleCall getTypeCellTypeEnumRuleCall_2_0() { return cTypeCellTypeEnumRuleCall_2_0; }
 
 		//iterator=CollectionIterator?
-		public Assignment getIteratorAssignment_2() { return cIteratorAssignment_2; }
+		public Assignment getIteratorAssignment_3() { return cIteratorAssignment_3; }
 
 		//CollectionIterator
-		public RuleCall getIteratorCollectionIteratorParserRuleCall_2_0() { return cIteratorCollectionIteratorParserRuleCall_2_0; }
+		public RuleCall getIteratorCollectionIteratorParserRuleCall_3_0() { return cIteratorCollectionIteratorParserRuleCall_3_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
 		//("text:" text=ScalarExpression)? & ("detailText:" detailText=ScalarExpression)? & ("image:" image=ScalarExpression)? &
 		//("action:" action=Action)? & ("accessory:" accessory=CellAccessory)?
-		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
+		public UnorderedGroup getUnorderedGroup_5() { return cUnorderedGroup_5; }
 
 		//("text:" text=ScalarExpression)?
-		public Group getGroup_4_0() { return cGroup_4_0; }
+		public Group getGroup_5_0() { return cGroup_5_0; }
 
 		//"text:"
-		public Keyword getTextKeyword_4_0_0() { return cTextKeyword_4_0_0; }
+		public Keyword getTextKeyword_5_0_0() { return cTextKeyword_5_0_0; }
 
 		//text=ScalarExpression
-		public Assignment getTextAssignment_4_0_1() { return cTextAssignment_4_0_1; }
+		public Assignment getTextAssignment_5_0_1() { return cTextAssignment_5_0_1; }
 
 		//ScalarExpression
-		public RuleCall getTextScalarExpressionParserRuleCall_4_0_1_0() { return cTextScalarExpressionParserRuleCall_4_0_1_0; }
+		public RuleCall getTextScalarExpressionParserRuleCall_5_0_1_0() { return cTextScalarExpressionParserRuleCall_5_0_1_0; }
 
 		//("detailText:" detailText=ScalarExpression)?
-		public Group getGroup_4_1() { return cGroup_4_1; }
+		public Group getGroup_5_1() { return cGroup_5_1; }
 
 		//"detailText:"
-		public Keyword getDetailTextKeyword_4_1_0() { return cDetailTextKeyword_4_1_0; }
+		public Keyword getDetailTextKeyword_5_1_0() { return cDetailTextKeyword_5_1_0; }
 
 		//detailText=ScalarExpression
-		public Assignment getDetailTextAssignment_4_1_1() { return cDetailTextAssignment_4_1_1; }
+		public Assignment getDetailTextAssignment_5_1_1() { return cDetailTextAssignment_5_1_1; }
 
 		//ScalarExpression
-		public RuleCall getDetailTextScalarExpressionParserRuleCall_4_1_1_0() { return cDetailTextScalarExpressionParserRuleCall_4_1_1_0; }
+		public RuleCall getDetailTextScalarExpressionParserRuleCall_5_1_1_0() { return cDetailTextScalarExpressionParserRuleCall_5_1_1_0; }
 
 		//("image:" image=ScalarExpression)?
-		public Group getGroup_4_2() { return cGroup_4_2; }
+		public Group getGroup_5_2() { return cGroup_5_2; }
 
 		//"image:"
-		public Keyword getImageKeyword_4_2_0() { return cImageKeyword_4_2_0; }
+		public Keyword getImageKeyword_5_2_0() { return cImageKeyword_5_2_0; }
 
 		//image=ScalarExpression
-		public Assignment getImageAssignment_4_2_1() { return cImageAssignment_4_2_1; }
+		public Assignment getImageAssignment_5_2_1() { return cImageAssignment_5_2_1; }
 
 		//ScalarExpression
-		public RuleCall getImageScalarExpressionParserRuleCall_4_2_1_0() { return cImageScalarExpressionParserRuleCall_4_2_1_0; }
+		public RuleCall getImageScalarExpressionParserRuleCall_5_2_1_0() { return cImageScalarExpressionParserRuleCall_5_2_1_0; }
 
 		//("action:" action=Action)?
-		public Group getGroup_4_3() { return cGroup_4_3; }
+		public Group getGroup_5_3() { return cGroup_5_3; }
 
 		//"action:"
-		public Keyword getActionKeyword_4_3_0() { return cActionKeyword_4_3_0; }
+		public Keyword getActionKeyword_5_3_0() { return cActionKeyword_5_3_0; }
 
 		//action=Action
-		public Assignment getActionAssignment_4_3_1() { return cActionAssignment_4_3_1; }
+		public Assignment getActionAssignment_5_3_1() { return cActionAssignment_5_3_1; }
 
 		//Action
-		public RuleCall getActionActionParserRuleCall_4_3_1_0() { return cActionActionParserRuleCall_4_3_1_0; }
+		public RuleCall getActionActionParserRuleCall_5_3_1_0() { return cActionActionParserRuleCall_5_3_1_0; }
 
 		//("accessory:" accessory=CellAccessory)?
-		public Group getGroup_4_4() { return cGroup_4_4; }
+		public Group getGroup_5_4() { return cGroup_5_4; }
 
 		//"accessory:"
-		public Keyword getAccessoryKeyword_4_4_0() { return cAccessoryKeyword_4_4_0; }
+		public Keyword getAccessoryKeyword_5_4_0() { return cAccessoryKeyword_5_4_0; }
 
 		//accessory=CellAccessory
-		public Assignment getAccessoryAssignment_4_4_1() { return cAccessoryAssignment_4_4_1; }
+		public Assignment getAccessoryAssignment_5_4_1() { return cAccessoryAssignment_5_4_1; }
 
 		//CellAccessory
-		public RuleCall getAccessoryCellAccessoryEnumRuleCall_4_4_1_0() { return cAccessoryCellAccessoryEnumRuleCall_4_4_1_0; }
+		public RuleCall getAccessoryCellAccessoryEnumRuleCall_5_4_1_0() { return cAccessoryCellAccessoryEnumRuleCall_5_4_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 
 	public class CustomViewElements extends AbstractParserRuleElementFinder {
@@ -2568,7 +2572,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Cell:
-	//	"cell" type=CellType iterator=CollectionIterator? "{" (("text:" text=ScalarExpression)? & ("detailText:"
+	//	{Cell} "cell" type=CellType? iterator=CollectionIterator? "{" (("text:" text=ScalarExpression)? & ("detailText:"
 	//	detailText=ScalarExpression)? & ("image:" image=ScalarExpression)? & ("action:" action=Action)? & ("accessory:"
 	//	accessory=CellAccessory)?) "}";
 	public CellElements getCellAccess() {
