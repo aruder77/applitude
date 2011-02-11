@@ -180,7 +180,7 @@ Section:
 	'}';
 
 Cell:
-	'cell' type=CellType iterator=CollectionIterator? '{'
+	{Cell} 'cell' type=CellType? iterator=CollectionIterator? '{'
 		( ('text:' text=ScalarExpression)?
 		& ('detailText:' detailText=ScalarExpression)?
 		& ('image:' image=ScalarExpression)?
