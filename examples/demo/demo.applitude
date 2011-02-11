@@ -37,7 +37,7 @@ tableview Inventors(Inventor[] inventors) {
 	title: "Inventors"
 
 	section {
-		cell Default for inventor in inventors {
+		cell for inventor in inventors {
 			text: inventor.name
 			image: inventor.imageUrl
 			action: InventorDetail(inventor)
@@ -59,7 +59,7 @@ tableview InventorDetail(Inventor inventor) {
 
 	section {
 		title: "Inventions"
-		cell Default for invention in inventor.inventions {
+		cell for invention in inventor.inventions {
 			text: invention.name
 			action: InventionDetail(inventor, invention)
 		}
@@ -93,11 +93,11 @@ tableview Reference {
 
 	section {
 		title: "Content Providers"
-		cell Default {
+		cell {
 			text: "JSON"
 			action: Inventors(AllInventorsJSON())
 		}
-		cell Default {
+		cell {
 			text: "XML"
 			action: Inventors(AllInventorsXML())
 		}
@@ -105,31 +105,31 @@ tableview Reference {
 
 	section {
 		title: "Tables"
-		cell Default {
+		cell {
 			text: "Cell styles"
 			action: ReferenceCellStyles()
 		}
-		cell Default {
+		cell {
 			text: "cell foreach"
 			action: Inventors(AllInventorsJSON())
 		}
-		cell Default {
+		cell {
 			text: "section + cell foreach"
 			action: ReferenceSectionCellForeach()
 		}
-		cell Default {
+		cell {
 			text: "Error handling"
 			action: ReferenceErrorHandling()
 		}
-		cell Default {
+		cell {
 			text: "Custom code hooks"
 			action: ReferenceCustomCode()
 		}
-		cell Default {
+		cell {
 			text: "Entity models and bindings"
 			action: ReferenceEntityModels()
 		}
-		cell Default {
+		cell {
 			text: "Expressions"
 			action: ReferenceExpressions()
 		}
@@ -157,7 +157,7 @@ tableview ReferenceSectionCellForeach {
 
 	section for inv in inventors {
 		title: inv.name
-		cell Default for invention in inv.inventions {
+		cell for invention in inv.inventions {
 			text: invention.name
 		}
 	}
@@ -173,14 +173,14 @@ tableview ReferenceErrorHandling {
 	style: Grouped
 
 	section {
-		cell Default for inventor2 in inventors {
+		cell for inventor2 in inventors {
 			text: inventor2.name
 		}
 	}
 
 	section for inventor in inventors {
 		title: inventor.name
-		cell Default for invention in inventor.inventions {
+		cell for invention in inventor.inventions {
 			text: invention.name
 		}
 	}
@@ -199,17 +199,17 @@ tableview ReferenceCustomCode {
 
 	section {
 		title: "ContentProvider"
-		cell Default { text: date }
+		cell { text: date }
 	}
 
 	section {
 		title: "ContentProvider (stored)"
-		cell Default { text: storedDate }
+		cell { text: storedDate }
 	}
 
 	section {
 		title: "Custom ViewControllers"
-		cell Default {
+		cell {
 			text: "Open CustomView"
 			action: CustomView()
 		}
@@ -217,7 +217,7 @@ tableview ReferenceCustomCode {
 
 	section {
 		title: "Custom Actions"
-		cell Default {
+		cell {
 			text: "Open alert"
 			action: @selector(openAlertWithCell:)
 		}
@@ -253,7 +253,7 @@ tableview TextView(String txt) {
 	title: txt
 
 	section {
-		cell Default {
+		cell {
 			text: txt
 		}
 	}
@@ -279,7 +279,7 @@ tableview ReferenceExpressions {
 	section {
 		title: "Collection literals"
 
-		cell Default for text in [ "1", ( "2" "2" "2" ), "3" ] {
+		cell for text in [ "1", ( "2" "2" "2" ), "3" ] {
 			text: ( text "/" text )
 		}
 	}
@@ -287,13 +287,13 @@ tableview ReferenceExpressions {
 	section {
 		title: "String split"
 
-		cell Default for number in split("1,2,3", ",") {
+		cell for number in split("1,2,3", ",") {
 			text: number
 		}
 	}
 
 	section for inv in inventors {
-		cell Default for name in split(inv.name, " ") {
+		cell for name in split(inv.name, " ") {
 			text: name
 		}
 	}
