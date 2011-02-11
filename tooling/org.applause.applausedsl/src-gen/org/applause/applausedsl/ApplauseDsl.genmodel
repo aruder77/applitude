@@ -18,10 +18,10 @@
       <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//TableViewStyle/Grouped"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ApplauseDsl.ecore#//CellType">
-      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/default"/>
-      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/value1"/>
-      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/value2"/>
-      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/subtitle"/>
+      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/Value1"/>
+      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/Value2"/>
+      <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellType/Subtitle"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ApplauseDsl.ecore#//CellAccessory">
       <genEnumLiterals ecoreEnumLiteral="ApplauseDsl.ecore#//CellAccessory/None"/>

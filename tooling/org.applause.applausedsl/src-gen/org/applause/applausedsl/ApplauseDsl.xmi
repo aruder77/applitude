@@ -788,19 +788,19 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/default"/>
+          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/Default"/>
           <literal value="Default"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/value1"/>
+          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/Value1"/>
           <literal value="Value1"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/value2"/>
+          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/Value2"/>
           <literal value="Value2"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/subtitle"/>
+          <enumLiteral href="http://www.applause.org/applausedsl/ApplauseDsl#//CellType/Subtitle"/>
           <literal value="Subtitle"/>
         </elements>
       </alternatives>

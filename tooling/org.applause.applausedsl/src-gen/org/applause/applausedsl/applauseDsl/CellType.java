@@ -30,7 +30,7 @@ public enum CellType implements Enumerator
    * @generated
    * @ordered
    */
-  DEFAULT(0, "default", "Default"),
+  DEFAULT(0, "Default", "Default"),
 
   /**
    * The '<em><b>Value1</b></em>' literal object.
@@ -40,7 +40,7 @@ public enum CellType implements Enumerator
    * @generated
    * @ordered
    */
-  VALUE1(1, "value1", "Value1"),
+  VALUE1(1, "Value1", "Value1"),
 
   /**
    * The '<em><b>Value2</b></em>' literal object.
@@ -50,7 +50,7 @@ public enum CellType implements Enumerator
    * @generated
    * @ordered
    */
-  VALUE2(2, "value2", "Value2"),
+  VALUE2(2, "Value2", "Value2"),
 
   /**
    * The '<em><b>Subtitle</b></em>' literal object.
@@ -60,7 +60,7 @@ public enum CellType implements Enumerator
    * @generated
    * @ordered
    */
-  SUBTITLE(3, "subtitle", "Subtitle");
+  SUBTITLE(3, "Subtitle", "Subtitle");
 
   /**
    * The '<em><b>Default</b></em>' literal value.
@@ -71,7 +71,7 @@ public enum CellType implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #DEFAULT
-   * @model name="default" literal="Default"
+   * @model name="Default"
    * @generated
    * @ordered
    */
@@ -86,7 +86,7 @@ public enum CellType implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #VALUE1
-   * @model name="value1" literal="Value1"
+   * @model name="Value1"
    * @generated
    * @ordered
    */
@@ -101,7 +101,7 @@ public enum CellType implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #VALUE2
-   * @model name="value2" literal="Value2"
+   * @model name="Value2"
    * @generated
    * @ordered
    */
@@ -116,7 +116,7 @@ public enum CellType implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #SUBTITLE
-   * @model name="subtitle" literal="Subtitle"
+   * @model name="Subtitle"
    * @generated
    * @ordered
    */

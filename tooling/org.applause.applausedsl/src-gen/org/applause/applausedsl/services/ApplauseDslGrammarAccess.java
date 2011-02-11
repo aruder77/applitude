@@ -1983,31 +1983,31 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSubtitleSubtitleKeyword_3_0 = (Keyword)cSubtitleEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum CellType:
-		//	default="Default" | value1="Value1" | value2="Value2" | subtitle="Subtitle";
+		//	Default | Value1 | Value2 | Subtitle;
 		public EnumRule getRule() { return rule; }
 
-		//default="Default" | value1="Value1" | value2="Value2" | subtitle="Subtitle"
+		//Default | Value1 | Value2 | Subtitle
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//default="Default"
+		//Default
 		public EnumLiteralDeclaration getDefaultEnumLiteralDeclaration_0() { return cDefaultEnumLiteralDeclaration_0; }
 
 		//"Default"
 		public Keyword getDefaultDefaultKeyword_0_0() { return cDefaultDefaultKeyword_0_0; }
 
-		//value1="Value1"
+		//Value1
 		public EnumLiteralDeclaration getValue1EnumLiteralDeclaration_1() { return cValue1EnumLiteralDeclaration_1; }
 
 		//"Value1"
 		public Keyword getValue1Value1Keyword_1_0() { return cValue1Value1Keyword_1_0; }
 
-		//value2="Value2"
+		//Value2
 		public EnumLiteralDeclaration getValue2EnumLiteralDeclaration_2() { return cValue2EnumLiteralDeclaration_2; }
 
 		//"Value2"
 		public Keyword getValue2Value2Keyword_2_0() { return cValue2Value2Keyword_2_0; }
 
-		//subtitle="Subtitle"
+		//Subtitle
 		public EnumLiteralDeclaration getSubtitleEnumLiteralDeclaration_3() { return cSubtitleEnumLiteralDeclaration_3; }
 
 		//"Subtitle"
@@ -2584,7 +2584,7 @@ public class ApplauseDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum CellType:
-	//	default="Default" | value1="Value1" | value2="Value2" | subtitle="Subtitle";
+	//	Default | Value1 | Value2 | Subtitle;
 	public CellTypeElements getCellTypeAccess() {
 		return (unknownRuleCellType != null) ? unknownRuleCellType : (unknownRuleCellType = new CellTypeElements());
 	}

@@ -172,10 +172,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessory" eType="#//CellAccessory"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CellType">
-    <eLiterals name="default" literal="Default"/>
-    <eLiterals name="value1" value="1" literal="Value1"/>
-    <eLiterals name="value2" value="2" literal="Value2"/>
-    <eLiterals name="subtitle" value="3" literal="Subtitle"/>
+    <eLiterals name="Default" literal="Default"/>
+    <eLiterals name="Value1" value="1" literal="Value1"/>
+    <eLiterals name="Value2" value="2" literal="Value2"/>
+    <eLiterals name="Subtitle" value="3" literal="Subtitle"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CellAccessory">
     <eLiterals name="None" literal="None"/>
