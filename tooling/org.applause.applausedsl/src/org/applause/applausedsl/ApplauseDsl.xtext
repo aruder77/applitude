@@ -189,10 +189,7 @@ Cell:
 	'}';
 
 enum CellType:
-	default = 'Default' |
-	value1 = 'Value1' |
-	value2 = 'Value2' |
-	subtitle = 'Subtitle';
+	Default | Value1 | Value2 | Subtitle;
 
 enum CellAccessory:
 	None | Link | Detail | Check;
