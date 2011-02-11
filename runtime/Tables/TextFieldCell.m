@@ -49,9 +49,8 @@
 }
 
 - (void)dealloc {
-	LogDealloc;
-	self.onReturn = nil;
-	self.textField = nil;
+	[fOnReturn release];
+	[fTextField release];
 	[super dealloc];
 }
 
