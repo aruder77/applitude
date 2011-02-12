@@ -171,6 +171,10 @@
 		BFAEE79512F061A80013047D /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE77912F061610013047D /* List.m */; };
 		BFAEE79612F061A80013047D /* MappedList.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE77B12F061610013047D /* MappedList.m */; };
 		BFAEE79712F061A80013047D /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAEE77D12F061610013047D /* Section.m */; };
+		BFE3D9661306B335009DE1D8 /* HTTPError.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164612FC1ADD007F8A4A /* HTTPError.m */; };
+		BFE3D9671306B335009DE1D8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164912FC1ADD007F8A4A /* Reachability.m */; };
+		BFE3D9681306B335009DE1D8 /* TTGlobalNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164B12FC1ADD007F8A4A /* TTGlobalNetwork.m */; };
+		BFE3D9691306B335009DE1D8 /* URLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF54164D12FC1ADD007F8A4A /* URLUtils.m */; };
 		BFE82E3812F62D4700D11B3F /* ReferenceCustomCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE82E3712F62D4700D11B3F /* ReferenceCustomCodeViewController.m */; };
 		BFE82E3F12F62D7C00D11B3F /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE82E3E12F62D7C00D11B3F /* CustomViewController.m */; };
 		BFE82EDC12F630B800D11B3F /* Controllers+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE82EDB12F630B800D11B3F /* Controllers+Actions.m */; };
@@ -1111,6 +1115,10 @@
 				BF54148412FC0A69007F8A4A /* CXMLNode_XPathExtensions.m in Sources */,
 				BF54148512FC0A69007F8A4A /* CTidy.m in Sources */,
 				BF54148612FC0A69007F8A4A /* XMLFilter.m in Sources */,
+				BFE3D9661306B335009DE1D8 /* HTTPError.m in Sources */,
+				BFE3D9671306B335009DE1D8 /* Reachability.m in Sources */,
+				BFE3D9681306B335009DE1D8 /* TTGlobalNetwork.m in Sources */,
+				BFE3D9691306B335009DE1D8 /* URLUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
