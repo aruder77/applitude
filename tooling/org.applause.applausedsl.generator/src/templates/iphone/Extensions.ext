@@ -67,7 +67,7 @@ toIdentifier(String this):
 	split(" ").toFirstUpper().toString("").toFirstLower().replaceAll("[^a-zA-Z]", "");
 
 objc(String this):
-	'@"' + this + '"';
+	this == null ? 'nil' : '@"' + this + '"';
 
 // [target methodNameWithParam1:value1 param2:value2 ...]
 objc_Call(String target, String methodName, List[String] paramNames, List[String] paramValues):
